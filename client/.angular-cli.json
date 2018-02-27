@@ -54,8 +54,13 @@
     }
   },
   "defaults": {
+<<<<<<< HEAD
     "styleExt": "scss",
     "component": {
     }
+=======
+    "styleExt": "css",
+    "component": {}
+>>>>>>> adb77712eeadcbefea6cdb2872f5e0cea865834f
   }
 }

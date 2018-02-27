@@ -4,7 +4,11 @@ import { SessionService } from '../../services/session.service';
 @Component({
   selector: 'app-login-form',
   templateUrl: './login-form.component.html',
+<<<<<<< HEAD
   styleUrls: ['./login-form.component.scss']
+=======
+  styleUrls: ['./login-form.component.css']
+>>>>>>> adb77712eeadcbefea6cdb2872f5e0cea865834f
 })
 export class LoginFormComponent implements OnInit {
 

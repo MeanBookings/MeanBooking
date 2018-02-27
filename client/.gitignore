@@ -41,6 +41,9 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+<<<<<<< HEAD
 
 /src/assets/css/main.css
 /src/assets/css/main.map.css
+=======
+>>>>>>> adb77712eeadcbefea6cdb2872f5e0cea865834f
