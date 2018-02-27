@@ -13,7 +13,6 @@ let loginPromise = (req, user) => {
 
 /* SIGNUP */
 router.post('/signup', (req, res, next) => {
-<<<<<<< HEAD
   const { name, email, password, phone} = req.body;
   if (!name || !email || !password || !phone) return res.status(400).json({ message: 'Provide email and password' })
   User.findOne({ email }, '_id')
@@ -26,27 +25,11 @@ router.post('/signup', (req, res, next) => {
         email,
         password: hashPass,
         phone
-=======
-  const {username,password} = req.body;
-  if (!username || !password) return res.status(400).json({ message: 'Provide username and password' })
-  User.findOne({ username }, '_id')
-    .then(foundUser =>{
-      if (foundUser) return res.status(400).json({ message: 'The username already exists' });
-      const salt = bcrypt.genSaltSync(10);
-      const hashPass = bcrypt.hashSync(password, salt);
-      const theUser = new User({
-        username,
-        password: hashPass
->>>>>>> adb77712eeadcbefea6cdb2872f5e0cea865834f
       });
       return theUser.save()
           .then(user => loginPromise(req,user))
           .then(user => {
-<<<<<<< HEAD
             debug(`Registered user ${user._id}. Welcome ${user.email}`);
-=======
-            debug(`Registered user ${user._id}. Welcome ${user.username}`);
->>>>>>> adb77712eeadcbefea6cdb2872f5e0cea865834f
             res.status(200).json(req.user)
           }) 
     })

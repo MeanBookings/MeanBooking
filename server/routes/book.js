@@ -21,3 +21,5 @@ router.post('/signup', (req, res, next) => {
 // /api/book/edit/:id - update the book
 
 // /api/book/delete/:id - Delete de book
+
+module.exports = router;

@@ -10,10 +10,7 @@ const mongoose = require('mongoose');
 const {dbURL} = require('./config');
 const cors = require('cors');
 const auth = require('./routes/auth');
-<<<<<<< HEAD
-=======
 const book = require('./routes/book');
->>>>>>> adb77712eeadcbefea6cdb2872f5e0cea865834f
 
 const app = express();
 
@@ -57,10 +54,7 @@ app.use(session({
 require('./passport')(app)
 
 app.use('/api/auth', auth);
-<<<<<<< HEAD
-=======
 app.use('/api/book/', book);
->>>>>>> adb77712eeadcbefea6cdb2872f5e0cea865834f
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
