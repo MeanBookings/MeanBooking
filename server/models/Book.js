@@ -7,6 +7,7 @@ const bookSchema = new Schema({
     name: { type: String, required: true },
     phone: { type: String, required: true },
     date_of_book: { type: Date },
+    hour: { type: String },
     people: { type: Number },
     status: { type: String, enum: TYPES }
 }, {

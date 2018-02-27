@@ -1,22 +1,21 @@
 const express = require('express');
 const router = express.Router();
-const Book = require('../models/Book');
 const bcrypt = require('bcrypt');
 const debug = require('debug')("server:book");
 const passport = require('passport')
 
+const Book = require('../models/Book');
+const Day = require('../models/Day')
+
 
 // /api/book/add - Add the book
-router.post('/signup', (req, res, next) => {
-/*  email: { type: String, required: true },
-    name: { type: String, required: true },
-    phone: { type: String, required: true },
-    date_of_book: { type: Date },
-    people: { type: Number },
-    status: { type: String, enum: TYPES }   */
-    const {email,name,phone,date_of_book,people,status} = req.body;
-
-
+router.post('/add', (req, res, next) => {
+    const {email,name,phone,date_of_book,hour,people,status} = req.body;
+    Day.find({date:date_of_book})
+                                .then((day)=>{
+                                day.shift.hour.push()
+                                console.log(day)
+                                })
 })
 // /api/book/edit/:id - update the book
 
