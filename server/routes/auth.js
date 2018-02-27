@@ -13,7 +13,7 @@ let loginPromise = (req, user) => {
 
 /* SIGNUP */
 router.post('/signup', (req, res, next) => {
-  const { name,email,password,phone} = req.body;
+  const { name, email, password, phone} = req.body;
   if (!name || !email || !password || !phone) return res.status(400).json({ message: 'Provide email and password' })
   User.findOne({ email }, '_id')
     .then(foundUser =>{
