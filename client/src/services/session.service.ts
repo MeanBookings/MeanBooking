@@ -5,7 +5,7 @@ import 'rxjs/add/operator/catch';
 import { Observable } from 'rxjs/Rx';
 
 interface User {
-  username:string,
+  name:string,
   password:string
 }
 
@@ -27,9 +27,9 @@ export class SessionService {
     return (user) => {
       if(set){
         this.user = user;
-        console.log(`Setting user, welcome ${this.user.username}`)
+        console.log(`Setting user, welcome ${this.user.name}`)
       }else{
-        console.log(`bye bye ${this.user.username}`)
+        console.log(`bye bye ${this.user.name}`)
         this.user = null
       }
       return user;
@@ -41,15 +41,15 @@ export class SessionService {
     return Observable.throw(e.json().message);
   }
 
-  signup(username:string, password:string):Observable<any>{
-    return this.http.post(`${this.BASEURL}/api/auth/signup`, {username,password}, this.options)
+  signup(name:string, password:string):Observable<any>{
+    return this.http.post(`${this.BASEURL}/api/auth/signup`, { username:name,password}, this.options)
       .map(res => res.json())
       .map(this.configureUser(true))
       .catch(this.handleError);
   }
 
-  login(username:string, password:string):Observable<any>{
-    return this.http.post(`${this.BASEURL}/api/auth/login`, {username,password},this.options)
+  login(name:string, password:string):Observable<any>{
+    return this.http.post(`${this.BASEURL}/api/auth/login`, { username:name,password},this.options)
       .map(res => res.json())
       .map(this.configureUser(true))
       .catch(this.handleError);

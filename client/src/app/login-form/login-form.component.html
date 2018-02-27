@@ -1,9 +1,8 @@
-<h1> Authentication Sample </h1>
 <div *ngIf="!session.getUser()">
   <form>
     <h2> Login or Signup </h2>
     <label> Username </label>
-    <input type="text" [(ngModel)]="username" name="username"/>
+    <input type="text" [(ngModel)]="name" name="name"/>
     <br>
     <label> Password </label>
     <input type="password" [(ngModel)]="password" name="password"/>

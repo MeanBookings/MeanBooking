@@ -5,12 +5,14 @@ import { AppComponent } from './app.component';
 import { HttpModule } from '@angular/http';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { SessionService } from '../services/session.service';
+import { HeaderComponent } from './header/header.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginFormComponent
+    LoginFormComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

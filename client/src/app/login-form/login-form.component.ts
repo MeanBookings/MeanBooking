@@ -8,7 +8,7 @@ import { SessionService } from '../../services/session.service';
 })
 export class LoginFormComponent implements OnInit {
 
-  username:string;
+  name:string;
   password:string;
   error:string;
   constructor(public session:SessionService) { }
@@ -17,13 +17,13 @@ export class LoginFormComponent implements OnInit {
   }
 
   login(){
-    this.session.login(this.username,this.password)
+    this.session.login(this.name,this.password)
     .catch(e => this.error = e)
-    .subscribe(user => console.log(`Welcome ${user.username}`));
+      .subscribe(user => console.log(`Welcome ${user.name}`));
   }
 
   signup(){
-    this.session.signup(this.username,this.password)
+    this.session.signup(this.name,this.password)
     .catch(e => this.error = e)
     .subscribe();
   }
