@@ -1,0 +1,8 @@
+/* para compilar a css y minificar:
+sass --watch src/scss:src/assets/css --style compressed
+en el directorio del proyecto*/
+@import 'settings.variables';
+@import 'tools.recycle';
+@import 'generic.reset';
+@import 'generic.base';
+@import 'utilities.helpers';
