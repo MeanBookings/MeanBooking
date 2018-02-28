@@ -7,12 +7,8 @@ import { SessionService } from './session.service';
 export class AdminGuardService implements CanActivate {
     constructor(public session: SessionService) { }
     canActivate(): Observable<boolean> | Promise<boolean> | boolean {
-        console.log('canActivate guard has been called');
-            if (false){
-                return true;
-            } else {
-                console.log('You cant go there')
-                return false;
-            }
+        console.log('Admin guard has been called');
+        if (this.session.getUser()&&this.session.getAdmin()) return true 
+        else {console.log('You cant go there');return false}
     }
 }
