@@ -53,6 +53,7 @@ router.post('/add', (req, res, next) => {
                         updatedDay.books.push(book._id);
                         res.json(updatedDay)
                         Day.findOneAndUpdate({ _id: day._id }, updatedDay, { new: true })
+                        .then(()=> console.log("todo ok"))
                     })
                     .catch(e => {
                         res.status(500).json(e)
