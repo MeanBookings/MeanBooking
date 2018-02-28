@@ -3,21 +3,41 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { HttpModule } from '@angular/http';
-import { LoginFormComponent } from './login-form/login-form.component';
+import { LoginComponent } from './login/login.component';
 import { SessionService } from '../services/session.service';
 import { HeaderComponent } from './header/header.component';
-
+import { FooterComponent } from './footer/footer.component';
+import { HomeComponent } from './home/home.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatButtonModule, MatCheckboxModule, MatExpansionModule, MatInputModule } from '@angular/material';
+//routes
+import { routes } from './routes';
+import { RouterModule } from '@angular/router';
+import { SignupComponent } from './signup/signup.component';
+import { LogoutComponent } from './logout/logout.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginFormComponent,
-    HeaderComponent
+    LoginComponent,
+    HeaderComponent,
+    FooterComponent,
+    HomeComponent,
+    SignupComponent,
+    LogoutComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
     HttpModule,
-    FormsModule
+    FormsModule,
+    RouterModule.forRoot(routes),
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatCheckboxModule,
+    MatExpansionModule,
+    MatInputModule
   ],
   providers: [SessionService],
   bootstrap: [AppComponent]

@@ -41,8 +41,8 @@ export class SessionService {
     return Observable.throw(e.json().message);
   }
 
-  signup(name:string, password:string):Observable<any>{
-    return this.http.post(`${this.BASEURL}/api/auth/signup`, { username:name,password}, this.options)
+  signup(name:string, password:string, email:string,phone:string):Observable<any>{
+    return this.http.post(`${this.BASEURL}/api/auth/signup`, { username:name,password,email,phone}, this.options)
       .map(res => res.json())
       .map(this.configureUser(true))
       .catch(this.handleError);
@@ -68,4 +68,5 @@ export class SessionService {
       .map(this.configureUser(true))
       .catch(this.handleError);
   }
+
 }

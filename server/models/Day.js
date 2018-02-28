@@ -6,23 +6,13 @@ const daySchema = new Schema({
     date: { type: Date, required: true },
     status: { type: String, enum: TYPES, required: true },
     shift: [
-            {"Hour": {type: String, default:"13:00"}, "current": {type: Number, default:"0"}, "max":{type: Number, default:"20"}},
-            {"Hour": {type: String, default:"14:00"}, "current": {type: Number, default:"0"}, "max":{type: Number, default:"20"}},
-            {"Hour": {type: String, default:"15:00"}, "current": {type: Number, default:"0"}, "max":{type: Number, default:"20"}},
-            {"Hour": {type: String, default:"21:00"}, "current": {type: Number, default:"0"}, "max":{type: Number, default:"20"}},
-            {"Hour": {type: String, default:"22:00"}, "current": {type: Number, default:"0"}, "max":{type: Number, default:"20"}},
-            {"Hour": {type: String, default:"23:00"}, "current": {type: Number, default:"0"}, "max":{type: Number, default:"20"}}
+        {"Hour": {type: String, default:"13:00"}, "current": {type: Number, default:"0"}, "max":{type: Number, default:"20"}},
+        {"Hour": {type: String, default:"14:00"}, "current": {type: Number, default:"0"}, "max":{type: Number, default:"20"}},
+        {"Hour": {type: String, default:"15:00"}, "current": {type: Number, default:"0"}, "max":{type: Number, default:"20"}},
+        {"Hour": {type: String, default:"21:00"}, "current": {type: Number, default:"0"}, "max":{type: Number, default:"20"}},
+        {"Hour": {type: String, default:"22:00"}, "current": {type: Number, default:"0"}, "max":{type: Number, default:"20"}},
+        {"Hour": {type: String, default:"23:00"}, "current": {type: Number, default:"0"}, "max":{type: Number, default:"20"}}
     ]
-            //     {"14:00":[{ type: Schema.Types.ObjectId, ref: 'Book'}],"MAX":20},
-            //     {"15:00":[{ type: Schema.Types.ObjectId, ref: 'Book'}],"MAX":20},
-            //     {"20:00":[{ type: Schema.Types.ObjectId, ref: 'Book'}],"MAX":20},
-            //     {"21:00":[{ type: Schema.Types.ObjectId, ref: 'Book'}],"MAX":20},
-            //     {"22:00":[{ type: Schema.Types.ObjectId, ref: 'Book'}],"MAX":20},
-            // ]
-
-
-    // shift: [{ "day": [{ type: Schema.Types.ObjectId, ref: 'Book'}] , maxDay: 20}, 
-    //         { "night": [{ type: Schema.Types.ObjectId, ref: 'Book'}] , maxNight: 20}]
 }, {
     timestamps: {
         createdAt: 'created_at',

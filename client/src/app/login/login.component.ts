@@ -2,15 +2,17 @@ import { Component, OnInit } from '@angular/core';
 import { SessionService } from '../../services/session.service';
 
 @Component({
-  selector: 'app-login-form',
-  templateUrl: './login-form.component.html',
-  styleUrls: ['./login-form.component.scss']
+  selector: 'login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.scss']
 })
-export class LoginFormComponent implements OnInit {
+export class LoginComponent implements OnInit {
 
   name:string;
   password:string;
   error:string;
+  visible: boolean = false;
+
   constructor(public session:SessionService) { }
 
   ngOnInit() {
@@ -22,16 +24,5 @@ export class LoginFormComponent implements OnInit {
       .subscribe(user => console.log(`Welcome ${user.name}`));
   }
 
-  signup(){
-    this.session.signup(this.name,this.password)
-    .catch(e => this.error = e)
-    .subscribe();
-  }
-
-  logout(){
-    this.session.logout()
-    .catch(e => this.error = e)
-    .subscribe();
-  }
 
 }
