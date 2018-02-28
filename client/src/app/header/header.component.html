@@ -1,6 +1,9 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-sm-4">{{title}}</div>
+    <div class="col-sm-4">
+      <div>{{title}}</div>
+      <div *ngIf="session.getUser()">Hi {{session.getUser().name}}!</div>
+    </div>
     <div class="col-sm-2"> </div>
     <div class="col-sm-3">
       <login></login>
