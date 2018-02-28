@@ -3,10 +3,9 @@ const Schema = mongoose.Schema;
 const TYPES = require('./types/book-types');
 
 const bookSchema = new Schema({
-    date_of_book: { type: Schema.Types.ObjectId, ref: 'Day' },
     hour: { type: String },
     people: { type: Number },
-    status: { type: String, enum: TYPES, default: "pending" },
+    status: { type: String, enum: TYPES, default: TYPES[0] },
     user: { type: Schema.Types.ObjectId, ref: 'User' },
     comment: { type: String }
 }, {
