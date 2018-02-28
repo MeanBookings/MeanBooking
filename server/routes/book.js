@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const debug = require('debug')("server:book");
+const bcrypt = require('bcrypt');
 
 const Book = require('../models/Book');
 const Day = require('../models/Day')
@@ -58,5 +59,24 @@ router.post('/add', (req, res, next) => {
 // /api/book/edit/:id - update the book sending the emails
 
 // /api/book/delete/:id - Delete de book
+router.get('/delete/:hash', (req, res, next) => {
+    const salt = bcrypt.genSaltSync(3);
+    c = JSON.stringify(b._id)
+    console.log("salmeron cabron")
+    Book.find()
+        .then((books) => {
+            
+            // let a = books.filter((b) => {
+            //     console.log("")
+                // c = JSON.stringify(b._id)
+                // return ((bcrypt.hashSync(c, salt)) == req.params.hash)
+                // console.log(a)
+            // })
+        })
+        .catch(e => {
+            res.status(500).json(e)
+        })
+})
+
 
 module.exports = router;
