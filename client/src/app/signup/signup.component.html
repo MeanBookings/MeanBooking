@@ -1,0 +1,30 @@
+<div class="signup-wrapper" *ngIf="!session.getUser()">
+  <mat-expansion-panel [expanded]='visible'>
+    <mat-expansion-panel-header>
+      <mat-panel-title> Signup </mat-panel-title>
+    </mat-expansion-panel-header>
+    <mat-form-field>
+      <input matInput type="text" placeholder="Your name" [(ngModel)]="name" #signupName="ngModel" required minlength="3"> </mat-form-field>
+    <div *ngIf="signupName.errors && (signupName.dirty || signupName.touched)">
+      <small class="error"> Name must be at least 3 characters long. </small>
+    </div>
+    <mat-form-field>
+      <input matInput type="password" placeholder="Choose password" [(ngModel)]="password" #signupPassw="ngModel" required>
+    </mat-form-field>
+    <div *ngIf="signupPassw.errors && (signupPassw.dirty || signupPassw.touched)">
+      <small class="error"> Password is required. </small>
+    </div>
+    <mat-form-field>
+      <input matInput type="text" placeholder="Phone" [(ngModel)]="phone" #signupPhone="ngModel" required> </mat-form-field>
+    <div *ngIf="signupPhone.errors && (signupPhone.dirty || signupPhone.touched)">
+      <small class="error"> Phone is required. </small>
+    </div>
+    <mat-form-field>
+      <input matInput type="email" placeholder="email" [(ngModel)]="email" #signupEmail="ngModel" required> </mat-form-field>
+      <div *ngIf="signupEmail.errors && (signupEmail.dirty || signupEmail.touched)">
+        <small class="error"> Email is required. </small>
+      </div>
+    <button (click)="signup()" mat-button id="sign-up">Signup!</button>
+  </mat-expansion-panel>
+</div>
+

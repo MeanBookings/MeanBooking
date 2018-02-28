@@ -1,7 +1,17 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-sm-12">
-      <app-login-form></app-login-form>
+    <div class="col-sm-4">
+      <div>{{title}}</div>
+      <div *ngIf="session.getUser()">Hi {{session.getUser().name}}!</div>
+    </div>
+    <div class="col-sm-2"> </div>
+    <div class="col-sm-3">
+      <login></login>
+    </div>
+    <div class="col-sm-3">
+      <signup></signup>
+      <logout></logout>
+      <button *ngIf="session.getUser()" [routerLink]="['/profile',session.getUser()._id]" mat-raised-button color="accent">My profile</button>
     </div>
   </div>
 </div>
