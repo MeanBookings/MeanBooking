@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const debug = require('debug')("server:day");
-
+const moment = require('moment');
 const Book = require('../models/Book');
 const Day = require('../models/Day');
 
@@ -29,7 +29,23 @@ router.post('/create', (req, res, next) => {
 })
 // /api/day/edit - Update the basic day to special day.
 
-// /api/day/:id
+// GET A DAY /api/day/:id
+router.post('/', (req, res, next) => {
+    console.log(moment(req.body.date)) 
+    //let dateClean = `${req.body.date.split('T')[0]} 00:00:00.000`;
+    Day.findOne({ date: moment(req.body.date)})
+        .then(day => {
+            return res.json(day);
+        })
+        .catch (err => {
+            if (err) { return res.status(500).json(err); }
+            if (!day) { return res.status(404).json(new Error("404")) }
+        }) 
+});
+
+
+
+
 
 // /api/day/delete - Delete the day
 
