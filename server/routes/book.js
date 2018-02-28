@@ -9,6 +9,7 @@ const User = require('../models/User')
 
 // /api/book/add - Add the book
 router.post('/add', (req, res, next) => {
+    console.log(req.body)
     let tIndex;
     let obj = {}
     const { email, name, phone, date_of_book, hour, people, comment } = req.body;
