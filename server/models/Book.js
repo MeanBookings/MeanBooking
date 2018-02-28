@@ -3,13 +3,12 @@ const Schema = mongoose.Schema;
 const TYPES = require('./types/book-types');
 
 const bookSchema = new Schema({
-    email: { type: String, required: true },
-    name: { type: String, required: true },
-    phone: { type: String, required: true },
-    date_of_book: { type: Date },
+    date_of_book: { type: Schema.Types.ObjectId, ref: 'Day' },
     hour: { type: String },
     people: { type: Number },
-    status: { type: String, enum: TYPES }
+    status: { type: String, enum: TYPES, default: "pending" },
+    user: { type: Schema.Types.ObjectId, ref: 'User' },
+    comment: { type: String }
 }, {
         timestamps: {
             createdAt: 'created_at',
