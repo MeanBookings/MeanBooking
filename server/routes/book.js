@@ -8,11 +8,21 @@ const Day = require('../models/Day')
 
 // /api/book/add - Add the book
 router.post('/add', (req, res, next) => {
+    console.log(req.body)
     //HACER UN FIND PARA COGER EL INDEX Y LUEGO CAMBIARLO, MIRAR EJEMPLO
-    let tIndex, t_Id, tPeople;
+   /*  let tIndex, t_Id, tPeople;
     let obj = {}
-    const { email, name, phone, date_of_book, hour, people, status } = req.body;
-    Day.findOne({ date: date_of_book })
+    const {
+        email,
+        name,
+        phone,
+        date_of_book,
+        hour,
+        people
+    } = req.body;
+    Day.findOne({
+            date: date_of_book
+        })
         .then((day) => {
             t_Id = day._id;
             day.shift.forEach((sh, i) => {
@@ -21,15 +31,19 @@ router.post('/add', (req, res, next) => {
                     tPeople = sh.current + people
                 }
             })
-            obj = { "hour": hour, "current": tPeople, "max": 20};
+            obj = {
+                "hour": hour,
+                "current": tPeople,
+                "max": 20
+            };
             console.log(obj)
         })
-        
-       
+
+
         .catch(e => {
             console.log(e);
             res.status(500).json(e)
-        })
+        }) */
 })
 // /api/book/edit/:id - update the book sending the emails
 

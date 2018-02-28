@@ -10,7 +10,9 @@ import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 //material
-import { MatButtonModule, MatCheckboxModule, MatExpansionModule, MatInputModule } from '@angular/material';
+import { MatSelectModule, MatButtonModule, MatCheckboxModule, MatExpansionModule, MatInputModule, MatDatepickerModule, MatNativeDateModule, MatSliderModule } from '@angular/material';
+
+
 //calendar
 import { CalendarModule } from 'angular-calendar';
 //routes
@@ -20,6 +22,7 @@ import { SignupComponent } from './signup/signup.component';
 import { LogoutComponent } from './logout/logout.component';
 import { ProfileComponent } from './profile/profile.component';
 import { BookingsComponent } from './bookings/bookings.component';
+import { BookingService } from '../services/booking.service';
 
 @NgModule({
   declarations: [
@@ -43,9 +46,13 @@ import { BookingsComponent } from './bookings/bookings.component';
     MatCheckboxModule,
     MatExpansionModule,
     MatInputModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatSliderModule,
     CalendarModule.forRoot()
   ],
-  providers: [SessionService],
+  providers: [SessionService, BookingService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
