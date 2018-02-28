@@ -5,30 +5,38 @@ const TYPES = require('./types/day-types');
 const daySchema = new Schema({
     date: { type: Date, required: true },
     status: { type: String, enum: TYPES, required: true },
-    shift: [
-            {"Hour": {type: String, default:"13:00"}, "current": {type: Number, default:"0"}, "max":{type: Number, default:"20"}},
-            {"Hour": {type: String, default:"14:00"}, "current": {type: Number, default:"0"}, "max":{type: Number, default:"20"}},
-            {"Hour": {type: String, default:"15:00"}, "current": {type: Number, default:"0"}, "max":{type: Number, default:"20"}},
-            {"Hour": {type: String, default:"21:00"}, "current": {type: Number, default:"0"}, "max":{type: Number, default:"20"}},
-            {"Hour": {type: String, default:"22:00"}, "current": {type: Number, default:"0"}, "max":{type: Number, default:"20"}},
-            {"Hour": {type: String, default:"23:00"}, "current": {type: Number, default:"0"}, "max":{type: Number, default:"20"}}
-    ]
-            //     {"14:00":[{ type: Schema.Types.ObjectId, ref: 'Book'}],"MAX":20},
-            //     {"15:00":[{ type: Schema.Types.ObjectId, ref: 'Book'}],"MAX":20},
-            //     {"20:00":[{ type: Schema.Types.ObjectId, ref: 'Book'}],"MAX":20},
-            //     {"21:00":[{ type: Schema.Types.ObjectId, ref: 'Book'}],"MAX":20},
-            //     {"22:00":[{ type: Schema.Types.ObjectId, ref: 'Book'}],"MAX":20},
-            // ]
-
-
-    // shift: [{ "day": [{ type: Schema.Types.ObjectId, ref: 'Book'}] , maxDay: 20}, 
-    //         { "night": [{ type: Schema.Types.ObjectId, ref: 'Book'}] , maxNight: 20}]
+    shift: { type: Array, "default": [
+        { "hour":  "12:00" , "current": 0 , "max": 20 } ,
+        { "hour":  "12:30" , "current": 0 , "max": 20 } ,
+        { "hour":  "13:00" , "current": 0 , "max": 20 } ,
+        { "hour":  "13:30" , "current": 0 , "max": 20 } ,
+        { "hour":  "14:00" , "current": 0 , "max": 20 } ,
+        { "hour":  "14:30" , "current": 0 , "max": 20 } ,
+        { "hour":  "15:00" , "current": 0 , "max": 20 } ,
+        { "hour":  "15:30" , "current": 0 , "max": 20 } ,
+        { "hour":  "16:00" , "current": 0 , "max": 20 } ,
+        { "hour":  "16:30" , "current": 0 , "max": 20 } ,
+        { "hour":  "17:00" , "current": 0 , "max": 20 } ,
+        { "hour":  "17:30" , "current": 0 , "max": 20 } ,
+        { "hour":  "18:00" , "current": 0 , "max": 20 } ,
+        { "hour":  "18:30" , "current": 0 , "max": 20 } ,
+        { "hour":  "19:00" , "current": 0 , "max": 20 } ,
+        { "hour":  "19:30" , "current": 0 , "max": 20 } ,
+        { "hour":  "20:00" , "current": 0 , "max": 20 } ,
+        { "hour":  "20:30" , "current": 0 , "max": 20 } ,
+        { "hour":  "21:00" , "current": 0 , "max": 20 } ,
+        { "hour":  "21:30" , "current": 0 , "max": 20 } ,
+        { "hour":  "22:00" , "current": 0 , "max": 20 } ,
+        { "hour":  "22:30" , "current": 0 , "max": 20 } ,
+        { "hour":  "23:00" , "current": 0 , "max": 20 } ,
+        { "hour":  "23:30" , "current": 0 , "max": 20 } 
+    ]} 
 }, {
-    timestamps: {
-        createdAt: 'created_at',
+        timestamps: {
+            createdAt: 'created_at',
             updatedAt: 'updated_at'
-    }
-});
+        }
+    });
 
 const Day = mongoose.model('Day', daySchema);
 module.exports = Day;
