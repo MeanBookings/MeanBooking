@@ -12,18 +12,14 @@ export class SessionService {
     constructor(private http: Http) {
     }
 
-
-
     handleError(e) {
         console.log(e);
         return Observable.throw(e.json().message);
     }
 
-  
-
-    /* deleteUser(id): Observable<any> {
+    deleteUser(id): Observable<any> {
         return this.http.get(`${this.BASEURL}/api/user/delete/${id}`, this.options)
             .map(res => res.json())
             .catch(this.handleError);
-    } */
+    }
 }

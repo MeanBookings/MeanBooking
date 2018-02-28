@@ -7,7 +7,8 @@ import { Observable } from 'rxjs/Rx';
 interface User {
   name:string,
   password:string,
-  _id:string
+  _id:string,
+  role:string
 }
 
 @Injectable()
@@ -23,6 +24,10 @@ export class SessionService {
 
   getUser(){
     return this.user;
+  }
+
+  getAdmin() {
+    if (this.user.role==='admin'){return 'sí'}
   }
   
   private configureUser(set=false){
