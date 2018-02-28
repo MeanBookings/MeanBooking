@@ -1,35 +1,7 @@
 <div class="container" id="home">
   <div class="row">
     <div class="col-sm-12">
-      <form class="basic-form" (ngSubmit)="sendBooking(bookingForm)" #bookingForm="ngForm">
-        <mat-form-field class="full-width">
-          <input matInput placeholder="Your name" [(ngModel)]="name" name="name"> </mat-form-field>
-        <mat-form-field class="full-width">
-          <input matInput placeholder="Your email" [(ngModel)]="email" name="email"> </mat-form-field>
-        <mat-form-field class="full-width">
-          <input matInput placeholder="Your phone" [(ngModel)]="phone" name="phone"> </mat-form-field>
-        <label for="people">
-          <small>Nº of people</small>
-        </label>
-        <mat-slider class="full-width" [tick-interval]="1" [max]="8" [min]="1" [step]="1" [thumb-label]="true" [(ngModel)]="people"
-          name="people"> </mat-slider>
-        <mat-form-field class="full-width">
-          <input matInput [matDatepicker]="picker" placeholder="Choose a date" [(ngModel)]="date_of_book" name="date_of_book" (dateInput)="checkDayAvailability(date_of_book)">
-          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-          <mat-datepicker #picker></mat-datepicker>
-        </mat-form-field>
-        <small *ngIf="day===null">Day not found</small>
-        <div><small *ngIf="day!==null&&day!=={}">{{day.status}}</small></div>
-        <mat-form-field>
-          <mat-select placeholder="Select hour" [(ngModel)]="hour" name="hour">
-            <mat-option *ngFor="let hour of hours" [value]="hour.value"> {{ hour.viewValue }} </mat-option>
-          </mat-select>
-        </mat-form-field>
-        <mat-form-field class="full-width">
-          <textarea matInput placeholder="Comment" [(ngModel)]="comment" name="comment"></textarea>
-        </mat-form-field>
-        <button type="submit" mat-raised-button color="warn">Book it!</button>
-      </form>
+      <bookingform></bookingform>
     </div>
   </div>
 </div>
