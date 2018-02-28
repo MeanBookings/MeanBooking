@@ -8,26 +8,38 @@ const Day = require('../models/Day')
 
 // /api/book/add - Add the book
 router.post('/add', (req, res, next) => {
-    //HACER UN FIND PARA COGER EL INDEX Y LUEGO CAMBIARLO, MIRAR EJEMPLO
-    let tIndex, t_Id, tPeople;
+    let tIndex;
     let obj = {}
     const { email, name, phone, date_of_book, hour, people, status } = req.body;
     Day.findOne({ date: date_of_book })
         .then((day) => {
-            t_Id = day._id;
-            day.shift.forEach((sh, i) => {
-                if (sh.hour == hour) {
+            day.shift.forEach((s, i) => {
+                if (s.hour == hour) {
                     tIndex = i;
-                    tPeople = sh.current + people
                 }
             })
-            obj = { "hour": hour, "current": tPeople, "max": 20};
-            console.log(obj)
+            const updatedDay = day;
+            updatedDay.shift[tIndex].current += people;
+            Day.findOneAndUpdate({ _id: day._id }, updatedDay, { new: true })
+                .then(dayUpdated => res.json(dayUpdated))
         })
-        
-       
+        .then(() => {
+            const theBook = new Book({
+                name,
+                email,
+                phone,
+                date_of_book,
+                hour,
+                people,
+                status
+            });
+            theBook.save()
+                .then(book => {
+                    debug(`Registered book ${book.email}, day ${book.date_of_book}, hour ${book.hour}, status ${status}`);
+                    res.status(200).json(req.book)
+                })
+        })
         .catch(e => {
-            console.log(e);
             res.status(500).json(e)
         })
 })
