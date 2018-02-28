@@ -12,6 +12,7 @@ const cors = require('cors');
 const auth = require('./routes/auth');
 const book = require('./routes/book');
 const user = require('./routes/user');
+const day = require('./routes/day');
 
 const app = express();
 
@@ -40,7 +41,7 @@ app.use(cors(corsOptions));
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -55,9 +56,8 @@ app.use(session({
 require('./passport')(app)
 
 app.use('/api/auth', auth);
-app.use('/api/book/', book);
-app.use('/api/user/', user);
-
+app.use('/api/book', book);
+app.use('/api/day', day);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');

@@ -9,13 +9,17 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+//material
 import { MatButtonModule, MatCheckboxModule, MatExpansionModule, MatInputModule } from '@angular/material';
+//calendar
+import { CalendarModule } from 'angular-calendar';
 //routes
 import { routes } from './routes';
 import { RouterModule } from '@angular/router';
 import { SignupComponent } from './signup/signup.component';
 import { LogoutComponent } from './logout/logout.component';
 import { ProfileComponent } from './profile/profile.component';
+import { BookingsComponent } from './bookings/bookings.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +30,8 @@ import { ProfileComponent } from './profile/profile.component';
     HomeComponent,
     SignupComponent,
     LogoutComponent,
-    ProfileComponent
+    ProfileComponent,
+    BookingsComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +42,8 @@ import { ProfileComponent } from './profile/profile.component';
     MatButtonModule,
     MatCheckboxModule,
     MatExpansionModule,
-    MatInputModule
+    MatInputModule,
+    CalendarModule.forRoot()
   ],
   providers: [SessionService],
   bootstrap: [AppComponent]
