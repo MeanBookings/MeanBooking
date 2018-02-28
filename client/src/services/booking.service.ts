@@ -19,11 +19,16 @@ export class BookingService {
         return Observable.throw(e.json().message);
     }
 
-
-
     placeBooking(data): Observable<any> {
         console.log(data)
         return this.http.post(`${this.BASEURL}/api/book/add`, data, this.options)
+            .map(res => res.json())
+            .catch(this.handleError);
+    }
+
+    
+    checkDayAvailability(date): Observable<any> {
+        return this.http.post(`${this.BASEURL}/api/day/`, {date:date}, this.options)
             .map(res => res.json())
             .catch(this.handleError);
     }

@@ -55,7 +55,7 @@ import { AdminGuardService } from '../services/adminguard.service';
     MatSliderModule,
     CalendarModule.forRoot()
   ],
-  providers: [SessionService, BookingService,AdminGuardService],
+  providers: [SessionService, BookingService, AdminGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
