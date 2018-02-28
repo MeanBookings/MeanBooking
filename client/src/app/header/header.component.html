@@ -3,6 +3,7 @@
     <div class="col-sm-4">
       <div>{{title}}</div>
       <div *ngIf="session.getUser()">Hi {{session.getUser().name}}!</div>
+      <div *ngIf="session.getUser()">id: {{session.getUser()._id}}</div>
     </div>
     <div class="col-sm-2"> </div>
     <div class="col-sm-3">

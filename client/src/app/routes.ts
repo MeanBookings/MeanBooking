@@ -8,6 +8,6 @@ import { BookingsComponent } from './bookings/bookings.component';
 export const routes: Routes = [
     { path: '', component: HomeComponent },
     { path: 'bookings', component: BookingsComponent },
-    { path: 'profile/:id', component: ProfileComponent },
+    { path: 'profile', component: ProfileComponent },
     { path: '**', redirectTo: '' }
 ];

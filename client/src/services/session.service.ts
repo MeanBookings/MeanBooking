@@ -6,7 +6,8 @@ import { Observable } from 'rxjs/Rx';
 
 interface User {
   name:string,
-  password:string
+  password:string,
+  _id:string
 }
 
 @Injectable()
@@ -23,6 +24,7 @@ export class SessionService {
   getUser(){
     return this.user;
   }
+  
   private configureUser(set=false){
     return (user) => {
       if(set){

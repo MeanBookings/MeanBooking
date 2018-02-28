@@ -63,7 +63,7 @@ router.post('/add', (req, res, next) => {
         //     })
         .catch(e => {
             res.status(500).json(e)
-        })
+        }) 
 })
 // /api/book/edit/:id - update the book sending the emails
 
