@@ -19,7 +19,10 @@
           <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
         <small *ngIf="day===null">Day not found</small>
-        <div><small *ngIf="day!==null&&day!=={}">{{day.status}}</small></div>
+        <div class="form-details-info"><small *ngIf="day!==null&&day!=={}">{{day.status}}</small></div>
+        <div class="form-details-info">
+          <small *ngIf="day!==null&&day!=={}">{{day | json}}</small>
+        </div>
         <mat-form-field>
           <mat-select placeholder="Select hour" [(ngModel)]="hour" name="hour">
             <mat-option *ngFor="let hour of hours" [value]="hour.value"> {{ hour.viewValue }} </mat-option>
