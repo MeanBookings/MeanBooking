@@ -8,7 +8,7 @@ const userSchema = new Schema({
   phone: { type: String, required: true },
   password: { type: String, default: "" }, //ojo, el campo contraseña debe tener 4 caracteres minimo comprobar en el front.
   role: { type: String, enum: TYPES, default: 'client' },
-  bookings: { type: Schema.Types.ObjectId, ref: 'Book' },
+  bookings: [{ type: Schema.Types.ObjectId, ref: 'Book', default: "" }]
 }, {
     timestamps: {
       createdAt: 'created_at',
