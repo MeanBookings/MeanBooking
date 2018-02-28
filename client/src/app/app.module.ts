@@ -23,6 +23,8 @@ import { LogoutComponent } from './logout/logout.component';
 import { ProfileComponent } from './profile/profile.component';
 import { BookingsComponent } from './bookings/bookings.component';
 import { BookingService } from '../services/booking.service';
+import { AdminComponent } from './admin/admin.component';
+import { AdminGuardService } from '../services/adminguard.service';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,8 @@ import { BookingService } from '../services/booking.service';
     SignupComponent,
     LogoutComponent,
     ProfileComponent,
-    BookingsComponent
+    BookingsComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +55,7 @@ import { BookingService } from '../services/booking.service';
     MatSliderModule,
     CalendarModule.forRoot()
   ],
-  providers: [SessionService, BookingService],
+  providers: [SessionService, BookingService,AdminGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

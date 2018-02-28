@@ -12,7 +12,8 @@
     <div class="col-sm-3">
       <signup></signup>
       <logout></logout>
-      <button *ngIf="session.getUser()" [routerLink]="['/profile',session.getUser()._id]" mat-raised-button color="accent">My profile</button>
+      <button *ngIf="session.getUser()" [routerLink]="['/profile']" mat-raised-button color="accent">My profile</button>
+      <button *ngIf="session.getUser()&&session.getAdmin()" [routerLink]="['/manage']" mat-raised-button color="accent">Manage</button>
     </div>
   </div>
 </div>

@@ -12,7 +12,7 @@ router.post('/add', (req, res, next) => {
     let tIndex;
     let obj = {}
     let id_user;
-    const { email, name, phone, date_of_book, hour, people, status } = req.body;
+    const { email, name, phone, date_of_book, hour, people } = req.body;
     User.findOne({ "email": email })
         .then((user) => {
             if (user == null) {
@@ -63,7 +63,7 @@ router.post('/add', (req, res, next) => {
         //     })
         .catch(e => {
             res.status(500).json(e)
-        }) 
+        })
 })
 // /api/book/edit/:id - update the book sending the emails
 
