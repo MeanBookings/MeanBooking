@@ -1,3 +1,15 @@
 <p>
   DASHBOARD
 </p>
+<mat-form-field>
+    <input matInput [matDatepicker]="pickerIn" placeholder="Choose a date">
+    <mat-datepicker-toggle matSuffix [for]="pickerIn"></mat-datepicker-toggle>
+    <mat-datepicker #pickerIn></mat-datepicker>
+</mat-form-field>
+
+  <mat-form-field>
+      <input matInput [matDatepicker]="pickerOut" placeholder="Choose a date">
+      <mat-datepicker-toggle matSuffix [for]="pickerOut"></mat-datepicker-toggle>
+      <mat-datepicker #pickerOut></mat-datepicker>
+</mat-form-field>
+<button (click)="setRange(pickerIn,pickerOut)">send</button> 

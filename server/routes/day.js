@@ -59,11 +59,14 @@ router.post('/', (req, res, next) => {
         })
 });
 
-//GET ALL DAYS
+//GET MONTH
 
-router.get('/all', (req, res, next) => {
-    Day.find()
+router.get('/month', (req, res, next) => {
+    var twoDaysAgo = moment().subtract(2, 'day');
+    var futureMonth = moment(currentDate).add(1, 'M');
+    Day.find({ 'date': {"$gte": twoDaysAgo, "$lt": futureMonth} })
         .then(days => {
+            console.log(days)
             return res.json(days);
         })
         .catch(err => {
