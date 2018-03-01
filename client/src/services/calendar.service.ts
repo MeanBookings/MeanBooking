@@ -18,17 +18,16 @@ export class CalendarService {
     }
 
 
-     getDays(): Observable<any> {
-        return this.http.get(`${this.BASEURL}/api/day/all`, this.options)
+    getMonth(): Observable<any> {
+        return this.http.get(`${this.BASEURL}/api/day/month`, this.options)
             .map(res => res.json())
             .catch(this.handleError);
     }
 
-
-    /*
-    checkDayAvailability(date): Observable<any> {
-        return this.http.post(`${this.BASEURL}/api/day/`, {date:date}, this.options)
+    getDays(range): Observable<any> {
+        return this.http.post(`${this.BASEURL}/api/day/get`, range, this.options)
             .map(res => res.json())
             .catch(this.handleError);
-    } */
+    }
+
 }
