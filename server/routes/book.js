@@ -6,6 +6,22 @@ const bcrypt = require('bcrypt');
 const Book = require('../models/Book');
 const Day = require('../models/Day')
 const User = require('../models/User')
+const nodemailer = require('nodemailer');
+
+const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: 'meanbooking1@gmail.com',
+        pass: 'm34nb00k'
+    }
+});
+
+let mailOptions = {
+    from: 'meanbooking1@gmail.com',
+    to: '',
+    subject: '',
+    html: ''
+};
 
 // /api/book/add - Add the book
 router.post('/add', (req, res, next) => {
@@ -48,41 +64,75 @@ router.post('/add', (req, res, next) => {
                         updatedDay.books.push(book._id);
                         Day.findOneAndUpdate({ _id: day._id }, updatedDay, { new: true })
                             .then(() => console.log("ok"))
+                        mailOptions.subject = 'Your book in Mean Restaurant is pending of approvation';
+                        mailOptions.html = (`<img src="https://www.mobilestudio.mx/wp-content/uploads/2017/07/curso_web_development_mean.png"></img><a href="http://localhost:3000/api/book/delete/${book._id}">Cancela tu reserva</a>`)
+                        mailOptions.to = email;
+                        transporter.sendMail(mailOptions, (error, info) => {
+                            if (error) {
+                                console.log(error);
+                            } else {
+                                console.log('Email sent: ' + info.response);
+                            }
+                        })
                     })
                     .catch(e => {
                         res.status(500).json(e)
                     })
             })
     })
+
 })
 
 // /api/book/edit/:id - update the book sending the emails
 
 // /api/book/delete/:id - Delete de book solo con el :id del book, comprobar que no está cancelada antes...
 router.get('/delete/:hash', (req, res, next) => {
-    let tIndex;
-    Book.findByIdAndUpdate(req.params.hash, { $set: { "status": "cancelled" } }).populate('user')
-        .then((book) => {
-            Day.findOne({ books: req.params.hash })
-                .then((day) => {
-                     day.shift.forEach((s, i) => {
-                         if (s.hour == book.hour) {
-                            tIndex = i;
-                            console.log(tIndex)
-                        }
+    let tIndex, dEmail;
+    Book.findById(req.params.hash)
+        .then((b) => {
+            if (b.status == "pending" || b.status == "approved") {
+                Book.findByIdAndUpdate(req.params.hash, { $set: { "status": "cancelled" } }).populate('user')
+                    .then((book) => {
+                        Day.findOne({ books: req.params.hash })
+                            .then((day) => {
+                                day.shift.forEach((s, i) => {
+                                    if (s.hour == book.hour) {
+                                        tIndex = i;
+                                        console.log(tIndex)
+                                    }
+                                })
+                                const updatedDay = day;
+                                // res.json(book);
+                                cancelledEmail(book.user.email);
+                                updatedDay.shift[tIndex].current += book.people;
+                                updatedDay.books.splice(updatedDay.books.indexOf(req.params.hash, 1));
+                                Day.findOneAndUpdate({ _id: day._id }, updatedDay, { new: true })
+                                    .then((a) => res.json(a))
+                            })
                     })
-                    const updatedDay = day;
-                    res.json(book);
-                    updatedDay.shift[tIndex].current += book.people;
-                    updatedDay.books.splice(updatedDay.books.indexOf(req.params.hash, 1));
-                    Day.findOneAndUpdate({ _id: day._id }, updatedDay, { new: true })
-                        .then((a) => res.json(a))
-                })
+            }
         })
         .catch(e => {
             res.status(500).json(e)
         })
 })
 
+let cancelledEmail = ((email) => {
+    mailOptions.subject = 'Your booking in Mean Restaurant is cancelled';
+    mailOptions.html = (`<img src="http://www.comicsbeat.com/wp-content/uploads/2017/12/Cancelled.jpg"></img>`)
+    mailOptions.to = email;
+    transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+            console.log(error);
+        } else {
+            console.log('Email sent: ' + info.response);
+        }
+    })
+})
 
 module.exports = router;
+
+
+
+
+// Promise.all([Day.find({day:1}),Day.find({day:1}),Day.find({day:1})]).then(array=>console.log(array))

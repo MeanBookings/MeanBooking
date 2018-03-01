@@ -4,7 +4,7 @@ const TYPES = require('./types/day-types');
 
 const daySchema = new Schema({
     date: { type: Date, required: true },
-    status: { type: String, enum: TYPES, required: true },
+    status: { type: String, enum: TYPES, required: true, default: "open" },
     shift: {
         type: Array, "default": [
             { "hour": "12:00", "current": 20 },

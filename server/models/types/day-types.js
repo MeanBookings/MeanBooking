@@ -1,6 +1,4 @@
 module.exports = [
-    "open", 
-    "day", 
-    "nights", 
+    "open",
     "closed"
 ];
