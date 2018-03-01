@@ -8,20 +8,30 @@ const Day = require('../models/Day');
 // /api/day/create - Create the basic Day
 router.post('/create', (req, res, next) => {
     // console.log("hola")
-    const { date, status, shift } = req.body;
+    const {
+        date,
+        status,
+        shift
+    } = req.body;
     console.log(req.body)
-    Day.findOne({ date }).then((day) => {
-        if (day) { return res.status(400).json({ message: 'The day is already generated' }) }
-        const theDay = new Day({
-            date,
-            status,
-            shift
-        });
-        return theDay.save()
-            .then((day) => {
-                res.status(200).json(day)
-            })
-    })
+    Day.findOne({
+            date
+        }).then((day) => {
+            if (day) {
+                return res.status(400).json({
+                    message: 'The day is already generated'
+                })
+            }
+            const theDay = new Day({
+                date,
+                status,
+                shift
+            });
+            return theDay.save()
+                .then((day) => {
+                    res.status(200).json(day)
+                })
+        })
         .catch(e => {
             console.log(e);
             res.status(500).json(e)
@@ -31,18 +41,40 @@ router.post('/create', (req, res, next) => {
 
 // GET A DAY /api/day/:id
 router.post('/', (req, res, next) => {
-    console.log(moment(req.body.date)) 
+    console.log(moment(req.body.date))
     //let dateClean = `${req.body.date.split('T')[0]} 00:00:00.000`;
-    Day.findOne({ date: moment(req.body.date)})
+    Day.findOne({
+            date: moment(req.body.date)
+        })
         .then(day => {
             return res.json(day);
         })
-        .catch (err => {
-            if (err) { return res.status(500).json(err); }
-            if (!day) { return res.status(404).json(new Error("404")) }
-        }) 
+        .catch(err => {
+            if (err) {
+                return res.status(500).json(err);
+            }
+            if (!day) {
+                return res.status(404).json(new Error("404"))
+            }
+        })
 });
 
+//GET ALL DAYS
+
+router.get('/all', (req, res, next) => {
+    Day.find()
+        .then(days => {
+            return res.json(days);
+        })
+        .catch(err => {
+            if (err) {
+                return res.status(500).json(err);
+            }
+            if (!day) {
+                return res.status(404).json(new Error("404"))
+            }
+        })
+});
 
 
 

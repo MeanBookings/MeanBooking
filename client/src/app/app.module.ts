@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, LOCALE_ID } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 
@@ -13,9 +13,7 @@ import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 //material
-import { MatSelectModule, MatButtonModule, MatCheckboxModule, MatExpansionModule, MatInputModule, MatDatepickerModule, MatNativeDateModule, MatSliderModule, MAT_DATE_LOCALE } from '@angular/material';
-
-
+import { MatSelectModule, MatButtonModule, MatCheckboxModule, MatExpansionModule, MatInputModule, MatDatepickerModule, MatNativeDateModule, MatSliderModule } from '@angular/material';
 //calendar
 import { CalendarModule } from 'angular-calendar';
 //routes
@@ -31,6 +29,9 @@ import { AdminGuardService } from '../services/adminguard.service';
 import { UsersComponent } from './users/users.component';
 
 import { BookingformComponent } from './bookingform/bookingform.component';
+import { DemoComponent } from './calendar/calendar.component';
+import { CalendarService } from '../services/calendar.service';
+import { DemoUtilsModule } from '../demo-utils/module';
 
 @NgModule({
   declarations: [
@@ -45,9 +46,8 @@ import { BookingformComponent } from './bookingform/bookingform.component';
     BookingsComponent,
     AdminComponent,
     UsersComponent,
-    
     BookingformComponent,
-    //CommonModule
+    DemoComponent
   ],
   imports: [
     BrowserModule,
@@ -64,9 +64,12 @@ import { BookingformComponent } from './bookingform/bookingform.component';
     MatNativeDateModule,
     MatSliderModule,
     NgbModalModule.forRoot(),
-    CalendarModule.forRoot()
+    CalendarModule.forRoot(),
+    CommonModule,
+    DemoUtilsModule
   ],
-  providers: [SessionService, BookingService, AdminGuardService,{provide: MAT_DATE_LOCALE, useValue: 'es-ES'},{ provide: LOCALE_ID, useValue: "es-ES" }],
+  providers: [SessionService, BookingService, AdminGuardService, CalendarService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+// exports: [DemoComponent]
