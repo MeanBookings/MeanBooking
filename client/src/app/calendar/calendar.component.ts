@@ -1,26 +1,9 @@
-import {
-  Component,
-  ChangeDetectionStrategy,
-  ViewChild,
-  TemplateRef
-} from '@angular/core';
-import {
-  startOfDay,
-  endOfDay,
-  subDays,
-  addDays,
-  endOfMonth,
-  isSameDay,
-  isSameMonth,
-  addHours
-} from 'date-fns';
+import {Component,ChangeDetectionStrategy,ViewChild,TemplateRef} from '@angular/core';
+import {startOfDay,endOfDay,subDays,addDays,endOfMonth,isSameDay,isSameMonth,addHours} from 'date-fns';
 import { Subject } from 'rxjs/Subject';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import {
-  CalendarEvent,
-  CalendarEventAction,
-  CalendarEventTimesChangedEvent
-} from 'angular-calendar';
+import {CalendarEvent,CalendarEventAction,CalendarEventTimesChangedEvent} from 'angular-calendar';
+import { CalendarService } from '../../services/calendar.service';
 
 const colors: any = {
   red: {
@@ -44,17 +27,19 @@ const colors: any = {
   templateUrl: 'calendar.component.html'
 })
 export class DemoComponent {
+
+
+
+
+
+  //calendar module stuff - TAKE CARE!
   @ViewChild('modalContent') modalContent: TemplateRef<any>;
-
   view: string = 'month';
-
   viewDate: Date = new Date();
-
   modalData: {
     action: string;
     event: CalendarEvent;
   };
-
   actions: CalendarEventAction[] = [
     {
       label: '<i class="fa fa-fw fa-pencil"></i>',
@@ -88,6 +73,12 @@ export class DemoComponent {
       actions: this.actions
     },
     {
+      start: startOfDay(new Date()),
+      title: 'An event with no end date',
+      color: colors.yellow,
+      actions: this.actions
+    },
+    {
       start: subDays(endOfMonth(new Date()), 3),
       end: addDays(endOfMonth(new Date()), 3),
       title: 'A long event that spans 2 months',
@@ -108,28 +99,19 @@ export class DemoComponent {
   ];
 
   activeDayIsOpen: boolean = true;
-
-  constructor(private modal: NgbModal) {}
+  days:Array<any>=[];
+  constructor(private modal: NgbModal, public calendar:CalendarService) {
+    this.calendar.getDays().subscribe(days => {this.days = days;console.log(this.days)})
+  }
 
   dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
     if (isSameMonth(date, this.viewDate)) {
-      if (
-        (isSameDay(this.viewDate, date) && this.activeDayIsOpen === true) ||
-        events.length === 0
-      ) {
-        this.activeDayIsOpen = false;
-      } else {
-        this.activeDayIsOpen = true;
-        this.viewDate = date;
-      }
+      if ( (isSameDay(this.viewDate, date) && this.activeDayIsOpen === true) ||events.length === 0) {this.activeDayIsOpen = false} 
+      else {this.activeDayIsOpen = true;this.viewDate = date;}
     }
   }
 
-  eventTimesChanged({
-    event,
-    newStart,
-    newEnd
-  }: CalendarEventTimesChangedEvent): void {
+  eventTimesChanged({event,newStart,newEnd}: CalendarEventTimesChangedEvent): void {
     event.start = newStart;
     event.end = newEnd;
     this.handleEvent('Dropped or resized', event);
@@ -138,7 +120,7 @@ export class DemoComponent {
 
   handleEvent(action: string, event: CalendarEvent): void {
     this.modalData = { event, action };
-    // this.modal.open(this.modalContent, { size: 'lg' });
+    this.modal.open(this.modalContent, { size: 'lg' });
   }
 
   addEvent(): void {

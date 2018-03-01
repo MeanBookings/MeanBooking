@@ -31,7 +31,7 @@ import { UsersComponent } from './users/users.component';
 import { BookingformComponent } from './bookingform/bookingform.component';
 import { DemoComponent } from './calendar/calendar.component';
 import { CalendarService } from '../services/calendar.service';
-import { DemoUtilsModule } from '../demo-utils/module';
+import { DemoUtilsModule } from '../calendar-utils/module';
 
 @NgModule({
   declarations: [
