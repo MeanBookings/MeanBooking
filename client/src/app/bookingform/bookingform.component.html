@@ -11,7 +11,7 @@
     <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
   <div class="form-details-info">
-    <small *ngIf="day===null">Day not found</small>
+    <small *ngIf="day===null || day===undefined">Day not found</small>
   </div>
   <div class="form-details-info">
     <small *ngIf="day!==null&&day!=={}&&day.status==='open'">We are {{day.status}}!</small>

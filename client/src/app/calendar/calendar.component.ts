@@ -8,25 +8,24 @@ import * as moment from 'moment';
   styleUrls: ['./calendar.component.scss']
 })
 export class CalendarComponent implements OnInit {
-
-  month:Array<any>;
-  constructor(public calendar:CalendarService) { 
-    this.calendar.getCurrentMonth().subscribe(month => {this.month = month;console.log(month)});
-    //this.getRange(moment(),moment().add(1,'month'))
-    
-  }
-
-  ngOnInit() {
-  }
-
   error: string;
+  days: Array<any>;
+  daysOrdered: Array<any>;
+  constructor(public calendar: CalendarService) {
+    this.calendar.getCurrentMonth().subscribe(month => {
+      this.days = month;
+      this.days.sort(function (a, b) {
+        return a.date < b.date ? -1 : a.date > b.date ? 1 : 0;
+      });
+      console.log(this.days)
+    });
+  }
 
-  days:Array<any>;
-
+  ngOnInit() { }
 
   getRange(a, b) {
-    let startDate = a._selected
-    let endDate = b._selected
+    let startDate = moment(a._selected)
+    let endDate = moment(b._selected)
     let dates = [],
       currentDate = startDate,
       addDays = function (days) {
@@ -38,6 +37,9 @@ export class CalendarComponent implements OnInit {
       dates.push(currentDate);
       currentDate = addDays.call(currentDate, 1);
     }
-    this.calendar.getDays(dates).subscribe(result => this.days = result)
+    this.calendar.getDays(dates).subscribe(result => {
+      this.days = result.map(e => e[0])
+      console.log(this.days)
+    })
   }
 }
