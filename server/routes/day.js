@@ -82,11 +82,7 @@ router.post('/get', (req, res, next) => {
     Promise.all(dates.map((d) => busquedaDia(d))).then(dates => res.json(dates))
 });
 
-<<<<<<< HEAD
 let busquedaDia = (day) => Day.find({ "date": day })
-=======
-let busquedaDia = (day) => Day.find({"date": day})
->>>>>>> ab0b9a330b23b12df639f3f5063ad33b5855c71e
 
 
 module.exports = router;
