@@ -30,6 +30,8 @@ import { CalendarService } from '../services/calendar.service';
 import { AdminGuardService } from '../services/adminguard.service';
 import { SessionService } from '../services/session.service';
 import { CalendarComponent } from './calendar/calendar.component';
+import { FilterPipe } from '../pipes/filter.pipe';
+import { ArraySortPipe } from '../pipes/order.pipe';
 
 @NgModule({
   declarations: [
@@ -45,7 +47,9 @@ import { CalendarComponent } from './calendar/calendar.component';
     AdminComponent,
     UsersComponent,
     BookingformComponent,
-    CalendarComponent
+    CalendarComponent,
+    FilterPipe,
+    ArraySortPipe
   ],
   imports: [
     BrowserModule,
@@ -63,7 +67,7 @@ import { CalendarComponent } from './calendar/calendar.component';
     MatSliderModule,
     Daterangepicker
   ],
-  providers: [SessionService, BookingService, AdminGuardService, CalendarService, {provide: MAT_DATE_LOCALE, useValue: 'es-ES'}, {provide: LOCALE_ID, useValue: 'es-ES'}],
+  providers: [SessionService, BookingService, AdminGuardService, CalendarService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

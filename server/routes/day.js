@@ -34,45 +34,33 @@ router.post('/create', (req, res, next) => {
             res.status(500).json(e)
         })
 })
-// /api/day/edit - Update the basic day to special day.
 
 
-
-
-// GET A DAY /api/day/
+//CHECK AVAILABILITY
 router.post('/', (req, res, next) => {
-    console.log(moment(req.body.date))
+    console.log(moment(req.body.date)) 
     //let dateClean = `${req.body.date.split('T')[0]} 00:00:00.000`;
-    Day.findOne({
-            date: moment(req.body.date)
-        })
+    Day.findOne({ date: moment(req.body.date)})
         .then(day => {
+            console.log(day)
             return res.json(day);
         })
-        .catch(err => {
-            if (err) {
-                return res.status(500).json(err);
-            }
-            if (!day) {
-                return res.status(404).json(new Error("404"))
-            }
-        })
+        .catch (err => {
+            if (err) { return res.status(500).json(err); }
+            if (!day) { return res.status(404).json(new Error("404")) }
+        }) 
 });
 
-// GET THE MONTH
+// GET THE MONTH BUILD COMPONENT
 router.get('/month', (req, res, next) => {
-    console.log(moment(req.body.date))
     let fifAgo = moment().subtract(15, 'days');
     let fifAway = moment().add(15, 'days');
-    //let dateClean = `${req.body.date.split('T')[0]} 00:00:00.000`;
     Day.find({date: {$gte:fifAgo,$lte: fifAway}})
         .then(days => {
-            console.log(days);
             res.json(days)
         })
         .catch(err => {
             if (err) {
-                console.log(err)
                 return res.status(500).json(err);
             }
             if (!days) {
@@ -81,16 +69,12 @@ router.get('/month', (req, res, next) => {
         })
 });
 
-// /api/day/delete - Delete the day
-
 
 // /api/day/get - getting the selecting dates
 router.post('/get', (req, res, next) => {
     let dates = req.body.map((d) => d.split("T")[0])
     Promise.all(dates.map((d) => busquedaDia(d))).then(dates => res.json(dates))
 });
-
-
 
 let busquedaDia = (day) => Day.find({"date": day})
 
