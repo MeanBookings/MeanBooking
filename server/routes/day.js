@@ -84,11 +84,13 @@ router.get('/month', (req, res, next) => {
 // /api/day/delete - Delete the day
 
 
-// /api/day/get/dates - getting the selecting dates
+// /api/day/get - getting the selecting dates
 router.post('/get', (req, res, next) => {
     let dates = req.body.map((d) => d.split("T")[0])
     Promise.all(dates.map((d) => busquedaDia(d))).then(dates => res.json(dates))
 });
+
+
 
 let busquedaDia = (day) => Day.find({"date": day})
 
