@@ -59,11 +59,26 @@ router.post('/', (req, res, next) => {
 // /api/day/delete - Delete the day
 
 
-// /api/day/get/dates - getting the selecting dates
+// /api/day/get - getting the selecting dates
 router.post('/get', (req, res, next) => {
-    let dates = req.body
-    Promise.all(dates.map((d) => busquedaDia(d))).then(dates=> json.res(dates))
+    let dates = req.body.map((d)=>d.split("T")[0])
+    Promise.all(dates.map((d) => busquedaDia(d))).then(dates=> res.json(dates))
 });
+// /api/day/month - getting the selecting dates
+router.get('/month', (req, res, next) => {
+    let month = (moment().month())+1
+    let year = moment().year()
+    let days = moment().daysInMonth(month)
+    let dates = [];
+    for (let i = 1; i<=days; i++){
+        dates.push(`${year}-${month}-${i.}`)
+    }
+    // res.json({year,month,days})
+    // res.json(dates)
+
+     Promise.all(dates.map((d) => busquedaDia(d))).then(dates=> res.json(dates))
+});
+
 
 const busquedaDia = (day) => Day.find({ "date": day }) 
 
