@@ -58,20 +58,26 @@ router.post('/add', (req, res, next) => {
 
 // /api/book/edit/:id - update the book sending the emails
 
-// /api/book/delete/:id - Delete de book
+// /api/book/delete/:id - Delete de book solo con el :id del book, comprobar que no está cancelada antes...
 router.get('/delete/:hash', (req, res, next) => {
-    const salt = bcrypt.genSaltSync(3);
-    c = JSON.stringify(b._id)
-    console.log("salmeron cabron")
-    Book.find()
-        .then((books) => {
-            
-            // let a = books.filter((b) => {
-            //     console.log("")
-                // c = JSON.stringify(b._id)
-                // return ((bcrypt.hashSync(c, salt)) == req.params.hash)
-                // console.log(a)
-            // })
+    let tIndex;
+    Book.findByIdAndUpdate(req.params.hash, { $set: { "status": "cancelled" } }).populate('user')
+        .then((book) => {
+            Day.findOne({ books: req.params.hash })
+                .then((day) => {
+                     day.shift.forEach((s, i) => {
+                         if (s.hour == book.hour) {
+                            tIndex = i;
+                            console.log(tIndex)
+                        }
+                    })
+                    const updatedDay = day;
+                    res.json(book);
+                    updatedDay.shift[tIndex].current += book.people;
+                    updatedDay.books.splice(updatedDay.books.indexOf(req.params.hash, 1));
+                    Day.findOneAndUpdate({ _id: day._id }, updatedDay, { new: true })
+                        .then((a) => res.json(a))
+                })
         })
         .catch(e => {
             res.status(500).json(e)
