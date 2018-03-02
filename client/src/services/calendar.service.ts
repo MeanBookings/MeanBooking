@@ -18,8 +18,8 @@ export class CalendarService {
     }
 
 
-    getCurrentMonth(): Observable<any> {
-        return this.http.get(`${this.BASEURL}/api/day/month`, this.options)
+    getCurrentMonth(currentMonthDay,daysInCurrentMonth): Observable<any> {
+        return this.http.post(`${this.BASEURL}/api/day/month`, {currentDay:currentMonthDay,daysInCurrentMonth:daysInCurrentMonth}, this.options)
             .map(res => res.json())
             .catch(this.handleError);
     }
@@ -27,6 +27,13 @@ export class CalendarService {
     getDays(dates): Observable<any> {
         return this.http.post(`${this.BASEURL}/api/day/get`, dates, this.options)
             .map(res => res.json())
+            .catch(this.handleError);
+    }
+
+    createDays(dates): Observable<any> {
+        
+        return this.http.post(`${this.BASEURL}/api/day/create`, dates, this.options)
+            .map(res => console.log(dates))
             .catch(this.handleError);
     }
 

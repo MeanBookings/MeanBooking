@@ -10,20 +10,34 @@ import * as moment from 'moment';
 export class CalendarComponent implements OnInit {
   error: string;
   days: Array<any>;
-  daysOrdered: Array<any>;
-  constructor(public calendar: CalendarService) {
-    this.calendar.getCurrentMonth().subscribe(month => {
+  currentMonthDay:Number=moment().date()
+  daysInCurrentMonth:Number=moment().daysInMonth();
+  
+  constructor(public calendar: CalendarService) {}
+
+  ngOnInit() { 
+    this.calendar.getCurrentMonth(this.currentMonthDay,this.daysInCurrentMonth).subscribe(month => {
       this.days = month;
       this.days.sort(function (a, b) {
         return a.date < b.date ? -1 : a.date > b.date ? 1 : 0;
       });
-      console.log(this.days)
+      //for para completar días por delante del mes hasta llegar al lunes (CON MANU y PAPU)
+      let firstDay=new Date(this.days[0].date)
+      for(let i=1;i<=new Date(firstDay).getDay()-1;i++){
+        let date = new Date()
+        date.setDate(firstDay.getDate()-i)
+        this.days.unshift({date:date})
+      }
     });
   }
 
-  ngOnInit() { }
-
-  getRange(a, b) {
+  prevMonth(){
+    console.log('prev clicked')
+  }
+  nextMonth(){
+    console.log('next clicked')
+  }
+/*   getRange(a, b) {
     let startDate = moment(a._selected)
     let endDate = moment(b._selected)
     let dates = [],
@@ -38,8 +52,10 @@ export class CalendarComponent implements OnInit {
       currentDate = addDays.call(currentDate, 1);
     }
     this.calendar.getDays(dates).subscribe(result => {
-      this.days = result.map(e => e[0])
-      console.log(this.days)
+      //console.log(result)
+      return this.days = result.map(e => e[0])
+      //console.log(this.days)
     })
-  }
+  } */
+
 }

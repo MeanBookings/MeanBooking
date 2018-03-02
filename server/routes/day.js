@@ -61,11 +61,33 @@ router.post('/', (req, res, next) => {
 });
 
 // GET THE MONTH BUILD COMPONENT
-router.get('/month', (req, res, next) => {
-    let fifAgo = moment().subtract(15, 'days');
-    let fifAway = moment().add(15, 'days');
+router.post('/month', (req, res, next) => {
+    let {currentDay,daysInCurrentMonth,month} = req.body;
+    let from = moment().subtract(currentDay, 'days');
+    let until = moment().add((daysInCurrentMonth-currentDay), 'days');
     //let dateClean = `${req.body.date.split('T')[0]} 00:00:00.000`;
-    Day.find({ date: { $gte: fifAgo, $lte: fifAway } })
+    Day.find({ date: { $gte: from, $lte: until } })
+        .then(days => {
+            res.json(days)
+        })
+        .catch(err => {
+            if (err) {
+                return res.status(500).json(err);
+            }
+            if (!days) {
+                return res.status(404).json(new Error("404"))
+            }
+        })
+});
+
+
+// GET THE MONTH BUILD COMPONENT
+router.post('/month', (req, res, next) => {
+    let {currentDay,daysInCurrentMonth,month} = req.body;
+    let from = moment().subtract(currentDay, 'days');
+    let until = moment().add((daysInCurrentMonth-currentDay), 'days');
+    //let dateClean = `${req.body.date.split('T')[0]} 00:00:00.000`;
+    Day.find({ date: { $gte: from, $lte: until } })
         .then(days => {
             res.json(days)
         })
