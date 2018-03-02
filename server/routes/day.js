@@ -21,7 +21,7 @@ router.post('/create', (req, res, next) => {
 let creaDia = (fecha) =>{
     console.log(typeof fecha)
     console.log(fecha)
-    console.log(new Date.UTC(new Date(fecha)))
+    // console.log(new Date.UTC(new Date(fecha)))
     Day.findOne({ "date": fecha})
         .then((day) => {
             if (!day) {
@@ -33,16 +33,21 @@ let creaDia = (fecha) =>{
         })
     }
 
-
 // /api/day/edit - Update the basic day to special day.
-
-
-// Get the current month
-
+router.post('/edit', (req, res, next) => {
+    days = req.body;
+    Promise.all(days.map((d) => updateaDia(d))).then(days => res.json(days))
+})
+    updateaDia = (newDay) => {
+        if (newDay.books.length <1){
+             Day.findOneAndUpdate({"date": newDay.date}, newDay, {new: true})
+             .then((c) => console.log(c))
+            }
+        }
 
 //CHECK AVAILABILITY
 router.post('/', (req, res, next) => {
-    console.log(moment(req.body.date)) 
+    // console.log(moment(req.body.date)) 
     //let dateClean = `${req.body.date.split('T')[0]} 00:00:00.000`;
     Day.findOne({ date: moment(req.body.date)})
         .then(day => {
@@ -77,8 +82,9 @@ router.get('/month', (req, res, next) => {
 
 // /api/day/get - getting the selecting dates
 router.post('/get', (req, res, next) => {
-    res.json(req.body)
-    let dates = req.body.map((d) => d.split("T")[0])
+    // res.json(req.body)
+    // let dates = req.body.map((d) => d.split("T")[0])
+    let dates = req.body
     Promise.all(dates.map((d) => busquedaDia(d))).then(dates => res.json(dates))
 });
 

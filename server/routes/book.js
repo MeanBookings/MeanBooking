@@ -23,8 +23,8 @@ let mailOptions = {
     html: ''
 };
 
-// /api/book/add - Add the book
-router.post('/add', (req, res, next) => {
+// /api/book/create - create the book
+router.post('/create', (req, res, next) => {
     console.log(req.body)
     let tIndex;
     let obj = {}
@@ -83,7 +83,33 @@ router.post('/add', (req, res, next) => {
 
 })
 
-// /api/book/edit/:id - update the book sending the emails
+// /api/book/edit/:id - update the book, if status = "approved" sends an emails
+router.post('/edit/:id', (req, res, next) => {
+    let { status } = req.body;
+    Book.findById(req.params.id)
+        .then((book) => {
+            updatedBook = book;
+            updatedBook.status = status;
+            Book.findByIdAndUpdate(req.params.id, updatedBook, { new: true })
+                .populate('user')
+                .then((book) => {
+                    if (book.status == "approved") { updatedEmail(book) };
+                    res.status(200).json(book)
+                })
+        })
+})
+let updatedEmail = ((book) => {
+    mailOptions.subject = 'Your booking in Mean Restaurant is approved';
+    mailOptions.html = (`<img src="http://moziru.com/images/stamp-clipart-approved-18.jpg"></img><a href="http://localhost:3000/api/book/delete/${book._id}">Cancela tu reserva</a>`)
+    mailOptions.to = book.user.email;
+    transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+            console.log(error);
+        } else {
+            console.log('Email sent: ' + info.response);
+        }
+    })
+})
 
 // /api/book/delete/:id - Delete de book solo con el :id del book, comprobar que no está cancelada antes...
 router.get('/delete/:hash', (req, res, next) => {
@@ -131,8 +157,3 @@ let cancelledEmail = ((email) => {
 })
 
 module.exports = router;
-
-
-
-
-// Promise.all([Day.find({day:1}),Day.find({day:1}),Day.find({day:1})]).then(array=>console.log(array))
