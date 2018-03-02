@@ -8,10 +8,33 @@ import { Router } from '@angular/router';
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
-
-  constructor(public session: SessionService, public router: Router) { }
+  switch = false;
+  btntext: String = "Edit";
+  password: String = "";
+  currentUser: any;
+  error: String;
+  constructor(public session: SessionService,
+    public router: Router) {
+    this.currentUser = this.session.getUser();
+  }
 
   ngOnInit() {
   }
 
+  edit() {
+    if (this.switch) {
+      this.btntext = "Update"
+      this.switch = !this.switch
+      if (this.password != ""){
+      this.currentUser.password = this.password;
+      }
+      console.log(this.currentUser)
+      this.session.updateUser(this.currentUser)
+        .catch(e => this.error = e)
+        .subscribe(user => console.log(`Updated ${user.name}`));
+    } else {
+      this.btntext = "Edit"
+      this.switch = !this.switch
+    }
+  }
 }

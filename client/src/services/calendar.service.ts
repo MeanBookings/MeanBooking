@@ -41,4 +41,10 @@ export class CalendarService {
             .catch(this.handleError);
     }
 
+    updateDays(dates): Observable<any> {
+        return this.http.post(`${this.BASEURL}/api/day/update`, dates, this.options)
+        .map( res => console.log(dates))
+        .catch(this.handleError)
+    }
+
 }

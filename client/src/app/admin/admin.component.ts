@@ -34,4 +34,8 @@ export class AdminComponent implements OnInit {
       console.log(result)
     })
   }
+
+  updateDays(a,b){
+    
+  }
 }

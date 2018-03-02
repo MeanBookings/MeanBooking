@@ -1,9 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const debug = require('debug')("server:day");
-const moment = require('moment');
 const Book = require('../models/Book');
 const Day = require('../models/Day');
+const moment_tz = require('moment-timezone');
+const moment = require('moment')
 
 // /api/day/create - Create the basic Day
 router.post('/create', (req, res, next) => {
@@ -61,7 +62,7 @@ router.post('/', (req, res, next) => {
 router.get('/month', (req, res, next) => {
     let month = moment().month()
     let year = moment().year()
-    let from = moment().startOf("Month").startOf("isoWeek").format('YYYY-MM-DD');    
+    let from = moment().startOf("Month").startOf("isoWeek").format('YYYY-MM-DD').subtract(1, 'days');
     // let from = moment().year(year).month(month).date(0).format('YYYY-MM-DD');
     let days = moment(month + 1, 'M').daysInMonth()
     if ((moment([year]).isLeapYear()) && (month == 1))
@@ -84,15 +85,18 @@ router.get('/month', (req, res, next) => {
 // GET THE MONTH BUILD COMPONENT
 // /api/day/month/view
 router.post('/month/view', (req, res, next) => {
+    moment_tz.tz.guess();
     let { monthToView, year } = req.body;
-    let from = moment().year(year).month(monthToView).date(0).format('YYYY-MM-DD');
-    let days = moment(monthToView + 1, 'M').daysInMonth()
-    if ((moment([year]).isLeapYear()) && (monthToView == 1))
+    let from = moment_tz().month(monthToView).startOf("Month").startOf("isoWeek").format('YYYY-MM-DD');    
+    // let from = moment_tz().year(year).month(monthToView).date(0).format('YYYY-MM-DD');
+    let days = moment_tz(monthToView + 1, 'M').daysInMonth()
+    if ((moment_tz([year]).isLeapYear()) && (monthToView == 1))
         days++
-    let until = moment().year(year).month(monthToView).date(days).format('YYYY-MM-DD');
+    let until = moment_tz().year(year).month(monthToView).date(days).format('YYYY-MM-DD');
     Day.find({ date: { $gte: from, $lte: until } })
         .then(days => {
-            res.json(days)
+            // res.json(days)
+            console.log(days)
         })
         .catch(err => {
             if (err) {

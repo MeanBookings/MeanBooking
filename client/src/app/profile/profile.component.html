@@ -5,3 +5,16 @@
     </div>
   </div>
 </div>
+
+<div class="example-container">
+  <mat-form-field>
+    <input matInput placeholder="Name" [(ngModel)]="currentUser.name"  disabled={{!switch}}>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Phone" [(ngModel)]="currentUser.phone" disabled={{!switch}}>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Enter your new password" [(ngModel)]="password" disabled={{!switch}}>
+  </mat-form-field>
+  <button (click)="edit()" mat-button id="edit">{{btntext}}</button>
+</div>

@@ -62,6 +62,13 @@ export class SessionService {
       .catch(this.handleError);
   }
 
+  updateUser(user:any):Observable<any>{
+    return this.http.post(`${this.BASEURL}/api/auth/updateuser`, { user },this.options)
+    .map(res => res.json())
+    .map(this.configureUser(true))
+    .catch(this.handleError);
+  }
+
   logout():Observable<any>{
     return this.http.get(`${this.BASEURL}/api/auth/logout`,this.options)
       .map(res => res.json())

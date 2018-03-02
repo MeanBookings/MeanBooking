@@ -11,7 +11,6 @@ let loginPromise = (req, user) => {
   })
 }
 
-
 /* SIGNUP */
 router.post('/signup', (req, res, next) => {
   const { username, email, password, phone} = req.body;
@@ -42,7 +41,6 @@ router.post('/signup', (req, res, next) => {
     }) 
 });
 
-
 router.post('/login', (req, res, next) => {
   passport.authenticate('local', (err, theUser, failureDetails) => {
     console.log(theUser)
@@ -53,6 +51,13 @@ router.post('/login', (req, res, next) => {
       .catch(e => res.status(500).json({ message: 'Something went wrong' }));
   })(req, res, next);
 });
+
+router.post('/updateuser', (req, res, next) => {
+    const updateUser = req.body.user
+    User.findOneAndUpdate({"email":updateUser.email}, updateUser, {new: true})
+    .then(() =>  res.status(200).json({ message: 'Success' }))
+})
+
 
 router.get('/logout', (req, res, next) => {
   req.logout();
