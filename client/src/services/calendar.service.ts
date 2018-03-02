@@ -16,6 +16,11 @@ export class CalendarService {
         console.log(e);
         return Observable.throw(e.json().message);
     }
+    getDay(date): Observable<any> {
+        return this.http.post(`${this.BASEURL}/api/day/`, {date:date}, this.options)
+            .map(res => res.json())
+            .catch(this.handleError);
+    }
 
     getDays(dates): Observable<any> {
         return this.http.post(`${this.BASEURL}/api/day/get`, dates, this.options)

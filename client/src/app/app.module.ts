@@ -11,6 +11,10 @@ import { MatSelectModule, MatButtonModule, MatCheckboxModule, MatExpansionModule
 //routes
 import { routes } from './routes';
 import { RouterModule } from '@angular/router';
+//locale
+import { registerLocaleData } from '@angular/common';
+import localeEs from '@angular/common/locales/es';
+registerLocaleData(localeEs);
 //components
 import { LoginComponent } from './login/login.component';
 import { HeaderComponent } from './header/header.component';
@@ -31,6 +35,7 @@ import { SessionService } from '../services/session.service';
 import { CalendarComponent } from './calendar/calendar.component';
 import { FilterPipe } from '../pipes/filter.pipe';
 import { ArraySortPipe } from '../pipes/order.pipe';
+import { EditDayComponent } from './edit-day/edit-day.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +53,8 @@ import { ArraySortPipe } from '../pipes/order.pipe';
     BookingformComponent,
     CalendarComponent,
     FilterPipe,
-    ArraySortPipe
+    ArraySortPipe,
+    EditDayComponent
   ],
   imports: [
     BrowserModule,
@@ -65,7 +71,7 @@ import { ArraySortPipe } from '../pipes/order.pipe';
     MatNativeDateModule,
     MatSliderModule
   ],
-  providers: [SessionService, BookingService, AdminGuardService, CalendarService],
+  providers: [SessionService, BookingService, AdminGuardService, CalendarService,  { provide: LOCALE_ID, useValue: "es-ES" }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
