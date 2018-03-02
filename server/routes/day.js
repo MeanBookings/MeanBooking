@@ -21,7 +21,7 @@ router.post('/create', (req, res, next) => {
 let creaDia = (fecha) =>{
     console.log(typeof fecha)
     console.log(fecha)
-    console.log(new Date.UTC(new Date(fecha)))
+    // console.log(new Date.UTC(new Date(fecha)))
     Day.findOne({ "date": fecha})
         .then((day) => {
             if (!day) {
@@ -56,11 +56,33 @@ router.post('/', (req, res, next) => {
 });
 
 // GET THE MONTH BUILD COMPONENT
-router.get('/month', (req, res, next) => {
-    let fifAgo = moment().subtract(15, 'days');
-    let fifAway = moment().add(15, 'days');
+router.post('/month', (req, res, next) => {
+    let {currentDay,daysInCurrentMonth,month} = req.body;
+    let from = moment().subtract(currentDay, 'days');
+    let until = moment().add((daysInCurrentMonth-currentDay), 'days');
     //let dateClean = `${req.body.date.split('T')[0]} 00:00:00.000`;
-    Day.find({ date: { $gte: fifAgo, $lte: fifAway } })
+    Day.find({ date: { $gte: from, $lte: until } })
+        .then(days => {
+            res.json(days)
+        })
+        .catch(err => {
+            if (err) {
+                return res.status(500).json(err);
+            }
+            if (!days) {
+                return res.status(404).json(new Error("404"))
+            }
+        })
+});
+
+
+// GET THE MONTH BUILD COMPONENT
+router.post('/month', (req, res, next) => {
+    let {currentDay,daysInCurrentMonth,month} = req.body;
+    let from = moment().subtract(currentDay, 'days');
+    let until = moment().add((daysInCurrentMonth-currentDay), 'days');
+    //let dateClean = `${req.body.date.split('T')[0]} 00:00:00.000`;
+    Day.find({ date: { $gte: from, $lte: until } })
         .then(days => {
             res.json(days)
         })
@@ -77,9 +99,11 @@ router.get('/month', (req, res, next) => {
 
 // /api/day/get - getting the selecting dates
 router.post('/get', (req, res, next) => {
-    res.json(req.body)
-    let dates = req.body.map((d) => d.split("T")[0])
-    Promise.all(dates.map((d) => busquedaDia(d))).then(dates => res.json(dates))
+    //let dates = req.body.map((d) => d.split("T")[0])
+    let dates = req.body;
+    Promise.all(dates.map((d) => busquedaDia(d))).then(dates => {
+        return res.json(dates)
+    })
 });
 
 let busquedaDia = (day) => Day.find({ "date": day })

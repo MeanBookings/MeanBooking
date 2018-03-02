@@ -24,7 +24,7 @@ let mailOptions = {
 };
 
 // /api/book/add - Add the book
-router.post('/add', (req, res, next) => {
+router.post('/create', (req, res, next) => {
     console.log(req.body)
     let tIndex;
     let obj = {}

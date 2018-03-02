@@ -1,25 +1,38 @@
-<h6>View range of days</h6>
+<!-- <h6>View range of days</h6>
 <mat-form-field>
-    <input matInput [matDatepicker]="pickerIn" placeholder="Choose a date">
-    <mat-datepicker-toggle matSuffix [for]="pickerIn"></mat-datepicker-toggle>
-    <mat-datepicker #pickerIn></mat-datepicker>
+  <input matInput [matDatepicker]="pickerIn" placeholder="Choose a date">
+  <mat-datepicker-toggle matSuffix [for]="pickerIn"></mat-datepicker-toggle>
+  <mat-datepicker #pickerIn></mat-datepicker>
 </mat-form-field>
-
-  <mat-form-field>
-      <input matInput [matDatepicker]="pickerOut" placeholder="Choose a date">
-      <mat-datepicker-toggle matSuffix [for]="pickerOut"></mat-datepicker-toggle>
-      <mat-datepicker #pickerOut></mat-datepicker>
+<mat-form-field>
+  <input matInput [matDatepicker]="pickerOut" placeholder="Choose a date">
+  <mat-datepicker-toggle matSuffix [for]="pickerOut"></mat-datepicker-toggle>
+  <mat-datepicker #pickerOut></mat-datepicker>
 </mat-form-field>
-<button (click)="getRange(pickerIn,pickerOut)">send</button> 
-
-<div class="container-fluid">
+<button (click)="getRange(pickerIn,pickerOut)">send</button> -->
+<div class="container" id="calendar-header">
     <div class="row">
-        <div class="col day" *ngFor="let day of days; let i=index">
-                <small>{{day.date | date:'dd MMM'}}</small>
-                <!-- <p *ngIf="books.length!==undefined">{{books.length}}</p> -->
+        <div class="col-sm-12">
+            <button (click)="prevMonth()" mat-raised-button color="accent">Prev month</button>
+            <button (click)="nextMonth()" mat-raised-button color="accent">Next month</button>
         </div>
     </div>
 </div>
-
-{{days | json}}
-
+<div class="container-fluid" id="bookings-calendar">
+  <div class="row">
+    <div class="col day {{day.date | date:'EEEE' | lowercase}} {{day.status}}" *ngFor="let day of days; let i=index">
+        <div *ngIf="currentMonthDay == (day.date | date:'d'); else notToday" class="today">
+            <span>Today</span>
+            <small>{{day.date | date:'dd MMM'}}</small>
+            <small>{{day.date | date:'EEEE'}}</small>
+        </div>
+        <ng-template #notToday>
+            <div class="not-today">
+                <small>{{day.date | date:'dd MMM'}}</small>
+                <small>{{day.date | date:'EEEE'}}</small>
+            </div>
+        </ng-template>
+    </div>
+  </div>
+</div> 
+<!-- {{days | json}} -->
