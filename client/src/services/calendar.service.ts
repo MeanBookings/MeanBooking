@@ -24,6 +24,12 @@ export class CalendarService {
             .catch(this.handleError);
     }
 
+    changeCurrentMonth(month): Observable<any> {
+        return this.http.post(`${this.BASEURL}/api/day/month/view`, {month:month}, this.options)
+            .map(res => res.json())
+            .catch(this.handleError);
+    }
+
     getDays(dates): Observable<any> {
         return this.http.post(`${this.BASEURL}/api/day/get`, dates, this.options)
             .map(res => res.json())
@@ -31,7 +37,6 @@ export class CalendarService {
     }
 
     createDays(dates): Observable<any> {
-        
         return this.http.post(`${this.BASEURL}/api/day/create`, dates, this.options)
             .map(res => console.log(dates))
             .catch(this.handleError);

@@ -12,7 +12,8 @@ export class CalendarComponent implements OnInit {
   days: Array<any>;
   currentMonthDay:Number=moment().date()
   daysInCurrentMonth:Number=moment().daysInMonth();
-  
+  currentMonth:number=moment().month();
+  actualMonthInCalendar:number=0;
   constructor(public calendar: CalendarService) {}
 
   ngOnInit() { 
@@ -31,12 +32,21 @@ export class CalendarComponent implements OnInit {
     });
   }
 
-  prevMonth(){
+  changeMonth(param){
+    this.currentMonth;
     console.log('prev clicked')
+    console.log(this.currentMonth+param)
+    this.calendar.changeCurrentMonth(this.currentMonth+param).subscribe(month => {
+      console.log(month)
+      /* this.days = month;
+      this.days.sort(function (a, b) {
+        return a.date < b.date ? -1 : a.date > b.date ? 1 : 0;
+      }); */
+    });
   }
-  nextMonth(){
+ /*  nextMonth(){
     console.log('next clicked')
-  }
+  } */
 /*   getRange(a, b) {
     let startDate = moment(a._selected)
     let endDate = moment(b._selected)
