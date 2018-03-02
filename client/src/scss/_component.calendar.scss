@@ -1,12 +1,15 @@
 .col {
-    &.day {
+    &.day,&.weekDays{
         width: calc(100% / 7);
         min-width: calc(100% / 7);
         max-width: calc(100% / 7);
+    }
+    &.day {   
         border: 1px solid black;
         padding: 20px;
         .today {
             background: red;
         }
     }
+    
 }

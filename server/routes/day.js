@@ -16,9 +16,8 @@ router.post('/create', (req, res, next) => {
         })
 })
 let creaDia = (fecha) => {
-    console.log(typeof fecha)
-    console.log(fecha)
-    // console.log(new Date.UTC(new Date(fecha)))
+    //console.log(new Date.UTC(new Date(fecha)))
+    
     Day.findOne({ "date": fecha })
         .then((day) => {
             if (!day) {
@@ -47,7 +46,6 @@ updateaDia = (newDay) => {
 router.post('/', (req, res, next) => {
     Day.findOne({ date: moment(req.body.date) })
         .then(day => {
-            console.log(day)
             return res.json(day);
         })
         .catch(err => {
@@ -59,7 +57,7 @@ router.post('/', (req, res, next) => {
 // GET THE MONTH BUILD COMPONENT
 // /api/day/get/month
 router.get('/month', (req, res, next) => {
-    let month = moment().month()
+    let month = moment().month();
     let year = moment().year()
     let from = moment().startOf("Month").startOf("isoWeek").format('YYYY-MM-DD');    
     // let from = moment().year(year).month(month).date(0).format('YYYY-MM-DD');
@@ -69,7 +67,8 @@ router.get('/month', (req, res, next) => {
     let until = moment().year(year).month(month).date(days).format('YYYY-MM-DD');
     Day.find({ date: { $gte: from, $lte: until } })
         .then(days => {
-            res.json(days)
+            days = days.map(d=>Object.assign({}, d._doc, {date:moment(d._doc.date).format()}))
+            res.status(200).json({days})
         })
         .catch(err => {
             if (err) {
@@ -85,7 +84,8 @@ router.get('/month', (req, res, next) => {
 // /api/day/month/view
 router.post('/month/view', (req, res, next) => {
     let { monthToView, year } = req.body;
-    let from = moment().year(year).month(monthToView).date(0).format('YYYY-MM-DD');
+    //let from = moment().year(year).month(monthToView).date(0).format('YYYY-MM-DD');
+    let from = moment().month(monthToView).startOf('Month').startOf("isoWeek").format('YYYY-MM-DD');
     let days = moment(monthToView + 1, 'M').daysInMonth()
     if ((moment([year]).isLeapYear()) && (monthToView == 1))
         days++
