@@ -86,17 +86,14 @@ router.post('/month', (req, res, next) => {
 // /api/day/month/view
 router.post('/month/view', (req, res, next) => {
     let { monthToView, year } = req.body;
-    moment().daysInMonth();
-    let from = moment().year(year).month(monthToView).date(1).format('YYYY-MM-DD');
+    let from = moment().year(year).month(monthToView).date(0).format('YYYY-MM-DD');
     let days = moment(monthToView + 1, 'M').daysInMonth()
     if ((moment([year]).isLeapYear()) && (monthToView == 1))
         days++
     let until = moment().year(year).month(monthToView).date(days).format('YYYY-MM-DD');
-    res.json({ monthToView, from, days, until })
-    //let dateClean = `${req.body.date.split('T')[0]} 00:00:00.000`;
     Day.find({ date: { $gte: from, $lte: until } })
         .then(days => {
-            // res.json(days)
+            res.json(days)
         })
         .catch(err => {
             if (err) {
