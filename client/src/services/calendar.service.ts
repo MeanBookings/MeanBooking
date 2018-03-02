@@ -24,7 +24,7 @@ export class CalendarService {
             .catch(this.handleError);
     }
 
-    changeCurrentMonth(month): Observable<any> {
+    changeCurrentMonth(month,year): Observable<any> {
         return this.http.post(`${this.BASEURL}/api/day/month/view`, {month:month}, this.options)
             .map(res => res.json())
             .catch(this.handleError);

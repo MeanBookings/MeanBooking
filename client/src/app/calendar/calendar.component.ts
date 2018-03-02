@@ -13,6 +13,7 @@ export class CalendarComponent implements OnInit {
   currentMonthDay:Number=moment().date()
   daysInCurrentMonth:Number=moment().daysInMonth();
   currentMonth:number=moment().month();
+  currentYear=moment().year();
   actualMonthInCalendar:number=0;
   constructor(public calendar: CalendarService) {}
 
@@ -35,13 +36,16 @@ export class CalendarComponent implements OnInit {
   changeMonth(param){
     this.currentMonth;
     console.log('prev clicked')
-    console.log(this.currentMonth+param)
-    this.calendar.changeCurrentMonth(this.currentMonth+param).subscribe(month => {
+    this.currentMonth=this.currentMonth+param;
+    if(this.currentMonth<0) {this.currentYear=this.currentYear-1; this.currentMonth=11}
+    if(this.currentMonth>11) {this.currentYear=this.currentYear+1; this.currentMonth=0}
+    console.log(this.currentMonth,this.currentYear)
+    this.calendar.changeCurrentMonth(this.currentMonth,this.currentMonth).subscribe(month => {
       console.log(month)
-      /* this.days = month;
-      this.days.sort(function (a, b) {
+       this.days = month;
+      /* this.days.sort(function (a, b) {
         return a.date < b.date ? -1 : a.date > b.date ? 1 : 0;
-      }); */
+      });  */
     });
   }
  /*  nextMonth(){
