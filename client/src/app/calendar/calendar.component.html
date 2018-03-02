@@ -13,8 +13,8 @@
 <div class="container" id="calendar-header">
     <div class="row">
         <div class="col-sm-12">
-            <button (click)="prevMonth()" mat-raised-button color="accent">Prev month</button>
-            <button (click)="nextMonth()" mat-raised-button color="accent">Next month</button>
+            <button (click)="changeMonth(-1)" mat-raised-button color="accent">Prev month</button>
+            <button (click)="changeMonth(1)" mat-raised-button color="accent">Next month</button>
         </div>
     </div>
 </div>
