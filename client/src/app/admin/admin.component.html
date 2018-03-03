@@ -1,39 +1,41 @@
 <div class="container">
-    <div class="row">
-        <div class="col-sm-6"></div>
-        <div class="offset-sm-3">
-                <mat-tab-group>
-                        <mat-tab label="Massive Day Creation">            <mat-form-field>
-                                <input matInput [matDatepicker]="createPickerIn" placeholder="Choose a date">
-                                <mat-datepicker-toggle matSuffix [for]="createPickerIn"></mat-datepicker-toggle>
-                                <mat-datepicker #pickerIn></mat-datepicker>
-                            </mat-form-field>
-                            
-                              <mat-form-field>
-                                  <input matInput [matDatepicker]="createPickerOut" placeholder="Choose a date">
-                                  <mat-datepicker-toggle matSuffix [for]="createPickerOut"></mat-datepicker-toggle>
-                                  <mat-datepicker #pickerOut></mat-datepicker>
-                            </mat-form-field>
-                            <button (click)="createDays(pickerIn,pickerOut)">send</button> </mat-tab>
-                     
-
-            
-            <mat-tab label="Massive days update"> <mat-form-field>
-                    <input matInput [matDatepicker]="updatePickerIn" placeholder="Choose a date">
-                    <mat-datepicker-toggle matSuffix [for]="updatePickerIn"></mat-datepicker-toggle>
-                    <mat-datepicker #pickerIn></mat-datepicker>
-                </mat-form-field>
-                
-                  <mat-form-field>
-                      <input matInput [matDatepicker]="updatePickerOut" placeholder="Choose a date">
-                      <mat-datepicker-toggle matSuffix [for]="updatePickerOut"></mat-datepicker-toggle>
-                      <mat-datepicker #pickerOut></mat-datepicker>
-                </mat-form-field>
-                
-                <button (click)="updateDays(pickerIn,pickerOut)">send</button>  </mat-tab>
-       
-           
-        </mat-tab-group>
-        </div>
+  <div class="row">
+    <div class="col-sm-6"></div>
+    <div class="offset-sm-3">
+      <mat-tab-group>
+        <mat-tab label="Massive Day Creation">
+          <mat-form-field>
+            <input matInput [matDatepicker]="createPickerIn" placeholder="Choose a date">
+            <mat-datepicker-toggle matSuffix [for]="createPickerIn"></mat-datepicker-toggle>
+            <mat-datepicker #createPickerIn></mat-datepicker>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput [matDatepicker]="createPickerOut" placeholder="Choose a date">
+            <mat-datepicker-toggle matSuffix [for]="createPickerOut"></mat-datepicker-toggle>
+            <mat-datepicker #createPickerOut></mat-datepicker>
+          </mat-form-field>
+          <button (click)="createDays(createPickerIn,createPickerOut)">send</button>
+          <div *ngIf="message" class="message">
+            You have created {{message.length}} days successfully:
+              <ul>
+                <li *ngFor="let day of message">{{day | date: 'd, MMM, y'}}</li>
+              </ul>
+          </div>
+        </mat-tab>
+        <mat-tab label="Massive days update">
+          <mat-form-field>
+            <input matInput [matDatepicker]="updatePickerIn" placeholder="Choose a date">
+            <mat-datepicker-toggle matSuffix [for]="updatePickerIn"></mat-datepicker-toggle>
+            <mat-datepicker #updatePickerIn></mat-datepicker>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput [matDatepicker]="updatePickerOut" placeholder="Choose a date">
+            <mat-datepicker-toggle matSuffix [for]="updatePickerOut"></mat-datepicker-toggle>
+            <mat-datepicker #updatePickerOut></mat-datepicker>
+          </mat-form-field>
+          <button (click)="updateDays(updatePickerIn,updatePickerOut)">send</button>
+        </mat-tab>
+      </mat-tab-group>
     </div>
+  </div>
 </div>
