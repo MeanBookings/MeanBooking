@@ -14,7 +14,7 @@
             <mat-datepicker-toggle matSuffix [for]="createPickerOut"></mat-datepicker-toggle>
             <mat-datepicker #createPickerOut></mat-datepicker>
           </mat-form-field>
-          <button (click)="createDays(pickerIn,pickerOut)">send</button>
+          <button (click)="createDays(createPickerIn,createPickerOut)">send</button>
         </mat-tab>
         <mat-tab label="Massive days update">
           <mat-form-field>
@@ -27,9 +27,13 @@
             <mat-datepicker-toggle matSuffix [for]="updatePickerOut"></mat-datepicker-toggle>
             <mat-datepicker #updatePickerOut></mat-datepicker>
           </mat-form-field>
-          <button (click)="updateDays(pickerIn,pickerOut)">send</button>
+          <button (click)="updateDays(updatePickerIn,updatePickerOut)">send</button>
         </mat-tab>
       </mat-tab-group>
     </div>
   </div>
+</div>
+<div *ngIf="result">
+  {{result | json}}
+  {{result.length}}
 </div>

@@ -7,15 +7,17 @@ import { CalendarService } from '../../services/calendar.service';
   styleUrls: ['./admin.component.scss']
 })
 export class AdminComponent implements OnInit {
-  
+
   error: string;
   days: Array<any>;
-
+  message:any;
   constructor(public calendar: CalendarService) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   createDays(a, b) {
+    console.log(a)
+    console.log(b)
     let startDate = moment(a._selected)
     let endDate = moment(b._selected)
     let dates = [],
@@ -30,12 +32,12 @@ export class AdminComponent implements OnInit {
       currentDate = addDays.call(currentDate, 1);
     }
     this.calendar.createDays(dates).subscribe(result => {
-     /*  this.days = result.map(e => e[0]) */
+      this.message=result;
       console.log(result)
     })
   }
 
-  updateDays(a,b){
-    
+  updateDays(a, b) {
+
   }
 }

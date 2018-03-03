@@ -9,7 +9,7 @@ const moment = require('moment')
 router.post('/create', (req, res, next) => {
     let fechas = req.body
     Promise.all(fechas.map(d => creaDia(d)))
-        .then(res.status(200))
+        .then(res.status(200).json(fechas))
         .catch(e => {
             console.log(e);
             res.status(500).json(e)
