@@ -20,7 +20,6 @@ export class BookingService {
     }
 
     placeBooking(data): Observable<any> {
-        console.log(data)
         return this.http.post(`${this.BASEURL}/api/book/add`, data, this.options)
             .map(res => res.json())
             .catch(this.handleError);
@@ -29,7 +28,9 @@ export class BookingService {
     
     checkDayAvailability(date): Observable<any> {
         return this.http.post(`${this.BASEURL}/api/day/`, {date:date}, this.options)
-            .map(res => res.json())
+            .map(res => {
+                return res.json()
+            })
             .catch(this.handleError);
     }
 }

@@ -21,8 +21,7 @@
   </div>
   <mat-form-field *ngIf="day!==null&&day!=={}&&day.status!=='closed'">
     <mat-select placeholder="Select hour" [(ngModel)]="hour" name="hour" [disabled]="disableSelect">
-      <mat-option *ngFor="let hour of hours; let i=index" [value]="hour"> {{ hour }} |
-        <span>{{available[i]}}</span>
+      <mat-option *ngFor="let hour of hours; let i=index" [value]="hour"> {{ hour }} | <span>{{available[i]}}</span>
       </mat-option>
     </mat-select>
   </mat-form-field>

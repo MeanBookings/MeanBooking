@@ -43,7 +43,7 @@ updateaDia = (newDay) => {
 //CHECK AVAILABILITY
 // /api/day/get
 router.post('/', (req, res, next) => {
-    Day.findOne({ date: moment(req.body.date) })
+    Day.findOne({ date:req.body.date })
         .then(day => {
             return res.status(200).json(day);
         })
@@ -85,23 +85,13 @@ router.get('/month', (req, res, next) => {
 // /api/day/month/view
 router.post('/month/view', (req, res, next) => {
     let { monthToView, year } = req.body;
-<<<<<<< HEAD
     let from = moment().month(monthToView).year(year).startOf('Month').startOf("isoWeek").format('YYYY-MM-DD');
-=======
-    let from = moment().month(monthToView).startOf('Month').startOf("isoWeek").format('YYYY-MM-DD');
->>>>>>> bbc05dc626e373c56d888ae949cb7f8716769936
     let days = moment(monthToView + 1, 'M').daysInMonth()
     if ((moment([year]).isLeapYear()) && (monthToView == 1))
         days++
     let until = moment().month(monthToView).year(year).endOf('Month').endOf("isoWeek").format('YYYY-MM-DD');
-<<<<<<< HEAD
-    Day.find({ date: { $gte: from, $lt: until } })
-        .then(days => {
-            console.log(days.length)
-=======
     Day.find({ date: { $gte: from, $lte: until } })
         .then(days => {
->>>>>>> bbc05dc626e373c56d888ae949cb7f8716769936
             res.status(200).json(days)
         })
         .catch(err => {
