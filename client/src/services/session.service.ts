@@ -27,7 +27,7 @@ export class SessionService {
   }
 
   getAdmin() {
-    if (this.user.role==='admin'){return 'sí'}
+    if (this.user.role==='admin'){return this.user}
   }
   
   private configureUser(set=false){

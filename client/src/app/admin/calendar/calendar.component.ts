@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CalendarService } from '../../services/calendar.service';
+import { CalendarService } from '../../../services/calendar.service';
 import * as moment from 'moment';
 
 @Component({
