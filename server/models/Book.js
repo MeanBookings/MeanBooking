@@ -7,7 +7,7 @@ const bookSchema = new Schema({
     people: { type: Number },
     status: { type: String, enum: TYPES, default: TYPES[0] },
     user: { type: Schema.Types.ObjectId, ref: 'User' },
-    comment: { type: String }
+    comment: { type: String, default: "" }
 }, {
         timestamps: {
             createdAt: 'created_at',
