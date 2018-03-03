@@ -43,7 +43,7 @@ updateaDia = (newDay) => {
 //CHECK AVAILABILITY
 // /api/day/get
 router.post('/', (req, res, next) => {
-    Day.findOne({ date: { $gte: req.body.data, $lt: req.body.data } })
+    Day.findOne({ date:req.body.date })
         .then(day => {
             return res.status(200).json(day);
         })

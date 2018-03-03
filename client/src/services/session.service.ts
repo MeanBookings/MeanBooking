@@ -49,8 +49,12 @@ export class SessionService {
   }
 
   signup(name:string, password:string, email:string,phone:string):Observable<any>{
+    console.log(name, password, email,phone)
     return this.http.post(`${this.BASEURL}/api/auth/signup`, { username:name,password,email,phone}, this.options)
-      .map(res => res.json())
+      .map(res => {
+        console.log(res)
+        return res.json()
+      })
       .map(this.configureUser(true))
       .catch(this.handleError);
   }
