@@ -51,7 +51,8 @@ export class BookingformComponent implements OnInit {
 
   checkDayAvailability(date) {
     console.log(moment(date).format('YYYY-MM-DDT14:mm:ss'))
-    this.booking.checkDayAvailability(moment(date).format('YYYY-MM-DDT14:mm:ss')).subscribe(day => {
+    /* hemos quitado la T del format */
+    this.booking.checkDayAvailability(moment(date).format('YYYY-MM-DD 14:mm:ss')).subscribe(day => {
       this.day = day;
       if (day !== null) this.dayDate = moment(this.day.date);
       if (day !== null) {

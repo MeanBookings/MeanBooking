@@ -12,11 +12,13 @@
 <button (click)="getRange(pickerIn,pickerOut)">send</button> -->
 
 <editDay [day]="theDay"></editDay>
-<div class="container" id="calendar-header">
+<div class="container-fluid" id="calendar-header">
   <div class="row">
     <div class="col-sm-12">
-      <button (click)="changeMonth(-1)" mat-raised-button color="accent">Prev month</button>
-      <button (click)="changeMonth(1)" mat-raised-button color="accent">Next month</button>
+      <div class="prev-next-calendar text-right">
+        <span (click)="changeMonth(-1)" mat-raised-button color="accent"><i class="material-icons">navigate_before</i></span>
+        <span (click)="changeMonth(1)" mat-raised-button color="accent"><i class="material-icons">navigate_next</i></span>
+      </div>
     </div>
   </div>
   <div class="row">

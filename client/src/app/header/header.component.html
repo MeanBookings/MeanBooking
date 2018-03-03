@@ -2,20 +2,20 @@
   <div class="row">
     <div class="col-sm-4">
       <div><a [routerLink]="['/']">{{title}}</a></div>
-      <div *ngIf="session.getUser()">Hi {{session.getUser().name}}!</div>
-      <div *ngIf="session.getUser()">id: {{session.getUser()._id}}</div>
     </div>
-    <div class="col-sm-2"> </div>
-    <div class="col-sm-3">
+    <div class="col-sm-4">
       <login></login>
     </div>
-    <div class="col-sm-3">
-      <span *ngIf="session.getUser()&&session.getAdmin()" class="header-controls" [routerLink]="['/dashboard']"><i class="material-icons">dashboard</i></span>
-      <span *ngIf="session.getUser()&&session.getAdmin()" class="header-controls" [routerLink]="['/bookings']"><i class="material-icons">collections_bookmark</i></span>
-      <span *ngIf="session.getUser()&&session.getAdmin()" class="header-controls" [routerLink]="['/users']"><i class="material-icons">people</i></span>
-      <span *ngIf="session.getUser()" class="header-controls" [routerLink]="['/profile']"><i class="material-icons">person</i></span>
-      <signup></signup>
-      <logout></logout>
+    <div class="col-sm-4">
+      <ul class="list-inline">
+        <li class="list-inline-item" *ngIf="session.getUser()">Hi {{session.getUser().name}}!</li>
+        <li class="list-inline-item header-controls" *ngIf="session.getUser()&&session.getAdmin()" [routerLink]="['/dashboard']"><i class="material-icons">dashboard</i></li>
+        <li class="list-inline-item header-controls" *ngIf="session.getUser()&&session.getAdmin()" [routerLink]="['/bookings']"><i class="material-icons">today</i></li>
+        <li *ngIf="session.getUser()&&session.getAdmin()" class="list-inline-item header-controls" [routerLink]="['/users']"><i class="material-icons">people</i></li>
+        <li *ngIf="session.getUser()" class="header-controls list-inline-item" [routerLink]="['/profile']"><i class="material-icons">person</i></li>
+        <li class="header-controls list-inline-item"><signup></signup></li>
+        <li class="header-controls list-inline-item"><logout></logout></li>
+      </ul>
     </div>
   </div>
 </div>
