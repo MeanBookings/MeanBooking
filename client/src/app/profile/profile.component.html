@@ -5,6 +5,8 @@
         <mat-form-field class="full-width">
           <input matInput placeholder="Name" [(ngModel)]="currentUser.name" disabled={{!switch}}> </mat-form-field>
         <mat-form-field class="full-width">
+          <input matInput placeholder="Email" [(ngModel)]="currentUser.email" disabled=true> </mat-form-field>
+        <mat-form-field class="full-width">
           <input matInput placeholder="Phone" [(ngModel)]="currentUser.phone" disabled={{!switch}}> </mat-form-field>
         <mat-form-field class="full-width">
           <input matInput placeholder="Enter your new password" [(ngModel)]="password" disabled={{!switch}}> </mat-form-field>
