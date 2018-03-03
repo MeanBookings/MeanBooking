@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 //material
-import { MatSelectModule, MatButtonModule, MatCheckboxModule, MatExpansionModule, MatInputModule, MatDatepickerModule, MatNativeDateModule, MatTabsModule, MatSliderModule, MAT_DATE_LOCALE } from '@angular/material';
+import { MatSelectModule, MatIconModule, MatButtonModule, MatCheckboxModule, MatExpansionModule, MatInputModule, MatDatepickerModule, MatNativeDateModule, MatTabsModule, MatSliderModule, MAT_DATE_LOCALE , MatMenuModule} from '@angular/material';
 //routes
 import { routes } from './routes';
 import { RouterModule } from '@angular/router';
@@ -68,7 +68,9 @@ import { UserGuardService } from '../services/userguard.service';
     MatExpansionModule,
     MatInputModule,
     MatSelectModule,
+    MatIconModule,
     MatTabsModule,
+    MatMenuModule,
     MatDatepickerModule,
     MatNativeDateModule,
     MatSliderModule
