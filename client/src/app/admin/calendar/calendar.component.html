@@ -23,10 +23,10 @@
   </div>
   <div class="row">
       <div class="col-sm-12">
-            <h5>{{currentMonthText}}</h5>
+            <h5 class="calendar-main-info">{{currentMonthText}} {{currentYear}}</h5>
       </div>
   </div>
-  <div class="row">
+  <div class="row weekdays-row">
         <div class="col weekDays" *ngFor="let day of weekDays; let i=index">
             <p>{{day}}</p>
         </div>
@@ -34,17 +34,15 @@
 </div>
 <div class="container-fluid" id="bookings-calendar">
   <div class="row">
-    <div class="col day {{day.date | date:'EEEE' | lowercase}} {{day.status}}" *ngFor="let day of days; let i=index" (click)="getDay(day.date)">
-      <div *ngIf="today == (day.date | date:'MM/dd/yyyy'); else notToday" class="today">
-        <span>Today</span>
-        <small>{{day.date}}</small>
-        <small>{{day.date | date:'dd MMM':'+0100'}}</small>
-        <small>{{day.date | date:'EEEE'}}</small>
+    <div class="col day {{day.date | date:'EEEE' | lowercase}} {{day.status}}" *ngFor="let day of days; let i=index" >
+      <div *ngIf="today == (day.date | date:'MM/dd/yyyy'); else notToday" class="today day-inner">
+        <small class="day-num">{{day.date | date:'dd'}}</small>
+        <span matTooltip="Day settings" matTooltipPosition="right" (click)="getDay(day.date)" class="day-settings"><i class="material-icons">settings</i></span>
       </div>
       <ng-template #notToday>
-        <div class="not-today">
-          <small>{{day.date | date:'dd MMM'}}</small>
-          <small>{{day.date | date:'EEEE'}}</small>
+        <div class="not-today day-inner">
+          <small class="day-num">{{day.date | date:'dd'}}</small>
+          <span matTooltip="Day settings" matTooltipPosition="right" (click)="getDay(day.date)" class="day-settings"><i class="material-icons">settings</i></span>
         </div>
       </ng-template>
     </div>

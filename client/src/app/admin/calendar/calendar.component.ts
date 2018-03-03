@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer } from '@angular/core';
 import { CalendarService } from '../../../services/calendar.service';
 import * as moment from 'moment';
 
@@ -18,7 +18,8 @@ export class CalendarComponent implements OnInit {
   today = moment().format('L');
   theDay:Array<any>;
   weekDays:Array<any>=['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
-  constructor(public calendar: CalendarService) { }
+
+  constructor(public calendar: CalendarService, private render:Renderer) { }
 
   ngOnInit() {
     this.calendar.getCurrentMonth().subscribe(month => {
@@ -74,8 +75,6 @@ export class CalendarComponent implements OnInit {
     this.calendar.getDay(date).subscribe(day => {
       this.theDay = day
     })
-    
-    
- 
   }
+
 }

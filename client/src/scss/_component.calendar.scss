@@ -1,15 +1,108 @@
 .col {
-    &.day,&.weekDays{
-        width: calc(100% / 7);
-        min-width: calc(100% / 7);
-        max-width: calc(100% / 7);
+  padding: 0;
+  position: relative;
+  .day-num {
+    font-size: 1.6em;
+    font-weight: 300;
+    padding-left: 5px;
+  }
+  &.open,
+  &.closed {
+    &:after {
+      content: '';
+      width: 15px;
+      height: 15px;
+      background: $green;
+      border-radius: 50%;
+      position: absolute;
+      top: 12px;
+      right: 8px;
     }
-    &.day {   
-        border: 1px solid black;
-        padding: 20px;
-        .today {
-            background: red;
+  }
+  &.closed {
+    &:after {
+      background: $red
+    }
+  }
+  &.day,
+  &.weekDays {
+    width: calc(100% / 7);
+    min-width: calc(100% / 7);
+    max-width: calc(100% / 7);
+  }
+  &.day {
+    border: 1px solid $lightgrey;
+    border-top: none;
+    border-left: none;
+    height: 150px;
+    .day-inner {
+      height: 100%;
+      &.day-selected {
+        background: $blue;
+      }
+      &.today {
+        background: #d5d5d5;
+      }
+      .day-settings {
+        display: block;
+        position: absolute;
+        bottom: 0;
+        left: 5px;
+        color: $main;
+        cursor: pointer;
+        &:hover {
+          color: $red;
         }
+      }
     }
-    
+  }
+}
+
+#calendar-header {
+  border-bottom: 1px solid $lightgrey;
+  .weekdays-row {
+    .weekDays {
+      font-size: .75em;
+      font-weight: 100;
+      p {
+        margin-bottom: 3px;
+      }
+    }
+  }
+  .calendar-main-info {
+    text-align: center;
+    font-size: 1.3em;
+    font-weight: 500;
+  }
+}
+
+#edit-day-wrapper {
+  text-align: center;
+  .shifts-text {
+    margin-bottom: 15px;
+    display: inline-block;
+  }
+  .shift-hour {
+    font-size: 1.2em;
+    font-weight: 100;
+  }
+  .mat-form-field-infix {
+    width: initial;
+    input {
+      border: none;
+      text-align: center;
+      border-radius: 4px;
+      color: $white;
+      padding: 4px 0 7px;
+      &.open {
+        background: $green;
+      }
+      &.closed {
+        background: $red;
+      }
+    }
+  }
+  .status-select {
+    width:120px;
+  }
 }

@@ -1,1 +1,38 @@
 {{day | json}}
+<div class="container" *ngIf="day" id="edit-day-wrapper">
+    <div class="row">
+        <div class="col-sm-12">
+            <h4 class="day-config-title">Editing day {{day.date | date : 'MMMM d, y'}}</h4>
+            <div class="status">Restaurant is 
+                <mat-form-field class="status-select">
+                    <!-- <input [class]="day.status" matInput [value]="day.status" [(ngModel)]="day.status" disabled={{!switch}}>  -->
+                    <mat-select [value]="day.status" [class]="day.status" disabled={{!switch}} [(ngModel)]="day.status">
+                            <mat-option value="open">
+                              Open
+                            </mat-option>
+                            <mat-option value="closed">
+                                Closed
+                            </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                and we have {{day.books.length}} reservations.
+            </div>
+            <div class="shifts">
+                <span class="shifts-text">Configure the shifts and availability:</span>
+                <div class="row">
+                    <div class="col-sm-1 text-center" *ngFor="let shift of day.shift; let i=index;">
+                        <div class="shift-hour">
+                            {{shift.hour}}
+                        </div>
+                        <div class="shift-availability">
+                            <mat-form-field>
+                                    <input class="text-center" matInput [value]="shift.current" [(ngModel)]="shift.current" disabled={{!switch}}> 
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button (click)="editDay()" mat-button id="edit">{{btntext}}</button>
+        </div>
+    </div>
+</div>

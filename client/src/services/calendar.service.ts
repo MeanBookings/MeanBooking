@@ -42,13 +42,19 @@ export class CalendarService {
 
     createDays(dates): Observable<any> {
         return this.http.post(`${this.BASEURL}/api/day/create`, dates, this.options)
-            .map(res => console.log(dates))
+            .map(res => {
+                console.log(dates)
+                return res.json()
+            })
             .catch(this.handleError);
     }
 
     updateDays(dates): Observable<any> {
         return this.http.post(`${this.BASEURL}/api/day/update`, dates, this.options)
-        .map( res => console.log(dates))
+        .map( res => {
+            console.log(dates)
+            return res.json()
+        })
         .catch(this.handleError)
     }
 

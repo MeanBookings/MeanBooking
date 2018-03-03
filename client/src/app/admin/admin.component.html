@@ -15,6 +15,12 @@
             <mat-datepicker #createPickerOut></mat-datepicker>
           </mat-form-field>
           <button (click)="createDays(createPickerIn,createPickerOut)">send</button>
+          <div *ngIf="message" class="message">
+            You have created {{message.length}} days successfully:
+              <ul>
+                <li *ngFor="let day of message">{{day | date: 'd, MMM, y'}}</li>
+              </ul>
+          </div>
         </mat-tab>
         <mat-tab label="Massive days update">
           <mat-form-field>
@@ -32,8 +38,4 @@
       </mat-tab-group>
     </div>
   </div>
-</div>
-<div *ngIf="result">
-  {{result | json}}
-  {{result.length}}
 </div>

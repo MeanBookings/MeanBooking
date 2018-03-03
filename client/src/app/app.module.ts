@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 //material
-import { MatSelectModule, MatIconModule, MatButtonModule, MatCheckboxModule, MatExpansionModule, MatInputModule, MatDatepickerModule, MatNativeDateModule, MatTabsModule, MatSliderModule, MAT_DATE_LOCALE , MatMenuModule} from '@angular/material';
+import { MatSlideToggleModule, MatSelectModule,MatTooltipModule, MatIconModule, MatButtonModule, MatCheckboxModule, MatExpansionModule, MatInputModule, MatDatepickerModule, MatNativeDateModule, MatTabsModule, MatSliderModule, MAT_DATE_LOCALE , MatMenuModule} from '@angular/material';
 //routes
 import { routes } from './routes';
 import { RouterModule } from '@angular/router';
@@ -68,14 +68,16 @@ import { UserGuardService } from '../services/userguard.service';
     MatExpansionModule,
     MatInputModule,
     MatSelectModule,
+    MatTooltipModule,
     MatIconModule,
     MatTabsModule,
     MatMenuModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatSlideToggleModule,
     MatSliderModule
   ],
-  providers: [SessionService, BookingService, AdminGuardService, CalendarService, UserGuardService, { provide: LOCALE_ID, useValue: "es-ES" }],
+  providers: [SessionService, BookingService, AdminGuardService, CalendarService, UserGuardService, /* { provide: LOCALE_ID, useValue: "es-ES" } */],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
