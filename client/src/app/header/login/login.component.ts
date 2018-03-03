@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SessionService } from '../../../services/session.service';
+import { MatDialog } from '@angular/material';
 
 @Component({
   selector: 'login',
@@ -13,7 +14,7 @@ export class LoginComponent implements OnInit {
   error:string;
   visible: boolean = false;
 
-  constructor(public session:SessionService) { }
+  constructor(public session:SessionService, public dialog: MatDialog) { }
 
   ngOnInit() {
   }
@@ -23,6 +24,7 @@ export class LoginComponent implements OnInit {
     .catch(e => this.error = e)
       .subscribe(user => console.log(`Welcome ${user.name}`));
   }
+
 
 
 }
