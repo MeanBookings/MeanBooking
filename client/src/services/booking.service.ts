@@ -12,8 +12,6 @@ export class BookingService {
     constructor(private http: Http) {
     }
 
-
-
     handleError(e) {
         console.log(e);
         return Observable.throw(e.json().message);
