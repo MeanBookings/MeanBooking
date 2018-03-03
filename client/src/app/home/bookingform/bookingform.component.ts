@@ -43,14 +43,7 @@ export class BookingformComponent implements OnInit {
   }
 
   sendBooking(bookingForm) {
-/*     bookingForm.value.name;
-    bookingForm.value.email;
-    bookingForm.value.phone;
-    bookingForm.value.people;
-    bookingForm.value.comment;
-    bookingForm.value.hour;
-    bookingForm.value.date_of_book;
-    console.log(bookingForm.value.name,bookingForm.value.email,bookingForm.value.phone,bookingForm.value.people,bookingForm.value.comment,bookingForm.value.hour,bookingForm.value.date_of_book) */
+    bookingForm.value.date_of_book=moment(bookingForm.value.date_of_book).format('YYYY-MM-DDT14:mm:ss')
     this.booking.placeBooking(bookingForm.value).subscribe(result => {
       if (this.error) console.log(this.error)
     })
