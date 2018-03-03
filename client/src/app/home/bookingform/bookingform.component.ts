@@ -43,15 +43,16 @@ export class BookingformComponent implements OnInit {
   }
 
   sendBooking(bookingForm) {
-    bookingForm.value.date_of_book=moment(bookingForm.value.date_of_book).format('YYYY-MM-DDT14:mm:ss')
+    bookingForm.value.date_of_book=moment(bookingForm.value.date_of_book).format('YYYY-MM-DD 14:mm:ss')
     this.booking.placeBooking(bookingForm.value).subscribe(result => {
       if (this.error) console.log(this.error)
     })
   }
 
   checkDayAvailability(date) {
-    //console.log(moment(date).format('YYYY-MM-DD'))
-    this.booking.checkDayAvailability(moment(date).format('YYYY-MM-DDT14:mm:ss')).subscribe(day => {
+    // console.log(moment(date).format('YYYY-MM-DD'))
+    this.booking.checkDayAvailability(moment(date).format('YYYY-MM-DD 14:mm:ss')).subscribe(day => {
+      // console.log(day)
       this.day = day;
       if (day !== null) this.dayDate = moment(this.day.date);
       if (day !== null) {

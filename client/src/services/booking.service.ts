@@ -25,8 +25,10 @@ export class BookingService {
 
     
     checkDayAvailability(date): Observable<any> {
+        // console.log(date)
         return this.http.post(`${this.BASEURL}/api/day/`, {date:date}, this.options)
             .map(res => {
+                // console.log(res)
                 return res.json()
             })
             .catch(this.handleError);
