@@ -1,12 +1,12 @@
 <form class="basic-form" (ngSubmit)="sendBooking(bookingForm)" #bookingForm="ngForm">
   <mat-form-field class="full-width">
-    <input matInput placeholder="Your name" [(ngModel)]="name" name="name"> </mat-form-field>
+    <input matInput placeholder="Your name" [(ngModel)]="name" name="name" required> </mat-form-field>
   <mat-form-field class="full-width">
-    <input matInput placeholder="Your email" [(ngModel)]="email" name="email"> </mat-form-field>
+    <input matInput placeholder="Your email" [(ngModel)]="email" name="email" required> </mat-form-field>
   <mat-form-field class="full-width">
-    <input matInput placeholder="Your phone" [(ngModel)]="phone" name="phone"> </mat-form-field>
+    <input matInput placeholder="Your phone" [(ngModel)]="phone" name="phone" required> </mat-form-field>
   <mat-form-field class="full-width">
-    <input matInput [matDatepicker]="picker" placeholder="Choose a date" [(ngModel)]="date_of_book" name="date_of_book" (dateInput)="checkDayAvailability(date_of_book)">
+    <input matInput [matDatepicker]="picker" placeholder="Choose a date" [(ngModel)]="date_of_book" name="date_of_book" (dateInput)="checkDayAvailability(date_of_book)" required>
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
@@ -20,7 +20,7 @@
     <small *ngIf="day!==null&&day!=={}&&day.status==='closed'">We are {{day.status}} :(</small>
   </div>
   <mat-form-field *ngIf="day!==null&&day!=={}&&day.status!=='closed'">
-    <mat-select placeholder="Select hour" [(ngModel)]="hour" name="hour" [disabled]="disableSelect">
+    <mat-select placeholder="Select hour" [(ngModel)]="hour" name="hour" [disabled]="disableSelect" required>
       <mat-option *ngFor="let hour of hours; let i=index" [value]="hour"> {{ hour }} | <span>{{available[i]}}</span>
       </mat-option>
     </mat-select>

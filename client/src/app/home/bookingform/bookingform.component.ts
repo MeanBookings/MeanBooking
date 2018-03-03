@@ -43,6 +43,14 @@ export class BookingformComponent implements OnInit {
   }
 
   sendBooking(bookingForm) {
+/*     bookingForm.value.name;
+    bookingForm.value.email;
+    bookingForm.value.phone;
+    bookingForm.value.people;
+    bookingForm.value.comment;
+    bookingForm.value.hour;
+    bookingForm.value.date_of_book;
+    console.log(bookingForm.value.name,bookingForm.value.email,bookingForm.value.phone,bookingForm.value.people,bookingForm.value.comment,bookingForm.value.hour,bookingForm.value.date_of_book) */
     this.booking.placeBooking(bookingForm.value).subscribe(result => {
       if (this.error) console.log(this.error)
     })

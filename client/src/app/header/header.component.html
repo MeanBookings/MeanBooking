@@ -10,12 +10,12 @@
       <login></login>
     </div>
     <div class="col-sm-3">
+      <span *ngIf="session.getUser()&&session.getAdmin()" class="header-controls" [routerLink]="['/dashboard']"><i class="material-icons">dashboard</i></span>
+      <span *ngIf="session.getUser()&&session.getAdmin()" class="header-controls" [routerLink]="['/bookings']"><i class="material-icons">collections_bookmark</i></span>
+      <span *ngIf="session.getUser()&&session.getAdmin()" class="header-controls" [routerLink]="['/users']"><i class="material-icons">people</i></span>
+      <span *ngIf="session.getUser()" class="header-controls" [routerLink]="['/profile']"><i class="material-icons">person</i></span>
       <signup></signup>
       <logout></logout>
-      <span *ngIf="session.getUser()" class="header-controls" [routerLink]="['/profile']"><i class="material-icons">person</i></span>
-      <span *ngIf="session.getUser()&&session.getAdmin()" class="header-controls" [routerLink]="['/dashboard']"><i class="material-icons">dashboard</i></span>
-      <span *ngIf="session.getUser()&&session.getAdmin()" class="header-controls" [routerLink]="['/users']"><i class="material-icons">people</i></span>
-      <span *ngIf="session.getUser()&&session.getAdmin()" class="header-controls" [routerLink]="['/bookings']"><i class="material-icons">collections_bookmark</i></span>
     </div>
   </div>
 </div>

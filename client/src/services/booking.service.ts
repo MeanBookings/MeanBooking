@@ -20,7 +20,8 @@ export class BookingService {
     }
 
     placeBooking(data): Observable<any> {
-        return this.http.post(`${this.BASEURL}/api/book/add`, data, this.options)
+        console.log('desde el s: '+data)
+        return this.http.post(`${this.BASEURL}/api/book/create`, data, this.options)
             .map(res => res.json())
             .catch(this.handleError);
     }

@@ -13,7 +13,9 @@
     <div *ngIf="loginPassw.errors && (loginPassw.dirty || loginPassw.touched)">
       <small class="error"> Password is required. </small>
     </div>
+    <div *ngIf="error && (loginName.dirty || loginName.touched)">
+      <small class="error"> {{error}} </small>
+    </div>
     <button (click)="login()" mat-button id="login">Login</button>
   </mat-expansion-panel>
 </div>
-
