@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 //material
-import { MatSlideToggleModule, MatSelectModule,MatTooltipModule, MatIconModule, MatButtonModule, MatCheckboxModule, MatExpansionModule, MatInputModule, MatDatepickerModule, MatNativeDateModule, MatTabsModule, MatSliderModule, MAT_DATE_LOCALE , MatMenuModule} from '@angular/material';
+import { MatTooltipModule, MatSelectModule, MatIconModule, MatButtonModule, MatCheckboxModule, MatExpansionModule, MatInputModule, MatDatepickerModule, MatNativeDateModule, MatTabsModule, MatSliderModule, MAT_DATE_LOCALE , MatMenuModule, MatSnackBar, MatSnackBarModule, MatSnackBarContainer} from '@angular/material';
 //routes
 import { routes } from './routes';
 import { RouterModule } from '@angular/router';
@@ -37,6 +37,8 @@ import { FilterPipe } from '../pipes/filter.pipe';
 import { ArraySortPipe } from '../pipes/order.pipe';
 import { EditDayComponent } from './admin/calendar/edit-day/edit-day.component';
 import { UserGuardService } from '../services/userguard.service';
+import { SnackBarComponent } from './home/bookingform/snack-bar/snack-bar.component';
+import { SnackBarProfileComponent } from './profile/snack-bar-profile/snack-bar-profile.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +57,9 @@ import { UserGuardService } from '../services/userguard.service';
     CalendarComponent,
     FilterPipe,
     ArraySortPipe,
-    EditDayComponent
+    EditDayComponent,
+    SnackBarComponent,
+    SnackBarProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -66,6 +70,7 @@ import { UserGuardService } from '../services/userguard.service';
     MatButtonModule,
     MatCheckboxModule,
     MatExpansionModule,
+    MatSnackBarModule,
     MatInputModule,
     MatSelectModule,
     MatTooltipModule,
@@ -74,10 +79,10 @@ import { UserGuardService } from '../services/userguard.service';
     MatMenuModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatSlideToggleModule,
     MatSliderModule
   ],
-  providers: [SessionService, BookingService, AdminGuardService, CalendarService, UserGuardService, /* { provide: LOCALE_ID, useValue: "es-ES" } */],
+  entryComponents: [SnackBarComponent,BookingformComponent,SnackBarProfileComponent,ProfileComponent],
+  providers: [SessionService, BookingService, AdminGuardService, CalendarService, UserGuardService, { provide: LOCALE_ID, useValue: "es-ES" }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

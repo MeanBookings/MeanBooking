@@ -12,8 +12,6 @@ export class BookingService {
     constructor(private http: Http) {
     }
 
-
-
     handleError(e) {
         console.log(e);
         return Observable.throw(e.json().message);
@@ -27,8 +25,10 @@ export class BookingService {
 
     
     checkDayAvailability(date): Observable<any> {
+        // console.log(date)
         return this.http.post(`${this.BASEURL}/api/day/`, {date:date}, this.options)
             .map(res => {
+                // console.log(res)
                 return res.json()
             })
             .catch(this.handleError);

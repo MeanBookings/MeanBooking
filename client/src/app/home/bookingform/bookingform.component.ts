@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { BookingService } from '../../../services/booking.service';
 import * as moment from 'moment';
+import { SnackBarComponent } from './snack-bar/snack-bar.component';
+import { MatSnackBar } from '@angular/material';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'bookingform',
@@ -8,7 +11,8 @@ import * as moment from 'moment';
   styleUrls: ['./bookingform.component.scss']
 })
 export class BookingformComponent implements OnInit {
-
+  //modal bootstrap
+  closeResult: string;
   //material settings
   autoTicks = true;
   disabled = false;
@@ -37,21 +41,30 @@ export class BookingformComponent implements OnInit {
   dayDate: moment.Moment;
   hours: Array<any>;
   available: Array<any>;
-  constructor(public booking: BookingService) { }
+  message: any = "";
+  snack: any;
+
+  constructor(public booking: BookingService,
+    public snackBar: MatSnackBar,
+    public router: Router
+  ) { }
 
   ngOnInit() {
   }
 
   sendBooking(bookingForm) {
-    bookingForm.value.date_of_book=moment(bookingForm.value.date_of_book).format('YYYY-MM-DDT14:mm:ss')
+    bookingForm.value.date_of_book = moment(bookingForm.value.date_of_book).format('YYYY-MM-DD 14:mm:ss')
     this.booking.placeBooking(bookingForm.value).subscribe(result => {
+     //NOTA LIMPIAR FORMULARIO DESPUES DE ENVIAR :)
+      let snackBarRef = this.snackBar.openFromComponent(SnackBarComponent, {duration:2000});
+      snackBarRef.afterDismissed().subscribe(()=>{})
       if (this.error) console.log(this.error)
     })
   }
 
+
+
   checkDayAvailability(date) {
-    console.log(moment(date).format('YYYY-MM-DDT14:mm:ss'))
-    /* hemos quitado la T del format */
     this.booking.checkDayAvailability(moment(date).format('YYYY-MM-DD 14:mm:ss')).subscribe(day => {
       this.day = day;
       if (day !== null) this.dayDate = moment(this.day.date);
@@ -63,3 +76,4 @@ export class BookingformComponent implements OnInit {
     })
   }
 }
+

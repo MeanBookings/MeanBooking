@@ -6,7 +6,8 @@
   <mat-form-field class="full-width">
     <input matInput placeholder="Your phone" [(ngModel)]="phone" name="phone" required> </mat-form-field>
   <mat-form-field class="full-width">
-    <input matInput [matDatepicker]="picker" placeholder="Choose a date" [(ngModel)]="date_of_book" name="date_of_book" (dateInput)="checkDayAvailability(date_of_book)" required>
+    <input matInput [matDatepicker]="picker" placeholder="Choose a date" [(ngModel)]="date_of_book" name="date_of_book" (dateInput)="checkDayAvailability(date_of_book)"
+      required>
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker disabled="false" #picker></mat-datepicker>
   </mat-form-field>
@@ -21,7 +22,8 @@
   </div>
   <mat-form-field *ngIf="day!==null&&day!=={}&&day.status!=='closed'">
     <mat-select placeholder="Select hour" [(ngModel)]="hour" name="hour" [disabled]="disableSelect" required>
-      <mat-option *ngFor="let hour of hours; let i=index" [value]="hour"> {{ hour }} | <span>{{available[i]}}</span>
+      <mat-option *ngFor="let hour of hours; let i=index" [value]="hour"> {{ hour }} |
+        <span>{{available[i]}}</span>
       </mat-option>
     </mat-select>
   </mat-form-field>

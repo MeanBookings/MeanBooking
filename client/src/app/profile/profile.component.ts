@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { SessionService } from '../../services/session.service';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material';
+import { SnackBarProfileComponent } from './snack-bar-profile/snack-bar-profile.component';
 
 @Component({
   selector: 'profile',
@@ -13,8 +15,12 @@ export class ProfileComponent implements OnInit {
   password: String = "";
   currentUser: any;
   error: String;
+  message: any = "";
+
   constructor(public session: SessionService,
-    public router: Router) {
+    public router: Router,
+    public snackBar: MatSnackBar,
+  ) {
     this.currentUser = this.session.getUser();
   }
 
@@ -23,17 +29,18 @@ export class ProfileComponent implements OnInit {
 
   edit() {
     if (this.switch) {
-      this.btntext = "Update"
-      this.switch = !this.switch
-      if (this.password != ""){
-      this.currentUser.password = this.password;
-      }
-      console.log(this.currentUser)
-      this.session.updateUser(this.currentUser)
-        .catch(e => this.error = e)
-        .subscribe(user => console.log(`Updated ${user.name}`));
-    } else {
       this.btntext = "Edit"
+      this.switch = !this.switch
+      if (this.password != "") {
+        this.currentUser.password = this.password;
+      }
+      let snackBarRef = this.snackBar.openFromComponent(SnackBarProfileComponent, {duration:2000});
+      this.session.updateUser(this.currentUser).subscribe((res) => {
+        this.message = res;
+      })
+    } else {
+      this.btntext = "Update"
+      this.message = ""
       this.switch = !this.switch
     }
   }

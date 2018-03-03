@@ -43,15 +43,19 @@ updateaDia = (newDay) => {
 //CHECK AVAILABILITY
 // /api/day/get
 router.post('/', (req, res, next) => {
-    Day.findOne({ date:req.body.date })
+let date = req.body.date
+    Day.findOne({ date:date })
         .then(day => {
+            
             return res.status(200).json(day);
+            
         })
         .catch(err => {
             if (err) { return res.status(500).json(err); }
             if (!day) { return res.status(404).json(new Error("404")) }
         })
 });
+
 
 // GET THE MONTH BUILD COMPONENT
 // /api/day/get/month

@@ -25,7 +25,6 @@ let mailOptions = {
 
 // /api/book/create - create the book
 router.post('/create', (req, res, next) => {
-    console.log(req.body)
     let tIndex;
     let obj = {}
     const { email, name, phone, date_of_book, hour, people, comment } = req.body;
@@ -63,7 +62,7 @@ router.post('/create', (req, res, next) => {
                         updatedDay.shift[tIndex].current -= people;
                         updatedDay.books.push(book._id);
                         Day.findOneAndUpdate({ _id: day._id }, updatedDay, { new: true })
-                            .then(() => console.log("ok"))
+                            .then((result) => res.status(200).json(result))
                         mailOptions.subject = 'Your book in Mean Restaurant is pending of approvation';
                         mailOptions.html = (`<img src="https://www.mobilestudio.mx/wp-content/uploads/2017/07/curso_web_development_mean.png"></img><a href="http://localhost:3000/api/book/delete/${book._id}">Cancela tu reserva</a>`)
                         mailOptions.to = email;
