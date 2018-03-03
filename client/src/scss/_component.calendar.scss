@@ -9,6 +9,7 @@
   &.open,
   &.closed {
     &:after {
+      pointer-events: none;
       content: '';
       width: 15px;
       height: 15px;
@@ -31,17 +32,25 @@
     max-width: calc(100% / 7);
   }
   &.day {
+    cursor: pointer;
     border: 1px solid $lightgrey;
     border-top: none;
     border-left: none;
     height: 150px;
     .day-inner {
+      &:hover {
+        background: $darkwhite;
+      }
       height: 100%;
       &.day-selected {
         background: $blue;
+        color: $white;
+        i {
+          color: $white;
+        }
       }
       &.today {
-        background: #d5d5d5;
+        background: $darkwhite;
       }
       .day-settings {
         display: block;
@@ -92,7 +101,6 @@
       border: none;
       text-align: center;
       border-radius: 4px;
-      color: $white;
       padding: 4px 0 7px;
       &.open {
         background: $green;
@@ -103,6 +111,19 @@
     }
   }
   .status-select {
-    width:120px;
+    width: 120px;
+    mat-select {
+      border: none;
+      text-align: center;
+      border-radius: 4px;
+      color: $white;
+      padding: 4px 0 7px;
+      &.open {
+        background: $green;
+      }
+      &.closed {
+        background: $red;
+      }
+    }
   }
 }
