@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SessionService } from '../../../services/session.service';
-import { MatDialog } from '@angular/material';
+/* import {MatMenuModule} from '@angular/material/menu'; */
 
 @Component({
   selector: 'login',
@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
   error:string;
   visible: boolean = false;
 
-  constructor(public session:SessionService, public dialog: MatDialog) { }
+  constructor(public session:SessionService) { }
 
   ngOnInit() {
   }
