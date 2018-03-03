@@ -6,9 +6,9 @@
   <mat-form-field class="full-width">
     <input matInput placeholder="Your phone" [(ngModel)]="phone" name="phone" required> </mat-form-field>
   <mat-form-field class="full-width">
-    <input matInput [matDatepicker]="picker" placeholder="Choose a date" [(ngModel)]="date_of_book" name="date_of_book" (dateInput)="checkDayAvailability(date_of_book)" required>
+    <input disabled matInput [matDatepicker]="picker" placeholder="Choose a date" [(ngModel)]="date_of_book" name="date_of_book" (dateInput)="checkDayAvailability(date_of_book)" required>
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker #picker></mat-datepicker>
+    <mat-datepicker disabled="false" #picker></mat-datepicker>
   </mat-form-field>
   <div class="form-details-info">
     <small *ngIf="day===null || day===undefined">Day not found</small>
