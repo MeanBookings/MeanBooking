@@ -6,11 +6,12 @@ import { AdminComponent } from './admin/admin.component';
 import { AdminGuardService } from '../services/adminguard.service';
 import { UsersComponent } from './users/users.component';
 import { CalendarComponent } from './calendar/calendar.component';
+import { UserGuardService } from '../services/userguard.service';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent },
     { path: 'bookings', component: BookingsComponent },
-    { path: 'profile', component: ProfileComponent },
+    { path: 'profile', component: ProfileComponent, canActivate: [UserGuardService] },
     { path: 'dashboard', component: AdminComponent, canActivate: [AdminGuardService] },
     { path: 'bookings', component: CalendarComponent, canActivate: [AdminGuardService] },
     { path: 'users', component: UsersComponent, canActivate: [AdminGuardService] },

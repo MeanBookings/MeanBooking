@@ -1,20 +1,15 @@
 <div class="container">
   <div class="row">
-    <div class="col-sm-12">
-       {{session.getUser() | json}}
+    <div class="col-sm-6 offset-sm-3">
+      <div class="update-profile">
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Name" [(ngModel)]="currentUser.name" disabled={{!switch}}> </mat-form-field>
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Phone" [(ngModel)]="currentUser.phone" disabled={{!switch}}> </mat-form-field>
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Enter your new password" [(ngModel)]="password" disabled={{!switch}}> </mat-form-field>
+        <button (click)="edit()" mat-button id="edit">{{btntext}}</button>
+      </div>
     </div>
   </div>
-</div>
-
-<div class="example-container">
-  <mat-form-field>
-    <input matInput placeholder="Name" [(ngModel)]="currentUser.name"  disabled={{!switch}}>
-  </mat-form-field>
-  <mat-form-field>
-    <input matInput placeholder="Phone" [(ngModel)]="currentUser.phone" disabled={{!switch}}>
-  </mat-form-field>
-  <mat-form-field>
-    <input matInput placeholder="Enter your new password" [(ngModel)]="password" disabled={{!switch}}>
-  </mat-form-field>
-  <button (click)="edit()" mat-button id="edit">{{btntext}}</button>
 </div>

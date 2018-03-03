@@ -36,6 +36,7 @@ import { CalendarComponent } from './calendar/calendar.component';
 import { FilterPipe } from '../pipes/filter.pipe';
 import { ArraySortPipe } from '../pipes/order.pipe';
 import { EditDayComponent } from './edit-day/edit-day.component';
+import { UserGuardService } from '../services/userguard.service';
 
 @NgModule({
   declarations: [
@@ -71,7 +72,7 @@ import { EditDayComponent } from './edit-day/edit-day.component';
     MatNativeDateModule,
     MatSliderModule
   ],
-  providers: [SessionService, BookingService, AdminGuardService, CalendarService,  { provide: LOCALE_ID, useValue: "es-ES" }],
+  providers: [SessionService, BookingService, AdminGuardService, CalendarService, UserGuardService, { provide: LOCALE_ID, useValue: "es-ES" }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -11,22 +11,6 @@ router.get("/", checkRoles("Administrator"), (req, res, next) => {
     });
 });
 
-/* router.get("/delete/:id", onlyMe, (req, res, next) => {
-    const userId = req.params.id;
-    User.findByIdAndRemove(userId, { active: false }, err => {
-        Ticket.find({ user_id: userId })
-            .then(tickets => {
-                tickets.forEach(t => {
-                    Ticket.findByIdAndUpdate(t._id, { active: false });
-                });
-            });
-        if (err) {
-            return next(err);
-        }
-        res.redirect("/admin");
-    });
-}
-); */
 
 
 router.get('/delete/:id', onlyMe, (req, res, next) => {
@@ -35,15 +19,5 @@ router.get('/delete/:id', onlyMe, (req, res, next) => {
         .catch(e => res.status(500).json(e))
 });
 
-/* router.get("/user-activate/:id", checkRoles("admin"), (req, res, next) => {
-    const userId = req.params.id;
-    User.findByIdAndUpdate(userId, { active: true }, (err) => {
-        if (err) {
-            return next(err);
-        }
-        res.redirect("/admin");
-    });
-}
-); */
 
 module.exports = router;

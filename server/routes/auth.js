@@ -55,7 +55,10 @@ router.post('/login', (req, res, next) => {
 router.post('/updateuser', (req, res, next) => {
     const updateUser = req.body.user
     User.findOneAndUpdate({"email":updateUser.email}, updateUser, {new: true})
-    .then(() =>  res.status(200).json({ message: 'Success' }))
+    .then(res =>  {
+      console.log(res)
+      return res.status(200).json(user)
+    })
 })
 
 
