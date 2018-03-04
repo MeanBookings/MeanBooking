@@ -14,7 +14,10 @@ export class EditDayComponent implements OnInit {
   error: String;
   constructor(public calendar:CalendarService) { }
   
-  ngOnInit() { }
+  ngOnInit() { 
+    this.switch = false;
+    this.btntext = "Edit day"
+  }
 
   editDay() {
     if (this.switch) {

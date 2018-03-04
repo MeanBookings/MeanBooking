@@ -22,4 +22,8 @@ export class SessionService {
             .map(res => res.json())
             .catch(this.handleError);
     }
+
+    // getUsers(): Observable<any> {
+        // return this.http.get(`)
+    // }
 }
