@@ -22,9 +22,9 @@ export class EditDayComponent implements OnInit {
       this.switch = !this.switch
       this.calendar.updateDays([this.day])
         .catch(e => this.error = e)
-        .subscribe(day => {
-          console.log(day)
-          this.day=day;
+        .subscribe(newDay => {
+          console.log(newDay)
+          this.day=newDay;
           this.outputcall.emit();
           this.closeDay();
         });

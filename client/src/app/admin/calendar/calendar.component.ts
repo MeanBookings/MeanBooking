@@ -47,11 +47,13 @@ export class CalendarComponent implements OnInit {
        } */
     });
   }
+
+
   countCancelled(booking){
     console.log(booking)
   }
+
   changeMonth(param) {
-    this.currentMonth;
     this.currentMonth = this.currentMonth + param;
     this.currentMonthText = moment().month(this.currentMonth).format('MMMM');
     if (this.currentMonth < 0) { this.currentYear = this.currentYear - 1; this.currentMonth = 11 }
@@ -90,7 +92,13 @@ export class CalendarComponent implements OnInit {
   }
 
   reloadCalendar(){
-    console.log('reload?')
+    this.calendar.changeCurrentMonth(this.currentMonth, this.currentYear).subscribe(month => {
+      this.days = month;
+      this.days.sort(function (a, b) {
+        return a.date < b.date ? -1 : a.date > b.date ? 1 : 0;
+      });
+    });
     //this.calendar.getDay(day).subscribe(day => this.day = day);
+  
   }
 }

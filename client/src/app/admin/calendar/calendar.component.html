@@ -46,8 +46,8 @@
             <i class="material-icons">settings</i>
           </span>
           <ng-template #daySettingsDisabled>
-            <span  matTooltip="Edit day disabled" matTooltipPosition="right" class="day-settings day-settings-disabled">
-                <i class="material-icons">settings</i>
+            <span  matTooltip="Day not modifiable" matTooltipPosition="right" (click)="getDay(day.date)" class="day-settings">
+                <i class="material-icons">warning</i>
             </span>
           </ng-template>
           <div class="day-bookings">

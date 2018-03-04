@@ -6,7 +6,6 @@
             <h4 class="day-config-title">Currently editing {{day.date | date : 'MMMM d, y'}}<br><small>#{{day._id}}</small></h4>
             <div class="status">Restaurant is 
                 <mat-form-field class="status-select">
-                    <!-- <input [class]="day.status" matInput [value]="day.status" [(ngModel)]="day.status" disabled={{!switch}}>  -->
                     <mat-select [value]="day.status" [class]="day.status" disabled={{!switch}} [(ngModel)]="day.status">
                             <mat-option value="open">
                               Open
@@ -33,7 +32,10 @@
                     </div>
                 </div>
             </div>
-            <button (click)="editDay()" mat-button id="edit">{{btntext}}</button>
+            <button *ngIf="day.books==0; else canNotModifyDay" (click)="editDay()" mat-button id="edit">{{btntext}}</button>
+            <ng-template #canNotModifyDay>
+                <span>This day has reservations and can't be modified</span>
+            </ng-template>
         </div>
     </div>
 </div>
