@@ -7,6 +7,7 @@
     padding-left: 5px;
     position: relative;
     span.today-text {
+      font-weight: 600;
       font-size: .4em;
       position: absolute;
       bottom: -10px;
@@ -49,55 +50,60 @@
     border-left: none;
     height: 150px;
     .day-inner {
-      .day-bookings {
-        text-align: center;
-        font-size: 1.5em;
-        font-weight: 300;
-        small {
-          font-size: .4em;
-        }
-        span {
-          background: $blue;
-          border-radius: 50%;
-          width: 60px;
-          height: 60px;
-          display: inline-block;
-          padding-top: 8px;
-          color: $white;
-          &.with-reservations {
-            background: $green;
-          }
-        }
-      }
-      &:hover {
-        background: $darkwhite;
-      }
-      height: 100%;
-      &.day-selected {
+      @include transition(all .3s linear);
+      &.with-reservations {
         background: $blue;
         color: $white;
-        i {
-          color: $white;
+        .day-bookings {
+          text-align: center;
+          font-size: 1.5em;
+          font-weight: 300;
+          small {
+            font-size: .4em;
+          }
+          /*span {
+             @include transition(all .3s linear);
+            border: 1px dotted transparent;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: inline-block;
+            padding-top: 8px; 
+            &:hover {
+              border-color: $main
+            }
+          }*/
+        }
+      }
+      height: 100%;
+      &.day-selected,
+      &:hover {
+        background: $yellow;
+        color: initial;
+        .day-settings {
+          opacity: 1;
         }
       }
       &.today {
-        background: $darkwhite;
+        background: $orange;
       }
       .day-settings {
+        opacity: 0;
         display: block;
         position: absolute;
         bottom: 0;
         left: 5px;
         color: $main;
         cursor: pointer;
+        @include transition(all .3s linear);
         &:hover {
           color: $red;
         }
         &.day-settings-disabled {
-          opacity: .5!important;
+          opacity: .5 !important;
           cursor: initial;
           &:hover {
-            color: initial!important;
+            color: initial !important;
           }
         }
       }
@@ -137,7 +143,7 @@
 
 #edit-day-wrapper {
   .overlay {
-    width: 200vw;
+    width: 300vw;
     height: 200vh;
     background: #fff;
     opacity: .8;
