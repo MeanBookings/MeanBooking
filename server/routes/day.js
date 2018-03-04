@@ -64,8 +64,8 @@ let updateaDia = (newDay) => {
 router.post('/', (req, res, next) => {
     let date = req.body.date
     Day.findOne({
-        date: date
-    }).populate('books')
+            date: date
+        })
         .then(day => {
             return res.status(200).json(day);
         })
@@ -92,11 +92,11 @@ router.get('/month', (req, res, next) => {
     //let until = moment().year(year).month(month).date(days).format('YYYY-MM-DD');
     let until = moment().month(month).year(year).endOf('Month').endOf("isoWeek").format('YYYY-MM-DD');
     Day.find({
-        date: {
-            $gte: from,
-            $lte: until
-        }
-    })
+            date: {
+                $gte: from,
+                $lte: until
+            }
+        }).populate('books')
         .then(days => {
             //CON PAPU
             /* days.forEach(d=>console.log(d.date))
