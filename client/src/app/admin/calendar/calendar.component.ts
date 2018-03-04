@@ -19,6 +19,10 @@ export class CalendarComponent implements OnInit {
   theDay:Array<any>;
   weekDays:Array<any>=['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
   day:any;
+
+  pending:number=0;
+  cancelled:number=0;
+  approved:number=0;
   constructor(public calendar: CalendarService, private render:Renderer) { }
 
   ngOnInit() {
@@ -27,6 +31,12 @@ export class CalendarComponent implements OnInit {
       this.days.sort(function (a, b) {
         return a.date < b.date ? -1 : a.date > b.date ? 1 : 0;
       });
+      /* this.days.forEach(d=>d.books.forEach(b=>{
+        if(b.status==='cancelled')this.cancelled++
+        if(b.status==='pending')this.pending++
+        if(b.status==='approved')this.approved++
+      }))
+      console.log(this.cancelled, this.pending, this.approved) */
       //this.days.forEach(d=>console.log(d.date))
       //for para completar días por delante del mes hasta llegar al lunes (CON MANU y PAPU)
       /*  let firstDay = new Date(this.days[0].date)
@@ -37,7 +47,9 @@ export class CalendarComponent implements OnInit {
        } */
     });
   }
-
+  countCancelled(booking){
+    console.log(booking)
+  }
   changeMonth(param) {
     this.currentMonth;
     this.currentMonth = this.currentMonth + param;

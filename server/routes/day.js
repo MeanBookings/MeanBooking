@@ -62,7 +62,7 @@ router.post('/', (req, res, next) => {
     let date = req.body.date
     Day.findOne({
             date: date
-        }).populate('books')
+        })
         .then(day => {
             return res.status(200).json(day);
         })
@@ -93,7 +93,7 @@ router.get('/month', (req, res, next) => {
                 $gte: from,
                 $lte: until
             }
-        })
+        }).populate('books')
         .then(days => {
             //CON PAPU
             /* days.forEach(d=>console.log(d.date))

@@ -44,7 +44,13 @@
           <small class="day-num">{{day.date | date:'dd'}}</small>
           <span matTooltip="Day settings" matTooltipPosition="right" (click)="getDay(day.date)" class="day-settings"><i class="material-icons">settings</i></span>
           <div class="day-bookings">
-            <span *ngFor="let booking of day.books">{{booking._id}}</span>
+            <span *ngFor="let booking of day.books">
+              <span countCancelled(booking)>son: </span>
+              <!--<span class="cancelled">{{booking.status==='cancelled'}}</span>
+              <span class="cancelled" *ngIf="booking.status==='cancelled'">{{cancelled+=1}}</span>
+              <span class="pending" *ngIf="booking.status==='pending'">{{pending++}}</span>
+              <span class="approved" *ngIf="booking.status==='approved'">{{approved++}}</span>-->
+            </span>
           </div>
         </div>
       </ng-template>
