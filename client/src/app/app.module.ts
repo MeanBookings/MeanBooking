@@ -40,6 +40,7 @@ import { EditDayComponent } from './admin/calendar/edit-day/edit-day.component';
 import { UserGuardService } from '../services/userguard.service';
 import { SnackBarComponent } from './home/bookingform/snack-bar/snack-bar.component';
 import { SnackBarProfileComponent } from './profile/snack-bar-profile/snack-bar-profile.component';
+import { ViewBookingsComponent } from './admin/calendar/view-bookings/view-bookings.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import { SnackBarProfileComponent } from './profile/snack-bar-profile/snack-bar-
     ArraySortPipe,
     EditDayComponent,
     SnackBarComponent,
-    SnackBarProfileComponent
+    SnackBarProfileComponent,
+    ViewBookingsComponent
   ],
   imports: [
     BrowserModule,

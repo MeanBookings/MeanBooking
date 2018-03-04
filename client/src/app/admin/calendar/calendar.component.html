@@ -10,8 +10,8 @@
   <mat-datepicker #pickerOut></mat-datepicker>
 </mat-form-field>
 <button (click)="getRange(pickerIn,pickerOut)">send</button> -->
-
-<editDay (outputcall)="reloadCalendar()" [day]="theDay"></editDay>
+<editDay [day]="theDay"></editDay>
+<view-bookings [bookings]="dayBookings"></view-bookings>
 <div class="container-fluid" id="calendar-header">
   <div class="row">
     <div class="col-sm-12">
@@ -35,23 +35,23 @@
 <div class="container-fluid" id="bookings-calendar">
   <div class="row">
     <div class="col day {{day.date | date:'EEEE' | lowercase}} {{day.status}}" *ngFor="let day of days; let i=index" >
-      <div *ngIf="today == (day.date | date:'MM/dd/yyyy'); else notToday" class="today day-inner">
+      <div *ngIf="today == (day.date | date:'MM/dd/yyyy'); else notToday" class="today day-inner" [ngClass]="{'with-reservations':day.books.length!==0}" (click)="getDayBookings(day.date)">
         <small class="day-num">{{day.date | date:'dd'}} <span class="today-text">today</span> </small>
-        <span matTooltip="Day settings" matTooltipPosition="right" (click)="getDay(day.date)" class="day-settings"><i class="material-icons">settings</i></span>
+        <span matTooltip="Day settings" matTooltipPosition="right" (click)="getDay(day.date)" class="day-settings"><i class="material-icons">more_horiz</i></span>
       </div>
       <ng-template #notToday>
-        <div class="not-today day-inner">
+        <div class="not-today day-inner" [ngClass]="{'with-reservations':day.books.length!==0}" (click)="getDayBookings(day.date)">
           <small class="day-num">{{day.date | date:'dd'}}</small>
           <span *ngIf="day.books==0; else daySettingsDisabled" matTooltip="Day settings" matTooltipPosition="right" (click)="getDay(day.date)" class="day-settings">
-            <i class="material-icons">settings</i>
+            <i class="material-icons">more_horiz</i>
           </span>
           <ng-template #daySettingsDisabled>
             <span  matTooltip="Day not modifiable" matTooltipPosition="right" (click)="getDay(day.date)" class="day-settings">
-                <i class="material-icons">warning</i>
+              <i class="material-icons">more_horiz</i>
             </span>
           </ng-template>
-          <div class="day-bookings" *ngIf="day.status!=='closed'">
-            <span [ngClass]="{'with-reservations':day.books.length!==0}">{{day.books.length}}<small>res.</small></span>
+          <div class="day-bookings" *ngIf="(day.status!=='closed')&&(day.books.length!==0)">
+            <span>{{day.books.length}}<small>res.</small></span>
           </div>
         </div>
       </ng-template>

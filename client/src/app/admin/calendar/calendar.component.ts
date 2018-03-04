@@ -23,6 +23,9 @@ export class CalendarComponent implements OnInit {
   pending:number=0;
   cancelled:number=0;
   approved:number=0;
+
+  dayBookings:Array<any>;
+
   constructor(public calendar: CalendarService, private render:Renderer) { }
 
   ngOnInit() {
@@ -48,10 +51,6 @@ export class CalendarComponent implements OnInit {
     });
   }
 
-
-  countCancelled(booking){
-    console.log(booking)
-  }
 
   changeMonth(param) {
     this.currentMonth = this.currentMonth + param;
@@ -91,6 +90,13 @@ export class CalendarComponent implements OnInit {
     })
   }
 
+  getDayBookings(date) {
+    this.calendar.getDay(date).subscribe(dayBookings => {
+      this.dayBookings = dayBookings.books
+      console.log(this.dayBookings)
+    })
+  }
+
   reloadCalendar(){
     this.calendar.changeCurrentMonth(this.currentMonth, this.currentYear).subscribe(month => {
       this.days = month;
@@ -98,7 +104,10 @@ export class CalendarComponent implements OnInit {
         return a.date < b.date ? -1 : a.date > b.date ? 1 : 0;
       });
     });
-    //this.calendar.getDay(day).subscribe(day => this.day = day);
-  
   }
+
+ /*  viewDayBookings() {
+
+  } */
+
 }
