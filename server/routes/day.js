@@ -16,7 +16,7 @@ router.post('/create', (req, res, next) => {
         })
 })
 let creaDia = (fecha) => {
-    Day.findOne({"date": fecha})
+    Day.findOne({ "date": fecha })
         .then((day) => {
             if (!day) {
                 let theDay = new Day({
@@ -31,7 +31,7 @@ let creaDia = (fecha) => {
 // /api/day/edit - Update the basic day to special day.
 router.post('/edit', (req, res, next) => {
     days = req.body;
-    Promise.all(days.map(d => updateDay(d)))
+    Promise.all(days.map(d => updateaDay(d)))
         .then(result => {
             res.status(200).json(days[0])
         })
@@ -50,25 +50,22 @@ let updateaDay = (newDay) => {
 // /api/day/edit/range
 //MODIFICAR PARA HACER LO QUE HACE EL SERVICIO :D
 router.post('/edit/range', (req, res, next) => {
-    let dates = req.body.dates;
-    let dayConfig = req.body.dayConfig;
+    dates = req.body.dates;
+    dayConfig = req.body.dayConfig;
     Promise.all(dates.map(d => updateDayRange(d, dayConfig)))
-        .then(result => {res.status(200).json(dates)})
+        .then(result => { res.status(200).json(dates) })
         .catch(e => res.status(500).json(e))
 })
 
-let updateDayRange = (newDay, config) => {
-    newDay.status = config.status;
-    newDay.shift = config.shift;
-    console.log(newDay.books.length)
-    console.log("before holi")
-    if (newDay.books.length < 1) {
-        console.log ("holi")
-        Day.findOneAndUpdate({ "date": newDay.date }, newDay, { new: true })
-            .then(day => {
-                return day;
-            })
-    }
+let updateDayRange = (updDay, config) => {
+    let fechaFormateada = moment(updDay).format("YYYY-MM-DD 14:mm:ss")
+    Day.findOneAndUpdate({ "date": fechaFormateada }, { $set: { status: [config.status], shift: [config.shift] } })
+        .then((day) => {
+            return day;
+        })
+        .catch(e => console.log(e))
+
+
 }
 
 //CHECK AVAILABILITY

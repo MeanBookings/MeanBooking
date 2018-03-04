@@ -52,8 +52,8 @@ export class AdminComponent implements OnInit {
   }
 
   updateDays(a, b) {
-    let startDate = moment(a._selected)
-    let endDate = moment(b._selected)
+    let startDate = a._selected;
+    let endDate = b._selected;
     let dates = [],
       currentDate = startDate,
       addDays = function (days) {
@@ -66,7 +66,7 @@ export class AdminComponent implements OnInit {
       currentDate = addDays.call(currentDate, 1);
     }
     console.log(dates)
-    console.log(this.dayConfig)
+    // console.log(this.dayConfig)
     this.calendar.updateDays(dates, this.dayConfig).subscribe(result => {
       this.message = result;
       console.log(result)
