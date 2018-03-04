@@ -50,14 +50,8 @@
                 <i class="material-icons">warning</i>
             </span>
           </ng-template>
-          <div class="day-bookings">
-            <span *ngFor="let booking of day.books">
-            <!--   <span countCancelled(booking)>son: </span> -->
-              <!--<span class="cancelled">{{booking.status==='cancelled'}}</span>
-              <span class="cancelled" *ngIf="booking.status==='cancelled'">{{cancelled+=1}}</span>
-              <span class="pending" *ngIf="booking.status==='pending'">{{pending++}}</span>
-              <span class="approved" *ngIf="booking.status==='approved'">{{approved++}}</span>-->
-            </span>
+          <div class="day-bookings" *ngIf="day.status!=='closed'">
+            <span [ngClass]="{'with-reservations':day.books.length!==0}">{{day.books.length}}<small>res.</small></span>
           </div>
         </div>
       </ng-template>
