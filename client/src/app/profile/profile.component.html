@@ -1,11 +1,12 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-6 offset-sm-3">
+      <h6>This is your profile info. <br><small>Click on Edit button to make some changes</small></h6>
       <div class="update-profile">
         <mat-form-field class="full-width">
           <input matInput placeholder="Name" [(ngModel)]="currentUser.name" disabled={{!switch}}> </mat-form-field>
         <mat-form-field class="full-width">
-          <input matInput placeholder="Email" [(ngModel)]="currentUser.email" disabled=true> </mat-form-field>
+          <input matInput placeholder="Email (email can`t be changed)" [(ngModel)]="currentUser.email" disabled=true> </mat-form-field>
         <mat-form-field class="full-width">
           <input matInput placeholder="Phone" [(ngModel)]="currentUser.phone" disabled={{!switch}}> </mat-form-field>
         <mat-form-field class="full-width">

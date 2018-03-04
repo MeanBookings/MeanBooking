@@ -11,7 +11,7 @@
 </mat-form-field>
 <button (click)="getRange(pickerIn,pickerOut)">send</button> -->
 
-<editDay [day]="theDay"></editDay>
+<editDay (outputcall)="reloadCalendar()" [day]="theDay"></editDay>
 <div class="container-fluid" id="calendar-header">
   <div class="row">
     <div class="col-sm-12">
@@ -36,13 +36,16 @@
   <div class="row">
     <div class="col day {{day.date | date:'EEEE' | lowercase}} {{day.status}}" *ngFor="let day of days; let i=index" >
       <div *ngIf="today == (day.date | date:'MM/dd/yyyy'); else notToday" class="today day-inner">
-        <small class="day-num">{{day.date | date:'dd'}}</small>
+        <small class="day-num">{{day.date | date:'dd'}} <span class="today-text">today</span> </small>
         <span matTooltip="Day settings" matTooltipPosition="right" (click)="getDay(day.date)" class="day-settings"><i class="material-icons">settings</i></span>
       </div>
       <ng-template #notToday>
         <div class="not-today day-inner">
           <small class="day-num">{{day.date | date:'dd'}}</small>
           <span matTooltip="Day settings" matTooltipPosition="right" (click)="getDay(day.date)" class="day-settings"><i class="material-icons">settings</i></span>
+          <div class="day-bookings">
+            <span *ngFor="let booking of day.books">{{booking._id}}</span>
+          </div>
         </div>
       </ng-template>
     </div>

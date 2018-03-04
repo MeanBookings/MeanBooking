@@ -5,6 +5,13 @@
     font-size: 1.6em;
     font-weight: 300;
     padding-left: 5px;
+    position: relative;
+    span.today-text {
+      font-size: .4em;
+      position: absolute;
+      bottom: -10px;
+      left: 6px;
+    }
   }
   &.open,
   &.closed {
@@ -86,10 +93,47 @@
 }
 
 #edit-day-wrapper {
+  .overlay {
+    width: 200vw;
+    height: 200vh;
+    background: #fff;
+    opacity: .8;
+    position: fixed;
+    top: -100vh;
+    left: -100vh;
+  }
+  -webkit-box-shadow: 0px 0px 40px 8px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 0px 40px 8px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 40px 8px rgba(0, 0, 0, 0.75);
   text-align: center;
+  z-index: 9;
+  background: white;
+  border: 1px solid $blue;
+  transform: translate(-50%, -80%);
+  position: absolute;
+  padding: 30px;
+  top: 50%;
+  left: 50%;
+  .close-edit-day {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    cursor: pointer;
+    &:hover {
+      color: $red;
+    }
+  }
+  .day-config-title {
+    small {
+      font-size: .5em;
+    }
+  }
   .shifts-text {
     margin-bottom: 15px;
     display: inline-block;
+    small {
+      font-weight: 100;
+    }
   }
   .shift-hour {
     font-size: 1.2em;
@@ -124,6 +168,19 @@
       &.closed {
         background: $red;
       }
+    }
+  }
+}
+
+@media screen and (max-width:767px) {
+  #edit-day-wrapper {
+    -webkit-box-shadow: 0px 0px 40px 8px rgba(0, 0, 0, 0.15);
+    -moz-box-shadow: 0px 0px 40px 8px rgba(0, 0, 0, 0.15);
+    box-shadow: 0px 0px 40px 8px rgba(0, 0, 0, 0.15);
+    transform: translate(-50%, -20%);
+    .overlay {
+      height: 500vh;
+      top: -100vh;
     }
   }
 }

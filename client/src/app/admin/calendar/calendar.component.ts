@@ -18,7 +18,7 @@ export class CalendarComponent implements OnInit {
   today = moment().format('L');
   theDay:Array<any>;
   weekDays:Array<any>=['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
-
+  day:any;
   constructor(public calendar: CalendarService, private render:Renderer) { }
 
   ngOnInit() {
@@ -77,4 +77,8 @@ export class CalendarComponent implements OnInit {
     })
   }
 
+  reloadCalendar(){
+    console.log('reload?')
+    //this.calendar.getDay(day).subscribe(day => this.day = day);
+  }
 }

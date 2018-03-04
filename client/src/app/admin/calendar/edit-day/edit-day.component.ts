@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { CalendarService } from '../../../../services/calendar.service';
 
 @Component({
@@ -8,9 +8,10 @@ import { CalendarService } from '../../../../services/calendar.service';
 })
 export class EditDayComponent implements OnInit {
   @Input() day;
+  @Output() outputcall = new EventEmitter<string>();
   switch = false;
   btntext: String = "Edit day";
-
+  error: String;
   constructor(public calendar:CalendarService) { }
   
   ngOnInit() { }
@@ -19,12 +20,19 @@ export class EditDayComponent implements OnInit {
     if (this.switch) {
       this.btntext = "Update day"
       this.switch = !this.switch
-      /* this.calendar.updateDays(this.currentUser)
+      this.calendar.updateDays([this.day])
         .catch(e => this.error = e)
-        .subscribe(user => console.log(`Updated ${user.name}`)); */
+        .subscribe(day => {
+          //console.log(day)
+          this.outputcall.emit();
+          this.day=day;
+        });
     } else {
       this.btntext = "Edit day"
       this.switch = !this.switch
     }
+  }
+  closeDay(){
+    this.day=null
   }
 }
