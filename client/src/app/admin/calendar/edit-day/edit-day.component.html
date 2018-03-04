@@ -16,7 +16,7 @@
                             </mat-option>
                     </mat-select>
                 </mat-form-field>
-                and we have {{day.books.length}} <span *ngIf="day.books.length!==1; else oneReservation">reservations</span><ng-template #oneReservation><span>reservation</span></ng-template>.
+                and we have {{day.books.length}}.
             </div>
             <div class="shifts">
                 <span class="shifts-text">Configure the shifts and availability <br><small>(zero means no shift this day)</small>:</span>
