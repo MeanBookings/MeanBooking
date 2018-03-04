@@ -2,5 +2,6 @@ module.exports = [
     "pending", 
     "approved", 
     "cancelled", 
-    "not show"
+    "not show",
+    "show"
 ];

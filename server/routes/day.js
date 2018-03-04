@@ -17,8 +17,8 @@ router.post('/create', (req, res, next) => {
 })
 let creaDia = (fecha) => {
     Day.findOne({
-            "date": fecha
-        })
+        "date": fecha
+    })
         .then((day) => {
             if (!day) {
                 let theDay = new Day({
@@ -30,29 +30,32 @@ let creaDia = (fecha) => {
         })
 }
 
+// router.post('/get', (req, res, next) => {
+//     let dates = req.body
+//     Promise.all(dates.map((d) => busquedaDia(d))).then(dates => res.status(200).json(dates))
+// });
+
+// let busquedaDia = (day) => Day.find({
+//     "date": day
+// })
+
 // /api/day/edit - Update the basic day to special day.
 router.post('/edit', (req, res, next) => {
     days = req.body;
-    console.log(days)
-    Promise.all(days.map(d => updateaDia(d))).then(res => {
-        //console.log('en el promise ' + JSON.stringify(days))
-        console.log( days)
-        return res.status(200).json(days)
-    })
-    .catch(e=>console.log(e))
+    Promise.all(days.map(d => updateaDia(d)))
+        .then(result => {
+                res.status(200).json(`Day updated`)
+        })
+        .catch(e => res.status(500).json(e))
 })
 
-updateaDia = newDay => {
+let updateaDia = (newDay) => {
     if (newDay.books.length < 1) {
-        Day.findOneAndUpdate({
-                "date": newDay.date
-            }, newDay, {
-                new: true
-            })
-            .then(day => {
-                //console.log('en la fx aux ' + day)
-                return day;
-            })
+        Day.findOneAndUpdate({ "date": newDay.date }, newDay, { new: true })
+        // .then(day => {
+        //     //console.log('en la fx aux ' + day)
+        //     return day;
+        // })
     }
 }
 
@@ -61,8 +64,8 @@ updateaDia = newDay => {
 router.post('/', (req, res, next) => {
     let date = req.body.date
     Day.findOne({
-            date: date
-        }).populate('books')
+        date: date
+    }).populate('books')
         .then(day => {
             return res.status(200).json(day);
         })
@@ -86,14 +89,14 @@ router.get('/month', (req, res, next) => {
     let days = moment(month + 1, 'M').daysInMonth()
     if ((moment([year]).isLeapYear()) && (month == 1))
         days++
-        //let until = moment().year(year).month(month).date(days).format('YYYY-MM-DD');
-        let until = moment().month(month).year(year).endOf('Month').endOf("isoWeek").format('YYYY-MM-DD');
+    //let until = moment().year(year).month(month).date(days).format('YYYY-MM-DD');
+    let until = moment().month(month).year(year).endOf('Month').endOf("isoWeek").format('YYYY-MM-DD');
     Day.find({
-            date: {
-                $gte: from,
-                $lte: until
-            }
-        })
+        date: {
+            $gte: from,
+            $lte: until
+        }
+    })
         .then(days => {
             //CON PAPU
             /* days.forEach(d=>console.log(d.date))
@@ -123,13 +126,13 @@ router.post('/month/view', (req, res, next) => {
     let days = moment(monthToView + 1, 'M').daysInMonth()
     if ((moment([year]).isLeapYear()) && (monthToView == 1))
         days++
-        let until = moment().month(monthToView).year(year).endOf('Month').endOf("isoWeek").format('YYYY-MM-DD');
+    let until = moment().month(monthToView).year(year).endOf('Month').endOf("isoWeek").format('YYYY-MM-DD');
     Day.find({
-            date: {
-                $gte: from,
-                $lte: until
-            }
-        })
+        date: {
+            $gte: from,
+            $lte: until
+        }
+    })
         .then(days => {
             res.status(200).json(days)
         })
