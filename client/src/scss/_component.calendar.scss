@@ -69,6 +69,13 @@
         &:hover {
           color: $red;
         }
+        &.day-settings-disabled {
+          opacity: .5!important;
+          cursor: initial;
+          &:hover {
+            color: initial!important;
+          }
+        }
       }
     }
   }
@@ -90,6 +97,18 @@
     font-size: 1.3em;
     font-weight: 500;
   }
+  .prev-next-calendar {
+    position: absolute;
+    right: 0;
+    z-index: 99;
+    i {
+      font-size: 2em;
+      cursor: pointer;
+      &:hover {
+        color: $red;
+      }
+    }
+  }
 }
 
 #edit-day-wrapper {
@@ -109,7 +128,7 @@
   z-index: 9;
   background: white;
   border: 1px solid $blue;
-  transform: translate(-50%, -80%);
+  transform: translate(-50%, -50%);
   position: absolute;
   padding: 30px;
   top: 50%;
@@ -177,7 +196,7 @@
     -webkit-box-shadow: 0px 0px 40px 8px rgba(0, 0, 0, 0.15);
     -moz-box-shadow: 0px 0px 40px 8px rgba(0, 0, 0, 0.15);
     box-shadow: 0px 0px 40px 8px rgba(0, 0, 0, 0.15);
-    transform: translate(-50%, -20%);
+    transform: translate(-50%, -50%);
     .overlay {
       height: 500vh;
       top: -100vh;

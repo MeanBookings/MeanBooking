@@ -42,7 +42,14 @@
       <ng-template #notToday>
         <div class="not-today day-inner">
           <small class="day-num">{{day.date | date:'dd'}}</small>
-          <span matTooltip="Day settings" matTooltipPosition="right" (click)="getDay(day.date)" class="day-settings"><i class="material-icons">settings</i></span>
+          <span *ngIf="day.books==0; else daySettingsDisabled" matTooltip="Day settings" matTooltipPosition="right" (click)="getDay(day.date)" class="day-settings">
+            <i class="material-icons">settings</i>
+          </span>
+          <ng-template #daySettingsDisabled>
+            <span  matTooltip="Edit day disabled" matTooltipPosition="right" class="day-settings day-settings-disabled">
+                <i class="material-icons">settings</i>
+            </span>
+          </ng-template>
           <div class="day-bookings">
             <span *ngFor="let booking of day.books">
             <!--   <span countCancelled(booking)>son: </span> -->
