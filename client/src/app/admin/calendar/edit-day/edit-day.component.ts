@@ -26,6 +26,7 @@ export class EditDayComponent implements OnInit {
           console.log(day)
           this.day=day;
           this.outputcall.emit();
+          this.closeDay();
         });
     } else {
       this.btntext = "Edit day"
