@@ -30,21 +30,13 @@ let creaDia = (fecha) => {
         })
 }
 
-// router.post('/get', (req, res, next) => {
-//     let dates = req.body
-//     Promise.all(dates.map((d) => busquedaDia(d))).then(dates => res.status(200).json(dates))
-// });
-
-// let busquedaDia = (day) => Day.find({
-//     "date": day
-// })
 
 // /api/day/edit - Update the basic day to special day.
 router.post('/edit', (req, res, next) => {
     days = req.body;
     Promise.all(days.map(d => updateaDia(d)))
         .then(result => {
-                res.status(200).json(`Day updated`)
+                res.status(200).json(days[0])
         })
         .catch(e => res.status(500).json(e))
 })
@@ -52,10 +44,9 @@ router.post('/edit', (req, res, next) => {
 let updateaDia = (newDay) => {
     if (newDay.books.length < 1) {
         Day.findOneAndUpdate({ "date": newDay.date }, newDay, { new: true })
-        // .then(day => {
-        //     //console.log('en la fx aux ' + day)
-        //     return day;
-        // })
+        .then(day => {
+            return day;
+        })
     }
 }
 

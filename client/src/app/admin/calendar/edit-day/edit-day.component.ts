@@ -23,9 +23,9 @@ export class EditDayComponent implements OnInit {
       this.calendar.updateDays([this.day])
         .catch(e => this.error = e)
         .subscribe(day => {
-          //console.log(day)
-          this.outputcall.emit();
+          console.log(day)
           this.day=day;
+          this.outputcall.emit();
         });
     } else {
       this.btntext = "Edit day"

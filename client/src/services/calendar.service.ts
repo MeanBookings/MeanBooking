@@ -51,8 +51,8 @@ export class CalendarService {
     updateDays(dates): Observable<any> {
         return this.http.post(`${this.BASEURL}/api/day/edit`, dates, this.options)
         .map( res => {
-            console.log('back in the service '+res)
-            return res
+            console.log(JSON.stringify(res))
+            return res.json()
         })
         .catch(this.handleError)
     }
