@@ -1,7 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-sm-6"></div>
-    <div class="offset-sm-3">
+    <div class="col-sm-12">
       <mat-tab-group>
         <mat-tab label="Massive Day Creation">
           <mat-form-field>
@@ -51,7 +50,7 @@
               <br>
               <small>(zero means no shift this day)</small>:</span>
             <div class="row">
-              <div class="col-6 col-sm-4 col-md-1 text-center" *ngFor="let shift of dayConfig.shift; let i=index;">
+              <div class="col-6 col-sm-3 col-lg-2 text-center" *ngFor="let shift of dayConfig.shift; let i=index;">
                 <div class="shift-hour">
                   {{shift.hour}}
                 </div>

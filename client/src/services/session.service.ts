@@ -22,13 +22,9 @@ export class SessionService {
 
   private user: User;
 
-  getUser() {
-    return this.user;
-  }
+  getUser() { return this.user; }
 
-  getAdmin() {
-    if (this.user.role === 'admin') { return this.user }
-  }
+  getAdmin() { if (this.user.role === 'admin') { return this.user } }
 
   private configureUser(set = false) {
     return (user) => {
