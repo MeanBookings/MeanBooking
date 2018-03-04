@@ -16,9 +16,7 @@ router.post('/create', (req, res, next) => {
         })
 })
 let creaDia = (fecha) => {
-    Day.findOne({
-        "date": fecha
-    })
+    Day.findOne({"date": fecha})
         .then((day) => {
             if (!day) {
                 let theDay = new Day({
@@ -30,23 +28,46 @@ let creaDia = (fecha) => {
         })
 }
 
-
 // /api/day/edit - Update the basic day to special day.
 router.post('/edit', (req, res, next) => {
     days = req.body;
-    Promise.all(days.map(d => updateaDia(d)))
+    Promise.all(days.map(d => updateDay(d)))
         .then(result => {
-                res.status(200).json(days[0])
+            res.status(200).json(days[0])
         })
         .catch(e => res.status(500).json(e))
 })
 
-let updateaDia = (newDay) => {
+let updateaDay = (newDay) => {
     if (newDay.books.length < 1) {
         Day.findOneAndUpdate({ "date": newDay.date }, newDay, { new: true })
-        .then(day => {
-            return day;
-        })
+            .then(day => {
+                return day;
+            })
+    }
+}
+
+// /api/day/edit/range
+//MODIFICAR PARA HACER LO QUE HACE EL SERVICIO :D
+router.post('/edit/range', (req, res, next) => {
+    let dates = req.body.dates;
+    let dayConfig = req.body.dayConfig;
+    Promise.all(dates.map(d => updateDayRange(d, dayConfig)))
+        .then(result => {res.status(200).json(dates)})
+        .catch(e => res.status(500).json(e))
+})
+
+let updateDayRange = (newDay, config) => {
+    newDay.status = config.status;
+    newDay.shift = config.shift;
+    console.log(newDay.books.length)
+    console.log("before holi")
+    if (newDay.books.length < 1) {
+        console.log ("holi")
+        Day.findOneAndUpdate({ "date": newDay.date }, newDay, { new: true })
+            .then(day => {
+                return day;
+            })
     }
 }
 
@@ -55,8 +76,8 @@ let updateaDia = (newDay) => {
 router.post('/', (req, res, next) => {
     let date = req.body.date
     Day.findOne({
-            date: date
-        })
+        date: date
+    })
         .then(day => {
             return res.status(200).json(day);
         })
@@ -70,7 +91,6 @@ router.post('/', (req, res, next) => {
         })
 });
 
-
 // GET THE MONTH BUILD COMPONENT
 // /api/day/get/month
 router.get('/month', (req, res, next) => {
@@ -83,11 +103,11 @@ router.get('/month', (req, res, next) => {
     //let until = moment().year(year).month(month).date(days).format('YYYY-MM-DD');
     let until = moment().month(month).year(year).endOf('Month').endOf("isoWeek").format('YYYY-MM-DD');
     Day.find({
-            date: {
-                $gte: from,
-                $lte: until
-            }
-        }).populate('books')
+        date: {
+            $gte: from,
+            $lte: until
+        }
+    }).populate('books')
         .then(days => {
             //CON PAPU
             /* days.forEach(d=>console.log(d.date))
@@ -146,6 +166,5 @@ router.post('/get', (req, res, next) => {
 let busquedaDia = (day) => Day.find({
     "date": day
 })
-
 
 module.exports = router;

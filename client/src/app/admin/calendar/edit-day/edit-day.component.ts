@@ -23,7 +23,8 @@ export class EditDayComponent implements OnInit {
     if (this.switch) {
       this.btntext = "Update day"
       this.switch = !this.switch
-      this.calendar.updateDays([this.day])
+      //he cambiado el updatedays, por un updateday con un solo parametro, en vez de dos como el days
+      this.calendar.updateDay([this.day])
         .catch(e => this.error = e)
         .subscribe(newDay => {
           console.log(newDay)

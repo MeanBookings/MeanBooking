@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 //material
-import { MatTooltipModule, MatSelectModule, MatIconModule, MatButtonModule, MatCheckboxModule, MatExpansionModule, MatInputModule, MatDatepickerModule, MatNativeDateModule, MatTabsModule, MatSliderModule, MAT_DATE_LOCALE , MatMenuModule, MatSnackBar, MatSnackBarModule, MatSnackBarContainer} from '@angular/material';
+import { MatTooltipModule, MatSelectModule, MatIconModule, MatButtonModule, MatCheckboxModule,MatDividerModule, MatExpansionModule, MatInputModule, MatDatepickerModule, MatNativeDateModule, MatTabsModule, MatSliderModule, MAT_DATE_LOCALE, MatMenuModule, MatSnackBar, MatSnackBarModule, MatSnackBarContainer } from '@angular/material';
 //routes
 import { routes } from './routes';
 import { RouterModule } from '@angular/router';
@@ -28,6 +28,7 @@ import { AdminComponent } from './admin/admin.component';
 import { UsersComponent } from './admin/users/users.component';
 import { BookingformComponent } from './home/bookingform/bookingform.component';
 //services
+import { UserService } from '../services/user.service'
 import { BookingService } from '../services/booking.service';
 import { CalendarService } from '../services/calendar.service';
 import { AdminGuardService } from '../services/adminguard.service';
@@ -69,6 +70,7 @@ import { SnackBarProfileComponent } from './profile/snack-bar-profile/snack-bar-
     BrowserAnimationsModule,
     MatButtonModule,
     MatCheckboxModule,
+    MatDividerModule,
     MatExpansionModule,
     MatSnackBarModule,
     MatInputModule,
@@ -81,8 +83,9 @@ import { SnackBarProfileComponent } from './profile/snack-bar-profile/snack-bar-
     MatNativeDateModule,
     MatSliderModule
   ],
-  entryComponents: [SnackBarComponent,BookingformComponent,SnackBarProfileComponent,ProfileComponent],
-  providers: [SessionService, BookingService, AdminGuardService, CalendarService, UserGuardService, { provide: LOCALE_ID, useValue: "es-ES" }],
+  entryComponents: [SnackBarComponent, BookingformComponent, SnackBarProfileComponent, ProfileComponent],
+  providers: [UserService, SessionService, BookingService, AdminGuardService, CalendarService, UserGuardService, { provide: LOCALE_ID, useValue: "es-ES" }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+

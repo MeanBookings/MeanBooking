@@ -5,7 +5,7 @@ import 'rxjs/add/operator/catch';
 import { Observable } from 'rxjs/Rx';
 
 @Injectable()
-export class SessionService {
+export class UserService {
 
     BASEURL: string = "http://localhost:3000"
     options: object = { withCredentials: true };
@@ -23,7 +23,9 @@ export class SessionService {
             .catch(this.handleError);
     }
 
-    // getUsers(): Observable<any> {
-        // return this.http.get(`)
-    // }
+    getUsers(): Observable<any> {
+        return this.http.get(`${this.BASEURL}/api/user/`, this.options)
+            .map(res => res.json())
+            .catch(this.handleError);
+    }
 }

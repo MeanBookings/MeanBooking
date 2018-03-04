@@ -17,7 +17,7 @@ export class CalendarService {
         return Observable.throw(e.json().message);
     }
     getDay(date): Observable<any> {
-        return this.http.post(`${this.BASEURL}/api/day/`, {date:date}, this.options)
+        return this.http.post(`${this.BASEURL}/api/day/`, { date: date }, this.options)
             .map(res => res.json())
             .catch(this.handleError);
     }
@@ -34,8 +34,8 @@ export class CalendarService {
             .catch(this.handleError);
     }
 
-    changeCurrentMonth(month,year): Observable<any> {
-        return this.http.post(`${this.BASEURL}/api/day/month/view`, {monthToView:month,year:year}, this.options)
+    changeCurrentMonth(month, year): Observable<any> {
+        return this.http.post(`${this.BASEURL}/api/day/month/view`, { monthToView: month, year: year }, this.options)
             .map(res => res.json())
             .catch(this.handleError);
     }
@@ -48,13 +48,22 @@ export class CalendarService {
             .catch(this.handleError);
     }
 
-    updateDays(dates): Observable<any> {
+    updateDays(dates, dayConfig): Observable<any> {
+        return this.http.post(`${this.BASEURL}/api/day/edit/range`, { dates, dayConfig }, this.options)
+            .map(res => {
+                //console.log(JSON.stringify(res))
+                return res.json()
+            })
+            .catch(this.handleError)
+    }
+
+    updateDay(dates): Observable<any> {
         return this.http.post(`${this.BASEURL}/api/day/edit`, dates, this.options)
-        .map( res => {
-            //console.log(JSON.stringify(res))
-            return res.json()
-        })
-        .catch(this.handleError)
+            .map(res => {
+                //console.log(JSON.stringify(res))
+                return res.json()
+            })
+            .catch(this.handleError)
     }
 
 }

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from '../../../services/user.service';
+
 
 @Component({
   selector: 'users',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UsersComponent implements OnInit {
 
-  constructor() { }
+  users:any;
+  constructor(public profile:UserService) { }
 
   ngOnInit() {
+    this.profile.getUsers().subscribe((usersGet)=> this.users = usersGet )
   }
+
 
 }
