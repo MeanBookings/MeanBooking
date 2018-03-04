@@ -31,7 +31,7 @@ let creaDia = (fecha) => {
 // /api/day/edit - Update the basic day to special day.
 router.post('/edit', (req, res, next) => {
     days = req.body;
-    Promise.all(days.map(d => updateDay(d)))
+    Promise.all(days.map(d => updateaDay(d)))
         .then(result => {
             res.status(200).json(days[0])
         })
@@ -78,6 +78,7 @@ router.post('/', (req, res, next) => {
     Day.findOne({
         date: date
     })
+    .populate({ path: "books", populate: {path: 'user', models: "user"}})
         .then(day => {
             return res.status(200).json(day);
         })
