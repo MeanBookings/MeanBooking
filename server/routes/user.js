@@ -22,5 +22,12 @@ router.get('/delete/:id', onlyMe, (req, res, next) => {
         .catch(e => res.status(500).json(e))
 });
 
+// api/user/makeadmin/:id
+router.get('/makeadmin/:id', onlyMe, (req, res, next) => {
+    User.findByIdAndUpdate(req.params.id, {"role":"admin"})
+        .then(() => res.status(200).json({ message: 'Updated' }))
+        .catch(e => res.status(500).json(e))
+});
+
 
 module.exports = router;
