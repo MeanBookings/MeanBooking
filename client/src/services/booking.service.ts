@@ -3,11 +3,9 @@ import { Http, Response } from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import { Observable } from 'rxjs/Rx';
-
+import { environment } from '../environments/environment'
 @Injectable()
 export class BookingService {
-
-    BASEURL: string = "http://localhost:3000"
     options: object = { withCredentials: true };
     constructor(private http: Http) {
     }
@@ -18,25 +16,33 @@ export class BookingService {
     }
 
     placeBooking(data): Observable<any> {
-        return this.http.post(`${this.BASEURL}/api/book/create`, data, this.options)
+        return this.http.post(`${environment.BASEURL}/api/book/create`, data, this.options)
             .map(res => res.json())
             .catch(this.handleError);
     }
 
-    
     checkDayAvailability(date): Observable<any> {
-        return this.http.post(`${this.BASEURL}/api/day/`, {date:date}, this.options)
+        return this.http.post(`${environment.BASEURL}/api/day/`, {date:date}, this.options)
             .map(res => {
                 return res.json()
             })
             .catch(this.handleError);
     }
 
-    updateBookings(bookings): Observable<any> {
-        console.log(bookings)
-        return;
+    updateBookings(status,id): Observable<any> {
+        return this.http.post(`${environment.BASEURL}/api/book/edit/${id}`, {status:status}, this.options)
+            .map(res => {
+                return res.json()
+            })
+            .catch(this.handleError);
     }
-
+    deleteBookings(hash): Observable<any> {
+        return this.http.get(`${environment.BASEURL}/api/book/delete/${hash}`, this.options)
+            .map(res => {
+                return res.json()
+            })
+            .catch(this.handleError);
+    }
 }
 
 

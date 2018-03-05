@@ -10,7 +10,6 @@ import { UserGuardService } from '../services/userguard.service';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent },
-    { path: 'bookings', component: BookingsComponent },
     { path: 'profile', component: ProfileComponent, canActivate: [UserGuardService] },
     { path: 'dashboard', component: AdminComponent, canActivate: [AdminGuardService] },
     { path: 'bookings', component: CalendarComponent, canActivate: [AdminGuardService] },

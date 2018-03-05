@@ -7,3 +7,10 @@
 .full-width {
   width: 100%;
 }
+.signup-wrapper,.login-wrapper{
+  .mat-form-field {
+    width: 100%;
+    max-width:100%;
+  }
+}
+

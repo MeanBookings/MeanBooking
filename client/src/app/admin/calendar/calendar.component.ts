@@ -16,17 +16,17 @@ export class CalendarComponent implements OnInit {
   currentMonthText: string = moment().month(this.currentMonth).format('MMMM');
   currentYear = moment().year();
   today = moment().format('L');
-  theDay:Array<any>;
-  weekDays:Array<any>=['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
-  day:any;
+  theDay: Array<any>;
+  weekDays: Array<any> = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+  day: any;
 
-  pending:number=0;
-  cancelled:number=0;
-  approved:number=0;
+  pending: number = 0;
+  cancelled: number = 0;
+  approved: number = 0;
 
-  dayBookings:Array<any>;
+  dayBookings: Array<any>;
 
-  constructor(public calendar: CalendarService, private render:Renderer) { }
+  constructor(public calendar: CalendarService, private render: Renderer) { }
 
   ngOnInit() {
     this.calendar.getCurrentMonth().subscribe(month => {
@@ -34,23 +34,8 @@ export class CalendarComponent implements OnInit {
       this.days.sort(function (a, b) {
         return a.date < b.date ? -1 : a.date > b.date ? 1 : 0;
       });
-      /* this.days.forEach(d=>d.books.forEach(b=>{
-        if(b.status==='cancelled')this.cancelled++
-        if(b.status==='pending')this.pending++
-        if(b.status==='approved')this.approved++
-      }))
-      console.log(this.cancelled, this.pending, this.approved) */
-      //this.days.forEach(d=>console.log(d.date))
-      //for para completar días por delante del mes hasta llegar al lunes (CON MANU y PAPU)
-      /*  let firstDay = new Date(this.days[0].date)
-       for (let i = 1; i <= new Date(firstDay).getDay() - 1; i++) {
-         let date = new Date()
-         date.setDate(firstDay.getDate() - i)
-         this.days.unshift({ date: date })
-       } */
     });
   }
-
 
   changeMonth(param) {
     this.currentMonth = this.currentMonth + param;
@@ -92,12 +77,11 @@ export class CalendarComponent implements OnInit {
 
   getDayBookings(date) {
     this.calendar.getDay(date).subscribe(dayBookings => {
-      console.log(dayBookings)
       this.dayBookings = dayBookings
     })
   }
 
-  reloadCalendar(){
+  reloadCalendar() {
     this.calendar.changeCurrentMonth(this.currentMonth, this.currentYear).subscribe(month => {
       this.days = month;
       this.days.sort(function (a, b) {
@@ -105,6 +89,5 @@ export class CalendarComponent implements OnInit {
       });
     });
   }
-
 
 }

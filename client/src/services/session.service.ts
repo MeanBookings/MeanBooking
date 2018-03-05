@@ -3,6 +3,7 @@ import { Http, Response } from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import { Observable } from 'rxjs/Rx';
+import { environment } from '../environments/environment'
 
 interface User {
   name: string,
@@ -14,7 +15,6 @@ interface User {
 @Injectable()
 export class SessionService {
 
-  BASEURL: string = "http://localhost:3000"
   options: object = { withCredentials: true };
   constructor(private http: Http) {
     this.isLoggedIn().subscribe();
@@ -46,7 +46,7 @@ export class SessionService {
 
   signup(name: string, password: string, email: string, phone: string): Observable<any> {
     console.log(name, password, email, phone)
-    return this.http.post(`${this.BASEURL}/api/auth/signup`, { username: name, password, email, phone }, this.options)
+    return this.http.post(`${environment.BASEURL}/api/auth/signup`, { username: name, password, email, phone }, this.options)
       .map(res => {
         console.log(res)
         return res.json()
@@ -56,14 +56,14 @@ export class SessionService {
   }
 
   login(name: string, password: string): Observable<any> {
-    return this.http.post(`${this.BASEURL}/api/auth/login`, { username: name, password }, this.options)
+    return this.http.post(`${environment.BASEURL}/api/auth/login`, { username: name, password }, this.options)
       .map(res => res.json())
       .map(this.configureUser(true))
       .catch(this.handleError);
   }
 
   updateUser(user: any): Observable<any> {
-    return this.http.post(`${this.BASEURL}/api/auth/updateuser`, { user }, this.options)
+    return this.http.post(`${environment.BASEURL}/api/auth/updateuser`, { user }, this.options)
       .map(res => {
         return res.json()
       })
@@ -72,14 +72,14 @@ export class SessionService {
   }
 
   logout(): Observable<any> {
-    return this.http.get(`${this.BASEURL}/api/auth/logout`, this.options)
+    return this.http.get(`${environment.BASEURL}/api/auth/logout`, this.options)
       .map(res => res.json())
       .map(this.configureUser(false))
       .catch(this.handleError);
   }
 
   isLoggedIn(): Observable<any> {
-    return this.http.get(`${this.BASEURL}/api/auth/loggedin`, this.options)
+    return this.http.get(`${environment.BASEURL}/api/auth/loggedin`, this.options)
       .map(res => res.json())
       .map(this.configureUser(true))
       .catch(this.handleError);

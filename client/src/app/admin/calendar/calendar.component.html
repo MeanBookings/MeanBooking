@@ -20,7 +20,17 @@
         </div>
     </div>
 </div>
-<div class="container-fluid" id="bookings-calendar">
+<div class="container-fluid" id="bookings-calendar" *ngIf="days">
+  <div class="row" *ngIf="days.length===0" id="no-days-wrapper">
+    <div class="col-sm-12 text-center">
+      <h2>You restaurant has no availability!</h2>
+      <p>Please, navigate to the Dashboard panel and configure the restaurant availbility</p>
+      <button routerLink="/dashboard" mat-raised-button>Go to Dashboard</button>
+      <div class="icon-run">
+          <i class="material-icons">directions_run</i>
+      </div>
+    </div>
+  </div>
   <div class="row">
     <div class="col day {{day.date | date:'EEEE' | lowercase}} {{day.status}}" *ngFor="let day of days; let i=index" >
       <div *ngIf="today == (day.date | date:'MM/dd/yyyy'); else notToday" class="today day-inner" [ngClass]="{'with-reservations':day.books.length!==0}">

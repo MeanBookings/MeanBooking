@@ -14,30 +14,27 @@ export class ViewBookingsComponent implements OnInit {
   switch = false;
   btntext: String = "Edit booking";
   error: String;
-  constructor(public calendar:CalendarService, public bookingsServ:BookingService) { }
+  constructor(public calendar: CalendarService, public bookingsServ: BookingService) { }
 
   ngOnInit() {
     this.switch = false;
     this.btntext = "Edit booking"
   }
-  editBooking() {
-    if (this.switch) {
-      this.btntext = "Update booking"
-      this.switch = !this.switch
-      this.bookingsServ.updateBookings(this.bookings)
-        .catch(e => this.error = e)
-        .subscribe(newBookings => {
-          this.bookings=newBookings;
-          this.outputcall.emit();
-          this.closeBookings();
-        });
-    } else {
-      this.btntext = "Edit day"
-      this.switch = !this.switch
-    }
+  changeBookingStatus(status, id) {
+    if (status !== 'cancelled') {this.bookingsServ.updateBookings(status, id).catch(e => this.error = e).subscribe()} 
+    else {this.deleteBooking(id)}
   }
-  closeBookings(){
-    this.bookings=null
+
+  deleteBooking(id) {
+    this.bookingsServ.deleteBookings(id)
+      .catch(e => this.error = e)
+      .subscribe(result => {
+        this.outputcall.emit(); 
+      });
   }
+  closeBookings() {
+    this.bookings = null
+  }
+
 
 }

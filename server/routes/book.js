@@ -84,6 +84,7 @@ router.post('/create', (req, res, next) => {
 
 // /api/book/edit/:id - update the book, if status = "approved" sends an emails
 router.post('/edit/:id', (req, res, next) => {
+    console.log('aqui en el back')
     let { status } = req.body;
     Book.findById(req.params.id)
         .then((book) => {
@@ -112,6 +113,7 @@ let updatedEmail = ((book) => {
 
 // /api/book/delete/:id - Delete de book solo con el :id del book, comprobar que no está cancelada antes...
 router.get('/delete/:hash', (req, res, next) => {
+    console.log(req.params)
     let tIndex, dEmail;
     Book.findById(req.params.hash)
         .then((b) => {
