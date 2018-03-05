@@ -121,6 +121,7 @@ let updatedEmail = ((book) => {
 
 // /api/book/delete/:id - Delete de book solo con el :id del book, comprobar que no está cancelada antes...
 router.get('/delete/:hash', (req, res, next) => {
+    console.log('borrando, en el back')
     console.log(req.params)
     let tIndex, dEmail;
     Book.findById(req.params.hash)
@@ -137,7 +138,6 @@ router.get('/delete/:hash', (req, res, next) => {
                                     }
                                 })
                                 const updatedDay = day;
-                                // res.json(book);
                                 cancelledEmail(book.user.email);
                                 updatedDay.shift[tIndex].current += book.people;
                                 updatedDay.books.splice(updatedDay.books.indexOf(req.params.hash, 1));

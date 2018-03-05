@@ -40,6 +40,7 @@ export class BookingService {
     deleteBookings(hash): Observable<any> {
         return this.http.get(`${environment.BASEURL}/api/book/delete/${hash}`, this.options)
             .map(res => {
+                console.log('back in the service')
                 return res.json()
             })
             .catch(this.handleError);

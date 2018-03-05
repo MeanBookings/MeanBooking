@@ -4,6 +4,7 @@ import * as moment from 'moment';
 import { SnackBarComponent } from './snack-bar/snack-bar.component';
 import { MatSnackBar } from '@angular/material';
 import { Router } from '@angular/router';
+import { SessionService } from '../../../services/session.service';
 
 @Component({
   selector: 'bookingform',
@@ -43,21 +44,32 @@ export class BookingformComponent implements OnInit {
   available: Array<any>;
   message: any = "";
   snack: any;
-
-  constructor(public booking: BookingService,
+  name: string;
+  email: string;
+  phone:string;
+  constructor(
+    public session: SessionService,
+    public booking: BookingService,
     public snackBar: MatSnackBar,
     public router: Router
-  ) { }
+  ) {
+
+  }
 
   ngOnInit() {
+    this.session.userReady.subscribe(user => {
+      this.name = user.name
+      this.email = user.email
+      this.phone = user.phone
+    })
   }
 
   sendBooking(bookingForm) {
     bookingForm.value.date_of_book = moment(bookingForm.value.date_of_book).format('YYYY-MM-DD 14:mm:ss')
     this.booking.placeBooking(bookingForm.value).subscribe(result => {
-     //NOTA LIMPIAR FORMULARIO DESPUES DE ENVIAR :)
-      let snackBarRef = this.snackBar.openFromComponent(SnackBarComponent, {duration:2000});
-      snackBarRef.afterDismissed().subscribe(()=>{})
+      //NOTA LIMPIAR FORMULARIO DESPUES DE ENVIAR :)
+      let snackBarRef = this.snackBar.openFromComponent(SnackBarComponent, { duration: 2000 });
+      snackBarRef.afterDismissed().subscribe(() => { })
       if (this.error) console.log(this.error)
     })
   }
