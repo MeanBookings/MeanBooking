@@ -1,8 +1,8 @@
 
-#edit-day-wrapper {
+#edit-day-wrapper,#bookings-day-wrapper {
     .overlay {
-      width: 300vw;
-      height: 200vh;
+      width: 400vw;
+      height: 400vh;
       background: #fff;
       opacity: .8;
       position: fixed;
@@ -23,6 +23,7 @@
     left: 50%;
     .close-edit-day {
       position: absolute;
+      z-index: 99;
       right: 20px;
       top: 20px;
       cursor: pointer;
@@ -80,7 +81,7 @@
   }
   
   @media screen and (max-width:767px) {
-    #edit-day-wrapper {
+    #edit-day-wrapper,#bookings-day-wrapper {
       -webkit-box-shadow: 0px 0px 40px 8px rgba(0, 0, 0, 0.15);
       -moz-box-shadow: 0px 0px 40px 8px rgba(0, 0, 0, 0.15);
       box-shadow: 0px 0px 40px 8px rgba(0, 0, 0, 0.15);

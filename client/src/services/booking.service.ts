@@ -32,6 +32,11 @@ export class BookingService {
             .catch(this.handleError);
     }
 
+    updateBookings(bookings): Observable<any> {
+        console.log(bookings)
+        return;
+    }
+
 }
 
 

@@ -1,17 +1,5 @@
-<!-- <h6>View range of days</h6>
-<mat-form-field>
-  <input matInput [matDatepicker]="pickerIn" placeholder="Choose a date">
-  <mat-datepicker-toggle matSuffix [for]="pickerIn"></mat-datepicker-toggle>
-  <mat-datepicker #pickerIn></mat-datepicker>
-</mat-form-field>
-<mat-form-field>
-  <input matInput [matDatepicker]="pickerOut" placeholder="Choose a date">
-  <mat-datepicker-toggle matSuffix [for]="pickerOut"></mat-datepicker-toggle>
-  <mat-datepicker #pickerOut></mat-datepicker>
-</mat-form-field>
-<button (click)="getRange(pickerIn,pickerOut)">send</button> -->
-<editDay [day]="theDay"></editDay>
-<view-bookings [bookings]="dayBookings"></view-bookings>
+<editDay (outputcall)="reloadCalendar()" [day]="theDay"></editDay>
+<view-bookings (outputcall)="reloadCalendar()" [bookings]="dayBookings"></view-bookings>
 <div class="container-fluid" id="calendar-header">
   <div class="row">
     <div class="col-sm-12">
@@ -22,7 +10,7 @@
     </div>
   </div>
   <div class="row">
-      <div class="col-sm-12">
+      <div class="col-sm-12 calendar-month-title-column">
             <h5 class="calendar-main-info">{{currentMonthText}} {{currentYear}}</h5>
       </div>
   </div>
@@ -35,12 +23,15 @@
 <div class="container-fluid" id="bookings-calendar">
   <div class="row">
     <div class="col day {{day.date | date:'EEEE' | lowercase}} {{day.status}}" *ngFor="let day of days; let i=index" >
-      <div *ngIf="today == (day.date | date:'MM/dd/yyyy'); else notToday" class="today day-inner" [ngClass]="{'with-reservations':day.books.length!==0}" (click)="getDayBookings(day.date)">
+      <div *ngIf="today == (day.date | date:'MM/dd/yyyy'); else notToday" class="today day-inner" [ngClass]="{'with-reservations':day.books.length!==0}">
         <small class="day-num">{{day.date | date:'dd'}} <span class="today-text">today</span> </small>
         <span matTooltip="Day settings" matTooltipPosition="right" (click)="getDay(day.date)" class="day-settings"><i class="material-icons">more_horiz</i></span>
+        <div class="day-bookings" *ngIf="(day.status!=='closed')&&(day.books.length!==0)" (click)="getDayBookings(day.date)">
+            <span>{{day.books.length}}<small>res.</small></span>
+          </div>
       </div>
       <ng-template #notToday>
-        <div class="not-today day-inner" [ngClass]="{'with-reservations':day.books.length!==0}" (click)="getDayBookings(day.date)">
+        <div class="not-today day-inner" [ngClass]="{'with-reservations':day.books.length!==0}">
           <small class="day-num">{{day.date | date:'dd'}}</small>
           <span *ngIf="day.books==0; else daySettingsDisabled" matTooltip="Day settings" matTooltipPosition="right" (click)="getDay(day.date)" class="day-settings">
             <i class="material-icons">more_horiz</i>
@@ -50,7 +41,7 @@
               <i class="material-icons">more_horiz</i>
             </span>
           </ng-template>
-          <div class="day-bookings" *ngIf="(day.status!=='closed')&&(day.books.length!==0)">
+          <div class="day-bookings" *ngIf="(day.status!=='closed')&&(day.books.length!==0)" (click)="getDayBookings(day.date)">
             <span>{{day.books.length}}<small>res.</small></span>
           </div>
         </div>
@@ -58,4 +49,3 @@
     </div>
   </div>
 </div>
-<!-- {{days | json}} -->

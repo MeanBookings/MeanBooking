@@ -18,7 +18,7 @@
     <small *ngIf="day!==null&&day!=={}&&day.status==='open'">We are {{day.status}}!</small>
   </div>
   <div class="form-details-info">
-    <small *ngIf="day!==null&&day!=={}&&day.status==='closed'">We are {{day.status}} :(</small>
+    <small *ngIf="day!==null&&day!=={}&&day.status==='closed'">We are {{day.status}} :( Try again!</small>
   </div>
   <mat-form-field *ngIf="day!==null&&day!=={}&&day.status!=='closed'">
     <mat-select placeholder="Select hour" [(ngModel)]="hour" name="hour" [disabled]="disableSelect" required>
@@ -27,13 +27,13 @@
       </mat-option>
     </mat-select>
   </mat-form-field>
-  <div class="label">
+  <div class="label" *ngIf="day.status!=='closed'">
     <label for="people">Nº of people</label>
   </div>
-  <mat-slider class="full-width" [disabled]="disabled" [invert]="invert" [max]="max" [min]="min" [step]="step" [thumb-label]="thumbLabel"
+  <mat-slider *ngIf="day.status!=='closed'" class="full-width" [disabled]="disabled" [invert]="invert" [max]="max" [min]="min" [step]="step" [thumb-label]="thumbLabel"
     [tick-interval]="tickInterval" [vertical]="vertical" [(ngModel)]="people" name="people"> </mat-slider>
-  <mat-form-field class="full-width">
+  <mat-form-field class="full-width" *ngIf="day.status!=='closed'">
     <textarea matInput placeholder="Comment" [(ngModel)]="comment" name="comment"></textarea>
   </mat-form-field>
-  <button type="submit" mat-raised-button color="warn">Book it!</button>
+  <button *ngIf="day.status!=='closed'" type="submit" mat-raised-button color="warn">Book it!</button>
 </form>

@@ -1,1 +1,66 @@
-{{bookings | json}}
+
+<div class="container" *ngIf="bookings" id="bookings-day-wrapper">
+  <div class="overlay"></div>
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="close-edit-day" (click)="closeBookings()">
+        <i class="material-icons">close</i>
+      </div>
+      <h4 class="day-config-title">Currently viewing bookings {{bookings.date | date : 'MMMM d, y'}}<br><small>We have {{bookings.books.length}} bookings</small></h4>
+      <div class="row">
+          <div class="col-sm-4">
+              Status
+          </div>
+          <div class="col-sm-4">
+              Hour and people
+          </div>
+          <div class="col-sm-4">
+              Customer contact info
+          </div>
+      </div>
+      <div class="row" *ngFor="let booking of bookings.books; let i=index">
+        <div class="col-sm-6">
+          <div class="details"> {{booking.status}} #{{booking._id}} </div>
+          <div class="details"> <span class="hour">{{booking.hour}}</span> | <span class="people">{{booking.people}}</span></div>
+        </div>
+        <div class="col-sm-6">
+          <div class="details"> {{booking.user.email}} {{booking.user.name}} {{booking.user.phone}} </div>
+        </div>
+        <!-- <div class="col-sm-3">
+          <div class="details"> {{booking.hour}} {{booking.people}} </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="booking-comments"> {{booking.comments}} </div>
+        </div> -->
+      </div>
+    </div>
+  </div>
+  <!-- {{bookings | json}} -->
+</div>
+<!-- 
+<div class="container" *ngIf="bookings" id="bookings-day-wrapper">
+  <div class="overlay"></div>
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="close-edit-day" (click)="closeBookings()">
+        <i class="material-icons">close</i>
+      </div>
+      <h4 class="day-config-title">Currently viewing bookings {{bookings.date | date : 'MMMM d, y'}}<br><small>#{{day._id}}</small></h4>
+      <div class="row" *ngFor="let booking of bookings; let i=index">
+        <div class="col-sm-3">
+          <div class="status"> {{booking.status}} #{{booking._id}} </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="customer-details"> {{booking.user.email}} {{booking.user.phone}} </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="booking-details"> {{booking.hour}} {{booking.people}} </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="booking-comments"> {{booking.comments}} </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+

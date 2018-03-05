@@ -92,8 +92,8 @@ export class CalendarComponent implements OnInit {
 
   getDayBookings(date) {
     this.calendar.getDay(date).subscribe(dayBookings => {
-      this.dayBookings = dayBookings.books
-      console.log(this.dayBookings)
+      console.log(dayBookings)
+      this.dayBookings = dayBookings
     })
   }
 
@@ -106,8 +106,5 @@ export class CalendarComponent implements OnInit {
     });
   }
 
- /*  viewDayBookings() {
-
-  } */
 
 }
