@@ -84,14 +84,36 @@
 
 /* for the booking list */
 
+.day-booking-header {
+  margin: 20px 0 0;
+  background: $blue;
+  padding: 5px;
+}
+
 .booking {
-  border-bottom: 1px dotted $grey;
-  margin: 20px 0;
-  &.approved{}
-  &.pending{}
-  &.cancelled{}
-  &.not-{}
-  &.approved{}
+  &:nth-child(even) {
+    background: $lightgrey
+  }
+  margin: 0;
+  padding: 25px 0 10px;
+  mat-select {
+    border-radius: 0!important;
+    &.approved {
+      background: $green;
+    }
+    &.pending {
+      background: $yellow;
+    }
+    &.cancelled {
+      background: $grey;
+    }
+    &.notshow {
+      background: $red;
+    }
+    &.show {
+      background: $orange;
+    }
+  }
 }
 
 @media screen and (max-width:767px) {

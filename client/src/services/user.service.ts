@@ -30,7 +30,7 @@ export class UserService {
     }
 
     makeAdmin(id): Observable<any> {
-        return this.http.get(`${this.BASEURL}/api/user/makeadmin/${id}`, this.options)
+        return this.http.get(`${environment.BASEURL}/api/user/makeadmin/${id}`, this.options)
         .map(res => res.json())
         .catch(this.handleError);
     }
