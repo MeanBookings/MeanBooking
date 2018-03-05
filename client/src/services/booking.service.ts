@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Output, EventEmitter } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
@@ -15,9 +15,16 @@ export class BookingService {
         return Observable.throw(e.json().message);
     }
 
+    @Output() sendPendings: EventEmitter<any> = new EventEmitter();
+
     placeBooking(data): Observable<any> {
         return this.http.post(`${environment.BASEURL}/api/book/create`, data, this.options)
-            .map(res => res.json())
+            .map(res => {
+                console.log("estoy dentro del placebooking")
+                this.getPendings().subscribe();
+                //this.sendPendings.emit(this.getPendings())
+                return res.json()
+            })
             .catch(this.handleError);
     }
 
@@ -32,6 +39,7 @@ export class BookingService {
     updateBookings(status, id): Observable<any> {
         return this.http.post(`${environment.BASEURL}/api/book/edit/${id}`, { status: status }, this.options)
             .map(res => {
+                this.getPendings().subscribe();
                 return res.json()
             })
             .catch(this.handleError);
@@ -40,18 +48,22 @@ export class BookingService {
     deleteBookings(hash): Observable<any> {
         return this.http.get(`${environment.BASEURL}/api/book/delete/${hash}`, this.options)
             .map(res => {
+                this.getPendings().subscribe();
                 console.log('back in the service')
                 return res.json()
             })
             .catch(this.handleError);
     }
 
-    getPendings():Observable<any> {
+
+    getPendings(): Observable<any> {
         return this.http.get(`${environment.BASEURL}/api/book/`, this.options)
-        .map(res => {
-            return res.json()
-        })
-        .catch(this.handleError);
+            .map(res => {
+                console.log("a ver si llega a GetPendings")
+                this.sendPendings.emit(res.json());
+                return res.json()
+            })
+            .catch(this.handleError);
     }
 }
 

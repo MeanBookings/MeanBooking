@@ -26,9 +26,16 @@ let mailOptions = {
 
 // /api/book/ - update the book, if status = "approved" sends an emails
 router.get('/', (req, res, next) => {
-    Day.find({"books.0": {"$exists": true}}).populate('books', null, { status: 'pending' })
-    // Day.find().populate({path: "bookings", match: {status:"pending"}})
-        .then((bookingsPending)=>{res.status(200).json(bookingsPending)})
+    let pendingBooksDays = []
+    Day.find().populate('books')
+        .then(days => {
+            days.forEach(day => {
+                day.books.forEach( book => {
+                    if(book.status === 'pending') pendingBooksDays.push(day)
+                })
+            })
+            res.status(200).json(pendingBooksDays) 
+        })
 })
 
 // /api/book/create - create the book
