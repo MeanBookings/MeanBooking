@@ -1,8 +1,36 @@
-#header {
-    ul {
-        text-align: right;
-        .header-controls {
-
+header {
+  position: fixed;
+  z-index: 99;
+  top: 0;
+  left: 0;
+  width: 100%;
+  #header {
+    color: $white;
+    .logo {
+      a {
+        color: white;
+        @include transition(all .3s linear);
+        text-decoration: none;
+        &:hover {
+          color: $red;
         }
+      }
     }
+    ul {
+      text-align: right;
+      padding: 15px 0;
+      li {
+        @include transition(all .3s linear);
+        cursor: pointer;
+        text-align: center;
+        div {
+          font-size: .6em;
+        }
+        &:hover {
+          color: $red;
+        }
+      }
+      .header-controls {}
+    }
+  }
 }

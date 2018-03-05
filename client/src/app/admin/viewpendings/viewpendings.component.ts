@@ -7,10 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ViewpendingsComponent implements OnInit {
 
-  pendings:any;
-  constructor() {  this.pendings = []; }
-
-  ngOnInit() {
+  pending:any;
+  pendingBookings(){
+    
   }
+  constructor(){}
+
+  ngOnInit(){}
 
 }
