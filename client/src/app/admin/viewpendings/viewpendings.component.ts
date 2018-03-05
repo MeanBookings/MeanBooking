@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'viewpendings',
@@ -6,13 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./viewpendings.component.scss']
 })
 export class ViewpendingsComponent implements OnInit {
+  @Input() pending;
 
-  pending:any;
-  pendingBookings(){
-    
+   
+  constructor(){
+    console.log("hola")
   }
-  constructor(){}
 
   ngOnInit(){}
 
+  closePending() {
+    this.pending = null
+  }
 }

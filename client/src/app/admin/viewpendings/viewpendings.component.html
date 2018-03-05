@@ -1,9 +1,50 @@
-<div class="container" *ngIf="pending">
-  <div class="row">
-    <div class="col-sm-12">
-      <p>
-        viewpendings works!
-      </p>
+<div class="container-fluid" *ngIf="pending" id="pending-day-wrapper">
+    <div class="close-edit-day" (click)="closePending()">
+      <i class="material-icons">close</i>
+    </div>
+    <div class="overlay"></div>
+    <div class="row">
+      <div class="col-sm-12">
+        <h4 class="day-config-title">Currently viewing pending bookings
+          <br>
+          <small>We have {{pending.length}} pending bookings</small>
+        </h4>
+        <div class="row day-booking-header">
+          <div class="col-sm-4"> Status </div>
+          <div class="col-sm-4"> Hour and people </div>
+          <div class="col-sm-4"> Customer contact info </div>
+        </div>
+        <div class="row ">
+        <!-- <div class="row {{booking.status}} booking" *ngFor="let booking of bookings.books; let i=index"> -->
+          <div class="col-sm-4">
+            <div class="details">
+              <div>
+                <small class="booking-id"> X </small>
+              </div>
+              <mat-form-field class="status-select">
+                <!-- <mat-select [value]="booking.status" [class]="booking.status" [(ngModel)]="booking.status" (change)="changeBookingStatus(booking.status,booking._id)"> -->
+                    <mat-select>
+                  <mat-option value="pending"> Pending </mat-option>
+                  <mat-option value="approved"> Approved </mat-option>
+                  <mat-option value="cancelled"> Cancelled </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="details">
+              <div class="hour"> X <small>hours</small></div>
+              <div class="people"><small>Booking for</small> X <small>people</small></div>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="customer-details">
+              <div><small>Name:</small> X </div>
+              <div><small>Email:</small> X </div>
+              <div><small>Phone:</small> X </div>
+            </div>
+          </div>
+         </div>
+      </div>
     </div>
   </div>
-</div>

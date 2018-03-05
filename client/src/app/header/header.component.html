@@ -5,9 +5,6 @@
         <a [routerLink]="['/']">{{title}}</a>
       </div>
     </div>
-    <!-- <div class="col-sm-4">
-      <login></login>
-    </div> -->
     <div class="col-sm-8">
       <ul class="list-inline">
         <li class="list-inline-item header-controls" *ngIf="session.getUser()&&session.getAdmin()&&pending" (click)="pendingBookings()">
@@ -44,4 +41,4 @@
     </div>
   </div>
 </div>
-<viewpendings></viewpendings>
+<viewpendings (outputcall)="pendingBookings()" [pending]="popup"></viewpendings>
