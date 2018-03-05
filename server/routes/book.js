@@ -23,6 +23,14 @@ let mailOptions = {
     html: ''
 };
 
+
+// /api/book/ - update the book, if status = "approved" sends an emails
+router.get('/', (req, res, next) => {
+    Day.find({"books.0": {"$exists": true}}).populate('books', null, { status: 'pending' })
+    // Day.find().populate({path: "bookings", match: {status:"pending"}})
+        .then((bookingsPending)=>{res.status(200).json(bookingsPending)})
+})
+
 // /api/book/create - create the book
 router.post('/create', (req, res, next) => {
     let tIndex;
@@ -156,5 +164,7 @@ let cancelledEmail = ((email) => {
         }
     })
 })
+
+
 
 module.exports = router;

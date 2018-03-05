@@ -22,26 +22,35 @@ export class BookingService {
     }
 
     checkDayAvailability(date): Observable<any> {
-        return this.http.post(`${environment.BASEURL}/api/day/`, {date:date}, this.options)
+        return this.http.post(`${environment.BASEURL}/api/day/`, { date: date }, this.options)
             .map(res => {
                 return res.json()
             })
             .catch(this.handleError);
     }
 
-    updateBookings(status,id): Observable<any> {
-        return this.http.post(`${environment.BASEURL}/api/book/edit/${id}`, {status:status}, this.options)
+    updateBookings(status, id): Observable<any> {
+        return this.http.post(`${environment.BASEURL}/api/book/edit/${id}`, { status: status }, this.options)
             .map(res => {
                 return res.json()
             })
             .catch(this.handleError);
     }
+
     deleteBookings(hash): Observable<any> {
         return this.http.get(`${environment.BASEURL}/api/book/delete/${hash}`, this.options)
             .map(res => {
                 return res.json()
             })
             .catch(this.handleError);
+    }
+
+    getPendings():Observable<any> {
+        return this.http.get(`${environment.BASEURL}/api/book/`, this.options)
+        .map(res => {
+            return res.json()
+        })
+        .catch(this.handleError);
     }
 }
 

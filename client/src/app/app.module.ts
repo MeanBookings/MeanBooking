@@ -41,6 +41,7 @@ import { UserGuardService } from '../services/userguard.service';
 import { SnackBarComponent } from './home/bookingform/snack-bar/snack-bar.component';
 import { SnackBarProfileComponent } from './profile/snack-bar-profile/snack-bar-profile.component';
 import { ViewBookingsComponent } from './admin/calendar/view-bookings/view-bookings.component';
+import { ViewpendingsComponent } from './header/viewpendings/viewpendings.component'
 
 @NgModule({
   declarations: [
@@ -62,7 +63,8 @@ import { ViewBookingsComponent } from './admin/calendar/view-bookings/view-booki
     EditDayComponent,
     SnackBarComponent,
     SnackBarProfileComponent,
-    ViewBookingsComponent
+    ViewBookingsComponent,
+    ViewpendingsComponent
   ],
   imports: [
     BrowserModule,

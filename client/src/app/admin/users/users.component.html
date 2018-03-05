@@ -53,4 +53,12 @@
             </button>
         </div>
     </div>
+    <mat-form-field>
+        <textarea matInput [(ngModel)]="emailText" placeholder="Autosize textarea" matTextareaAutosize matAutosizeMinRows="1" matAutosizeMaxRows="4"></textarea>
+    </mat-form-field>
+    <button mat-icon-button (click)="sendMassiveEmail()">
+        <mat-icon>
+        <i class="material-icons">send</i>
+    </mat-icon>
+    </button>
 </div>

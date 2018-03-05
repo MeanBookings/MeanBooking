@@ -15,5 +15,6 @@ export const routes: Routes = [
     { path: 'bookings', component: CalendarComponent, canActivate: [AdminGuardService] },
     { path: 'users', component: UsersComponent, canActivate: [AdminGuardService] },
     { path: '**', redirectTo: '' }
+
 ];
 

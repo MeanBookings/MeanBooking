@@ -1,4 +1,4 @@
-<div class="container-fluid"º id="header">
+<div class="container-fluid" id="header">
   <div class="row">
     <div class="col-sm-4">
       <div><a [routerLink]="['/']">{{title}}</a></div>
@@ -9,6 +9,7 @@
     <div class="col-sm-4">
       <ul class="list-inline">
         <li class="list-inline-item" *ngIf="session.getUser()">Hi {{session.getUser().name}}!</li>
+        <li class="list-inline-item header-controls" *ngIf="session.getUser()&&session.getAdmin()" (click)="pendingBookings()"><i class="material-icons">add_alert</i></li>
         <li class="list-inline-item header-controls" *ngIf="session.getUser()&&session.getAdmin()" [routerLink]="['/dashboard']"><i class="material-icons">dashboard</i></li>
         <li class="list-inline-item header-controls" *ngIf="session.getUser()&&session.getAdmin()" [routerLink]="['/bookings']"><i class="material-icons">today</i></li>
         <li *ngIf="session.getUser()&&session.getAdmin()" class="list-inline-item header-controls" [routerLink]="['/users']"><i class="material-icons">people</i></li>
@@ -19,3 +20,4 @@
     </div>
   </div>
 </div>
+<viewpendings></viewpendings>

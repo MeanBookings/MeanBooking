@@ -11,6 +11,7 @@ export class UsersComponent implements OnInit {
 
   users: any;
   envelope: Array<any>;
+  emailText:String = "";
   constructor(public profile: UserService) { }
 
   ngOnInit() {
@@ -38,5 +39,13 @@ export class UsersComponent implements OnInit {
       this.envelope.push(email)
       console.log(this.envelope)
     }
+  }
+
+  sendMassiveEmail(){
+    this.profile.sendMassiveEmail(this.envelope,this.emailText).subscribe(()=>{
+      this.emailText=""
+      this.envelope=[]
+      this.profile.getUsers().subscribe((usersGet) => this.users = usersGet)
+     })
   }
 }
