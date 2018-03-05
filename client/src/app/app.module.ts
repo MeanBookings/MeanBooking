@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 //material
-import { MatTooltipModule, MatSelectModule, MatIconModule, MatButtonModule, MatCheckboxModule,MatDividerModule, MatExpansionModule, MatInputModule, MatDatepickerModule, MatNativeDateModule, MatTabsModule, MatSliderModule, MAT_DATE_LOCALE, MatMenuModule, MatSnackBar, MatSnackBarModule, MatSnackBarContainer } from '@angular/material';
+import { MatTooltipModule, MatSlideToggleModule,MatSelectModule, MatIconModule, MatButtonModule, MatCheckboxModule,MatDividerModule, MatExpansionModule, MatInputModule, MatDatepickerModule, MatNativeDateModule, MatTabsModule, MatSliderModule, MAT_DATE_LOCALE, MatMenuModule, MatSnackBar, MatSnackBarModule, MatSnackBarContainer } from '@angular/material';
 //routes
 import { routes } from './routes';
 import { RouterModule } from '@angular/router';
@@ -83,7 +83,8 @@ import { ViewBookingsComponent } from './admin/calendar/view-bookings/view-booki
     MatMenuModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatSliderModule
+    MatSliderModule,
+    MatSlideToggleModule
   ],
   entryComponents: [SnackBarComponent, BookingformComponent, SnackBarProfileComponent, ProfileComponent],
   providers: [UserService, SessionService, BookingService, AdminGuardService, CalendarService, UserGuardService, { provide: LOCALE_ID, useValue: "es-ES" }],

@@ -28,4 +28,10 @@ export class UserService {
             .map(res => res.json())
             .catch(this.handleError);
     }
+
+    makeAdmin(id): Observable<any> {
+        return this.http.get(`${this.BASEURL}/api/user/makeadmin/${id}`, this.options)
+        .map(res => res.json())
+        .catch(this.handleError);
+    }
 }
