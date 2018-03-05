@@ -8,7 +8,7 @@ import { BookingService } from '../../services/booking.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  title = 'Mean Booking';
+  title = 'Pizza!';
   searchingPendings:any=[];
   constructor(
     public session:SessionService,

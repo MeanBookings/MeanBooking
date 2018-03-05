@@ -1,21 +1,45 @@
 <div class="container-fluid" id="header">
   <div class="row">
     <div class="col-sm-4">
-      <div><a [routerLink]="['/']">{{title}}</a></div>
+      <div class="logo">
+        <a [routerLink]="['/']">{{title}}</a>
+      </div>
     </div>
-    <div class="col-sm-4">
+    <!-- <div class="col-sm-4">
       <login></login>
-    </div>
-    <div class="col-sm-4">
+    </div> -->
+    <div class="col-sm-8">
       <ul class="list-inline">
-        <li class="list-inline-item" *ngIf="session.getUser()">Hi {{session.getUser().name}}!</li>
-        <li class="list-inline-item header-controls" *ngIf="session.getUser()&&session.getAdmin()" (click)="pendingBookings()"><i class="material-icons">add_alert</i></li>
-        <li class="list-inline-item header-controls" *ngIf="session.getUser()&&session.getAdmin()" [routerLink]="['/dashboard']"><i class="material-icons">dashboard</i></li>
-        <li class="list-inline-item header-controls" *ngIf="session.getUser()&&session.getAdmin()" [routerLink]="['/bookings']"><i class="material-icons">today</i></li>
-        <li *ngIf="session.getUser()&&session.getAdmin()" class="list-inline-item header-controls" [routerLink]="['/users']"><i class="material-icons">people</i></li>
-        <li *ngIf="session.getUser()" class="header-controls list-inline-item" [routerLink]="['/profile']"><i class="material-icons">person</i></li>
-        <li class="header-controls list-inline-item"><signup></signup></li>
-        <li class="header-controls list-inline-item"><logout></logout></li>
+        <!-- <li class="list-inline-item" *ngIf="session.getUser()"><small>Hi {{session.getUser().name}}!</small></li> -->
+        <li class="list-inline-item header-controls" *ngIf="session.getUser()&&session.getAdmin()"
+          (click)="pendingBookings()">
+          <i class="material-icons">add_alert</i>
+          <div>pending</div>
+        </li>
+        <li class="list-inline-item header-controls" *ngIf="session.getUser()&&session.getAdmin()" [routerLink]="['/dashboard']">
+          <i class="material-icons">dashboard</i>
+          <div>dashboard</div>
+        </li>
+        <li class="list-inline-item header-controls" *ngIf="session.getUser()&&session.getAdmin()" [routerLink]="['/bookings']">
+          <i class="material-icons">today</i>
+          <div>calendar</div>
+        </li>
+        <li *ngIf="session.getUser()&&session.getAdmin()" class="list-inline-item header-controls" [routerLink]="['/users']">
+          <i class="material-icons">people</i>
+          <div>users</div>
+        </li>
+        <li *ngIf="session.getUser()" class="header-controls list-inline-item" [routerLink]="['/profile']">
+          <i class="material-icons">person</i>
+          <div>Hi {{session.getUser().name}}!</div>
+        </li>
+        <li class="header-controls list-inline-item">
+          <signup></signup>
+        </li>
+        <li class="header-controls list-inline-item">
+          <login></login>
+          <logout></logout>
+          <div>bye</div>
+        </li>
       </ul>
     </div>
   </div>
