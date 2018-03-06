@@ -1,11 +1,11 @@
-<div class="container" id="profile">
+<div class="container" id="profile" *ngIf="userBookings&&currentUser">
   <div class="row">
     <div class="col-sm-12 text-center">
       <h2> Hi {{currentUser.name}}! This is your profile. </h2>
     </div>
   </div>
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-4">
       <h6>This is your profile info.
         <br>
         <small>Click on Edit button to make some changes</small>
@@ -22,29 +22,35 @@
         <button color="primary" (click)="edit()" mat-button id="edit">{{btntext}}</button>
       </div>
     </div>
-    <div class="col-md-6">
-      <h6>You have {{userBookings.length}} bookings. <br><small>You can cancel a booking clicking the button</small></h6>
+    <div class="col-md-8">
+      <h6>You have {{userBookings.length}} bookings.
+        <br>
+        <small>You can cancel a booking clicking the button</small>
+      </h6>
       <div class="row day-booking-header">
-          <div class="col-sm-4"> Status </div>
-          <div class="col-sm-4"> Day, hour and people </div>
-          <div class="col-sm-4"> Customer contact info </div>
+        <div class="col-md-4"> Status </div>
+        <div class="col-md-4"> Day, hour and people </div>
+        <div class="col-md-4"> Customer contact info </div>
       </div>
       <div class="row" *ngFor="let booking of userBookings">
-        <div class="col-sm-12">
+        <div class="col-md-4">
+          <mat-form-field class="status-select">
+            <mat-select [value]="booking.status" [class]="booking.status" [(ngModel)]="booking.status" (change)="changeBookingStatus(booking.status,booking._id)">
+              <mat-option value="pending"> Pending </mat-option>
+              <mat-option value="approved"> Approved </mat-option>
+              <mat-option value="cancelled"> Cancelled </mat-option>
+              <mat-option value="notshow"> Not show </mat-option>
+              <mat-option value="show"> Show </mat-option>
+            </mat-select>
+          </mat-form-field>
         </div>
-        {{userBookings | json}}
-      </div> 
+        <div class="col-md-4">
+          {{booking.date}}
+        </div>
+      </div>
     </div>
   </div>
 </div>
-
-
-
-
-
-
-
-
 <!-- 
 <div class="container-fluid" *ngIf="bookings" id="bookings-day-wrapper">
 

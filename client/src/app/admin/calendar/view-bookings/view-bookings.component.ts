@@ -32,6 +32,7 @@ export class ViewBookingsComponent implements OnInit {
         this.outputcall.emit(); 
       });
   }
+  
   closeBookings() {
     this.bookings = null
   }

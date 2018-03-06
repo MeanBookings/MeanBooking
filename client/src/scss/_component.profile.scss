@@ -10,4 +10,31 @@
     font-weight: 100;
     font-size: .6em;
   }
+  .mat-select-value-text {
+    font-size: .65em;
+    padding-left: 7px;
+  }
+  .mat-form-field-infix {
+    width: initial;
+    max-width: 100%;
+  }
+  mat-select {
+    padding: 8px 0;
+    border-radius: 0!important;
+    &.approved {
+      background: $green;
+    }
+    &.pending {
+      background: $yellow;
+    }
+    &.cancelled {
+      background: $grey;
+    }
+    &.notshow {
+      background: $red;
+    }
+    &.show {
+      background: $orange;
+    }
+  }
 }

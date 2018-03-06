@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { SessionService } from '../../services/session.service';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
 import { SnackBarProfileComponent } from './snack-bar-profile/snack-bar-profile.component';
 import { UserService } from '../../services/user.service';
+import { BookingService } from '../../services/booking.service';
 
 @Component({
   selector: 'profile',
@@ -18,11 +19,15 @@ export class ProfileComponent implements OnInit {
   error: String;
   message: any = "";
   userBookings:Array<any>;
+
+  @Output() outputcall = new EventEmitter<string>();
+
   constructor(
     public session: SessionService,
     public router: Router,
     public snackBar: MatSnackBar,
-    public userService:UserService
+    public userService:UserService,
+    public bookingsServ: BookingService
   ) {
     this.currentUser = this.session.getUser();
     this.userService.getUserBookings(this.session.getUser()._id).subscribe(bookings=>{
@@ -50,5 +55,19 @@ export class ProfileComponent implements OnInit {
       this.message = ""
       this.switch = !this.switch
     }
+  }
+
+
+  changeBookingStatus(status, id) {
+    if (status !== 'cancelled') {this.bookingsServ.updateBookings(status, id).catch(e => this.error = e).subscribe()} 
+    else {this.deleteBooking(id)}
+  }
+
+  deleteBooking(id) {
+    this.bookingsServ.deleteBookings(id)
+      .catch(e => this.error = e)
+      .subscribe(result => {
+        this.outputcall.emit(); 
+      });
   }
 }
