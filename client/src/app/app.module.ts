@@ -46,6 +46,8 @@ import { SnackBarComponent } from './home/bookingform/snack-bar/snack-bar.compon
 import { SnackBarProfileComponent } from './profile/snack-bar-profile/snack-bar-profile.component';
 import { ViewBookingsComponent } from './admin/calendar/view-bookings/view-bookings.component';
 import { ViewpendingsComponent } from './admin/viewpendings/viewpendings.component'
+import { CommentService } from '../services/comment.service';
+import { OwlModule } from 'ng2-owl-carousel';
 
 @NgModule({
   declarations: [
@@ -94,10 +96,11 @@ import { ViewpendingsComponent } from './admin/viewpendings/viewpendings.compone
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyCqZbiAa2oZ5vm3ec6BC9UiFto6uZgb-cw'
     }),
-    EditorModule
+    EditorModule,
+    OwlModule    
   ],
   entryComponents: [SnackBarComponent, BookingformComponent, SnackBarProfileComponent, ProfileComponent],
-  providers: [UserService, SessionService, BookingService, AdminGuardService, CalendarService, UserGuardService, { provide: LOCALE_ID, useValue: "es-ES" }],
+  providers: [CommentService, UserService, SessionService, BookingService, AdminGuardService, CalendarService, UserGuardService, { provide: LOCALE_ID, useValue: "es-ES" }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

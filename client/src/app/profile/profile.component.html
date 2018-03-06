@@ -67,7 +67,7 @@
       <h3> Send your opinion!. </h3>
       <div class="row">
         <div class="col-md-8 offset-md-2">
-          <form class="client-opinion-form" (ngSubmit)="sendOpinion(opinionForm)" #opinionForm="ngForm">
+          <form class="client-opinion-form" (ngSubmit)="sendComment(currentUser._id,comment,valoration)" #opinionForm="ngForm">
             <mat-form-field class="full-width">
               <textarea matInput placeholder="Your comment" [(ngModel)]="comment" name="comment" required></textarea>
             </mat-form-field>

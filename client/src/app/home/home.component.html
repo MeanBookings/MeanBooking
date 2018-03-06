@@ -3,7 +3,7 @@
     <div class="col-sm-12">
       <h1>
         <small>Avello's</small>
-         We are pizza
+        We are pizza
       </h1>
       <!-- <div class="logo-hero">
           <img src="../../assets/img/logo.png" alt="Avello's Pizza">
@@ -11,6 +11,15 @@
     </div>
   </div>
 </div>
+<owl-carousel [options]="{items: 3, dots: false, navigation: true}" [items]="comments" [carouselClasses]="['owl-theme', 'row', 'sliding']">
+  <div class="item" *ngFor="let comment of comments;let i = index">
+    <div *ngIf="comment.status == 'true'">
+      <p>{{comment.content}}</p>
+      <p>{{comment.stars}} Stars</p>
+      <p><small> by {{comment.user_Id.name}}</small></p>
+    </div>
+  </div>
+</owl-carousel>
 <div class="container-fluid" id="home-booking">
   <div class="row">
     <div class="col-lg-6 pad-special-l-r">
@@ -18,15 +27,14 @@
       <bookingform></bookingform>
     </div>
     <div class="col-lg-6 img-as-column-pizza">
-      
     </div>
   </div>
   <div class="row" id="home-map">
-      <div class="col-lg-6 img-as-column-ingredients"></div>
-      <div class="col-lg-6" id="map">
-        <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">
-          <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
-        </agm-map>
-      </div>
+    <div class="col-lg-6 img-as-column-ingredients"></div>
+    <div class="col-lg-6" id="map">
+      <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">
+        <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+      </agm-map>
     </div>
+  </div>
 </div>

@@ -5,6 +5,7 @@ import { MatSnackBar } from '@angular/material';
 import { SnackBarProfileComponent } from './snack-bar-profile/snack-bar-profile.component';
 import { UserService } from '../../services/user.service';
 import { BookingService } from '../../services/booking.service';
+import { CommentService } from '../../services/comment.service';
 
 @Component({
   selector: 'profile',
@@ -21,7 +22,9 @@ export class ProfileComponent implements OnInit {
   userBookings: Array<any>;
   userInfo: object;
   justAdmins:boolean=true;
-
+  comment:any;
+  content:any;
+  valoration:any;
   @Output() outputcall = new EventEmitter<string>();
 
   constructor(
@@ -29,7 +32,8 @@ export class ProfileComponent implements OnInit {
     public router: Router,
     public snackBar: MatSnackBar,
     public userService: UserService,
-    public bookingsServ: BookingService
+    public bookingsServ: BookingService,
+    public CommentServ: CommentService
   ) {
     this.currentUser = this.session.getUser();
     this.userService.getUserBookings(this.session.getUser()._id).subscribe(bookings => {
@@ -74,6 +78,18 @@ export class ProfileComponent implements OnInit {
       .catch(e => this.error = e)
       .subscribe(result => {
         this.outputcall.emit();
+      });
+  }
+
+  sendComment(user_Id,content,valoration) {
+    this.comment = content;
+    this.valoration = valoration;
+    this.CommentServ.createComment(user_Id,content,valoration)
+      .catch(e => this.error = e)
+      .subscribe(result => {
+        this.comment = ""
+        this.valoration = 0
+        console.log(result);
       });
   }
 
