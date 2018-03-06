@@ -37,4 +37,22 @@
       background: $orange;
     }
   }
+  .booking-date,.user-info {
+    font-size: .7em;
+    letter-spacing: 1px;
+    font-weight: 600;
+    padding-top: 15px;
+  }
+  .user-info {
+    padding-top: 8px;
+  }
+  .booking-row {
+    margin: 0;
+    border: 1px solid $lightgrey;
+    border-top: none;
+    border-bottom: none;
+    &:nth-child(even){
+      background: $lightgrey;
+    }
+  }
 }

@@ -20,6 +20,7 @@ export class ViewBookingsComponent implements OnInit {
     this.switch = false;
     this.btntext = "Edit booking"
   }
+  
   changeBookingStatus(status, id) {
     if (status !== 'cancelled') {this.bookingsServ.updateBookings(status, id).catch(e => this.error = e).subscribe()} 
     else {this.deleteBooking(id)}
@@ -32,7 +33,7 @@ export class ViewBookingsComponent implements OnInit {
         this.outputcall.emit(); 
       });
   }
-  
+
   closeBookings() {
     this.bookings = null
   }

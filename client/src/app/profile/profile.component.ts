@@ -19,7 +19,7 @@ export class ProfileComponent implements OnInit {
   error: String;
   message: any = "";
   userBookings:Array<any>;
-
+  userInfo:object;
   @Output() outputcall = new EventEmitter<string>();
 
   constructor(
@@ -31,6 +31,8 @@ export class ProfileComponent implements OnInit {
   ) {
     this.currentUser = this.session.getUser();
     this.userService.getUserBookings(this.session.getUser()._id).subscribe(bookings=>{
+      console.log(bookings)
+      this.userInfo={name:bookings.name,email:bookings.email,phone:bookings.phone}
       this.userBookings=bookings.bookings;
     })
     
