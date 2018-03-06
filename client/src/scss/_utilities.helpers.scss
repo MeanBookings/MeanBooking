@@ -64,6 +64,14 @@ img {
     &-0 {
         margin: 0;
     }
+    &-bot {
+        &-0 {
+            margin-bottom: 0;
+        }
+        &-50 {
+            margin-bottom: 50px;
+        }
+    }
 }
 
 .column-wrapper {

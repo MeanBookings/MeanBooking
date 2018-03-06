@@ -1,8 +1,24 @@
 #dashboard {
-    padding-top: 40px;
-    .mat-tab-label-content {
-        font-size: 1.3em;
-        font-weight: 100;
-    }
-
+  padding-top: 40px;
+  .mat-tab-label-content {
+    font-size: 1.3em;
+    font-weight: 100;
+  }
+  .mat-tab-label-active {
+    background: $yellow;
+  }
+  .mat-tab-group.mat-primary .mat-ink-bar,
+  .mat-tab-nav-bar.mat-primary .mat-ink-bar {
+    background: $blue;
+  }
+  .mat-tab-body-content {
+      background: $darkwhite;
+      padding: 30px;
+      .mat-input-container{
+          width: 49%;
+      }
+  }
+  .status-select {
+      width: initial!important;
+  }
 }

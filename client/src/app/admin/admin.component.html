@@ -1,39 +1,43 @@
 <div class="container" id="dashboard">
   <div class="row">
-    <div class="col-sm-12 text-center">
+    <div class="col-sm-12 text-center m-bot-50">
       <h2> Dashboard </h2>
     </div>
   </div>
   <div class="row">
     <div class="col-sm-12">
+      <h6 class="m-bot-50">Use this tabs to generate and edit the day configuration and availability.
+        <br>
+        <small>Already created days will no be overwritten, so do not panic if you overlap days...</small>
+      </h6>
       <mat-tab-group>
         <mat-tab label="Massive Day Creation">
           <mat-form-field>
-            <input matInput [matDatepicker]="createPickerIn" placeholder="Choose a date">
+            <input matInput [matDatepicker]="createPickerIn" placeholder="FROM date">
             <mat-datepicker-toggle matSuffix [for]="createPickerIn"></mat-datepicker-toggle>
             <mat-datepicker #createPickerIn></mat-datepicker>
           </mat-form-field>
           <mat-form-field>
-            <input matInput [matDatepicker]="createPickerOut" placeholder="Choose a date">
+            <input matInput [matDatepicker]="createPickerOut" placeholder="TO date">
             <mat-datepicker-toggle matSuffix [for]="createPickerOut"></mat-datepicker-toggle>
             <mat-datepicker #createPickerOut></mat-datepicker>
           </mat-form-field>
-          <button (click)="createDays(createPickerIn,createPickerOut)">send</button>
+          <button (click)="createDays(createPickerIn,createPickerOut)" mat-raised-button color="accent" class="d-block">Create days!</button>
           <div *ngIf="message" class="message"> You have created {{message.length}} days successfully: </div>
         </mat-tab>
         <mat-tab label="Massive days update">
           <mat-form-field>
-            <input matInput [matDatepicker]="updatePickerIn" placeholder="Choose a date">
+            <input matInput [matDatepicker]="updatePickerIn" placeholder="FROM date">
             <mat-datepicker-toggle matSuffix [for]="updatePickerIn"></mat-datepicker-toggle>
             <mat-datepicker #updatePickerIn></mat-datepicker>
           </mat-form-field>
           <mat-form-field>
-            <input matInput [matDatepicker]="updatePickerOut" placeholder="Choose a date">
+            <input matInput [matDatepicker]="updatePickerOut" placeholder="TO date">
             <mat-datepicker-toggle matSuffix [for]="updatePickerOut"></mat-datepicker-toggle>
             <mat-datepicker #updatePickerOut></mat-datepicker>
           </mat-form-field>
-          <button (click)="updateDays(updatePickerIn,updatePickerOut)">send</button>
-          <div class="status">Restaurant is
+          <button (click)="updateDays(updatePickerIn,updatePickerOut)" mat-raised-button color="accent" class="d-block">Update days!</button>
+          <div class="status">Restaurant status:
             <mat-form-field class="status-select">
               <mat-select [class]="dayConfig.status" [(ngModel)]="dayConfig.status">
                 <mat-option value="open"> Open </mat-option>
