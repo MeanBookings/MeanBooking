@@ -30,8 +30,6 @@ export class AdminComponent implements OnInit {
   }
 
   createDays(a, b) {
-    // console.log(a)
-    // console.log(b)
     let startDate = moment(a._selected)
     let endDate = moment(b._selected)
     let dates = [],

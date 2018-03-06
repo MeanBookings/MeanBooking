@@ -23,10 +23,11 @@ let mailOptions = {
     html: ''
 };
 
+let pendingBooksDays; 
 
 // /api/book/ - Get the approved
 router.get('/', (req, res, next) => {
-    let pendingBooksDays = []
+    pendingBooksDays = []
     let encontrado = false
     Day.find()
     .populate({

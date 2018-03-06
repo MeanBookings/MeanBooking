@@ -15,41 +15,42 @@
         <div class="col-sm-4"> Customer contact info </div>
       </div>
       <div *ngFor="let books of pending">
-        <div class="row booking" *ngFor="let user of books.books">
-          <div class="col-sm-4">
-            <div class="details">
-              <div>
-                <small class="booking-id"> {{books._id}} </small>
-              </div>
-              <mat-form-field class="status-select">
-                <!-- <mat-form-field [value]="user.status" [class]="user.status" [(ngModel)]="user.status" (change)="changeBookingStatus(user.status,user._id)"> -->
-                <mat-select [value]="user.status" [class]="user.status" [(ngModel)]="user.status" (change)="changeBookingStatus(user.status,user._id)">
-                  <mat-option value="pending"> Pending </mat-option>
-                  <mat-option value="approved"> Approved </mat-option>
-                  <mat-option value="cancelled"> Cancelled </mat-option>
-                </mat-select>
-              </mat-form-field>
-            </div>
-          </div>
-          <div class="col-sm-4">
-            <div class="details">
-              <div class="hour"> {{user.hour}}
-                <small>hours</small>
-              </div>
-              <div class="people">
-                <small>Booking for</small> {{user.people}}
-                <small>people</small>
+        <div *ngFor="let user of books.books">
+          <div *ngIf="user.status == 'pending'" class="row booking">
+            <div class="col-sm-4">
+              <div class="details">
+                <div>
+                  <small class="booking-id"> {{books._id}} </small>
+                </div>
+                <mat-form-field class="status-select">
+                  <mat-select [value]="user.status" [class]="user.status" [(ngModel)]="user.status" (change)="changeBookingStatus(user.status,user._id)">
+                    <mat-option value="pending"> Pending </mat-option>
+                    <mat-option value="approved"> Approved </mat-option>
+                    <mat-option value="cancelled"> Cancelled </mat-option>
+                  </mat-select>
+                </mat-form-field>
               </div>
             </div>
-          </div>
-          <div class="col-sm-4">
-            <div class="customer-details">
-              <div>
-                <small>Name:</small> {{user.user.name}} </div>
-              <div>
-                <small>Email:</small> {{user.user.email}} </div>
-              <div>
-                <small>Phone:</small> {{user.user.phone}} </div>
+            <div class="col-sm-4">
+              <div class="details">
+                <div class="hour"> {{user.hour}}
+                  <small>hours</small>
+                </div>
+                <div class="people">
+                  <small>Booking for</small> {{user.people}}
+                  <small>people</small>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="customer-details">
+                <div>
+                  <small>Name:</small> {{user.user.name}} </div>
+                <div>
+                  <small>Email:</small> {{user.user.email}} </div>
+                <div>
+                  <small>Phone:</small> {{user.user.phone}} </div>
+              </div>
             </div>
           </div>
         </div>
