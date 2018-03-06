@@ -1,14 +1,32 @@
 <div class="container-fluid" id="hero">
-  <div class="row">
+  <div class="row align-items-center">
     <div class="col-sm-12">
-      
+      <h1>
+        <small>Avello's</small>
+         We are pizza
+      </h1>
+      <!-- <div class="logo-hero">
+          <img src="../../assets/img/logo.png" alt="Avello's Pizza">
+      </div> -->
     </div>
   </div>
 </div>
-<div class="container" id="home">
+<div class="container-fluid" id="home-booking">
   <div class="row">
-    <div class="col-sm-12">
+    <div class="col-lg-6 pad-special-l-r">
+      <h2>Book your table</h2>
       <bookingform></bookingform>
     </div>
+    <div class="col-lg-6 img-as-column-pizza">
+      
+    </div>
   </div>
+  <div class="row" id="home-map">
+      <div class="col-lg-6 img-as-column-ingredients"></div>
+      <div class="col-lg-6" id="map">
+        <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">
+          <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+        </agm-map>
+      </div>
+    </div>
 </div>

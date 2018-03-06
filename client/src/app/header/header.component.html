@@ -2,40 +2,41 @@
   <div class="row">
     <div class="col-sm-4">
       <div class="logo">
-        <a [routerLink]="['/']">{{title}}</a>
+        <a [routerLink]="['/']"><img src="../../assets/img/logo.png" alt="Avello's Trattoria"></a>
       </div>
     </div>
     <div class="col-sm-8">
       <ul class="list-inline">
+        <li *ngIf="session.getUser()" class="header-controls list-inline-item user-profile" [routerLink]="['/profile']">
+          <i class="material-icons">person</i>
+          <div class="menu-legend">Hi {{session.getUser().name}}!</div>
+        </li>
         <li class="list-inline-item header-controls" *ngIf="session.getUser()&&session.getAdmin()&&pending" (click)="pendingBookings()">
           <span *ngIf="pending>0">{{pending | json}}
             <i class="material-icons faa-ring animated">add_alert</i>
           </span>
-          <div>pending</div>
+          <div class="menu-legend">pending</div>
         </li>
         <li class="list-inline-item header-controls" *ngIf="session.getUser()&&session.getAdmin()" [routerLink]="['/dashboard']">
           <i class="material-icons">dashboard</i>
-          <div>dashboard</div>
+          <div class="menu-legend">dashboard</div>
         </li>
         <li class="list-inline-item header-controls" *ngIf="session.getUser()&&session.getAdmin()" [routerLink]="['/bookings']">
           <i class="material-icons">today</i>
-          <div>calendar</div>
+          <div class="menu-legend">calendar</div>
         </li>
         <li *ngIf="session.getUser()&&session.getAdmin()" class="list-inline-item header-controls" [routerLink]="['/users']">
           <i class="material-icons">people</i>
-          <div>users</div>
+          <div class="menu-legend">clients</div>
         </li>
-        <li *ngIf="session.getUser()" class="header-controls list-inline-item" [routerLink]="['/profile']">
-          <i class="material-icons">person</i>
-          <div>Hi {{session.getUser().name}}!</div>
-        </li>
-        <li class="header-controls list-inline-item">
+        <li class="header-form list-inline-item">
           <signup></signup>
         </li>
-        <li class="header-controls list-inline-item">
+        <li class="header-form list-inline-item">
           <login></login>
-          <logout></logout>
-          <div>bye</div>
+        </li>
+        <li class="list-inline-item logout">
+            <logout></logout>
         </li>
       </ul>
     </div>

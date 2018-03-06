@@ -8,10 +8,10 @@ import { BookingService } from '../../services/booking.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  pending: any;
-  popup: any;
-  title = 'Pizza!';
-  searchingPendings: any = [];
+  pending:any;
+  popup:any;
+  title = "Avello's Trattoria";
+  searchingPendings:any=[];
   constructor(
     public session: SessionService,
     public books: BookingService) {

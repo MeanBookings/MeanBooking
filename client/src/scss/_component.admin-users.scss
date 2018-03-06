@@ -1,3 +1,8 @@
-.activeEnvelope{
-    color: $yellow;
+.activeEnvelope {
+    &:focus {
+        outline: none;
+    }
+  i {
+    color: $yellow; 
+  }
 }
