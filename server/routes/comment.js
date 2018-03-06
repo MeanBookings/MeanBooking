@@ -4,27 +4,27 @@ const debug = require('debug')("server:day");
 const Comment = require('../models/Comment');
 const User = require('../models/User');
 
-// api/comments/
+// api/comment/
 router.get("/", (req, res, next) => {
     Comment.find()
         .then(comments => res.status(200).json(comments))
         .catch(e => res.status(500).json(e));
 });
 
-// api/comments/create
+// api/comment/create
 router.post("/create", (req, res, next) => {
-    let { user_Id, content, stars } = req.body
+    let { user_Id, content, valoration } = req.body
     const theComment = new Comment({
         user_Id,
         content,
-        stars
+        "stars":valoration
     });
     theComment.save()
         .then(comment => res.status(200).json(comment))
         .catch (e => { res.status(500).json(e)});
 });
 
-// api/comments/edit/:id
+// api/comment/edit/:id
 router.post("/edit/:id", (req, res, next) => {
     let status = req.body.status
     Comment.findByIdAndUpdate(req.params.id, { $set: { "status": status } }, { $new: true })
@@ -32,7 +32,7 @@ router.post("/edit/:id", (req, res, next) => {
         .catch(e => res.status(500).json(e));
 });
 
-// api/comments/delete/:id
+// api/comment/delete/:id
 router.get("/delete/:id", (req, res, next) => {
     Comment.findByIdAndRemove(req.params.id)
         .then(users => res.status(200).json(users))
