@@ -12,7 +12,10 @@ import * as moment from 'moment';
 export class HomeComponent implements OnInit {
   constructor() { }
 
- ngOnInit() {
- }
+  lat: number = 40.4334432;
+  lng: number = -3.6555023;
+  zoom: number = 18;
+  ngOnInit() {
+  }
 
 }

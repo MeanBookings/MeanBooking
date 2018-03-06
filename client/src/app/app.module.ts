@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, LOCALE_ID } from '@angular/core';
+import { NgModule, LOCALE_ID, ApplicationRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
@@ -15,6 +15,10 @@ import { RouterModule } from '@angular/router';
 import { registerLocaleData } from '@angular/common';
 import localeEs from '@angular/common/locales/es';
 registerLocaleData(localeEs);
+//maps
+import { AgmCoreModule } from '@agm/core';
+//tinyMCE
+import { EditorModule } from '@tinymce/tinymce-angular';
 //components
 import { LoginComponent } from './header/login/login.component';
 import { HeaderComponent } from './header/header.component';
@@ -86,7 +90,11 @@ import { ViewpendingsComponent } from './admin/viewpendings/viewpendings.compone
     MatDatepickerModule,
     MatNativeDateModule,
     MatSliderModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyCqZbiAa2oZ5vm3ec6BC9UiFto6uZgb-cw'
+    }),
+    EditorModule
   ],
   entryComponents: [SnackBarComponent, BookingformComponent, SnackBarProfileComponent, ProfileComponent],
   providers: [UserService, SessionService, BookingService, AdminGuardService, CalendarService, UserGuardService, { provide: LOCALE_ID, useValue: "es-ES" }],

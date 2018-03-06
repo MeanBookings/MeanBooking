@@ -53,6 +53,14 @@
             </button>
         </div>
     </div>
+    <div class="row">
+        <div class="col-sm-3 offset-sm-9 text-center">
+            <button mat-icon-button class="allContacts">
+                <i class="material-icons">email</i>
+                Select all
+            </button>
+        </div>
+    </div>
     <mat-form-field>
         <textarea matInput [(ngModel)]="emailText" placeholder="Autosize textarea" matTextareaAutosize matAutosizeMinRows="1" matAutosizeMaxRows="4"></textarea>
     </mat-form-field>
@@ -61,4 +69,5 @@
         <i class="material-icons">send</i>
     </mat-icon>
     </button>
+    <editor apiKey="evydzy7vri0fwlux7rtdzezqu8gjpfavrscffzb7fapsdj98" [init]="{plugins: 'link'}"></editor>
 </div>

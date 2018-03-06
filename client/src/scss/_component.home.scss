@@ -1,0 +1,66 @@
+#hero {
+  position: relative;
+  &:after {
+    content: '';
+    height: 100%;
+    width: 100%;
+    background: $main;
+    opacity: .8;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    pointer-events: none;
+  }
+  min-height: 100vh;
+  background: url(#{$img_path}/hero.jpg);
+  background-size: cover;
+  .row {
+    height: 100vh;
+    text-align: center;
+    h1 {
+      font-size: 8em;
+      color: $white;
+      z-index: 1;
+      position: relative;
+      margin-bottom: 20px;
+      line-height: 1;
+      font-family: 'Italiana', serif;
+      small {
+        font-family: 'Cookie', serif;
+        font-size: .4em;
+        display: block;
+      }
+    }
+    logo-hero {
+      img {
+        max-width: 100%;
+      }
+    }
+  }
+}
+
+#home-booking {
+  h2 {
+    margin-bottom: 50px;
+    font-weight: 100;
+  }
+  .img-as-column-pizza {
+    background: url(#{$img_path}/pizza.jpg);
+    background-size: cover;
+    background-position-x: 100%;
+  }
+}
+
+#home-map {
+  .img-as-column-ingredients {
+    background: url(#{$img_path}/ingredients.jpg);
+    background-size: cover;
+  }
+  #map {
+    padding: 0;
+    agm-map {
+      height: 700px;
+    }
+  }
+}

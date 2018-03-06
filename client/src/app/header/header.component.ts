@@ -9,7 +9,7 @@ import { BookingService } from '../../services/booking.service';
 })
 export class HeaderComponent implements OnInit {
   pending:any;
-  title = 'Pizza!';
+  title = "Avello's Trattoria";
   searchingPendings:any=[];
   constructor(
     public session: SessionService,

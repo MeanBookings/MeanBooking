@@ -14,3 +14,10 @@ h1,h2,h3,h4,h5,h6 {
 img {
   max-width: 100%;
 }
+main {
+  padding-top: $headerHeight;
+}
+
+button:focus,button:active {
+  outline: none;
+}
