@@ -36,11 +36,11 @@
         <div class="col-md-4">
           <mat-form-field class="status-select">
             <mat-select [value]="booking.status" [class]="booking.status" [(ngModel)]="booking.status" (change)="changeBookingStatus(booking.status,booking._id)">
-              <mat-option value="pending"> Pending </mat-option>
-              <mat-option value="approved"> Approved </mat-option>
+              <mat-option disabled value="pending"> Pending </mat-option>
+              <mat-option disabled value="approved"> Approved </mat-option>
               <mat-option value="cancelled"> Cancelled </mat-option>
-              <mat-option value="notshow"> Not show </mat-option>
-              <mat-option value="show"> Show </mat-option>
+              <mat-option *ngIf="session.getAdmin()" value="notshow"> Not show </mat-option>
+              <mat-option *ngIf="session.getAdmin()" value="show"> Show </mat-option>
             </mat-select>
           </mat-form-field>
         </div>
@@ -69,13 +69,13 @@
         <div class="col-md-8 offset-md-2">
           <form class="client-opinion-form" (ngSubmit)="sendComment(currentUser._id,comment,valoration)" #opinionForm="ngForm">
             <mat-form-field class="full-width">
-              <textarea matInput placeholder="Your comment" [(ngModel)]="comment" name="comment"></textarea>
+              <textarea matInput placeholder="Your comment" [(ngModel)]="comment" name="comment" required></textarea>
             </mat-form-field>
             <div class="label">
-              <label for="valoration">Valoration</label>
+              <label for="valoration">Valoration*</label>
             </div>
             <mat-slider class="full-width" [disabled]="disabled" [invert]="invert" [max]="max" [min]="min" [step]="step"
-              [thumb-label]="thumbLabel" [tick-interval]="tickInterval" [vertical]="vertical" [(ngModel)]="valoration" name="valoration">
+              [thumb-label]="thumbLabel" [tick-interval]="tickInterval" [vertical]="vertical" [(ngModel)]="valoration" name="valoration" required>
             </mat-slider>
             <button type="submit" mat-raised-button color="warn">Send!</button>
           </form>

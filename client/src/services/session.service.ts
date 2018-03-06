@@ -33,11 +33,10 @@ export class SessionService {
       if (set) {
         this.user = user;
         this.userReady.emit(this.user);
-        console.log(`Setting user, welcome ${this.user.name}`)
+        //console.log(`Setting user, welcome ${this.user.name}`)
       } else {
-        console.log(`bye bye ${this.user.name}`)
+        //console.log(`bye bye ${this.user.name}`)
         this.user = null
-        this.userReady.emit(null);
       }
       return user;
     }
@@ -49,10 +48,8 @@ export class SessionService {
   }
 
   signup(name: string, password: string, email: string, phone: string): Observable<any> {
-    console.log(name, password, email, phone)
     return this.http.post(`${environment.BASEURL}/api/auth/signup`, { username: name, password, email, phone }, this.options)
       .map(res => {
-        console.log(res)
         return res.json()
       })
       .map(this.configureUser(true))
