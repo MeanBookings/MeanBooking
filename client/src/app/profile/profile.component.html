@@ -32,7 +32,7 @@
         <div class="col-md-4"> Day, hour and people </div>
         <div class="col-md-4"> Customer contact info </div>
       </div>
-      <div class="row" *ngFor="let booking of userBookings">
+      <div class="row booking-row" *ngFor="let booking of userBookings">
         <div class="col-md-4">
           <mat-form-field class="status-select">
             <mat-select [value]="booking.status" [class]="booking.status" [(ngModel)]="booking.status" (change)="changeBookingStatus(booking.status,booking._id)">
@@ -45,7 +45,17 @@
           </mat-form-field>
         </div>
         <div class="col-md-4">
-          {{booking.date | date:'medium'}}
+          <div class="booking-date">
+            <div> {{booking.date | date:' d MMM, y'}} </div>
+            <div> {{booking.hour}} | {{booking.people}} people </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="user-info">
+              <div> {{userInfo.name}} </div>
+              <div> {{userInfo.email}} </div>
+              <div> {{userInfo.phone}} </div>
+          </div>
         </div>
       </div>
     </div>
