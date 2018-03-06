@@ -13,15 +13,14 @@ import { CommentService } from '../../services/comment.service';
   preserveWhitespaces: false,
 })
 export class HomeComponent implements OnInit {
-  constructor(public comment:CommentService) { }
+  constructor(public comment: CommentService) { }
 
-  comments:any;
+  comments: any;
   lat: number = 40.4334432;
   lng: number = -3.6555023;
   zoom: number = 18;
   ngOnInit() {
     this.comment.getComment().subscribe((comment) => this.comments = comment);
-    console.log(this.comments)
   }
 
 

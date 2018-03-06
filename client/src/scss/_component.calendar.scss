@@ -1,7 +1,6 @@
-
 #no-days-wrapper {
   margin: 75px 0;
-  .icon-run{ 
+  .icon-run {
     margin-top: 50px;
     i {
       font-size: 8em;
@@ -123,6 +122,7 @@
 }
 
 #calendar-header {
+  padding-top: 40px;
   border-bottom: 1px solid $lightgrey;
   .weekdays-row {
     .weekDays {

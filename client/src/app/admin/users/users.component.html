@@ -1,73 +1,82 @@
-<h1>USERS</h1>
-<div class="container">
-    <div class="row">
-        <div class="col-sm-3 text-center">
-            <h3>Name / Role</h3>
-        </div>
-        <div class="col-sm-4 text-center">
-            <h3>Email</h3>
-        </div>
-        <div class="col-sm-2 text-center">
-            <h3>Phone</h3>
-        </div>
-        <div class="col-sm-3 text-center">
-            <h3>Actions</h3>
-        </div>
+<div class="container" id="users">
+  <div class="row">
+    <div class="col-sm-12 text-center m-bot-50">
+      <h2> User management </h2>
     </div>
-    <mat-divider></mat-divider>
-    <div class="row" *ngFor="let user of users">
-        <div class="col-sm-3 text-center">
-            <p>{{user.name}} <br><small><strong>{{user.role}}</strong></small></p>
-        </div>
-        <div class="col-sm-4 text-center">
-            <p>{{user.email}}</p>
-        </div>
-        <div class="col-sm-2 text-center">
-            <p>{{user.phone}}</p>
-        </div>
-        <div class="col-sm-3 text-center">
-            <button mat-icon-button [matMenuTriggerFor]="menu">
-                <mat-icon>
-                    <i class="material-icons">delete_forever</i>
-                </mat-icon>
-            </button>
-            <mat-menu #menu="matMenu">
-                <button mat-menu-item (click)="deleteUser(user._id)">
-                    Sure?
-                </button>
-            </mat-menu>
-            <button mat-icon-button>
-                <button mat-icon-button [matMenuTriggerFor]="menu">
-                    <mat-icon>
-                        <i class="material-icons">whatshot</i>
-                    </mat-icon>
-                </button>
-                <mat-menu #menu="matMenu">
-                    <button mat-menu-item (click)="makeMeAdmin(user._id)">
-                        Sure?
-                    </button>
-                </mat-menu>
-            </button>
-            <button mat-icon-button class="addtoEnvelope" (click)=selectedForEmail(user.email)>
-                <i class="material-icons">email</i>
-            </button>
-        </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-3 text-center">
+      <h6>Name / Role</h6>
     </div>
-    <div class="row">
-        <div class="col-sm-3 offset-sm-9 text-center">
-            <button mat-icon-button class="allContacts">
-                <i class="material-icons">email</i><br>
-                <small>Select all</small>
-            </button>
-        </div>
+    <div class="col-sm-4 text-center">
+      <h6>Email</h6>
     </div>
-    <mat-form-field>
-        <textarea matInput [(ngModel)]="emailText" placeholder="Autosize textarea" matTextareaAutosize matAutosizeMinRows="1" matAutosizeMaxRows="4"></textarea>
-    </mat-form-field>
-    <button mat-icon-button (click)="sendMassiveEmail()">
+    <div class="col-sm-2 text-center">
+      <h6>Phone</h6>
+    </div>
+    <div class="col-sm-3 text-center">
+      <h6>Actions</h6>
+    </div>
+  </div>
+  <mat-divider></mat-divider>
+  <div class="row" *ngFor="let user of users">
+    <div class="col-sm-3 text-center">
+      <p>{{user.name}}
+        <br>
+        <small>
+          <strong>{{user.role}}</strong>
+        </small>
+      </p>
+    </div>
+    <div class="col-sm-4 text-center">
+      <p>{{user.email}}</p>
+    </div>
+    <div class="col-sm-2 text-center">
+      <p>{{user.phone}}</p>
+    </div>
+    <div class="col-sm-3 text-center">
+      <button mat-icon-button [matMenuTriggerFor]="menu">
         <mat-icon>
-        <i class="material-icons">send</i>
-    </mat-icon>
-    </button>
-    <editor apiKey="evydzy7vri0fwlux7rtdzezqu8gjpfavrscffzb7fapsdj98" [init]="{plugins: 'link'}"></editor>
+          <i class="material-icons">delete_forever</i>
+        </mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="deleteUser(user._id)"> Sure? </button>
+      </mat-menu>
+      <button mat-icon-button>
+        <button mat-icon-button [matMenuTriggerFor]="menu">
+          <mat-icon>
+            <i class="material-icons">whatshot</i>
+          </mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="makeMeAdmin(user._id)"> Sure? </button>
+        </mat-menu>
+      </button>
+      <button mat-icon-button class="addtoEnvelope" (click)=selectedForEmail(user.email)>
+        <i class="material-icons">email</i>
+      </button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-3 offset-sm-9 text-center">
+      <button mat-icon-button class="allContacts">
+        <small>Select all</small>
+        <i class="material-icons">email</i>
+      </button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <h3>Write a newsletter</h3>
+      <mat-form-field class="full-width">
+        <textarea matInput placeholder="Your text here!" [(ngModel)]="emailText" required></textarea>
+      </mat-form-field>
+      <button mat-icon-button (click)="sendMassiveEmail()">
+        <mat-icon>
+          <i class="material-icons">send</i>
+        </mat-icon>
+      </button>
+    </div>
+  </div>
 </div>

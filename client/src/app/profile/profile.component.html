@@ -61,12 +61,12 @@
     </div>
   </div>
   <!-- comments form -->
-  <hr class="comments-form-separator">
+  <hr class="comments-form-separator col-md-8 offset-md-4">
   <div class="row comment-row">
     <div class="col-sm-12 text-center">
       <h3> Send your opinion!. </h3>
       <div class="row">
-        <div class="col-md-8 offset-md-2">
+        <div class="col-md-8 offset-md-4">
           <form class="client-opinion-form" (ngSubmit)="sendComment(currentUser._id,comment,valoration)" #opinionForm="ngForm">
             <mat-form-field class="full-width">
               <textarea matInput placeholder="Your comment" [(ngModel)]="comment" name="comment" required></textarea>
@@ -77,7 +77,7 @@
             <mat-slider class="full-width" [disabled]="disabled" [invert]="invert" [max]="max" [min]="min" [step]="step"
               [thumb-label]="thumbLabel" [tick-interval]="tickInterval" [vertical]="vertical" [(ngModel)]="valoration" name="valoration" required>
             </mat-slider>
-            <button type="submit" mat-raised-button color="warn">Send!</button>
+            <button type="submit" mat-raised-button color="accent">Send!</button>
           </form>
         </div>
       </div>

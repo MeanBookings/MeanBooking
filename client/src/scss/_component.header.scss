@@ -1,4 +1,7 @@
 header {
+  .active-menu-item {
+    color: $red;
+  }
   -webkit-box-shadow: 0px 2px 10px -1px rgba(0, 0, 0, .25);
   -moz-box-shadow: 0px 2px 10px -1px rgba(0, 0, 0, .25);
   box-shadow: 0px 2px 10px -1px rgba(0, 0, 0, .25);
@@ -16,17 +19,25 @@ header {
       padding-top: 6px;
     }
     .logo {
-      padding: 10px 0 0;
-      a {
-        color: $black;
-        @include transition(all .3s linear);
-        text-decoration: none;
-        &:hover {
-          color: $red;
-        }
-        img {
+      display: block;
+      position: relative;
+      padding-top: 10px;
+      &::after {
+        content: '';
+        position: absolute;
+        height: 33px;
+        width: 100px;
+        background: url(#{$img_path}/logo.png);
+        background-size: contain;
+      }
+      &:hover {
+        &:after {
+          background: url(#{$img_path}/logo-hover.png);
+          content: '';
+          position: absolute;
+          height: 33px;
           width: 100px;
-          height: auto !important;
+          background-size: contain;
         }
       }
     }
@@ -65,11 +76,12 @@ header {
           font-size: .8em;
           font-weight: 600;
         }
-        .no-pendings,.no-pendings i {
+        .no-pendings,
+        .no-pendings i {
           opacity: .5;
-          pointer-events: none!important;
-          cursor: initial!important;
-          color: initial!important;
+          pointer-events: none !important;
+          cursor: initial !important;
+          color: initial !important;
           display: inline-block;
         }
       }

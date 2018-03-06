@@ -23,35 +23,30 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
-    
-/*     this.books.getPendings().subscribe((a) => {
-      console.log(a)
-      return this.pending = a.length */
-    this.i=0;
+
+    this.i = 0;
     this.books.getPendings().subscribe((a) => {
       a.forEach((b) => {
         b.books.forEach((c) => {
-         if (c.status == "pending") {
-           this.i++
-         }
+          if (c.status == "pending") {
+            this.i++
+          }
         })
-     })
-     console.log(a)
+      })
       return this.pending = this.i
     })
-    
+
   }
 
   pendingBookings() {
     this.i = 0
     this.books.getPendings().subscribe((a) => {
-      // console.log(a)
       a.forEach((b) => {
-         b.books.forEach((c) => {
+        b.books.forEach((c) => {
           if (c.status == "pending") {
             this.i++
           }
-         })
+        })
       })
       this.popup = a
       this.numberPopup = this.i

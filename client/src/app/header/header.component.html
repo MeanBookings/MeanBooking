@@ -1,13 +1,11 @@
 <div class="container-fluid" id="header">
   <div class="row header-row">
     <div class="col-sm-4">
-      <div class="logo">
-        <a [routerLink]="['/']"><img src="../../assets/img/logo.png" alt="Avello's Trattoria"></a>
-      </div>
+        <a class="header-logo-link" [routerLink]="['/']" ><span class="logo"></span></a>
     </div>
     <div class="col-sm-8">
       <ul class="list-inline">
-        <li *ngIf="session.getUser()" class="header-controls list-inline-item user-profile" [routerLink]="['/profile']">
+        <li *ngIf="session.getUser()" class="header-controls list-inline-item user-profile" routerLinkActive="active-menu-item" [routerLink]="['/profile']">
           <i class="material-icons">person</i>
           <div class="menu-legend">Hi {{session.getUser().name}}!</div>
         </li>
@@ -26,15 +24,15 @@
             </span>
           </ng-template>
         </li>
-        <li class="list-inline-item header-controls" *ngIf="session.getUser()&&session.getAdmin()" [routerLink]="['/dashboard']">
+        <li class="list-inline-item header-controls" *ngIf="session.getUser()&&session.getAdmin()" routerLinkActive="active-menu-item" [routerLink]="['/dashboard']">
           <i class="material-icons">dashboard</i>
           <div class="menu-legend">dashboard</div>
         </li>
-        <li class="list-inline-item header-controls" *ngIf="session.getUser()&&session.getAdmin()" [routerLink]="['/bookings']">
+        <li class="list-inline-item header-controls" *ngIf="session.getUser()&&session.getAdmin()" routerLinkActive="active-menu-item" [routerLink]="['/bookings']">
           <i class="material-icons">today</i>
           <div class="menu-legend">calendar</div>
         </li>
-        <li *ngIf="session.getUser()&&session.getAdmin()" class="list-inline-item header-controls" [routerLink]="['/users']">
+        <li *ngIf="session.getUser()&&session.getAdmin()" class="list-inline-item header-controls" routerLinkActive="active-menu-item" [routerLink]="['/users']">
           <i class="material-icons">people</i>
           <div class="menu-legend">clients</div>
         </li>

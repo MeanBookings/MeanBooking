@@ -17,8 +17,6 @@ import localeEs from '@angular/common/locales/es';
 registerLocaleData(localeEs);
 //maps
 import { AgmCoreModule } from '@agm/core';
-//tinyMCE
-import { EditorModule } from '@tinymce/tinymce-angular';
 //components
 import { LoginComponent } from './header/login/login.component';
 import { HeaderComponent } from './header/header.component';
@@ -96,7 +94,6 @@ import { OwlModule } from 'ng2-owl-carousel';
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyCqZbiAa2oZ5vm3ec6BC9UiFto6uZgb-cw'
     }),
-    EditorModule,
     OwlModule    
   ],
   entryComponents: [SnackBarComponent, BookingformComponent, SnackBarProfileComponent, ProfileComponent],

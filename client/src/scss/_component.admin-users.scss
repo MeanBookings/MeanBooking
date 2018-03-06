@@ -1,8 +1,21 @@
-.activeEnvelope {
+#users {
+  padding-top: 40px;
+  .activeEnvelope {
     &:focus {
-        outline: none;
+      outline: none;
     }
-  i {
-    color: $yellow; 
+    i {
+      color: $yellow;
+    }
+  }
+  .allContacts {
+    border: 1px solid #373737 !important;
+    width: initial !important;
+    border-radius: 4px !important;
+    padding: 0px 14px !important;
+    &:hover {
+      border-color: $red !important;
+      color: $red !important;
+    }
   }
 }

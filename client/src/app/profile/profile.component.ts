@@ -37,7 +37,6 @@ export class ProfileComponent implements OnInit {
   ) {
     this.currentUser = this.session.getUser();
     this.userService.getUserBookings(this.session.getUser()._id).subscribe(bookings => {
-      console.log(bookings)
       this.userInfo = { name: bookings.name, email: bookings.email, phone: bookings.phone }
       this.userBookings = bookings.bookings;
     });
@@ -89,7 +88,6 @@ export class ProfileComponent implements OnInit {
       .subscribe(result => {
         this.comment = ""
         this.valoration = 0
-        console.log(result);
       });
   }
 

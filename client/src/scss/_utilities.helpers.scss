@@ -54,8 +54,11 @@ img {
         &-20 {
             margin-top: 20px;
         }
+        &-25 {
+            margin-top: 25px;
+        }
         &-40 {
-            margin-top: 40px;
+            margin-top: 40px!important;
         }
         &-0 {
             margin-top: 0 !important;
@@ -67,6 +70,12 @@ img {
     &-bot {
         &-0 {
             margin-bottom: 0;
+        }
+        &-10 {
+            margin-bottom: 10px;
+        }
+        &-20 {
+            margin-bottom: 20px;
         }
         &-50 {
             margin-bottom: 50px;
