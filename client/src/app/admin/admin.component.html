@@ -1,4 +1,9 @@
-<div class="container">
+<div class="container" id="dashboard">
+  <div class="row">
+    <div class="col-sm-12 text-center">
+      <h2> Dashboard </h2>
+    </div>
+  </div>
   <div class="row">
     <div class="col-sm-12">
       <mat-tab-group>
@@ -14,9 +19,7 @@
             <mat-datepicker #createPickerOut></mat-datepicker>
           </mat-form-field>
           <button (click)="createDays(createPickerIn,createPickerOut)">send</button>
-          <div *ngIf="message" class="message">
-            You have created {{message.length}} days successfully:
-          </div>
+          <div *ngIf="message" class="message"> You have created {{message.length}} days successfully: </div>
         </mat-tab>
         <mat-tab label="Massive days update">
           <mat-form-field>
@@ -33,12 +36,8 @@
           <div class="status">Restaurant is
             <mat-form-field class="status-select">
               <mat-select [class]="dayConfig.status" [(ngModel)]="dayConfig.status">
-                <mat-option value="open">
-                  Open
-                </mat-option>
-                <mat-option value="closed">
-                  Closed
-                </mat-option>
+                <mat-option value="open"> Open </mat-option>
+                <mat-option value="closed"> Closed </mat-option>
               </mat-select>
             </mat-form-field>
           </div>
@@ -48,13 +47,10 @@
               <small>(zero means no shift this day)</small>:</span>
             <div class="row">
               <div class="col-6 col-sm-3 col-lg-2 text-center" *ngFor="let shift of dayConfig.shift; let i=index;">
-                <div class="shift-hour">
-                  {{shift.hour}}
-                </div>
+                <div class="shift-hour"> {{shift.hour}} </div>
                 <div class="shift-availability">
                   <mat-form-field>
-                    <input class="text-center" matInput [value]="shift.current" [(ngModel)]="shift.current">
-                  </mat-form-field>
+                    <input class="text-center" matInput [value]="shift.current" [(ngModel)]="shift.current"> </mat-form-field>
                 </div>
               </div>
             </div>

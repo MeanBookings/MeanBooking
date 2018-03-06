@@ -18,24 +18,24 @@ export class ProfileComponent implements OnInit {
   currentUser: any;
   error: String;
   message: any = "";
-  userBookings:Array<any>;
-  userInfo:object;
+  userBookings: Array<any>;
+  userInfo: object;
   @Output() outputcall = new EventEmitter<string>();
 
   constructor(
     public session: SessionService,
     public router: Router,
     public snackBar: MatSnackBar,
-    public userService:UserService,
+    public userService: UserService,
     public bookingsServ: BookingService
   ) {
     this.currentUser = this.session.getUser();
-    this.userService.getUserBookings(this.session.getUser()._id).subscribe(bookings=>{
+    this.userService.getUserBookings(this.session.getUser()._id).subscribe(bookings => {
       console.log(bookings)
-      this.userInfo={name:bookings.name,email:bookings.email,phone:bookings.phone}
-      this.userBookings=bookings.bookings;
+      this.userInfo = { name: bookings.name, email: bookings.email, phone: bookings.phone }
+      this.userBookings = bookings.bookings;
     })
-    
+
   }
 
   ngOnInit() {
@@ -48,7 +48,7 @@ export class ProfileComponent implements OnInit {
       if (this.password != "") {
         this.currentUser.password = this.password;
       }
-      let snackBarRef = this.snackBar.openFromComponent(SnackBarProfileComponent, {duration:2000});
+      let snackBarRef = this.snackBar.openFromComponent(SnackBarProfileComponent, { duration: 2000 });
       this.session.updateUser(this.currentUser).subscribe((res) => {
         this.message = res;
       })
@@ -61,15 +61,36 @@ export class ProfileComponent implements OnInit {
 
 
   changeBookingStatus(status, id) {
-    if (status !== 'cancelled') {this.bookingsServ.updateBookings(status, id).catch(e => this.error = e).subscribe()} 
-    else {this.deleteBooking(id)}
+    if (status !== 'cancelled') { this.bookingsServ.updateBookings(status, id).catch(e => this.error = e).subscribe() }
+    else { this.deleteBooking(id) }
   }
 
   deleteBooking(id) {
     this.bookingsServ.deleteBookings(id)
       .catch(e => this.error = e)
       .subscribe(result => {
-        this.outputcall.emit(); 
+        this.outputcall.emit();
       });
   }
+
+  //slider
+  //material settings
+  autoTicks = true;
+  disabled = false;
+  invert = false;
+  max = 10;
+  min = 1;
+  showTicks = true;
+  step = 1;
+  thumbLabel = true;
+  value = 1;
+  vertical = false;
+  disableSelect = true;
+  get tickInterval(): number | 'auto' {
+    return this.showTicks ? (this.autoTicks ? 'auto' : this._tickInterval) : 0;
+  }
+  set tickInterval(v) {
+    this._tickInterval = Number(v);
+  }
+  private _tickInterval = 1;
 }

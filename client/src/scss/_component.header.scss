@@ -47,10 +47,10 @@ header {
           color: $red;
         }
         &.user-profile {
-          margin-right: 30px;
+          margin-right: 40px;
         }
         &.logout {
-          margin-left: 30px;
+          margin-left: 40px;
         }
         .pending-num {
           width: 20px;
@@ -64,6 +64,13 @@ header {
           right: 2px;
           font-size: .8em;
           font-weight: 600;
+        }
+        .no-pendings,.no-pendings i {
+          opacity: .5;
+          pointer-events: none!important;
+          cursor: initial!important;
+          color: initial!important;
+          display: inline-block;
         }
       }
       .header-form {
