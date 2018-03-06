@@ -21,7 +21,7 @@ export class CommentService {
     }
 
     editComment(id, status): Observable<any> {
-        return this.http.post(`${environment.BASEURL}/api/comment/edit/${id}`, status , this.options)
+        return this.http.post(`${environment.BASEURL}/api/comment/edit/${id}`, {status} , this.options)
             .map(res => {
                 return res.json()
             })

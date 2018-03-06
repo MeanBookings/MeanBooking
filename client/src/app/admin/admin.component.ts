@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as moment from 'moment';
 import { CalendarService } from '../../services/calendar.service';
+import { CommentService } from '../../services/comment.service';
 @Component({
   selector: 'admin',
   templateUrl: './admin.component.html',
@@ -12,8 +13,15 @@ export class AdminComponent implements OnInit {
   days: Array<any>;
   message: any;
   dayConfig: object = {}
+  comments: any;
+  status: boolean;
+  id: string;
 
-  constructor(public calendar: CalendarService) { }
+  constructor(
+    public calendar: CalendarService,
+    public comment: CommentService
+  ) { 
+  }
 
   ngOnInit() {
     this.dayConfig = {
@@ -27,7 +35,20 @@ export class AdminComponent implements OnInit {
         { hour: "22:00", current: 20 }, { hour: "22:30", current: 20 }, { hour: "23:00", current: 20 }, { hour: "23:30", current: 20 },
       ]
     }
+    this.comment.getComment().subscribe((comment) => this.comments = comment);
+    console.log(this.comments)
   }
+
+  getComments(){
+    this.comment.getComment().subscribe((comment) => this.comments = comment);
+    console.log(this.comments)
+  }
+
+  changeCommentStatus(id, status){
+    this.comment.editComment(id, status).subscribe((updated)=> console.log(updated))
+  }
+
+
 
   createDays(a, b) {
     let startDate = moment(a._selected)

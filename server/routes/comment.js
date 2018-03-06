@@ -7,6 +7,7 @@ const User = require('../models/User');
 // api/comment/
 router.get("/", (req, res, next) => {
     Comment.find()
+        .populate('user_Id')
         .then(comments => res.status(200).json(comments))
         .catch(e => res.status(500).json(e));
 });

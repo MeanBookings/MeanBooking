@@ -24,7 +24,7 @@ let mailOptions = {
 };
 
 // api/user/
- router.get("/", checkRoles("Administrator"), (req, res, next) => {
+ router.get("/", checkRoles("admin"), (req, res, next) => {
 //router.get("/", (req, res, next) => {
     User.find()
         .then(users => res.status(200).json(users))

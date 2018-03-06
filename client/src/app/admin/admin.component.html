@@ -60,6 +60,34 @@
             </div>
           </div>
         </mat-tab>
+        <mat-tab label="Comments Management">
+          <div class="row" *ngFor="let comment of comments">
+            <div class="col-sm-4">
+              <div class="details">
+                <!-- <div>
+                  <small class="booking-id"> {{comment._id}} </small>
+                </div> -->
+                <mat-form-field class="status-select">
+                  <mat-select [value]="comment.status" [(ngModel)]="comment.status" (change)="changeCommentStatus(comment._id,comment.status)">
+                    <mat-option value="false"> False </mat-option>
+                    <mat-option value="true"> True </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="col-sm-8">
+              <div class="details">
+                <div class="row">
+                   <p><small>Name: {{comment.user_Id.name}} | Email: {{comment.user_Id.email}} | Phone: {{comment.user_Id.phone}}</small></p>
+                </div>
+                <div class="row">
+                  <p>{{comment.content}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <hr>
+        </mat-tab>
       </mat-tab-group>
     </div>
   </div>
