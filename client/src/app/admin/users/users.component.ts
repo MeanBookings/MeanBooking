@@ -15,7 +15,9 @@ export class UsersComponent implements OnInit {
   constructor(public profile: UserService) { }
 
   ngOnInit() {
-    this.profile.getUsers().subscribe((usersGet) => this.users = usersGet)
+    this.profile.getUsers().subscribe(usersGet => {
+      this.users = usersGet
+    })
     this.envelope = []
   }
 
@@ -34,10 +36,8 @@ export class UsersComponent implements OnInit {
   selectedForEmail(email) {
     if (this.envelope.includes(email)) {
       this.envelope.splice(this.envelope.indexOf(email), 1)
-      console.log(this.envelope)
     } else {
       this.envelope.push(email)
-      console.log(this.envelope)
     }
   }
 

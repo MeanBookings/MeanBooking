@@ -24,7 +24,7 @@ export class UserService {
     }
 
     getUsers(): Observable<any> {
-        return this.http.get(`${environment.BASEURL}/api/user/`, this.options)
+        return this.http.get(`${environment.BASEURL}/api/user`, this.options)
             .map(res => res.json())
             .catch(this.handleError);
     }

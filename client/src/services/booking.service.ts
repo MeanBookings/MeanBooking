@@ -20,9 +20,7 @@ export class BookingService {
     placeBooking(data): Observable<any> {
         return this.http.post(`${environment.BASEURL}/api/book/create`, data, this.options)
             .map(res => {
-                console.log("estoy dentro del placebooking")
                 this.getPendings().subscribe();
-                //this.sendPendings.emit(this.getPendings())
                 return res.json()
             })
             .catch(this.handleError);
@@ -49,7 +47,6 @@ export class BookingService {
         return this.http.get(`${environment.BASEURL}/api/book/delete/${hash}`, this.options)
             .map(res => {
                 this.getPendings().subscribe();
-                console.log('back in the service')
                 return res.json()
             })
             .catch(this.handleError);
@@ -59,7 +56,6 @@ export class BookingService {
     getPendings(): Observable<any> {
         return this.http.get(`${environment.BASEURL}/api/book/`, this.options)
             .map(res => {
-                console.log("a ver si llega a GetPendings")
                 this.sendPendings.emit(res.json());
                 return res.json()
             })

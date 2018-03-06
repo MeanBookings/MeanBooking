@@ -20,6 +20,8 @@ export class ProfileComponent implements OnInit {
   message: any = "";
   userBookings: Array<any>;
   userInfo: object;
+  justAdmins:boolean=true;
+
   @Output() outputcall = new EventEmitter<string>();
 
   constructor(
@@ -34,12 +36,14 @@ export class ProfileComponent implements OnInit {
       console.log(bookings)
       this.userInfo = { name: bookings.name, email: bookings.email, phone: bookings.phone }
       this.userBookings = bookings.bookings;
-    })
-
+    });
+    if(this.session.getAdmin())this.justAdmins=false    
   }
 
   ngOnInit() {
   }
+
+
 
   edit() {
     if (this.switch) {
@@ -93,4 +97,9 @@ export class ProfileComponent implements OnInit {
     this._tickInterval = Number(v);
   }
   private _tickInterval = 1;
+
+
+
+
+
 }

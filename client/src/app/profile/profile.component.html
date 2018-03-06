@@ -36,8 +36,8 @@
         <div class="col-md-4">
           <mat-form-field class="status-select">
             <mat-select [value]="booking.status" [class]="booking.status" [(ngModel)]="booking.status" (change)="changeBookingStatus(booking.status,booking._id)">
-              <mat-option disabled value="pending"> Pending </mat-option>
-              <mat-option disabled value="approved"> Approved </mat-option>
+              <mat-option [disabled]='justAdmins' value="pending"> Pending </mat-option>
+              <mat-option [disabled]='justAdmins' value="approved"> Approved </mat-option>
               <mat-option value="cancelled"> Cancelled </mat-option>
               <mat-option *ngIf="session.getAdmin()" value="notshow"> Not show </mat-option>
               <mat-option *ngIf="session.getAdmin()" value="show"> Show </mat-option>
