@@ -8,10 +8,12 @@ import { BookingService } from '../../services/booking.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  pending:any;
-  popup:any;
+  pending: any;
+  popup: any;
+  numberPopup: any;
+  i: number;
   title = "Avello's Trattoria";
-  searchingPendings:any=[];
+  searchingPendings: any = [];
   constructor(
     public session: SessionService,
     public books: BookingService) {
@@ -21,17 +23,34 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.i=0;
     this.books.getPendings().subscribe((a) => {
-      this.popup = []
-      console.log(a)
-      return this.pending = a.length
+      a.forEach((b) => {
+        b.books.forEach((c) => {
+         if (c.status == "pending") {
+           this.i++
+         }
+        })
+     })
+     console.log(a)
+      return this.pending = this.i
     })
   }
 
   pendingBookings() {
+    this.i = 0
     this.books.getPendings().subscribe((a) => {
+      // console.log(a)
+      a.forEach((b) => {
+         b.books.forEach((c) => {
+          if (c.status == "pending") {
+            this.i++
+          }
+         })
+      })
       this.popup = a
-      return this.pending = a.length;
+      this.numberPopup = this.i
+      return this.pending = this.i;
     })
   }
 }

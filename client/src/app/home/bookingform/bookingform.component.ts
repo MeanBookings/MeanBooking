@@ -53,15 +53,15 @@ export class BookingformComponent implements OnInit {
     public snackBar: MatSnackBar,
     public router: Router
   ) {
+    this.session.userReady.subscribe(user => {
+      this.name = user.name
+      this.email = user.email
+      this.phone = user.phone 
+    })
 
   }
 
   ngOnInit() {
-    this.session.userReady.subscribe(user => {
-      this.name = user.name
-      this.email = user.email
-      this.phone = user.phone
-    })
   }
 
   sendBooking(bookingForm) {
