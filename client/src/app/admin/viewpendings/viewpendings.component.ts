@@ -7,15 +7,17 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ViewpendingsComponent implements OnInit {
   @Input() pending;
-
-   
+  @Input() totalpending;
+  
   constructor(){
-    console.log("hola")
   }
 
-  ngOnInit(){}
+
+  ngOnInit(){
+  }
 
   closePending() {
     this.pending = null
   }
+
 }

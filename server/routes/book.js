@@ -24,14 +24,21 @@ let mailOptions = {
 };
 
 
-// /api/book/ - update the book, if status = "approved" sends an emails
+// /api/book/ - Get the approved
 router.get('/', (req, res, next) => {
     let pendingBooksDays = []
-    Day.find().populate('books')
+    let encontrado = false
+    Day.find()
+    .populate({
+        path: 'books', populate: { path: 'user' }})
         .then(days => {
             days.forEach(day => {
+                encontrado = false;
                 day.books.forEach( book => {
-                    if(book.status === 'pending') pendingBooksDays.push(day)
+                    if(book.status === 'pending' && !encontrado){
+                     pendingBooksDays.push(day)
+                     encontrado = true
+                    }
                 })
             })
             res.status(200).json(pendingBooksDays) 
