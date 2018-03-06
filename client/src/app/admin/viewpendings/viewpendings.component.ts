@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input,Output, EventEmitter } from '@angular/core';
+import { BookingService } from '../../../services/booking.service';
 
 @Component({
   selector: 'viewpendings',
@@ -8,16 +9,29 @@ import { Component, OnInit, Input } from '@angular/core';
 export class ViewpendingsComponent implements OnInit {
   @Input() pending;
   @Input() totalpending;
-  
-  constructor(){
+  @Output() outputcall = new EventEmitter<string>();
+  constructor(public bookingsServ: BookingService) {
   }
+  error: String;
 
-
-  ngOnInit(){
+  ngOnInit() {
   }
 
   closePending() {
     this.pending = null
+  }
+
+  changeBookingStatus(status, id) {
+    if (status !== 'cancelled') { this.bookingsServ.updateBookings(status, id).catch(e => this.error = e).subscribe() }
+    else { this.deleteBooking(id) }
+  }
+
+  deleteBooking(id) {
+    this.bookingsServ.deleteBookings(id)
+      .catch(e => this.error = e)
+      .subscribe(result => {
+        this.outputcall.emit();
+      });
   }
 
 }

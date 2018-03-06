@@ -23,7 +23,7 @@
               </div>
               <mat-form-field class="status-select">
                 <!-- <mat-form-field [value]="user.status" [class]="user.status" [(ngModel)]="user.status" (change)="changeBookingStatus(user.status,user._id)"> -->
-                <mat-select>
+                <mat-select [value]="user.status" [class]="user.status" [(ngModel)]="user.status" (change)="changeBookingStatus(user.status,user._id)">
                   <mat-option value="pending"> Pending </mat-option>
                   <mat-option value="approved"> Approved </mat-option>
                   <mat-option value="cancelled"> Cancelled </mat-option>
