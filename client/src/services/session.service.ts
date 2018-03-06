@@ -37,6 +37,7 @@ export class SessionService {
       } else {
         console.log(`bye bye ${this.user.name}`)
         this.user = null
+        this.userReady.emit(null);
       }
       return user;
     }

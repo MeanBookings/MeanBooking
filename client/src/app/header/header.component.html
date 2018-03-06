@@ -1,5 +1,5 @@
 <div class="container-fluid" id="header">
-  <div class="row">
+  <div class="row header-row">
     <div class="col-sm-4">
       <div class="logo">
         <a [routerLink]="['/']"><img src="../../assets/img/logo.png" alt="Avello's Trattoria"></a>
@@ -12,7 +12,10 @@
           <div class="menu-legend">Hi {{session.getUser().name}}!</div>
         </li>
         <li class="list-inline-item header-controls" *ngIf="session.getUser()&&session.getAdmin()&&pending" (click)="pendingBookings()">
-          <span *ngIf="pending>0">{{pending | json}}
+          <span *ngIf="pending>0">
+            <span class="pending-num">
+              {{pending}}
+            </span>
             <i class="material-icons faa-ring animated">add_alert</i>
           </span>
           <div class="menu-legend">pending</div>

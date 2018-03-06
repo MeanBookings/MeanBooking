@@ -4,6 +4,7 @@ const TYPES = require('./types/book-types');
 
 const bookSchema = new Schema({
     hour: { type: String },
+    date: { type: Date, required: true },
     people: { type: Number },
     status: { type: String, enum: TYPES, default: TYPES[0] },
     user: { type: Schema.Types.ObjectId, ref: 'User' },

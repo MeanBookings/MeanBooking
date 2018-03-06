@@ -56,7 +56,7 @@ router.post('/create', (req, res, next) => {
             }
         })
     let bookingUser = ((user) => {
-        const theBook = new Book({ hour, people, user, comment });
+        const theBook = new Book({ hour, people, user, comment, date:date_of_book });
         theBook.save()
             .then(book => {
                 User.findById(user)

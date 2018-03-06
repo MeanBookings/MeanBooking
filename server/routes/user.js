@@ -62,5 +62,12 @@ router.post('/massiveemail', onlyMe, (req, res, next) => {
     })
 })
 
+// api/user/bookings/:id
+router.get('/bookings/:id', onlyMe, (req, res, next) => {
+    User.findById(req.params.id).populate('bookings')
+        .then(bookings => {res.status(200).json(bookings)})
+        .catch(e => res.status(500).json(e))
+});
+
 
 module.exports = router;

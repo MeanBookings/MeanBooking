@@ -1,5 +1,4 @@
 header {
-  height: $headerHeight;
   -webkit-box-shadow: 0px 2px 10px -1px rgba(0, 0, 0, .25);
   -moz-box-shadow: 0px 2px 10px -1px rgba(0, 0, 0, .25);
   box-shadow: 0px 2px 10px -1px rgba(0, 0, 0, .25);
@@ -9,8 +8,13 @@ header {
   left: 0;
   width: 100%;
   background: $white;
+  z-index: 8;
   #header {
     color: $black;
+    .header-row {
+      height: $headerHeight;
+      padding-top: 6px;
+    }
     .logo {
       padding: 10px 0 0;
       a {
@@ -31,6 +35,7 @@ header {
       padding: 7px 0 5px;
       margin-bottom: 0;
       li {
+        position: relative;
         @include transition(all .3s linear);
         cursor: pointer;
         text-align: center;
@@ -47,12 +52,24 @@ header {
         &.logout {
           margin-left: 30px;
         }
+        .pending-num {
+          width: 20px;
+          height: 20px;
+          background: $red;
+          color: $white;
+          position: absolute;
+          z-index: 2;
+          border-radius: 50%;
+          top: -10px;
+          right: 2px;
+          font-size: .8em;
+          font-weight: 600;
+        }
       }
       .header-form {
         float: right;
         .mat-expansion-panel {
           box-shadow: none;
-          background: transparent;
           .mat-form-field {
             display: block;
             .mat-form-field-infix {

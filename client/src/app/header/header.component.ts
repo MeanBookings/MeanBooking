@@ -21,8 +21,8 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
+    
     this.books.getPendings().subscribe((a) => {
-      this.popup = []
       console.log(a)
       return this.pending = a.length
     })

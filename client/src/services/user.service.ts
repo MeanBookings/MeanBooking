@@ -36,9 +36,14 @@ export class UserService {
     }
 
     sendMassiveEmail(emails, text):Observable<any> {
-        console.log("Holi")
         return this.http.post(`${environment.BASEURL}/api/user/massiveemail`,{emails, text}, this.options)
         .map(res => res.json())
         .catch(this.handleError);
+    }
+
+    getUserBookings(userId): Observable<any> {
+        return this.http.get(`${environment.BASEURL}/api/user/bookings/${userId}`, this.options)
+            .map(bookings => {return bookings.json()})
+            .catch(this.handleError);
     }
 }

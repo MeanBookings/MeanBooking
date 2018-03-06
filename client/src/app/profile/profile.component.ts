@@ -3,6 +3,7 @@ import { SessionService } from '../../services/session.service';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
 import { SnackBarProfileComponent } from './snack-bar-profile/snack-bar-profile.component';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'profile',
@@ -16,12 +17,18 @@ export class ProfileComponent implements OnInit {
   currentUser: any;
   error: String;
   message: any = "";
-
-  constructor(public session: SessionService,
+  userBookings:Array<any>;
+  constructor(
+    public session: SessionService,
     public router: Router,
     public snackBar: MatSnackBar,
+    public userService:UserService
   ) {
     this.currentUser = this.session.getUser();
+    this.userService.getUserBookings(this.session.getUser()._id).subscribe(bookings=>{
+      this.userBookings=bookings.bookings;
+    })
+    
   }
 
   ngOnInit() {
