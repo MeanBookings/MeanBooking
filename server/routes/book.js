@@ -7,17 +7,19 @@ const Book = require('../models/Book');
 const Day = require('../models/Day')
 const User = require('../models/User')
 const nodemailer = require('nodemailer');
+const {emailName, emailPw} = require('../config');
+
 
 const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-        user: 'meanbooking1@gmail.com',
-        pass: 'm34nb00k'
+        user: emailName,
+        pass: emailPw
     }
 });
 
 let mailOptions = {
-    from: 'meanbooking1@gmail.com',
+    from: emailName,
     to: '',
     subject: '',
     html: ''
