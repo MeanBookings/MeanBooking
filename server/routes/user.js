@@ -5,25 +5,27 @@ const onlyMe = require("../middlewares/onlyMe");
 const User = require("../models/User");
 const checkRoles = require("../middlewares/checkRoles");
 const nodemailer = require('nodemailer');
+const {emailName, emailPw} = require('../config');
+
 
 const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-        user: 'meanbooking1@gmail.com',
-        pass: 'm34nb00k'
+        user: emailName,
+        pass: emailPw
     }
 });
 
 let mailOptions = {
-    from: 'meanbooking1@gmail.com',
+    from: emailPw,
     to: '',
     subject: '',
     html: ''
 };
 
 // api/user/
-// router.get("/", checkRoles("Administrator"), (req, res, next) => {
-router.get("/", (req, res, next) => {
+ router.get("/", checkRoles("Administrator"), (req, res, next) => {
+//router.get("/", (req, res, next) => {
     User.find()
         .then(users => res.status(200).json(users))
         .catch(e => res.status(500).json(e));
