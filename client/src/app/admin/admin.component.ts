@@ -20,7 +20,7 @@ export class AdminComponent implements OnInit {
   constructor(
     public calendar: CalendarService,
     public comment: CommentService
-  ) { 
+  ) {
   }
 
   ngOnInit() {
@@ -39,16 +39,19 @@ export class AdminComponent implements OnInit {
     console.log(this.comments)
   }
 
-  getComments(){
+  getComments() {
     this.comment.getComment().subscribe((comment) => this.comments = comment);
     console.log(this.comments)
   }
 
-  changeCommentStatus(id, status){
-    this.comment.editComment(id, status).subscribe((updated)=> console.log(updated))
+  changeCommentStatus(id, status) {
+    if (status == "delete") {
+      this.comment.deleteComment(id).subscribe((updated) => console.log(updated))
+    } else {
+      this.comment.editComment(id, status).subscribe((updated) => console.log(updated))
+    }
+    this.comment.getComment().subscribe((comment) => this.comments = comment);
   }
-
-
 
   createDays(a, b) {
     let startDate = moment(a._selected)

@@ -35,6 +35,7 @@ router.post("/edit/:id", (req, res, next) => {
 
 // api/comment/delete/:id
 router.get("/delete/:id", (req, res, next) => {
+    console.log("holi")
     Comment.findByIdAndRemove(req.params.id)
         .then(users => res.status(200).json(users))
         .catch(e => res.status(500).json(e));
