@@ -63,10 +63,13 @@
   <!-- comments form -->
   <hr class="comments-form-separator col-md-8 offset-md-4">
   <div class="row comment-row">
-    <div class="col-sm-12 text-center">
-      <h3> Send your opinion!. </h3>
+    <div class="col-sm-12">
       <div class="row">
         <div class="col-md-8 offset-md-4">
+            <h6>Send your opinion and feedback!
+                <br>
+                <small>The comments will be moderate before they appear on our front page</small>
+              </h6>
           <form class="client-opinion-form" (ngSubmit)="sendComment(currentUser._id,comment,valoration)" #opinionForm="ngForm">
             <mat-form-field class="full-width">
               <textarea matInput placeholder="Your comment" [(ngModel)]="comment" name="comment" required></textarea>
