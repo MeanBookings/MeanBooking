@@ -12,14 +12,14 @@
     background: $blue;
   }
   .mat-tab-body-content {
-      background: $vanilla;
-      padding: 30px;
-      .mat-input-container{
-          width: 49%;
-      }
+    background: $vanilla;
+    padding: 30px;
+    .mat-input-container {
+      width: 49%;
+    }
   }
   .status-select {
-      width: initial!important;
+    width: initial !important;
   }
   .instructions {
     margin-bottom: 75px;
@@ -33,7 +33,25 @@
   .mat-tab-body-wrapper {
     padding-bottom: 50px;
   }
-  .mat-tab-header, .mat-tab-nav-bar {
+  .mat-tab-header,
+  .mat-tab-nav-bar {
     border-color: $blue;
+  }
+  mat-select {
+    border: none;
+    text-align: center;
+    border-radius: 4px;
+    color: $white;
+    padding: 4px 0 7px;
+    &.open {
+      background: $green;
+    }
+    &.closed {
+      background: $red;
+    }
+  }
+  .shift-hour {
+    font-size: .8em;
+    font-weight: 600;
   }
 }
