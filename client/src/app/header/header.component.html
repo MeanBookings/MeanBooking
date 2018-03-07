@@ -1,49 +1,82 @@
 <div class="container-fluid" id="header">
   <div class="row header-row">
     <div class="col-sm-4">
-        <a class="header-logo-link" [routerLink]="['/']" ><span class="logo"></span></a>
+      <a class="header-logo-link" [routerLink]="['/']">
+        <span class="logo">
+          <i class="fab fa-amilia"></i>
+        </span>
+      </a>
     </div>
     <div class="col-sm-8">
       <ul class="list-inline">
         <li class="list-inline-item header-controls" *ngIf="session.getUser()&&session.getAdmin()" (click)="pendingBookings()">
           <span *ngIf="pending>0;else noPendings" class="pending-wrapper">
-            <span class="pending-num">
-              {{pending}}
-            </span>
+            <span class="pending-num"> {{pending}} </span>
             <i class="far fa-bell faa-ring animated"></i>
             <span class="menu-legend">pending</span>
           </span>
           <ng-template #noPendings>
             <span class="no-pendings">
-                <i class="far fa-bell"></i>
-                <div class="menu-legend">no pendings</div>
+              <i class="far fa-bell"></i>
+              <div class="menu-legend">no pendings</div>
             </span>
           </ng-template>
         </li>
-        <li class="list-inline-item header-controls" *ngIf="session.getUser()&&session.getAdmin()" routerLinkActive="active-menu-item" [routerLink]="['/dashboard']">
+        <li class="list-inline-item header-controls" *ngIf="session.getUser()&&session.getAdmin()" routerLinkActive="active-menu-item"
+          [routerLink]="['/dashboard']">
           <span class="menu-legend">dashboard</span>
         </li>
-        <li class="list-inline-item header-controls" *ngIf="session.getUser()&&session.getAdmin()" routerLinkActive="active-menu-item" [routerLink]="['/bookings']">
+        <li class="list-inline-item header-controls" *ngIf="session.getUser()&&session.getAdmin()" routerLinkActive="active-menu-item"
+          [routerLink]="['/bookings']">
           <span class="menu-legend">calendar</span>
         </li>
-        <li *ngIf="session.getUser()&&session.getAdmin()" class="list-inline-item header-controls" routerLinkActive="active-menu-item" [routerLink]="['/users']">
+        <li *ngIf="session.getUser()&&session.getAdmin()" class="list-inline-item header-controls" routerLinkActive="active-menu-item"
+          [routerLink]="['/users']">
           <span class="menu-legend">clients</span>
         </li>
-        <li class="header-form list-inline-item">
-          <signup></signup>
+        <li *ngIf="!session.getUser()" class="header-form list-inline-item">
+          <span class="menu-legend" data-toggle="modal" data-target="#signupModal">signup</span>
         </li>
-        <li class="header-form list-inline-item">
-          <login></login>
+        <li *ngIf="!session.getUser()" class="header-form list-inline-item">
+          <span class="menu-legend" data-toggle="modal" data-target="#loginModal">login</span>
         </li>
-        <li *ngIf="session.getUser()" class="header-controls list-inline-item user-profile" routerLinkActive="active-menu-item" [routerLink]="['/profile']">
+        <li *ngIf="session.getUser()" class="header-controls list-inline-item user-profile" routerLinkActive="active-menu-item"
+          [routerLink]="['/profile']">
           <i class="far fa-user-circle"></i>
           <span class="menu-legend">Hi {{session.getUser().name}}!</span>
         </li>
         <li class="list-inline-item logout">
-            <logout></logout>
+          <logout></logout>
         </li>
       </ul>
     </div>
   </div>
 </div>
+<!-- pendings modal -->
 <viewpendings (outputcall)="pendingBookings()" [totalpending]="numberPopup" [pending]="popup"></viewpendings>
+<!-- login modal -->
+<div class="login-wrapper modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModal" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <i class="fas fa-times"></i>
+        </button>
+        <login></login>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- signup modal -->
+<div class="signup-wrapper modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="signupModal" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <i class="fas fa-times"></i>
+        </button>
+        <signup></signup>
+      </div>
+    </div>
+  </div>
+</div>

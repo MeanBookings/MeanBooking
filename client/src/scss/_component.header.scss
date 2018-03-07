@@ -1,10 +1,7 @@
 header {
-  .active-menu-item {
-    color: $red;
-  }
-  -webkit-box-shadow: 0px 2px 10px -1px rgba(0, 0, 0, .25);
-  -moz-box-shadow: 0px 2px 10px -1px rgba(0, 0, 0, .25);
-  box-shadow: 0px 2px 10px -1px rgba(0, 0, 0, .25);
+  -webkit-box-shadow: 0px 1px 2px -1px rgba(0, 0, 0, .25);
+  -moz-box-shadow: 0px 1px 2px -1px rgba(0, 0, 0, .25);
+  box-shadow: 0px 1px 2px -1px rgba(0, 0, 0, .25);
   position: fixed;
   z-index: 99;
   top: 0;
@@ -19,31 +16,19 @@ header {
       padding-top: 6px;
     }
     .logo {
+      @include transition(all .3s linear);
       display: block;
       position: relative;
-      padding-top: 10px;
-      &::after {
-        content: '';
-        position: absolute;
-        height: 33px;
-        width: 100px;
-        background: url(#{$img_path}/logo.png);
-        background-size: contain;
-      }
+      padding-top: 0;
+      font-size: 2em;
+      color: $main;
       &:hover {
-        &:after {
-          background: url(#{$img_path}/logo-hover.png);
-          content: '';
-          position: absolute;
-          height: 33px;
-          width: 100px;
-          background-size: contain;
-        }
+        color: $red;
       }
     }
     ul {
       text-align: right;
-      padding: 7px 0 5px;
+      padding: 15px 0 5px;
       margin-bottom: 0;
       li {
         position: relative;
@@ -52,10 +37,8 @@ header {
         text-align: center;
         padding: 0 12px;
         span.menu-legend {
-          font-size: 1em;
-        }
-        &:hover {
-          color: $red;
+          font-size: .9em;
+          text-transform: capitalize;
         }
         .pending-wrapper {
           position: relative;
@@ -79,6 +62,31 @@ header {
             cursor: initial !important;
             color: initial !important;
             display: inline-block;
+          }
+        }
+        &:hover {
+          color: $red;
+          &:after {
+            content: '';
+            left: 0;
+            bottom: -22px;
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background: $red;
+          }
+        }
+        &.active-menu-item {
+          color: $red;
+          position: relative;
+          &:after {
+            content: '';
+            left: 0;
+            bottom: -22px;
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background: $red;
           }
         }
       }

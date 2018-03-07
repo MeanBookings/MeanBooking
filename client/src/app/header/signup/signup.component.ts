@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SessionService } from '../../../services/session.service';
+declare var $;
 
 @Component({
   selector: 'signup',
@@ -23,7 +24,9 @@ export class SignupComponent implements OnInit {
   signup() {
     this.session.signup(this.name, this.password, this.email, this.phone)
       .catch(e => this.error = e)
-      .subscribe();
+      .subscribe((user)=>{
+        $('#signupModal').modal('hide')
+      });
   }
 
 }
