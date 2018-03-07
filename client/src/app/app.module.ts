@@ -46,6 +46,7 @@ import { ViewBookingsComponent } from './admin/calendar/view-bookings/view-booki
 import { ViewpendingsComponent } from './admin/viewpendings/viewpendings.component'
 import { CommentService } from '../services/comment.service';
 import { MenuService } from '../services/menu.service';
+import { MenuHomeComponent } from './home/menu-home/menu-home.component'
 
 @NgModule({
   declarations: [
@@ -68,7 +69,8 @@ import { MenuService } from '../services/menu.service';
     SnackBarComponent,
     SnackBarProfileComponent,
     ViewBookingsComponent,
-    ViewpendingsComponent
+    ViewpendingsComponent,
+    MenuHomeComponent
   ],
   imports: [
     BrowserModule,
@@ -95,7 +97,7 @@ import { MenuService } from '../services/menu.service';
       apiKey: 'AIzaSyCqZbiAa2oZ5vm3ec6BC9UiFto6uZgb-cw'
     }),
   ],
-  entryComponents: [SnackBarComponent, BookingformComponent, SnackBarProfileComponent, ProfileComponent],
+  entryComponents: [MenuHomeComponent, SnackBarComponent, BookingformComponent, SnackBarProfileComponent, ProfileComponent],
   providers: [MenuService, CommentService, UserService, SessionService, BookingService, AdminGuardService, CalendarService, UserGuardService, { provide: LOCALE_ID, useValue: "es-ES" }],
   bootstrap: [AppComponent]
 })

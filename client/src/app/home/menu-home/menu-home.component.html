@@ -1,0 +1,273 @@
+<div *ngIf="menu && menu.length>0">
+  <div *ngIf="menu[0].active == 'true' || menu[1].active == 'true' || menu[2].active == 'true' || menu[3].active == 'true' || menu[4].active == 'true'">
+    <div class="row m-top-20" *ngIf="menu.length > 0">
+      <div class="col-sm-12">
+        <h4 class="m-top-40">
+          <strong>Menu of the day</strong>
+        </h4>
+        <mat-tab-group>
+          <mat-tab label="Monday">
+            <div *ngIf="menu[0].active == 'true'; else closedMonday">
+              <div class="row">
+                <div class="starters-menu col-sm-3">
+                  <div>
+                    <label>Starters</label>
+                  </div>
+                  <input [disabled]="!switch" value="{{menu[0].starters[0]}}" [(ngModel)]="menu[0].starters[0]">
+                  <input [disabled]="!switch" value="{{menu[0].starters[1]}}" [(ngModel)]="menu[0].starters[1]">
+                  <input [disabled]="!switch" value="{{menu[0].starters[2]}}" [(ngModel)]="menu[0].starters[2]">
+                  <input [disabled]="!switch" value="{{menu[0].starters[3]}}" [(ngModel)]="menu[0].starters[3]">
+                </div>
+                <div class="main-course-menu col-sm-3">
+                  <div>
+                    <label>Main Courses</label>
+                  </div>
+                  <input [disabled]="!switch" value="{{menu[0].mainCourses[0]}}" [(ngModel)]="menu[0].mainCourses[0]">
+                  <input [disabled]="!switch" value="{{menu[0].mainCourses[1]}}" [(ngModel)]="menu[0].mainCourses[1]">
+                  <input [disabled]="!switch" value="{{menu[0].mainCourses[2]}}" [(ngModel)]="menu[0].mainCourses[2]">
+                  <input [disabled]="!switch" value="{{menu[0].mainCourses[3]}}" [(ngModel)]="menu[0].mainCourses[3]">
+                </div>
+                <div class="col-sm-3">
+                  <div class="desserts-menu">
+                    <div>
+                      <label>Desserts</label>
+                    </div>
+                    <input [disabled]="!switch" value="{{menu[0].desserts[0]}}" [(ngModel)]="menu[0].desserts[0]">
+                    <input [disabled]="!switch" value="{{menu[0].desserts[1]}}" [(ngModel)]="menu[0].desserts[1]">
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <div>
+                    <label>Comment</label>
+                  </div>
+                  <textarea [disabled]="!switch" value="menu[0].comments">
+              </textarea>
+                  <div>
+                    <label>Price</label>
+                  </div>
+                  <input type="number" [disabled]="!switch" value="{{menu[0].price}}">€
+                </div>
+              </div>
+            </div>
+            <ng-template #closedMonday>
+              <div class="row text-center">
+                <div>
+                  <label>Comment</label>
+                </div>
+                <textarea [disabled]="!switch" value="menu[0].comments"></textarea>
+              </div>
+            </ng-template>
+          </mat-tab>
+          <mat-tab label="Tuesday">
+            <div *ngIf="menu[1].active == 'true'; else closedTuesday">
+              <div class="row">
+                <div class="starters-menu col-sm-3">
+                  <div>
+                    <label>Starters</label>
+                  </div>
+                  <input [disabled]="!switch" value="{{menu[1].starters[0]}}" [(ngModel)]="menu[1].starters[0]">
+                  <input [disabled]="!switch" value="{{menu[1].starters[1]}}" [(ngModel)]="menu[1].starters[1]">
+                  <input [disabled]="!switch" value="{{menu[1].starters[2]}}" [(ngModel)]="menu[1].starters[2]">
+                  <input [disabled]="!switch" value="{{menu[1].starters[3]}}" [(ngModel)]="menu[1].starters[3]">
+                </div>
+                <div class="main-course-menu col-sm-3">
+                  <div>
+                    <label>Main Courses</label>
+                  </div>
+                  <input [disabled]="!switch" value="{{menu[1].mainCourses[0]}}" [(ngModel)]="menu[1].mainCourses[0]">
+                  <input [disabled]="!switch" value="{{menu[1].mainCourses[1]}}" [(ngModel)]="menu[1].mainCourses[1]">
+                  <input [disabled]="!switch" value="{{menu[1].mainCourses[2]}}" [(ngModel)]="menu[1].mainCourses[2]">
+                  <input [disabled]="!switch" value="{{menu[1].mainCourses[3]}}" [(ngModel)]="menu[1].mainCourses[3]">
+                </div>
+                <div class="col-sm-3">
+                  <div class="desserts-menu">
+                    <div>
+                      <label>Desserts</label>
+                    </div>
+                    <input [disabled]="!switch" value="{{menu[1].desserts[0]}}" [(ngModel)]="menu[1].desserts[0]">
+                    <input [disabled]="!switch" value="{{menu[1].desserts[1]}}" [(ngModel)]="menu[1].desserts[1]">
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <div>
+                    <label>Comment</label>
+                  </div>
+                  <textarea [disabled]="!switch" value="menu[1].comments">
+                  </textarea>
+                  <div>
+                    <label>Price</label>
+                  </div>
+                  <input type="number" [disabled]="!switch" value="{{menu[1].price}}">€
+                </div>
+              </div>
+            </div>
+            <ng-template #closedTuesday>
+              <div class="row text-center">
+                <div>
+                  <label>Comment</label>
+                </div>
+                <textarea [disabled]="!switch" value="menu[1].comments"></textarea>
+              </div>
+            </ng-template>
+          </mat-tab>
+          <mat-tab label="Wednesday">
+            <div *ngIf="menu[2].active == 'true'; else closedWednesday">
+              <div class="row">
+                <div class="starters-menu col-sm-3">
+                  <div>
+                    <label>Starters</label>
+                  </div>
+                  <input [disabled]="!switch" value="{{menu[2].starters[0]}}" [(ngModel)]="menu[2].starters[0]">
+                  <input [disabled]="!switch" value="{{menu[2].starters[1]}}" [(ngModel)]="menu[2].starters[1]">
+                  <input [disabled]="!switch" value="{{menu[2].starters[2]}}" [(ngModel)]="menu[2].starters[2]">
+                  <input [disabled]="!switch" value="{{menu[2].starters[3]}}" [(ngModel)]="menu[2].starters[3]">
+                </div>
+                <div class="main-course-menu col-sm-3">
+                  <div>
+                    <label>Main Courses</label>
+                  </div>
+                  <input [disabled]="!switch" value="{{menu[2].mainCourses[0]}}" [(ngModel)]="menu[2].mainCourses[0]">
+                  <input [disabled]="!switch" value="{{menu[2].mainCourses[1]}}" [(ngModel)]="menu[2].mainCourses[1]">
+                  <input [disabled]="!switch" value="{{menu[2].mainCourses[2]}}" [(ngModel)]="menu[2].mainCourses[2]">
+                  <input [disabled]="!switch" value="{{menu[2].mainCourses[3]}}" [(ngModel)]="menu[2].mainCourses[3]">
+                </div>
+                <div class="col-sm-3">
+                  <div class="desserts-menu">
+                    <div>
+                      <label>Desserts</label>
+                    </div>
+                    <input [disabled]="!switch" value="{{menu[2].desserts[0]}}" [(ngModel)]="menu[2].desserts[0]">
+                    <input [disabled]="!switch" value="{{menu[2].desserts[1]}}" [(ngModel)]="menu[2].desserts[1]">
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <div>
+                    <label>Comment</label>
+                  </div>
+                  <textarea [disabled]="!switch" value="menu[2].comments">
+                  </textarea>
+                  <div>
+                    <label>Price</label>
+                  </div>
+                  <input type="number" [disabled]="!switch" value="{{menu[2].price}}">€
+                </div>
+              </div>
+            </div>
+            <ng-template #closedWednesday>
+              <div class="row text-center">
+                <div>
+                  <label>Comment</label>
+                </div>
+                <textarea [disabled]="!switch" value="menu[2].comments"></textarea>
+              </div>
+            </ng-template>
+          </mat-tab>
+          <mat-tab label="Thursday">
+            <div *ngIf="menu[3].active == 'true'; else closedThursday">
+              <div class="row">
+                <div class="starters-menu col-sm-3">
+                  <div>
+                    <label>Starters</label>
+                  </div>
+                  <input [disabled]="!switch" value="{{menu[3].starters[0]}}" [(ngModel)]="menu[3].starters[0]">
+                  <input [disabled]="!switch" value="{{menu[3].starters[1]}}" [(ngModel)]="menu[3].starters[1]">
+                  <input [disabled]="!switch" value="{{menu[3].starters[2]}}" [(ngModel)]="menu[3].starters[2]">
+                  <input [disabled]="!switch" value="{{menu[3].starters[3]}}" [(ngModel)]="menu[3].starters[3]">
+                </div>
+                <div class="main-course-menu col-sm-3">
+                  <div>
+                    <label>Main Courses</label>
+                  </div>
+                  <input [disabled]="!switch" value="{{menu[3].mainCourses[0]}}" [(ngModel)]="menu[3].mainCourses[0]">
+                  <input [disabled]="!switch" value="{{menu[3].mainCourses[1]}}" [(ngModel)]="menu[3].mainCourses[1]">
+                  <input [disabled]="!switch" value="{{menu[3].mainCourses[2]}}" [(ngModel)]="menu[3].mainCourses[2]">
+                  <input [disabled]="!switch" value="{{menu[3].mainCourses[3]}}" [(ngModel)]="menu[3].mainCourses[3]">
+                </div>
+                <div class="col-sm-3">
+                  <div class="desserts-menu">
+                    <div>
+                      <label>Desserts</label>
+                    </div>
+                    <input [disabled]="!switch" value="{{menu[3].desserts[0]}}" [(ngModel)]="menu[3].desserts[0]">
+                    <input [disabled]="!switch" value="{{menu[3].desserts[1]}}" [(ngModel)]="menu[3].desserts[1]">
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <div>
+                    <label>Comment</label>
+                  </div>
+                  <textarea [disabled]="!switch" value="menu[3].comments">
+                  </textarea>
+                  <div>
+                    <label>Price</label>
+                  </div>
+                  <input type="number" [disabled]="!switch" value="{{menu[3].price}}">€
+                </div>
+              </div>
+            </div>
+            <ng-template #closedThursday>
+              <div class="row text-center">
+                <div>
+                  <label>Comment</label>
+                </div>
+                <textarea [disabled]="!switch" value="menu[3].comments"></textarea>
+              </div>
+            </ng-template>
+          </mat-tab>
+          <mat-tab label="Friday">
+            <div *ngIf="menu[4].active == 'true'; else closedFriday">
+              <div class="row">
+                <div class="starters-menu col-sm-3">
+                  <div>
+                    <label>Starters</label>
+                  </div>
+                  <input [disabled]="!switch" value="{{menu[4].starters[0]}}" [(ngModel)]="menu[4].starters[0]">
+                  <input [disabled]="!switch" value="{{menu[4].starters[1]}}" [(ngModel)]="menu[4].starters[1]">
+                  <input [disabled]="!switch" value="{{menu[4].starters[2]}}" [(ngModel)]="menu[4].starters[2]">
+                  <input [disabled]="!switch" value="{{menu[4].starters[3]}}" [(ngModel)]="menu[4].starters[3]">
+                </div>
+                <div class="main-course-menu col-sm-3">
+                  <div>
+                    <label>Main Courses</label>
+                  </div>
+                  <input [disabled]="!switch" value="{{menu[4].mainCourses[0]}}" [(ngModel)]="menu[4].mainCourses[0]">
+                  <input [disabled]="!switch" value="{{menu[4].mainCourses[1]}}" [(ngModel)]="menu[4].mainCourses[1]">
+                  <input [disabled]="!switch" value="{{menu[4].mainCourses[2]}}" [(ngModel)]="menu[4].mainCourses[2]">
+                  <input [disabled]="!switch" value="{{menu[4].mainCourses[3]}}" [(ngModel)]="menu[4].mainCourses[3]">
+                </div>
+                <div class="col-sm-3">
+                  <div class="desserts-menu">
+                    <div>
+                      <label>Desserts</label>
+                    </div>
+                    <input [disabled]="!switch" value="{{menu[4].desserts[0]}}" [(ngModel)]="menu[4].desserts[0]">
+                    <input [disabled]="!switch" value="{{menu[4].desserts[1]}}" [(ngModel)]="menu[4].desserts[1]">
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <div>
+                    <label>Comment</label>
+                  </div>
+                  <textarea [disabled]="!switch" value="menu[4].comments">
+                  </textarea>
+                  <div>
+                    <label>Price</label>
+                  </div>
+                  <input type="number" [disabled]="!switch" value="{{menu[4].price}}">€
+                </div>
+              </div>
+            </div>
+            <ng-template #closedFriday>
+              <div class="row text-center">
+                <div>
+                  <label>Comment</label>
+                </div>
+                <textarea [disabled]="!switch" value="menu[4].comments"></textarea>
+              </div>
+            </ng-template>
+          </mat-tab>
+        </mat-tab-group>
+      </div>
+    </div>
+  </div>
+</div>

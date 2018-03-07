@@ -45,8 +45,6 @@ export class AdminComponent implements OnInit {
     this.comment.getComment().subscribe((comment) => this.comments = comment);
     this.btntxt = "Edit day"
     this.switch = false
-
-    console.log(this.menu)
   }
 
   getComments() {
@@ -101,7 +99,6 @@ export class AdminComponent implements OnInit {
       dates.push(currentDate);
       currentDate = addDays.call(currentDate, 1);
     }
-
     this.calendar.updateDays(dates, this.dayConfig).subscribe(result => {
       this.message = result;
     })
@@ -111,12 +108,12 @@ export class AdminComponent implements OnInit {
     if (this.btntxt == "Edit day") {
       this.btntxt = "Update day"
       this.switch = !this.switch
-     } else {
+    } else {
       this.btntxt = "Edit day"
       this.switch = !this.switch
       this.menuService.editMenu(a._id, a)
-      .catch(e => this.error = e)
-      .subscribe(newDayMenu => {});
+        .catch(e => this.error = e)
+        .subscribe(newDayMenu => { });
       this.menuService.getMenu().subscribe(menus => menus.forEach((menu) => this.menu.push(menu)))
     }
   }
