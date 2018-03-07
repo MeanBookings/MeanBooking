@@ -8,8 +8,16 @@
     <div class="col-sm-12">
       <h6 class="m-bot-10">Use this tabs to generate and edit the day configuration and availability & to moderate the customer's opinions.</h6>
       <ul class="m-bot-20">
-        <li><small><strong>approved opinions go to the homepage's carousel!</strong></small></li>
-        <li><small><strong>Already created days will no be overwritten, so do not panic if you overlap days...</strong></small></li>
+        <li>
+          <small>
+            <strong>approved opinions go to the homepage's carousel!</strong>
+          </small>
+        </li>
+        <li>
+          <small>
+            <strong>Already created days will no be overwritten, so do not panic if you overlap days...</strong>
+          </small>
+        </li>
       </ul>
       <mat-tab-group>
         <mat-tab label="Massive Day Creation">
@@ -72,7 +80,7 @@
           <div class="row">
             <div class="col-md-2">
               <div class="instructions">
-                <span class="instruction-number">3.</span> Configure the shift avaialbility (remember, zero means no shift) </div>
+                <span class="instruction-number">3.</span> Configure the shift avaialbility (remember, zero means no shift; default is 20) </div>
             </div>
             <div class="col-md-10">
               <div class="shifts">
@@ -94,29 +102,26 @@
           <div class="row" *ngFor="let comment of comments">
             <div class="col-sm-3">
               <div class="details">
-                <!-- <div>
-                  <small class="booking-id"> {{comment._id}} </small>
-                </div> -->
                 <mat-form-field class="status-select">
-                  <mat-select [value]="comment.status" [(ngModel)]="comment.status" (change)="changeCommentStatus(comment._id,comment.status)">
+                  <mat-select [class]="comment.status" [value]="comment.status" [(ngModel)]="comment.status" (change)="changeCommentStatus(comment._id,comment.status)">
                     <mat-option value="false"> Not approved </mat-option>
                     <mat-option value="true"> Approved </mat-option>
+                    <mat-option value="delete">Delete Comment</mat-option>
                   </mat-select>
                 </mat-form-field>
               </div>
             </div>
             <div class="col-sm-9">
               <div class="details">
-                  <p>
-                    <small>Name: {{comment.user_Id.name}} | Email: {{comment.user_Id.email}} | Phone: {{comment.user_Id.phone}}</small>
-                  </p>
-                <div class="row">
-                  <p>{{comment.content}}</p>
+                <small>Name: {{comment.user_Id.name}} | Email: {{comment.user_Id.email}} | Phone: {{comment.user_Id.phone}}</small>
+                <p class="comment">{{comment.content}}</p>
+                <div class="valoration">
+                  {{comment.stars}}/10 Stars
                 </div>
               </div>
             </div>
           </div>
-          <hr> </mat-tab>
+        </mat-tab>
       </mat-tab-group>
     </div>
   </div>
