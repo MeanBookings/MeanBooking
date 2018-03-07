@@ -45,7 +45,6 @@ export class AdminComponent implements OnInit {
 
   getComments() {
     this.comment.getComment().subscribe((comment) => this.comments = comment);
-    console.log(this.comments)
   }
 
   changeCommentStatus(id, status) {
@@ -73,7 +72,6 @@ export class AdminComponent implements OnInit {
     }
     this.calendar.createDays(dates).subscribe(result => {
       this.message = result;
-      console.log(result)
     })
   }
 
@@ -91,11 +89,9 @@ export class AdminComponent implements OnInit {
       dates.push(currentDate);
       currentDate = addDays.call(currentDate, 1);
     }
-    console.log(dates)
-    // console.log(this.dayConfig)
+
     this.calendar.updateDays(dates, this.dayConfig).subscribe(result => {
       this.message = result;
-      console.log(result)
     })
   }
 }

@@ -1,9 +1,8 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { BookingService } from '../../services/booking.service';
 import * as moment from 'moment';
-import { OwlModule } from 'ng2-owl-carousel';
 import { CommentService } from '../../services/comment.service';
-
+declare var $;
 
 @Component({
   selector: 'home',
@@ -19,11 +18,19 @@ export class HomeComponent implements OnInit {
   lat: number = 40.4334432;
   lng: number = -3.6555023;
   zoom: number = 18;
+
   ngOnInit() {
-    this.comment.getComment().subscribe((comment) => this.comments = comment);
+    this.comment.getComment().subscribe((comment) => {
+      this.comments = comment;
+      this.callJQuery();
+    });
+
   }
 
-
-
+  callJQuery() {
+    $(document).ready(() => {
+      $('.owl-carousel').owlCarousel({items:1,dots:true,center:true,autoplay:true,autoplaySpeed:700,autoplayHoverPause:true,loop:true})
+    });
+  }
 
 }

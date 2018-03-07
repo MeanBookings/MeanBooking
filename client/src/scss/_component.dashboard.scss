@@ -13,7 +13,8 @@
   }
   .mat-tab-body-content {
     background: $vanilla;
-    padding: 30px;
+    border: 1px solid #009fb72b;
+    border-top: 0;
     .mat-input-container {
       width: 49%;
     }
@@ -53,5 +54,16 @@
   .shift-hour {
     font-size: .8em;
     font-weight: 600;
+  }
+  .comment-row {
+    padding: 30px;
+    &:nth-child(even) {
+      background: white;
+    }
+  }
+  .mat-tab-body-content {
+    .row {
+      padding: 30px;
+    }
   }
 }
