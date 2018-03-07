@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SessionService } from '../../../services/session.service';
-/* import {MatMenuModule} from '@angular/material/menu'; */
+declare var $;
 
 @Component({
   selector: 'login',
@@ -22,7 +22,10 @@ export class LoginComponent implements OnInit {
   login(){
     this.session.login(this.name,this.password)
     .catch(e => this.error = e)
-      .subscribe(user => console.log(`Welcome ${user.name}`));
+      .subscribe(user => {
+        $('#loginModal').modal('hide')
+        console.log(`Welcome ${user.name}`)
+      });
   }
 
 
