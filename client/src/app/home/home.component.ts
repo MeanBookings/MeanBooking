@@ -31,7 +31,7 @@ export class HomeComponent implements OnInit {
 
   callJQuery() {
     $(document).ready(() => {
-      $('.owl-carousel').owlCarousel({ items: 1, dots: true, center: true, autoplay: true, autoplaySpeed: 700, autoplayHoverPause: true, loop: true })
+      $('.owl-carousel').owlCarousel({ items:1,dots:true,autoplay:true,autoplaySpeed:700,autoplayHoverPause:true,loop:true })
     });
   }
 

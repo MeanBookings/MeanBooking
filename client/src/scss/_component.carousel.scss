@@ -1,7 +1,76 @@
 #comments-carousel {
-    padding-top: 100px;
-    background: $blue;
-    h3 {
-        margin-bottom: 50px;
+  padding: 75px;
+  background: $blue;
+  color: $white;
+  h3 {
+    margin-bottom: 50px;
+    font-weight: 100;
+  }
+  .comment {
+    font-weight: 100;
+    font-style: italic;
+    position: relative;
+    &:before,&:after {
+      content: '“';
+      font-size: 4em;
+      position: absolute;
+      top: -20px;
+      left: -40px;
     }
+    &:after {
+      content: '”';
+      top: 60%;
+      left: initial;
+      right: 30px;
+    }
+  }
+  .stars {
+    text-align: center;
+    position: relative;
+    i {
+      font-size: 5em;
+      color: $yellow;
+    }
+    span {
+      display: inline-block;
+      position: absolute;
+      top: 31px;
+      left: 29px;
+      font-weight: 600;
+      font-size: 1.2em;
+      color: $main;
+      small {
+        font-size: 65%;
+      }
+    }
+  }
+  .name {
+    font-size: 1.2em;
+  }
+}
+
+.owl-theme {
+  .owl-dots {
+    text-align: center;
+    -webkit-tap-highlight-color: transparent;
+    .owl-dot {
+      display: inline-block;
+      zoom: 1;
+      span {
+        width: 10px;
+        height: 10px;
+        margin: 5px 7px;
+        background: $yellow;
+        display: block;
+        -webkit-backface-visibility: visible;
+        transition: opacity .2s ease;
+        border-radius: 30px;
+      }
+      &.active {
+        span {
+          opacity: .6;
+        }
+      }
+    }
+  }
 }
