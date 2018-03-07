@@ -36,6 +36,14 @@ export class CommentService {
         .catch(this.handleError)
     }
 
+    getActiveComment():Observable<any>{ 
+        return this.http.get(`${environment.BASEURL}/api/comment/actives` , this.options)
+        .map(res => {
+            return res.json()
+        })
+        .catch(this.handleError)
+    }
+
     deleteComment(id):Observable<any>{ 
         return this.http.get(`${environment.BASEURL}/api/comment/delete/${id}`, this.options)
         .map(res => {
