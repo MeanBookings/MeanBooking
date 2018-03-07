@@ -25,19 +25,36 @@
     </div>
   </div>
 </div>
-<div class="container" id="comments-carousel">
+<div class="container-fluid" id="comments-carousel" *ngIf="comments">
   <div class="row">
-    <div class="col-sm-12">
-      <owl-carousel [options]="{items: 1, dots: true, navigation: true}" 
-                    [items]="comments" [carouselClasses]="['owl-theme', 'row', 'sliding']">
-        <div class="item" *ngFor="let comment of comments;let i = index">
-          <div *ngIf="comment.status == 'true'">
-            <p>{{comment.content}}</p>
-            <p>{{comment.stars}} Stars</p>
-            <p><small> by {{comment.user_Id.name}}</small></p>
+    <div class="col-md-6 offset-sm-3">
+      <h3 class="text-center">From our loved customers</h3>
+      <div class="owl-carousel owl-theme owl-height">
+        <div class="item" *ngFor="let comment of comments"> 
+          <div class="row">
+            <div class="col-md-3">
+              <div class="customer-details">
+                  {{comment.user_Id.name}} 
+              </div>
+              <div class="customer-details">
+                  {{comment.created_at | date:'short'}} 
+              </div>
+              <div class="customer-details stars">
+                  {{comment.stars}} 
+              </div>
+            </div>
+            <div class="col-md-9">
+                <p class="comment">
+                    {{comment.content}} 
+                  </p>
+            </div>
           </div>
+
         </div>
-      </owl-carousel>
+      </div>
+      <!-- <carousel-component >
+          <div class="item-carousel" *ngFor="let comment of comments; let i = index">{{i}}</div>
+      </carousel-component> -->
     </div>
   </div>
 </div>
