@@ -20,8 +20,10 @@ export class HomeComponent implements OnInit {
   zoom: number = 18;
 
   ngOnInit() {
-    this.comment.getComment().subscribe((comment) => {
+    this.comment.getActiveComment().subscribe((comment) => {
       this.comments = comment;
+      //this.comments.forEach((c,i) => {if(c.status != "true") this.comments.splice(i,1)})
+      //console.log(this.comments)
       this.callJQuery();
     });
 
@@ -29,7 +31,7 @@ export class HomeComponent implements OnInit {
 
   callJQuery() {
     $(document).ready(() => {
-      $('.owl-carousel').owlCarousel({items:1,dots:true,center:true,autoplay:true,autoplaySpeed:700,autoplayHoverPause:true,loop:true})
+      $('.owl-carousel').owlCarousel({ items: 1, dots: true, center: true, autoplay: true, autoplaySpeed: 700, autoplayHoverPause: true, loop: true })
     });
   }
 

@@ -102,13 +102,11 @@
           <div class="row comment-row" *ngFor="let comment of comments">
             <div class="col-sm-3">
               <div class="details">
-                <!-- <div>
-                  <small class="booking-id"> {{comment._id}} </small>
-                </div> -->
                 <mat-form-field class="status-select">
                   <mat-select [class]="comment.status" [value]="comment.status" [(ngModel)]="comment.status" (change)="changeCommentStatus(comment._id,comment.status)">
                     <mat-option value="false"> Not approved </mat-option>
                     <mat-option value="true"> Approved </mat-option>
+                    <mat-option value="delete"> Delete </mat-option>
                   </mat-select>
                 </mat-form-field>
               </div>
@@ -120,7 +118,7 @@
               </div>
             </div>
           </div>
-          <hr> </mat-tab>
+        </mat-tab>
       </mat-tab-group>
     </div>
   </div>

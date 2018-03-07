@@ -49,11 +49,17 @@ export class AdminComponent implements OnInit {
 
   changeCommentStatus(id, status) {
     if (status == "delete") {
-      this.comment.deleteComment(id).subscribe((updated) => console.log(updated))
+      this.comment.deleteComment(id).subscribe((updated) => {
+        console.log(updated.status)
+        this.comment.getComment().subscribe((comment) => this.comments = comment);
+      })
     } else {
-      this.comment.editComment(id, status).subscribe((updated) => console.log(updated))
+      this.comment.editComment(id, status).subscribe((updated) => {
+        console.log(updated.status)
+        this.comment.getComment().subscribe((comment) => this.comments = comment);
+      })
     }
-    this.comment.getComment().subscribe((comment) => this.comments = comment);
+    
   }
 
   createDays(a, b) {

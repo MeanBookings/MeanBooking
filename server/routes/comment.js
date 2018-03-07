@@ -12,6 +12,14 @@ router.get("/", (req, res, next) => {
         .catch(e => res.status(500).json(e));
 });
 
+// api/comment/
+router.get("/actives", (req, res, next) => {
+    Comment.find({status:'true'})
+        .populate('user_Id')
+        .then(comments => res.status(200).json(comments))
+        .catch(e => res.status(500).json(e));
+});
+
 // api/comment/create
 router.post("/create", (req, res, next) => {
     let { user_Id, content, valoration } = req.body
