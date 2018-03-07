@@ -45,6 +45,7 @@ import { SnackBarProfileComponent } from './profile/snack-bar-profile/snack-bar-
 import { ViewBookingsComponent } from './admin/calendar/view-bookings/view-bookings.component';
 import { ViewpendingsComponent } from './admin/viewpendings/viewpendings.component'
 import { CommentService } from '../services/comment.service';
+import { MenuService } from '../services/menu.service';
 
 @NgModule({
   declarations: [
@@ -95,7 +96,7 @@ import { CommentService } from '../services/comment.service';
     }),
   ],
   entryComponents: [SnackBarComponent, BookingformComponent, SnackBarProfileComponent, ProfileComponent],
-  providers: [CommentService, UserService, SessionService, BookingService, AdminGuardService, CalendarService, UserGuardService, { provide: LOCALE_ID, useValue: "es-ES" }],
+  providers: [MenuService, CommentService, UserService, SessionService, BookingService, AdminGuardService, CalendarService, UserGuardService, { provide: LOCALE_ID, useValue: "es-ES" }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
