@@ -30,31 +30,20 @@
     <div class="col-md-6 offset-sm-3">
       <h3 class="text-center">From our loved customers</h3>
       <div class="owl-carousel owl-theme owl-height">
-        <div class="item" *ngFor="let comment of comments"> 
+        <div class="item" *ngFor="let comment of comments">
           <div class="row">
             <div class="col-md-3">
-              <div class="customer-details">
-                  {{comment.user_Id.name}} 
-              </div>
-              <div class="customer-details">
-                  {{comment.created_at | date:'short'}} 
-              </div>
+              <div class="customer-details"> <span class="name">{{comment.user_Id.name}}</span> </div>
+              <div class="customer-details"> <small>{{comment.created_at | date:'MMMM d, y'}} </small></div>
               <div class="customer-details stars">
-                  {{comment.stars}} 
-              </div>
+                <i class="material-icons">star_rate</i> <span>{{comment.stars}}<small>/10</small></span> </div>
             </div>
             <div class="col-md-9">
-                <p class="comment">
-                    {{comment.content}} 
-                  </p>
+              <p class="comment"> {{comment.content}} </p>
             </div>
           </div>
-
         </div>
       </div>
-      <!-- <carousel-component >
-          <div class="item-carousel" *ngFor="let comment of comments; let i = index">{{i}}</div>
-      </carousel-component> -->
     </div>
   </div>
 </div>

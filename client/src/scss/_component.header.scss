@@ -50,39 +50,36 @@ header {
         @include transition(all .3s linear);
         cursor: pointer;
         text-align: center;
-        div.menu-legend {
-          font-size: .6em;
-          line-height: 1;
+        padding: 0 12px;
+        span.menu-legend {
+          font-size: 1em;
         }
         &:hover {
           color: $red;
         }
-        &.user-profile {
-          margin-right: 40px;
-        }
-        &.logout {
-          margin-left: 40px;
-        }
-        .pending-num {
-          width: 20px;
-          height: 20px;
-          background: $red;
-          color: $white;
-          position: absolute;
-          z-index: 2;
-          border-radius: 50%;
-          top: -10px;
-          right: 2px;
-          font-size: .8em;
-          font-weight: 600;
-        }
-        .no-pendings,
-        .no-pendings i {
-          opacity: .5;
-          pointer-events: none !important;
-          cursor: initial !important;
-          color: initial !important;
-          display: inline-block;
+        .pending-wrapper {
+          position: relative;
+          .pending-num {
+            width: 16px;
+            height: 16px;
+            background: $red;
+            color: $white;
+            position: absolute;
+            z-index: 2;
+            border-radius: 50%;
+            top: -6px;
+            left: -12px;
+            font-size: .65em;
+            font-weight: 300;
+          }
+          .no-pendings,
+          .no-pendings i {
+            opacity: .5;
+            pointer-events: none !important;
+            cursor: initial !important;
+            color: initial !important;
+            display: inline-block;
+          }
         }
       }
       .header-form {
@@ -96,11 +93,6 @@ header {
             }
           }
         }
-        /* width: 120px;
-        overflow: hidden;
-        .mat-expansion-panel {
-          background:transparent
-        } */
       }
     }
   }
