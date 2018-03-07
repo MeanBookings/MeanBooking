@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const debug = require('debug')("server:day");
+const debug = require('debug')("server:comment");
 const Comment = require('../models/Comment');
 const User = require('../models/User');
 

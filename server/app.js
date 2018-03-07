@@ -14,6 +14,8 @@ const book = require('./routes/book');
 const user = require('./routes/user');
 const day = require('./routes/day');
 const comment = require('./routes/comment')
+const menu = require('./routes/menu')
+
 
 const app = express();
 
@@ -61,6 +63,9 @@ app.use('/api/book', book);
 app.use('/api/day', day);
 app.use('/api/user', user);
 app.use('/api/comment',comment);
+app.use('/api/menu',menu);
+
+
 
 app.use(function(req,res){
   res.sendfile(__dirname + '/public/index.html');

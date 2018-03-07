@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import * as moment from 'moment';
 import { CalendarService } from '../../services/calendar.service';
 import { CommentService } from '../../services/comment.service';
+import { MenuService } from '../../services/menu.service';
 @Component({
   selector: 'admin',
   templateUrl: './admin.component.html',
@@ -16,10 +17,12 @@ export class AdminComponent implements OnInit {
   comments: any;
   status: boolean;
   id: string;
+  menu:Array<any> = []
 
   constructor(
     public calendar: CalendarService,
-    public comment: CommentService
+    public comment: CommentService,
+    public menuService: MenuService
   ) {
   }
 
@@ -35,8 +38,9 @@ export class AdminComponent implements OnInit {
         { hour: "22:00", current: 20 }, { hour: "22:30", current: 20 }, { hour: "23:00", current: 20 }, { hour: "23:30", current: 20 },
       ]
     }
+    this.menuService.getMenu().subscribe(menus => menus.forEach((menu)=> this.menu.push(menu)))
     this.comment.getComment().subscribe((comment) => this.comments = comment);
-    console.log(this.comments)
+    console.log(this.menu)
   }
 
   getComments() {

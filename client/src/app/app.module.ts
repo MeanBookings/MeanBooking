@@ -46,6 +46,7 @@ import { ViewBookingsComponent } from './admin/calendar/view-bookings/view-booki
 import { ViewpendingsComponent } from './admin/viewpendings/viewpendings.component'
 import { CommentService } from '../services/comment.service';
 import { OwlModule } from 'ng2-owl-carousel';
+import { MenuService } from '../services/menu.service'
 
 @NgModule({
   declarations: [
@@ -97,7 +98,7 @@ import { OwlModule } from 'ng2-owl-carousel';
     OwlModule    
   ],
   entryComponents: [SnackBarComponent, BookingformComponent, SnackBarProfileComponent, ProfileComponent],
-  providers: [CommentService, UserService, SessionService, BookingService, AdminGuardService, CalendarService, UserGuardService, { provide: LOCALE_ID, useValue: "es-ES" }],
+  providers: [MenuService, CommentService, UserService, SessionService, BookingService, AdminGuardService, CalendarService, UserGuardService, { provide: LOCALE_ID, useValue: "es-ES" }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
