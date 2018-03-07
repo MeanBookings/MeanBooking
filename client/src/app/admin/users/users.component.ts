@@ -27,8 +27,11 @@ export class UsersComponent implements OnInit {
     })
   }
 
-  makeMeAdmin(id) {
-    this.profile.makeAdmin(id).subscribe(()=>{
+  changeMyRole(id,role) {
+    console.log(role)
+    if(role=='client')role='admin'
+    else role='client'
+    this.profile.changeRole(id,role).subscribe((user)=>{
       this.profile.getUsers().subscribe((usersGet) => this.users = usersGet)
     })
   }

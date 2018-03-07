@@ -29,9 +29,11 @@ export class UserService {
             .catch(this.handleError);
     }
 
-    makeAdmin(id): Observable<any> {
-        return this.http.get(`${environment.BASEURL}/api/user/makeadmin/${id}`, this.options)
-        .map(res => res.json())
+    changeRole(id,role): Observable<any> {
+        return this.http.post(`${environment.BASEURL}/api/user/editRole/${id}`, {role}, this.options)
+        .map(res => {
+            return res.json()
+        })
         .catch(this.handleError);
     }
 

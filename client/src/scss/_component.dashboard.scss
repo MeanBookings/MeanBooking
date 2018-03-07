@@ -41,13 +41,14 @@
   mat-select {
     border: none;
     text-align: center;
-    border-radius: 4px;
     color: $white;
     padding: 4px 0 7px;
-    &.open,&.true {
+    &.open,
+    &.true {
       background: $green;
     }
-    &.closed,&.false {
+    &.closed,
+    &.false {
       background: $red;
     }
   }
@@ -55,15 +56,32 @@
     font-size: .8em;
     font-weight: 600;
   }
-  .comment-row {
-    padding: 30px;
-    &:nth-child(even) {
-      background: white;
+  #days-tabs {
+    .comment-row {
+      padding: 30px;
+      &:nth-child(even) {
+        background: white;
+      }
     }
   }
   .mat-tab-body-content {
     .row {
       padding: 30px;
+    }
+  }
+}
+
+#week-menu-config {
+  label {
+    display: block;
+  }
+  .price {
+    &:after {
+      content: '€';
+      position: absolute;
+      top: 25px;
+      right: 0;
+      opacity: .7;
     }
   }
 }

@@ -40,10 +40,8 @@
         <li *ngIf="!session.getUser()" class="header-form list-inline-item">
           <span class="menu-legend" data-toggle="modal" data-target="#loginModal">login</span>
         </li>
-        <li *ngIf="session.getUser()" class="header-controls list-inline-item user-profile" routerLinkActive="active-menu-item"
-          [routerLink]="['/profile']">
-          <i class="far fa-user-circle"></i>
-          <span class="menu-legend">Hi {{session.getUser().name}}!</span>
+        <li *ngIf="session.getUser()" class="header-controls list-inline-item user-profile" routerLinkActive="active-menu-item" [routerLink]="['/profile']">
+          <span class="menu-legend">My account</span>
         </li>
         <li class="list-inline-item logout">
           <logout></logout>

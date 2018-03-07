@@ -8,37 +8,37 @@ mongoose.connect(dbURL)
 
 const menus = [{
     dayWeek: 1,
-    starters: ["Provoleta1", "Ensalata1", "Anti-Pasti1", "Pan de Ajo1"],
-    mainCourses: ["Penne", "Espaguetti", "Lasagna", "Gnocci"],
-    desserts: ["Tiramisu", "Tarta de Queso"],
+    starters: ["Polpettine di tonno e ricotta", "Involtini di verza", "Uova sode", "Frittata"],
+    mainCourses: ["Lasagna", "Carbonara", "Tagliatelle al ragù", "Tortellini alla panna"],
+    desserts: ["Tiramisu", "Torta di mele"],
     price: "12",
     comments: ""
 },{
     dayWeek: 2,
-    starters: ["Provoleta", "Ensalata", "Anti-Pasti", "Pan de Ajo"],
-    mainCourses: ["Penne", "Espaguetti", "Lasagna", "Gnocci"],
-    desserts: ["Tiramisu", "Tarta de Queso"],
+    starters: ["Cipolline in agrodolce", "Mozzarella in carrozza", "Pizzette di sfoglia", "Cornetti salati"],
+    mainCourses: ["Penne all’arrabbiata", "Gnocchi alla sorrentina", "Risotto alla crema di scampi", "Spaghetti allo scoglio"],
+    desserts: ["Amaretti", "Krumiri"],
     price: "12",
     comments: ""
 }, {
     dayWeek: 3,
-    starters: ["Provoleta", "Ensalata", "Anti-Pasti", "Pan de Ajo"],
-    mainCourses: ["Penne", "Espaguetti", "Lasagna", "Gnocci"],
-    desserts: ["Tiramisu", "Tarta de Queso"],
+    starters: ["Polpette di spinaci e ricotta", "Capesante gratinate", "Frittata di zucchine", "Radicchio al forno"],
+    mainCourses: ["Spaghetti alle vongole", "Gramigna, salsiccia e panna", "Spaghetti Senatore Cappelli con cipollotto e peperoncino", "Carpaccio"],
+    desserts: ["Cannoli", "Tronchetto di Natale"],
     price: "12",
     comments: ""
 }, {
     dayWeek: 4,
-    starters: ["Provoleta", "Ensalata", "Anti-Pasti", "Pan de Ajo"],
-    mainCourses: ["Penne", "Espaguetti", "Lasagna", "Gnocci"],
-    desserts: ["Tiramisu", "Tarta de Queso"],
+    starters: ["Cavolfiore in pastella", "Teste di champignon ripieni", "Torta 5 minuti salata", "Polpette di quinoa, zucchine e stracchino"],
+    mainCourses: ["Passatina di ceci e gamberi", "Agnolotti di Lidia", "Tortelli di zucca", "Savarin di riso e lingua"],
+    desserts: ["Bisciola", "Pandolce"],
     price: "12",
     comments: ""
 }, {
     dayWeek: 5,
-    starters: ["Provoleta", "Ensalata", "Anti-Pasti", "Pan de Ajo"],
-    mainCourses: ["Penne", "Espaguetti", "Lasagna", "Gnocci"],
-    desserts: ["Tiramisu", "Tarta de Queso"],
+    starters: ["Frittata di asparagi", "Uova alla coque", "Mozzarella fritta", "Avocado toast"],
+    mainCourses: ["Spaghetti alla lampada", "Albanella di molluschi e crostacei", "Nudi di ricotta alle ortiche", "Tagliatella di seppia con pesto di alga nori"],
+    desserts: ["Taralli dolci campani", "Crepes dolci con frutta e crema"],
     price: "12",
     comments: ""
 }]

@@ -40,9 +40,11 @@ router.get('/delete/:id', onlyMe, (req, res, next) => {
 });
 
 // api/user/makeadmin/:id
-router.get('/makeadmin/:id', onlyMe, (req, res, next) => {
-    User.findByIdAndUpdate(req.params.id, { "role": "admin" })
-        .then(() => res.status(200).json({ message: 'Updated' }))
+router.post('/editRole/:id', onlyMe, (req, res, next) => {
+    role = req.body.role
+    console.log(role)
+    User.findByIdAndUpdate(req.params.id, { "role": role })
+        .then((user) => res.status(200).json(user))
         .catch(e => res.status(500).json(e))
 });
 

@@ -50,7 +50,7 @@
           </mat-icon>
         </button>
         <mat-menu #menu="matMenu">
-          <button mat-menu-item (click)="makeMeAdmin(user._id)"> Sure? </button>
+          <button mat-menu-item (click)="changeMyRole(user._id,user.role)"> Sure? </button>
         </mat-menu>
       </button>
       <button mat-icon-button class="addtoEnvelope" (click)=selectedForEmail(user.email)>
