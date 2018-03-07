@@ -43,10 +43,10 @@
     border-radius: 4px;
     color: $white;
     padding: 4px 0 7px;
-    &.open {
+    &.open,&.true {
       background: $green;
     }
-    &.closed {
+    &.closed,&.false {
       background: $red;
     }
   }
