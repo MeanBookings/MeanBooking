@@ -5,42 +5,39 @@
     </div>
     <div class="col-sm-8">
       <ul class="list-inline">
-        <li *ngIf="session.getUser()" class="header-controls list-inline-item user-profile" routerLinkActive="active-menu-item" [routerLink]="['/profile']">
-          <i class="material-icons">person</i>
-          <div class="menu-legend">Hi {{session.getUser().name}}!</div>
-        </li>
         <li class="list-inline-item header-controls" *ngIf="session.getUser()&&session.getAdmin()" (click)="pendingBookings()">
-          <span *ngIf="pending>0;else noPendings">
+          <span *ngIf="pending>0;else noPendings" class="pending-wrapper">
             <span class="pending-num">
               {{pending}}
             </span>
-            <i class="material-icons faa-ring animated">add_alert</i>
-            <div class="menu-legend">pending</div>
+            <i class="far fa-bell faa-ring animated"></i>
+            <span class="menu-legend">pending</span>
           </span>
           <ng-template #noPendings>
             <span class="no-pendings">
-                <i class="material-icons">add_alert</i>
+                <i class="far fa-bell"></i>
                 <div class="menu-legend">no pendings</div>
             </span>
           </ng-template>
         </li>
         <li class="list-inline-item header-controls" *ngIf="session.getUser()&&session.getAdmin()" routerLinkActive="active-menu-item" [routerLink]="['/dashboard']">
-          <i class="material-icons">dashboard</i>
-          <div class="menu-legend">dashboard</div>
+          <span class="menu-legend">dashboard</span>
         </li>
         <li class="list-inline-item header-controls" *ngIf="session.getUser()&&session.getAdmin()" routerLinkActive="active-menu-item" [routerLink]="['/bookings']">
-          <i class="material-icons">today</i>
-          <div class="menu-legend">calendar</div>
+          <span class="menu-legend">calendar</span>
         </li>
         <li *ngIf="session.getUser()&&session.getAdmin()" class="list-inline-item header-controls" routerLinkActive="active-menu-item" [routerLink]="['/users']">
-          <i class="material-icons">people</i>
-          <div class="menu-legend">clients</div>
+          <span class="menu-legend">clients</span>
         </li>
         <li class="header-form list-inline-item">
           <signup></signup>
         </li>
         <li class="header-form list-inline-item">
           <login></login>
+        </li>
+        <li *ngIf="session.getUser()" class="header-controls list-inline-item user-profile" routerLinkActive="active-menu-item" [routerLink]="['/profile']">
+          <i class="far fa-user-circle"></i>
+          <span class="menu-legend">Hi {{session.getUser().name}}!</span>
         </li>
         <li class="list-inline-item logout">
             <logout></logout>
