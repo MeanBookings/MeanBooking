@@ -8,8 +8,16 @@
     <div class="col-sm-12">
       <h6 class="m-bot-10">Use this tabs to generate and edit the day configuration and availability & to moderate the customer's opinions.</h6>
       <ul class="m-bot-20">
-        <li><small><strong>approved opinions go to the homepage's carousel!</strong></small></li>
-        <li><small><strong>Already created days will no be overwritten, so do not panic if you overlap days...</strong></small></li>
+        <li>
+          <small>
+            <strong>approved opinions go to the homepage's carousel!</strong>
+          </small>
+        </li>
+        <li>
+          <small>
+            <strong>Already created days will no be overwritten, so do not panic if you overlap days...</strong>
+          </small>
+        </li>
       </ul>
       <mat-tab-group>
         <mat-tab label="Massive Day Creation">
@@ -116,23 +124,164 @@
       </mat-tab-group>
     </div>
   </div>
-<h4 class="m-top-40">
-  <strong>Menu of the day</strong>
-</h4>
-<div class="row m-top-20">
-  <div class="col-sm-12">
-    <mat-tab-group>
-      <mat-tab label="Monday">
-      </mat-tab>
-      <mat-tab label="Tuesday">
-      </mat-tab>
-      <mat-tab label="Wednesday">
-      </mat-tab>
-      <mat-tab label="Thursday">
-      </mat-tab>
-      <mat-tab label="Friday">
-      </mat-tab>
-    </mat-tab-group>
+
+  <div class="row m-top-20" *ngIf="menu.length > 0">
+    <div class="col-sm-12">
+      <h4 class="m-top-40">
+        <strong>Menu of the day</strong>
+      </h4>
+      <mat-tab-group>
+        <mat-tab label="Monday">
+          <mat-form-field class="menu[0].active">
+            <mat-select [class]="menu[0].active" [value]="menu[0].active" [(ngModel)]="menu[0].active">
+              <mat-option value="false"> Have Menu </mat-option>
+              <mat-option value="true"> Don't Have </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <div class="starters-menu">
+            <div *ngFor="let starter of menu[0].starters">
+              <input value="{{starter}}">
+            </div>
+          </div>
+          <div class="main-course-menu">
+            <div *ngFor="let mainCourse of menu[0].mainCourses">
+              <input value="{{mainCourse}}">
+            </div>
+          </div>
+          <div class="desserts-menu">
+            <div *ngFor="let dessert of menu[0].desserts">
+              <input value="{{dessert}}">
+            </div>
+          </div>
+          <p>
+            <strong>{{menu[0].price}}€</strong>
+          </p>
+          <div>
+            <label>Comentario</label>
+            <textarea value="menu[0].comment"></textarea>
+          </div>
+        </mat-tab>
+        <mat-tab label="Tuesday">
+            <mat-form-field class="menu[1].active">
+                <mat-select [class]="menu[1].active" [value]="menu[1].active" [(ngModel)]="menu[1].active">
+                  <mat-option value="false"> Have Menu </mat-option>
+                  <mat-option value="true"> Don't Have </mat-option>
+                </mat-select>
+              </mat-form-field>
+              <div class="starters-menu">
+                <div *ngFor="let starter of menu[1].starters">
+                  <input value="{{starter}}">
+                </div>
+              </div>
+              <div class="main-course-menu">
+                <div *ngFor="let mainCourse of menu[1].mainCourses">
+                  <input value="{{mainCourse}}">
+                </div>
+              </div>
+              <div class="desserts-menu">
+                <div *ngFor="let dessert of menu[1].desserts">
+                  <input value="{{dessert}}">
+                </div>
+              </div>
+              <p>
+                <strong>{{menu[1].price}}€</strong>
+              </p>
+              <div>
+                <label>Comentario</label>
+                <textarea value="menu[1].comment"></textarea>
+              </div>
+        </mat-tab>
+        <mat-tab label="Wednesday">
+            <mat-form-field class="menu[2].active">
+                <mat-select [class]="menu[2].active" [value]="menu[2].active" [(ngModel)]="menu[2].active">
+                  <mat-option value="false"> Have Menu </mat-option>
+                  <mat-option value="true"> Don't Have </mat-option>
+                </mat-select>
+              </mat-form-field>
+              <div class="starters-menu">
+                <div *ngFor="let starter of menu[2].starters">
+                  <input value="{{starter}}">
+                </div>
+              </div>
+              <div class="main-course-menu">
+                <div *ngFor="let mainCourse of menu[2].mainCourses">
+                  <input value="{{mainCourse}}">
+                </div>
+              </div>
+              <div class="desserts-menu">
+                <div *ngFor="let dessert of menu[2].desserts">
+                  <input value="{{dessert}}">
+                </div>
+              </div>
+              <p>
+                <strong>{{menu[2].price}}€</strong>
+              </p>
+              <div>
+                <label>Comentario</label>
+                <textarea value="menu[2].comment"></textarea>
+              </div>
+        </mat-tab>
+        <mat-tab label="Thursday">
+            <mat-form-field class="menu[3].active">
+                <mat-select [class]="menu[3].active" [value]="menu[3].active" [(ngModel)]="menu[3].active">
+                  <mat-option value="false"> Have Menu </mat-option>
+                  <mat-option value="true"> Don't Have </mat-option>
+                </mat-select>
+              </mat-form-field>
+              <div class="starters-menu">
+                <div *ngFor="let starter of menu[3].starters">
+                  <input value="{{starter}}">
+                </div>
+              </div>
+              <div class="main-course-menu">
+                <div *ngFor="let mainCourse of menu[3].mainCourses">
+                  <input value="{{mainCourse}}">
+                </div>
+              </div>
+              <div class="desserts-menu">
+                <div *ngFor="let dessert of menu[3].desserts">
+                  <input value="{{dessert}}">
+                </div>
+              </div>
+              <p>
+                <strong>{{menu[3].price}}€</strong>
+              </p>
+              <div>
+                <label>Comentario</label>
+                <textarea value="menu[3].comment"></textarea>
+              </div>
+        </mat-tab>
+        <mat-tab label="Friday">
+            <mat-form-field class="menu[4].active">
+                <mat-select [class]="menu[4].active" [value]="menu[4].active" [(ngModel)]="menu[4].active">
+                  <mat-option value="false"> Have Menu </mat-option>
+                  <mat-option value="true"> Don't Have </mat-option>
+                </mat-select>
+              </mat-form-field>
+              <div class="starters-menu">
+                <div *ngFor="let starter of menu[4].starters">
+                  <input value="{{starter}}">
+                </div>
+              </div>
+              <div class="main-course-menu">
+                <div *ngFor="let mainCourse of menu[4].mainCourses">
+                  <input value="{{mainCourse}}">
+                </div>
+              </div>
+              <div class="desserts-menu">
+                <div *ngFor="let dessert of menu[4].desserts">
+                  <input value="{{dessert}}">
+                </div>
+              </div>
+              <p>
+                <strong>{{menu[4].price}}€</strong>
+              </p>
+              <div>
+                <label>Comentario</label>
+                <textarea value="menu[4].comment"></textarea>
+              </div>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
   </div>
-</div>
 </div>
