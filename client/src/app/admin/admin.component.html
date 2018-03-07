@@ -122,7 +122,6 @@
       </mat-tab-group>
     </div>
   </div>
-
   <div class="row m-top-20" *ngIf="menu.length > 0">
     <div class="col-sm-12">
       <h4 class="m-top-40">
@@ -130,155 +129,248 @@
       </h4>
       <mat-tab-group>
         <mat-tab label="Monday">
-          <mat-form-field class="menu[0].active">
-            <mat-select [class]="menu[0].active" [value]="menu[0].active" disabled={{!switch}} [(ngModel)]="menu[0].active">
-              <mat-option value="false"> Have Menu </mat-option>
-              <mat-option value="true"> Don't Have </mat-option>
-            </mat-select>
-          </mat-form-field>
           <div class="row">
-          <div class="starters-menu col-sm-4">
-            <div *ngFor="let starter of menu[0].starters">
-              <input value="{{starter}}">
-            </div>
-          </div>
-          <div class="main-course-menu">
-            <div *ngFor="let mainCourse of menu[0].mainCourses">
-              <input value="{{mainCourse}}">
-            </div>
-          </div>
-          <div class="desserts-menu">
-            <div *ngFor="let dessert of menu[0].desserts">
-              <input value="{{dessert}}">
-            </div>
-          </div>
-          <p>
-            <strong>{{menu[0].price}}€</strong>
-          </p>
-          <div>
-            <label>Comentario</label>
-            <textarea value="menu[0].comment"></textarea>
-          </div>
-        </div>
-        </mat-tab>
-        <mat-tab label="Tuesday">
-            <mat-form-field class="menu[1].active">
-                <mat-select [class]="menu[1].active" [value]="menu[1].active" [(ngModel)]="menu[1].active">
-                  <mat-option value="false"> Have Menu </mat-option>
-                  <mat-option value="true"> Don't Have </mat-option>
+            <div class="col-sm-12">
+              <mat-form-field class="menu[0].active">
+                <mat-select [class]="menu[0].active" [value]="menu[0].active" disabled={{!switch}} [(ngModel)]="menu[0].active">
+                  <mat-option value="true"> Have Menu </mat-option>
+                  <mat-option value="false"> Don't Have </mat-option>
                 </mat-select>
               </mat-form-field>
-              <div class="starters-menu">
-                <div *ngFor="let starter of menu[1].starters">
-                  <input value="{{starter}}">
-                </div>
-              </div>
-              <div class="main-course-menu">
-                <div *ngFor="let mainCourse of menu[1].mainCourses">
-                  <input value="{{mainCourse}}">
-                </div>
-              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="starters-menu col-sm-3">
+              <label>Starters</label>
+              <input [disabled]="!switch" value="{{menu[0].starters[0]}}" [(ngModel)]="menu[0].starters[0]">
+              <input [disabled]="!switch" value="{{menu[0].starters[1]}}" [(ngModel)]="menu[0].starters[1]">
+              <input [disabled]="!switch" value="{{menu[0].starters[2]}}" [(ngModel)]="menu[0].starters[2]">
+              <input [disabled]="!switch" value="{{menu[0].starters[3]}}" [(ngModel)]="menu[0].starters[3]">
+            </div>
+            <div class="main-course-menu col-sm-3">
+              <label>Main Courses</label>
+              <input [disabled]="!switch" value="{{menu[0].mainCourses[0]}}" [(ngModel)]="menu[0].mainCourses[0]">
+              <input [disabled]="!switch" value="{{menu[0].mainCourses[1]}}" [(ngModel)]="menu[0].mainCourses[1]">
+              <input [disabled]="!switch" value="{{menu[0].mainCourses[2]}}" [(ngModel)]="menu[0].mainCourses[2]">
+              <input [disabled]="!switch" value="{{menu[0].mainCourses[3]}}" [(ngModel)]="menu[0].mainCourses[3]">
+            </div>
+            <div class="col-sm-3">
               <div class="desserts-menu">
-                <div *ngFor="let dessert of menu[1].desserts">
-                  <input value="{{dessert}}">
+                <label>Desserts</label>
+                <input [disabled]="!switch" value="{{menu[0].desserts[0]}}" [(ngModel)]="menu[0].desserts[0]">
+                <input [disabled]="!switch" value="{{menu[0].desserts[1]}}" [(ngModel)]="menu[0].desserts[1]">
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <label>Comment</label>
+              <textarea [disabled]="!switch" value="menu[0].comments">
+              </textarea>
+              <label>Price</label>
+              <div>
+                <input type="number" [disabled]="!switch" value="{{menu[0].price}}">€
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12 text-center">
+              <button mat-raised-button (click)="editDayMenu(menu[0])">{{btntxt}}</button>
+            </div>
+          </div>
+        </mat-tab>
+        <mat-tab label="Tuesday">
+            <div class="row">
+                <div class="col-sm-12">
+                  <mat-form-field class="menu[1].active">
+                    <mat-select [class]="menu[1].active" [value]="menu[1].active" disabled={{!switch}} [(ngModel)]="menu[1].active">
+                      <mat-option value="true"> Have Menu </mat-option>
+                      <mat-option value="false"> Don't Have </mat-option>
+                    </mat-select>
+                  </mat-form-field>
                 </div>
               </div>
-              <p>
-                <strong>{{menu[1].price}}€</strong>
-              </p>
-              <div>
-                <label>Comentario</label>
-                <textarea value="menu[1].comment"></textarea>
+              <div class="row">
+                <div class="starters-menu col-sm-3">
+                  <label>Starters</label>
+                  <input [disabled]="!switch" value="{{menu[1].starters[0]}}" [(ngModel)]="menu[1].starters[0]">
+                  <input [disabled]="!switch" value="{{menu[1].starters[1]}}" [(ngModel)]="menu[1].starters[1]">
+                  <input [disabled]="!switch" value="{{menu[1].starters[2]}}" [(ngModel)]="menu[1].starters[2]">
+                  <input [disabled]="!switch" value="{{menu[1].starters[3]}}" [(ngModel)]="menu[1].starters[3]">
+                </div>
+                <div class="main-course-menu col-sm-3">
+                  <label>Main Courses</label>
+                  <input [disabled]="!switch" value="{{menu[1].mainCourses[0]}}" [(ngModel)]="menu[1].mainCourses[0]">
+                  <input [disabled]="!switch" value="{{menu[1].mainCourses[1]}}" [(ngModel)]="menu[1].mainCourses[1]">
+                  <input [disabled]="!switch" value="{{menu[1].mainCourses[2]}}" [(ngModel)]="menu[1].mainCourses[2]">
+                  <input [disabled]="!switch" value="{{menu[1].mainCourses[3]}}" [(ngModel)]="menu[1].mainCourses[3]">
+                </div>
+                <div class="col-sm-3">
+                  <div class="desserts-menu">
+                    <label>Desserts</label>
+                    <input [disabled]="!switch" value="{{menu[1].desserts[0]}}" [(ngModel)]="menu[1].desserts[0]">
+                    <input [disabled]="!switch" value="{{menu[1].desserts[1]}}" [(ngModel)]="menu[1].desserts[1]">
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <label>Comment</label>
+                  <textarea [disabled]="!switch" value="menu[1].comments">
+                  </textarea>
+                  <label>Price</label>
+                  <div>
+                    <input type="number" [disabled]="!switch" value="{{menu[1].price}}">€
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-12 text-center">
+                  <button mat-raised-button (click)="editDayMenu(menu[1])">{{btntxt}}</button>
+                </div>
               </div>
         </mat-tab>
         <mat-tab label="Wednesday">
-            <mat-form-field class="menu[2].active">
-                <mat-select [class]="menu[2].active" [value]="menu[2].active" [(ngModel)]="menu[2].active">
-                  <mat-option value="false"> Have Menu </mat-option>
-                  <mat-option value="true"> Don't Have </mat-option>
-                </mat-select>
-              </mat-form-field>
-              <div class="starters-menu">
-                <div *ngFor="let starter of menu[2].starters">
-                  <input value="{{starter}}">
+            <div class="row">
+                <div class="col-sm-12">
+                  <mat-form-field class="menu[2].active">
+                    <mat-select [class]="menu[2].active" [value]="menu[2].active" disabled={{!switch}} [(ngModel)]="menu[2].active">
+                      <mat-option value="true"> Have Menu </mat-option>
+                      <mat-option value="false"> Don't Have </mat-option>
+                    </mat-select>
+                  </mat-form-field>
                 </div>
               </div>
-              <div class="main-course-menu">
-                <div *ngFor="let mainCourse of menu[2].mainCourses">
-                  <input value="{{mainCourse}}">
+              <div class="row">
+                <div class="starters-menu col-sm-3">
+                  <label>Starters</label>
+                  <input [disabled]="!switch" value="{{menu[2].starters[0]}}" [(ngModel)]="menu[2].starters[0]">
+                  <input [disabled]="!switch" value="{{menu[2].starters[1]}}" [(ngModel)]="menu[2].starters[1]">
+                  <input [disabled]="!switch" value="{{menu[2].starters[2]}}" [(ngModel)]="menu[2].starters[2]">
+                  <input [disabled]="!switch" value="{{menu[2].starters[3]}}" [(ngModel)]="menu[2].starters[3]">
+                </div>
+                <div class="main-course-menu col-sm-3">
+                  <label>Main Courses</label>
+                  <input [disabled]="!switch" value="{{menu[2].mainCourses[0]}}" [(ngModel)]="menu[2].mainCourses[0]">
+                  <input [disabled]="!switch" value="{{menu[2].mainCourses[1]}}" [(ngModel)]="menu[2].mainCourses[1]">
+                  <input [disabled]="!switch" value="{{menu[2].mainCourses[2]}}" [(ngModel)]="menu[2].mainCourses[2]">
+                  <input [disabled]="!switch" value="{{menu[2].mainCourses[3]}}" [(ngModel)]="menu[2].mainCourses[3]">
+                </div>
+                <div class="col-sm-3">
+                  <div class="desserts-menu">
+                    <label>Desserts</label>
+                    <input [disabled]="!switch" value="{{menu[2].desserts[0]}}" [(ngModel)]="menu[2].desserts[0]">
+                    <input [disabled]="!switch" value="{{menu[2].desserts[1]}}" [(ngModel)]="menu[2].desserts[1]">
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <label>Comment</label>
+                  <textarea [disabled]="!switch" value="menu[2].comments">
+                  </textarea>
+                  <label>Price</label>
+                  <div>
+                    <input type="number" [disabled]="!switch" value="{{menu[2].price}}">€
+                  </div>
                 </div>
               </div>
-              <div class="desserts-menu">
-                <div *ngFor="let dessert of menu[2].desserts">
-                  <input value="{{dessert}}">
+              <div class="row">
+                <div class="col-sm-12 text-center">
+                  <button mat-raised-button (click)="editDayMenu(menu[2])">{{btntxt}}</button>
                 </div>
-              </div>
-              <p>
-                <strong>{{menu[2].price}}€</strong>
-              </p>
-              <div>
-                <label>Comentario</label>
-                <textarea value="menu[2].comment"></textarea>
               </div>
         </mat-tab>
         <mat-tab label="Thursday">
-            <mat-form-field class="menu[3].active">
-                <mat-select [class]="menu[3].active" [value]="menu[3].active" [(ngModel)]="menu[3].active">
-                  <mat-option value="false"> Have Menu </mat-option>
-                  <mat-option value="true"> Don't Have </mat-option>
-                </mat-select>
-              </mat-form-field>
-              <div class="starters-menu">
-                <div *ngFor="let starter of menu[3].starters">
-                  <input value="{{starter}}">
+            <div class="row">
+                <div class="col-sm-12">
+                  <mat-form-field class="menu[3].active">
+                    <mat-select [class]="menu[3].active" [value]="menu[3].active" disabled={{!switch}} [(ngModel)]="menu[3].active">
+                      <mat-option value="true"> Have Menu </mat-option>
+                      <mat-option value="false"> Don't Have </mat-option>
+                    </mat-select>
+                  </mat-form-field>
                 </div>
               </div>
-              <div class="main-course-menu">
-                <div *ngFor="let mainCourse of menu[3].mainCourses">
-                  <input value="{{mainCourse}}">
+              <div class="row">
+                <div class="starters-menu col-sm-3">
+                  <label>Starters</label>
+                  <input [disabled]="!switch" value="{{menu[3].starters[0]}}" [(ngModel)]="menu[3].starters[0]">
+                  <input [disabled]="!switch" value="{{menu[3].starters[1]}}" [(ngModel)]="menu[3].starters[1]">
+                  <input [disabled]="!switch" value="{{menu[3].starters[2]}}" [(ngModel)]="menu[3].starters[2]">
+                  <input [disabled]="!switch" value="{{menu[3].starters[3]}}" [(ngModel)]="menu[3].starters[3]">
+                </div>
+                <div class="main-course-menu col-sm-3">
+                  <label>Main Courses</label>
+                  <input [disabled]="!switch" value="{{menu[3].mainCourses[0]}}" [(ngModel)]="menu[3].mainCourses[0]">
+                  <input [disabled]="!switch" value="{{menu[3].mainCourses[1]}}" [(ngModel)]="menu[3].mainCourses[1]">
+                  <input [disabled]="!switch" value="{{menu[3].mainCourses[2]}}" [(ngModel)]="menu[3].mainCourses[2]">
+                  <input [disabled]="!switch" value="{{menu[3].mainCourses[3]}}" [(ngModel)]="menu[3].mainCourses[3]">
+                </div>
+                <div class="col-sm-3">
+                  <div class="desserts-menu">
+                    <label>Desserts</label>
+                    <input [disabled]="!switch" value="{{menu[3].desserts[0]}}" [(ngModel)]="menu[3].desserts[0]">
+                    <input [disabled]="!switch" value="{{menu[3].desserts[1]}}" [(ngModel)]="menu[3].desserts[1]">
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <label>Comment</label>
+                  <textarea [disabled]="!switch" value="menu[3].comments">
+                  </textarea>
+                  <label>Price</label>
+                  <div>
+                    <input type="number" [disabled]="!switch" value="{{menu[3].price}}">€
+                  </div>
                 </div>
               </div>
-              <div class="desserts-menu">
-                <div *ngFor="let dessert of menu[3].desserts">
-                  <input value="{{dessert}}">
+              <div class="row">
+                <div class="col-sm-12 text-center">
+                  <button mat-raised-button (click)="editDayMenu(menu[3])">{{btntxt}}</button>
                 </div>
-              </div>
-              <p>
-                <strong>{{menu[3].price}}€</strong>
-              </p>
-              <div>
-                <label>Comentario</label>
-                <textarea value="menu[3].comment"></textarea>
               </div>
         </mat-tab>
         <mat-tab label="Friday">
-            <mat-form-field class="menu[4].active">
-                <mat-select [class]="menu[4].active" [value]="menu[4].active" [(ngModel)]="menu[4].active">
-                  <mat-option value="false"> Have Menu </mat-option>
-                  <mat-option value="true"> Don't Have </mat-option>
-                </mat-select>
-              </mat-form-field>
-              <div class="starters-menu">
-                <div *ngFor="let starter of menu[4].starters">
-                  <input value="{{starter}}">
+            <div class="row">
+                <div class="col-sm-12">
+                  <mat-form-field class="menu[4].active">
+                    <mat-select [class]="menu[4].active" [value]="menu[4].active" disabled={{!switch}} [(ngModel)]="menu[4].active">
+                      <mat-option value="true"> Have Menu </mat-option>
+                      <mat-option value="false"> Don't Have </mat-option>
+                    </mat-select>
+                  </mat-form-field>
                 </div>
               </div>
-              <div class="main-course-menu">
-                <div *ngFor="let mainCourse of menu[4].mainCourses">
-                  <input value="{{mainCourse}}">
+              <div class="row">
+                <div class="starters-menu col-sm-3">
+                  <label>Starters</label>
+                  <input [disabled]="!switch" value="{{menu[4].starters[0]}}" [(ngModel)]="menu[4].starters[0]">
+                  <input [disabled]="!switch" value="{{menu[4].starters[1]}}" [(ngModel)]="menu[4].starters[1]">
+                  <input [disabled]="!switch" value="{{menu[4].starters[2]}}" [(ngModel)]="menu[4].starters[2]">
+                  <input [disabled]="!switch" value="{{menu[4].starters[3]}}" [(ngModel)]="menu[4].starters[3]">
+                </div>
+                <div class="main-course-menu col-sm-3">
+                  <label>Main Courses</label>
+                  <input [disabled]="!switch" value="{{menu[4].mainCourses[0]}}" [(ngModel)]="menu[4].mainCourses[0]">
+                  <input [disabled]="!switch" value="{{menu[4].mainCourses[1]}}" [(ngModel)]="menu[4].mainCourses[1]">
+                  <input [disabled]="!switch" value="{{menu[4].mainCourses[2]}}" [(ngModel)]="menu[4].mainCourses[2]">
+                  <input [disabled]="!switch" value="{{menu[4].mainCourses[3]}}" [(ngModel)]="menu[4].mainCourses[3]">
+                </div>
+                <div class="col-sm-3">
+                  <div class="desserts-menu">
+                    <label>Desserts</label>
+                    <input [disabled]="!switch" value="{{menu[4].desserts[0]}}" [(ngModel)]="menu[4].desserts[0]">
+                    <input [disabled]="!switch" value="{{menu[4].desserts[1]}}" [(ngModel)]="menu[4].desserts[1]">
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <label>Comment</label>
+                  <textarea [disabled]="!switch" value="menu[4].comments">
+                  </textarea>
+                  <label>Price</label>
+                  <div>
+                    <input type="number" [disabled]="!switch" value="{{menu[4].price}}">€
+                  </div>
                 </div>
               </div>
-              <div class="desserts-menu">
-                <div *ngFor="let dessert of menu[4].desserts">
-                  <input value="{{dessert}}">
+              <div class="row">
+                <div class="col-sm-12 text-center">
+                  <button mat-raised-button (click)="editDayMenu(menu[4])">{{btntxt}}</button>
                 </div>
-              </div>
-              <p>
-                <strong>{{menu[4].price}}€</strong>
-              </p>
-              <div>
-                <label>Comentario</label>
-                <textarea value="menu[4].comment"></textarea>
               </div>
         </mat-tab>
       </mat-tab-group>

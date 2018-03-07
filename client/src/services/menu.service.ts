@@ -14,8 +14,8 @@ export class MenuService {
         public http:Http
     ) {}
 
-    editMenu(id, status, dayWeek, starters, mainCourses, desserts, price,comments): Observable<any> {
-        return this.http.post(`${environment.BASEURL}/api/menu/edit/${id}`, {status, dayWeek, starters, mainCourses, desserts, price,comments} , this.options)
+    editMenu(id, menu): Observable<any> {
+        return this.http.post(`${environment.BASEURL}/api/menu/edit/${id}`, {id, menu} , this.options)
             .map(res => {
                 return res.json()
             })

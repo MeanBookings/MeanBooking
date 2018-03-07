@@ -3,6 +3,7 @@ import * as moment from 'moment';
 import { CalendarService } from '../../services/calendar.service';
 import { CommentService } from '../../services/comment.service';
 import { MenuService } from '../../services/menu.service';
+
 @Component({
   selector: 'admin',
   templateUrl: './admin.component.html',
@@ -17,8 +18,9 @@ export class AdminComponent implements OnInit {
   comments: any;
   status: boolean;
   id: string;
-  menu:Array<any> = []
-  switch:boolean = false
+  menu: Array<any> = []
+  switch: boolean = false
+  btntxt: string
 
   constructor(
     public calendar: CalendarService,
@@ -39,8 +41,11 @@ export class AdminComponent implements OnInit {
         { hour: "22:00", current: 20 }, { hour: "22:30", current: 20 }, { hour: "23:00", current: 20 }, { hour: "23:30", current: 20 },
       ]
     }
-    this.menuService.getMenu().subscribe(menus => menus.forEach((menu)=> this.menu.push(menu)))
+    this.menuService.getMenu().subscribe(menus => menus.forEach((menu) => this.menu.push(menu)))
     this.comment.getComment().subscribe((comment) => this.comments = comment);
+    this.btntxt = "Edit day"
+    this.switch = false
+
     console.log(this.menu)
   }
 
@@ -60,7 +65,7 @@ export class AdminComponent implements OnInit {
         this.comment.getComment().subscribe((comment) => this.comments = comment);
       })
     }
-    
+
   }
 
   createDays(a, b) {
@@ -101,4 +106,19 @@ export class AdminComponent implements OnInit {
       this.message = result;
     })
   }
+
+  editDayMenu(a) {
+    if (this.btntxt == "Edit day") {
+      this.btntxt = "Update day"
+      this.switch = !this.switch
+     } else {
+      this.btntxt = "Edit day"
+      this.switch = !this.switch
+      this.menuService.editMenu(a._id, a)
+      .catch(e => this.error = e)
+      .subscribe(newDayMenu => {});
+      this.menuService.getMenu().subscribe(menus => menus.forEach((menu) => this.menu.push(menu)))
+    }
+  }
+
 }

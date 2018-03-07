@@ -12,17 +12,18 @@ router.get("/", (req, res, next) => {
 
 // api/menu/create
 router.post("/create", (req, res, next) => {
-    let { dayWeek, starters, mainCourses, desserts, price,comments } = req.body
-    const theMenu = new Menu({ dayWeek, starters, mainCourses, desserts, price,comments });
+    let { dayWeek, starters, mainCourses, desserts, price, comments } = req.body
+    const theMenu = new Menu({ dayWeek, starters, mainCourses, desserts, price, comments });
     theMenu.save()
         .then(menu => res.status(200).json(menu))
-        .catch (e => { res.status(500).json(e)});
+        .catch(e => { res.status(500).json(e) });
 });
 
 // api/menu/edit/:id
 router.post("/edit/:id", (req, res, next) => {
-    let { status, dayWeek, starters, mainCourses, desserts, price,comments } = req.body
-    Comment.findByIdAndUpdate(req.params.id, { $set:{ status, dayWeek, starters, mainCourses, desserts, price,comments } }, { $new: true })
+    console.log(req.body)
+    let { active, dayWeek, starters, mainCourses, desserts, price, comments } = req.body.menu
+    Menu.findByIdAndUpdate(req.params.id, { $set: { active, dayWeek, starters, mainCourses, desserts, price, comments } }, { $new: true })
         .then(menuUpdated => res.status(200).json(menuUpdated))
         .catch(e => res.status(500).json(e));
 });
