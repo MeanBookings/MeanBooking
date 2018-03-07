@@ -18,6 +18,7 @@ export class AdminComponent implements OnInit {
   status: boolean;
   id: string;
   menu:Array<any> = []
+  switch:boolean = false
 
   constructor(
     public calendar: CalendarService,

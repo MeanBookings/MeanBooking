@@ -131,12 +131,13 @@
       <mat-tab-group>
         <mat-tab label="Monday">
           <mat-form-field class="menu[0].active">
-            <mat-select [class]="menu[0].active" [value]="menu[0].active" [(ngModel)]="menu[0].active">
+            <mat-select [class]="menu[0].active" [value]="menu[0].active" disabled={{!switch}} [(ngModel)]="menu[0].active">
               <mat-option value="false"> Have Menu </mat-option>
               <mat-option value="true"> Don't Have </mat-option>
             </mat-select>
           </mat-form-field>
-          <div class="starters-menu">
+          <div class="row">
+          <div class="starters-menu col-sm-4">
             <div *ngFor="let starter of menu[0].starters">
               <input value="{{starter}}">
             </div>
@@ -158,6 +159,7 @@
             <label>Comentario</label>
             <textarea value="menu[0].comment"></textarea>
           </div>
+        </div>
         </mat-tab>
         <mat-tab label="Tuesday">
             <mat-form-field class="menu[1].active">
