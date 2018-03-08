@@ -1,37 +1,14 @@
-<!-- <div class="login-wrapper" *ngIf="!session.getUser()">
-  <mat-expansion-panel [expanded]='visible'>
-    <mat-expansion-panel-header>
-      <mat-panel-title> Login </mat-panel-title>
-    </mat-expansion-panel-header>
-    <mat-form-field>
-      <input matInput type="text" placeholder="Username" [(ngModel)]="name" #loginName="ngModel" required> </mat-form-field>
-    <div *ngIf="loginName.errors && (loginName.dirty || loginName.touched)">
-      <small class="error"> Username is required. </small>
-    </div>
-    <mat-form-field>
-      <input matInput type="password" placeholder="Your password" [(ngModel)]="password" #loginPassw="ngModel" required> </mat-form-field>
-    <div *ngIf="loginPassw.errors && (loginPassw.dirty || loginPassw.touched)">
-      <small class="error"> Password is required. </small>
-    </div>
-    <div *ngIf="error && (loginName.dirty || loginName.touched)">
-      <small class="error"> {{error}} </small>
-    </div>
-    <button (click)="login()" mat-button id="login">Login</button>
-  </mat-expansion-panel>
+<mat-form-field>
+  <input matInput type="email" placeholder="Email" [(ngModel)]="email" #loginEmail="ngModel" required> </mat-form-field>
+<div *ngIf="loginEmail.errors && (loginEmail.dirty || loginEmail.touched)">
+  <small class="error"> Email is required. </small>
 </div>
-
- -->
-  <mat-form-field>
-    <input matInput type="text" placeholder="Username" [(ngModel)]="name" #loginName="ngModel" required> </mat-form-field>
-  <div *ngIf="loginName.errors && (loginName.dirty || loginName.touched)">
-    <small class="error"> Username is required. </small>
-  </div>
-  <mat-form-field>
-    <input matInput type="password" placeholder="Your password" [(ngModel)]="password" #loginPassw="ngModel" required> </mat-form-field>
-  <div *ngIf="loginPassw.errors && (loginPassw.dirty || loginPassw.touched)">
-    <small class="error"> Password is required. </small>
-  </div>
-  <div *ngIf="error && (loginName.dirty || loginName.touched)">
-    <small class="error"> {{error}} </small>
-  </div>
-  <button (click)="login()" mat-button id="login">Login</button>
+<mat-form-field>
+  <input matInput type="password" placeholder="Your password" [(ngModel)]="password" #loginPassw="ngModel" required> </mat-form-field>
+<div *ngIf="loginPassw.errors && (loginPassw.dirty || loginPassw.touched)">
+  <small class="error"> Password is required. </small>
+</div>
+<div *ngIf="error && (loginEmail.dirty || loginEmail.touched)">
+  <small class="error"> {{error}} </small>
+</div>
+<button (click)="login()" mat-button id="login">Login</button>

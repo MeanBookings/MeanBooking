@@ -3,17 +3,16 @@ const LocalStrategy = require('passport-local').Strategy;
 const User = require('../models/User');
 const bcrypt = require('bcrypt');
 
-console.log("Configure local strategy");
-passport.use(new LocalStrategy((name, password, next) => {
-  console.log('hi')
-  User.findOne({ name }, (err, foundUser) => {
+
+passport.use(new LocalStrategy((email, password, next) => {
+  User.findOne({ email }, (err, foundUser) => {
     if (err) {
       next(err);
       return;
     }
 
     if (!foundUser) {
-      next(null, false, { message: 'Incorrect username' });
+      next(null, false, { message: 'Incorrect email' });
       return;
     }
 

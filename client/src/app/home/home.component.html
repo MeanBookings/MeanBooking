@@ -14,7 +14,13 @@
     <div class="col-lg-6 img-as-column-pizza"> </div>
   </div>
   <div class="row" id="home-map">
-    <div class="col-lg-6 img-as-column-ingredients"></div>
+    <div class="col-lg-6 img-as-column-ingredients">
+      <address>
+        <div> 489 Broadway </div>
+        <div> New York, NY 10012 </div>
+        <div class="phone"> +0023 987 654 321 </div>
+      </address>
+    </div>
     <div class="col-lg-6" id="map">
       <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">
         <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>

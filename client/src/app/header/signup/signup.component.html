@@ -1,4 +1,9 @@
 <mat-form-field>
+  <input matInput type="email" placeholder="email" [(ngModel)]="email" #signupEmail="ngModel" required> </mat-form-field>
+<div *ngIf="signupEmail.errors && (signupEmail.dirty || signupEmail.touched)">
+  <small class="error"> Email is required. </small>
+</div>
+<mat-form-field>
   <input matInput type="text" placeholder="Your name" [(ngModel)]="name" #signupName="ngModel" required minlength="3"> </mat-form-field>
 <div *ngIf="signupName.errors && (signupName.dirty || signupName.touched)">
   <small class="error"> Name must be at least 3 characters long. </small>
@@ -12,10 +17,5 @@
   <input matInput type="text" placeholder="Phone" [(ngModel)]="phone" #signupPhone="ngModel" required> </mat-form-field>
 <div *ngIf="signupPhone.errors && (signupPhone.dirty || signupPhone.touched)">
   <small class="error"> Phone is required. </small>
-</div>
-<mat-form-field>
-  <input matInput type="email" placeholder="email" [(ngModel)]="email" #signupEmail="ngModel" required> </mat-form-field>
-<div *ngIf="signupEmail.errors && (signupEmail.dirty || signupEmail.touched)">
-  <small class="error"> Email is required. </small>
 </div>
 <button (click)="signup()" mat-button id="sign-up">Signup!</button>

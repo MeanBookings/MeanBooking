@@ -15,8 +15,8 @@ export class HomeComponent implements OnInit {
   constructor(public comment: CommentService) { }
 
   comments: any;
-  lat: number = 40.4334432;
-  lng: number = -3.6555023;
+  lat: number = 40.7204964;
+  lng: number = -73.999831;
   zoom: number = 18;
 
   ngOnInit() {

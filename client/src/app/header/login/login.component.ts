@@ -10,6 +10,7 @@ declare var $;
 export class LoginComponent implements OnInit {
 
   name:string;
+  email:string;
   password:string;
   error:string;
   visible: boolean = false;
@@ -20,13 +21,10 @@ export class LoginComponent implements OnInit {
   }
 
   login(){
-    this.session.login(this.name,this.password)
+    this.session.login(this.email,this.password)
     .catch(e => this.error = e)
     .subscribe(user => {
       if(typeof(user)=='object')$('#loginModal').modal('hide')
     });
   }
-
-
-
 }

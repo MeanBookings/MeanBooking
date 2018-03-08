@@ -14,6 +14,7 @@ export class HeaderComponent implements OnInit {
   i: number;
   title = "Avello's Trattoria";
   searchingPendings: any = [];
+  pendingsB:Array<any>=[];
   constructor(
     public session: SessionService,
     public books: BookingService) {
@@ -44,6 +45,7 @@ export class HeaderComponent implements OnInit {
       a.forEach((b) => {
         b.books.forEach((c) => {
           if (c.status == "pending") {
+            this.pendingsB.push(c)
             this.i++
           }
         })

@@ -11,21 +11,22 @@
 .mat-option-text {
   z-index: 2;
 }
+
 .hour-availability {
   position: relative;
   z-index: 2;
   color: $white;
   font-size: .75em;
-  padding-left: 3px;
+  padding-left: 15px;
   &:after {
     content: '';
     height: 23px;
     width: 23px;
     position: absolute;
-    background: $red;
+    background: $green;
     border-radius: 50%;
-    top: 0;
-    left: 0;
+    top: -2px;
+    left: 10px;
     z-index: -1;
   }
 }
@@ -36,7 +37,20 @@
   padding: 10px 20px;
   display: inline-block;
   margin-bottom: 20px;
-  &.open{background: $green}
-  &.closed{background: $grey}
-  &.not-found{background: $red;}
+  &.open {
+    background: $green
+  }
+  &.closed {
+    background: $grey
+  }
+  &.not-found {
+    background: $red;
+  }
+}
+
+.availability-message-wrapper {
+  margin-top: -70px;
+  position: absolute;
+  left: 310px;
+  pointer-events: none;
 }
