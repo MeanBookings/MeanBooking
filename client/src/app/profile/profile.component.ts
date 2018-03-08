@@ -2,7 +2,6 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { SessionService } from '../../services/session.service';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
-import { SnackBarProfileComponent } from './snack-bar-profile/snack-bar-profile.component';
 import { UserService } from '../../services/user.service';
 import { BookingService } from '../../services/booking.service';
 import { CommentService } from '../../services/comment.service';
@@ -60,7 +59,6 @@ export class ProfileComponent implements OnInit {
       if (this.password != "") {
         this.currentUser.password = this.password;
       }
-      let snackBarRef = this.snackBar.openFromComponent(SnackBarProfileComponent, { duration: 2000 });
       this.session.updateUser(this.currentUser).subscribe((res) => {
         this.message = res;
       })
