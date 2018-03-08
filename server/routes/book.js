@@ -91,9 +91,11 @@ router.post('/create', (req, res, next) => {
                         updatedDay.books.push(book._id);
                         Day.findOneAndUpdate({ _id: day._id }, updatedDay, { new: true })
                             .then((result) => res.status(200).json(result))
-                        mailOptions.subject = 'Your book in Mean Restaurant is pending approvation';
+                        mailOptions.subject = "Your book in Avello's Trattoria is pending approvation";
                         let date = moment(book.date).format("DD MMMM");
-                        mailOptions.html = template1(`Your booking for the ${date}, at ${book.hour}, for ${book.people} in Mean Restaurant is <strong style="color:YELLOW">PENDING</strong> approvation`,`${prodURL}api/book/delete/${book._id}`)
+                        let www = `${prodURL}api/book/delete/${book._id}`;
+                        console.log(www)
+                        mailOptions.html = template1(`Your booking for the ${date}, at ${book.hour}, for ${book.people} in Avello's Trattoria is <strong style="color:GoldenRod">PENDING</strong> approvation`,www)
                         mailOptions.to = email;
                         transporter.sendMail(mailOptions, (error, info) => {
                             if (error) {
@@ -130,7 +132,7 @@ router.post('/edit/:id', (req, res, next) => {
 let updatedEmail = ((book) => {
     mailOptions.subject = 'Your booking in Mean Restaurant is approved';
     let date = moment(book.date).format("DD MMMM");
-    mailOptions.html = template1(`Your booking for the ${date}, at ${book.hour}, for ${book.people} in Mean Restaurant is <strong style="color:green">APPROVED</strong>`,`${prodURL}api/book/delete/${book._id}`)
+    mailOptions.html = template1(`Your booking for the ${date}, at ${book.hour}, for ${book.people} in Avello's Trattoria is <strong style="color:green">APPROVED</strong>`,`${prodURL}api/book/delete/${book._id}`)
     mailOptions.to = book.user.email;
     transporter.sendMail(mailOptions, (error, info) => {
         if (error) {
@@ -162,7 +164,7 @@ router.get('/delete/:hash', (req, res, next) => {
                                 updatedDay.shift[tIndex].current += book.people;
                                 updatedDay.books.splice(updatedDay.books.indexOf(req.params.hash, 1));
                                 Day.findOneAndUpdate({ _id: day._id }, updatedDay, { new: true })
-                                    .then(res.redirect("/profile"))
+                                    .then(()=>res.redirect('/profile'))
                             })
                     })
             }
@@ -174,7 +176,7 @@ router.get('/delete/:hash', (req, res, next) => {
 
 let cancelledEmail = ((book) => {
     let date = moment(book.date).format("DD MMMM");
-    mailOptions.html = template2(`Your booking for the ${date}, at ${book.hour}, for ${book.people} in Mean Restaurant is <strong style="color:red">CANCELLED</strong>`)
+    mailOptions.html = template2(`Your booking for the ${date}, at ${book.hour}, for ${book.people} in Avello's Trattori is <strong style="color:DarkRed">CANCELLED</strong>`)
     mailOptions.subject = 'Your booking in Mean Restaurant is cancelled';
     mailOptions.to = book.user.email;
     transporter.sendMail(mailOptions, (error, info) => {

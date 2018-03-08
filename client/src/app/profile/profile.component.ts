@@ -47,13 +47,11 @@ export class ProfileComponent implements OnInit {
   ngOnInit() {
   }
 
-  
-
-
   edit() {
     if (this.switch) {
       this.btntext = "Edit"
       this.switch = !this.switch
+      $('#profileModal').modal('show')
       if (this.password != "") {
         this.currentUser.password = this.password;
       }
@@ -64,7 +62,7 @@ export class ProfileComponent implements OnInit {
       this.btntext = "Update"
       this.message = ""
       this.switch = !this.switch
-      $('#profileModal').modal('show')
+  
 
     }
   }

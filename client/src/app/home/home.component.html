@@ -1,9 +1,8 @@
 <div class="container-fluid" id="hero">
   <div class="row align-items-center">
     <div class="col-sm-12">
-      <h1>
-        <small>Avello's</small> We are pizza </h1>
-   </div>
+      <h1>Avello's Trattoria</h1>
+    </div>
   </div>
 </div>
 <div class="container-fluid" id="home-booking">
@@ -31,10 +30,18 @@
         <div class="item" *ngFor="let comment of comments">
           <div class="row">
             <div class="col-md-3">
-              <div class="customer-details"> <span class="name">{{comment.user_Id.name}}</span> </div>
-              <div class="customer-details"> <small>{{comment.created_at | date:'MMMM d, y'}} </small></div>
+              <div class="customer-details">
+                <span class="name">{{comment.user_Id.name}}</span>
+              </div>
+              <div class="customer-details">
+                <small>{{comment.created_at | date:'MMMM d, y'}} </small>
+              </div>
               <div class="customer-details stars">
-                <i class="material-icons">star_rate</i> <span>{{comment.stars}}<small>/10</small></span> </div>
+                <i class="material-icons">star_rate</i>
+                <span>{{comment.stars}}
+                  <small>/10</small>
+                </span>
+              </div>
             </div>
             <div class="col-md-9">
               <p class="comment"> {{comment.content}} </p>
