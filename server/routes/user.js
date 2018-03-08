@@ -6,6 +6,8 @@ const User = require("../models/User");
 const checkRoles = require("../middlewares/checkRoles");
 const nodemailer = require('nodemailer');
 const {emailName, emailPw} = require('../config');
+const template2 = require('./email_template2');
+
 
 
 const transporter = nodemailer.createTransport({
@@ -54,7 +56,7 @@ router.post('/massiveemail', onlyMe, (req, res, next) => {
     // console.log(emails.toString())
     emails.forEach((e) => {
         mailOptions.subject = 'Mean Restaurant want to tell you something';
-        mailOptions.html = text
+        mailOptions.html = template2(text)
         mailOptions.to = e;
         transporter.sendMail(mailOptions, (error, info) => {
             if (error) {
