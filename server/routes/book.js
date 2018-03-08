@@ -7,9 +7,11 @@ const Book = require('../models/Book');
 const Day = require('../models/Day')
 const User = require('../models/User')
 const nodemailer = require('nodemailer');
-const {emailName, emailPw} = require('../config');
-
-
+const { emailName, emailPw } = require('../config');
+const template1 = require('./email_template1');
+const template2 = require('./email_template1');
+const {prodURL} = require ('../config');
+const moment = require('moment')
 const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
@@ -25,26 +27,27 @@ let mailOptions = {
     html: ''
 };
 
-let pendingBooksDays; 
+let pendingBooksDays;
 
 // /api/book/ - Get the approved
 router.get('/', (req, res, next) => {
     pendingBooksDays = []
     let encontrado = false
     Day.find()
-    .populate({
-        path: 'books', populate: { path: 'user' }})
+        .populate({
+            path: 'books', populate: { path: 'user' }
+        })
         .then(days => {
             days.forEach(day => {
                 encontrado = false;
-                day.books.forEach( book => {
-                    if(book.status === 'pending' && !encontrado){
-                     pendingBooksDays.push(day)
-                     encontrado = true
+                day.books.forEach(book => {
+                    if (book.status === 'pending' && !encontrado) {
+                        pendingBooksDays.push(day)
+                        encontrado = true
                     }
                 })
             })
-            res.status(200).json(pendingBooksDays) 
+            res.status(200).json(pendingBooksDays)
         })
 })
 
@@ -66,7 +69,7 @@ router.post('/create', (req, res, next) => {
             }
         })
     let bookingUser = ((user) => {
-        const theBook = new Book({ hour, people, user, comment, date:date_of_book });
+        const theBook = new Book({ hour, people, user, comment, date: date_of_book });
         theBook.save()
             .then(book => {
                 User.findById(user)
@@ -88,8 +91,9 @@ router.post('/create', (req, res, next) => {
                         updatedDay.books.push(book._id);
                         Day.findOneAndUpdate({ _id: day._id }, updatedDay, { new: true })
                             .then((result) => res.status(200).json(result))
-                        mailOptions.subject = 'Your book in Mean Restaurant is pending of approvation';
-                        mailOptions.html = (`<img src="https://www.mobilestudio.mx/wp-content/uploads/2017/07/curso_web_development_mean.png"></img><a href="http://localhost:3000/api/book/delete/${book._id}">Cancela tu reserva</a>`)
+                        mailOptions.subject = 'Your book in Mean Restaurant is pending approvation';
+                        let date = moment(book.date).format("DD MMMM");
+                        mailOptions.html = template1(`Your booking for the ${date}, at ${book.hour}, for ${book.people} in Mean Restaurant is <strong style="color:YELLOW">PENDING</strong> approvation`,`${prodURL}api/book/delete/${book._id}`)
                         mailOptions.to = email;
                         transporter.sendMail(mailOptions, (error, info) => {
                             if (error) {
@@ -125,7 +129,8 @@ router.post('/edit/:id', (req, res, next) => {
 })
 let updatedEmail = ((book) => {
     mailOptions.subject = 'Your booking in Mean Restaurant is approved';
-    mailOptions.html = (`<img src="http://moziru.com/images/stamp-clipart-approved-18.jpg"></img><a href="http://localhost:3000/api/book/delete/${book._id}">Cancela tu reserva</a>`)
+    let date = moment(book.date).format("DD MMMM");
+    mailOptions.html = template1(`Your booking for the ${date}, at ${book.hour}, for ${book.people} in Mean Restaurant is <strong style="color:green">APPROVED</strong>`,`${prodURL}api/book/delete/${book._id}`)
     mailOptions.to = book.user.email;
     transporter.sendMail(mailOptions, (error, info) => {
         if (error) {
@@ -138,8 +143,6 @@ let updatedEmail = ((book) => {
 
 // /api/book/delete/:id - Delete de book solo con el :id del book, comprobar que no está cancelada antes...
 router.get('/delete/:hash', (req, res, next) => {
-    console.log('borrando, en el back')
-    console.log(req.params)
     let tIndex, dEmail;
     Book.findById(req.params.hash)
         .then((b) => {
@@ -169,10 +172,11 @@ router.get('/delete/:hash', (req, res, next) => {
         })
 })
 
-let cancelledEmail = ((email) => {
+let cancelledEmail = ((book) => {
+    let date = moment(book.date).format("DD MMMM");
+    mailOptions.html = template2(`Your booking for the ${date}, at ${book.hour}, for ${book.people} in Mean Restaurant is <strong style="color:red">CANCELLED</strong>`)
     mailOptions.subject = 'Your booking in Mean Restaurant is cancelled';
-    mailOptions.html = (`<img src="http://www.comicsbeat.com/wp-content/uploads/2017/12/Cancelled.jpg"></img>`)
-    mailOptions.to = email;
+    mailOptions.to = book.user.email;
     transporter.sendMail(mailOptions, (error, info) => {
         if (error) {
             console.log(error);
