@@ -110,7 +110,6 @@ export class AdminComponent implements OnInit {
       this.btntxt = "Update day"
       this.switch = !this.switch
     } else {
-      console.log(a)
       this.btntxt = "Edit day"
       this.switch = !this.switch
       this.menuService.editMenu(a._id, a)

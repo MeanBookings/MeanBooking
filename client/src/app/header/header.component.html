@@ -35,10 +35,10 @@
           <span class="menu-legend">clients</span>
         </li>
         <li *ngIf="!session.getUser()" class="header-form list-inline-item">
-          <span class="menu-legend" data-toggle="modal" data-target="#signupModal">signup</span>
+          <span class="menu-legend outlined-btn" data-toggle="modal" data-target="#signupModal" id="menu-signup">signup</span>
         </li>
         <li *ngIf="!session.getUser()" class="header-form list-inline-item">
-          <span class="menu-legend" data-toggle="modal" data-target="#loginModal">login</span>
+          <span class="menu-legend" data-toggle="modal" data-target="#loginModal" id="menu-login">login</span>
         </li>
         <li *ngIf="session.getUser()" class="header-controls list-inline-item user-profile" routerLinkActive="active-menu-item" [routerLink]="['/profile']">
           <span class="menu-legend">My account</span>
@@ -58,7 +58,7 @@
     <div class="modal-content">
       <div class="modal-body">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <i class="fas fa-times"></i>
+          <i class="material-icons">close</i>
         </button>
         <login></login>
       </div>
@@ -71,7 +71,7 @@
     <div class="modal-content">
       <div class="modal-body">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <i class="fas fa-times"></i>
+          <i class="material-icons">close</i>
         </button>
         <signup></signup>
       </div>

@@ -1,21 +1,48 @@
 #users {
   padding-top: 40px;
+  .users-header {
+    background: $blue;
+    color: $white;
+    padding-top: 7px;
+  }
+  .user-row {
+    min-height: 80px;
+    &:nth-child(even) {
+      background: $vanilla;
+    }
+    border: 1px solid #e3e3e1;
+    border-top:none;
+    border-bottom:none;
+    .user-actions-column {
+      margin-top: -7px;
+      button {
+        vertical-align: baseline;
+        i {
+          &:hover {
+            color: $red;
+          }
+        }
+      }
+    }
+  }
   .activeEnvelope {
     &:focus {
       outline: none;
     }
     i {
-      color: $yellow;
+      color: $red;
     }
   }
   .allContacts {
-    border: 1px solid #373737 !important;
-    width: initial !important;
-    border-radius: 4px !important;
-    padding: 0px 14px !important;
+    display: block;
+    float: right;
+    margin-right: 12px;
     &:hover {
-      border-color: $red !important;
       color: $red !important;
     }
+  }
+  .add-all-row {
+    border: 1px solid #e3e3e1;
+    border-top: none;
   }
 }
