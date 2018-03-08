@@ -39,7 +39,6 @@ export class ProfileComponent implements OnInit {
       this.userInfo = { name: bookings.name, email: bookings.email, phone: bookings.phone }
       this.userBookings = bookings.bookings;
       this.userBookings.forEach(b=>{if(b.status==='show')this.userHasShowed=true})
-      console.log(this.userHasShowed)
     });
     if(this.session.getAdmin())this.justAdmins=false    
   }
@@ -112,9 +111,5 @@ export class ProfileComponent implements OnInit {
     this._tickInterval = Number(v);
   }
   private _tickInterval = 1;
-
-
-
-
 
 }
