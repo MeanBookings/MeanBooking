@@ -1,11 +1,11 @@
 <div class="container" id="users">
   <div class="row">
-    <div class="col-sm-12 text-left m-bot-50">
+    <div class="col-sm-12 text-center m-bot-50">
       <h2> User management </h2>
     </div>
   </div>
   <div class="row users-header">
-    <div class="col-sm-3 text-center">
+    <div class="col-sm-3 text-left">
       <h6>Name / Role</h6>
     </div>
     <div class="col-sm-4 text-center">
@@ -64,17 +64,34 @@
       </button>
     </div>
   </div>
-  <div class="row">
-    <div class="col-sm-12">
-      <h3>Write a newsletter</h3>
+  <div class="row" id="newsletter-row">
+    <div class="col-md-6">
+        <h6 class="m-bot-10">Send a newsletter to our customers</h6>
+        <ul class="m-bot-20">
+          <li>
+            <small>
+              <strong>Use this textarea to write the email text messagge for the selected customers.</strong>
+            </small>
+          </li>
+          <li>
+            <small>
+              <strong>You can use some HTML if you need to.</strong>
+            </small>
+          </li>
+        </ul>
+    </div>
+    <div class="col-md-6">
       <mat-form-field class="full-width">
-        <textarea matInput placeholder="Your text here!" [(ngModel)]="emailText" required></textarea>
+        <textarea matInput placeholder="Your text here!" [(ngModel)]="emailText" required placeholder="Write the message here.">
+        </textarea>
       </mat-form-field>
       <button mat-icon-button (click)="sendMassiveEmail()">
         <mat-icon>
           <i class="material-icons">send</i>
         </mat-icon>
+        Send email
       </button>
+      <div class="cc-email" *ngIf="envelope&&envelope.length>0">Cc: {{envelope | json}}</div>
     </div>
   </div>
 </div>

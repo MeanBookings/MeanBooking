@@ -1,20 +1,17 @@
-<div class="container menu-front">
+<div class="container menu-front" id="home-menu">
   <div *ngIf="menu && menu.length>0">
     <div *ngIf="menu[0].active == 'true' || menu[1].active == 'true' || menu[2].active == 'true' || menu[3].active == 'true' || menu[4].active == 'true'">
       <div class="row m-top-20" *ngIf="menu.length > 0">
         <div class="col-sm-12">
-          <h4 class="m-top-40">
-            <strong>Menu of the day</strong>
-          </h4>
+          <h2 class="m-top-40"> Day Menu
+            <small>Mon. to fri., form 12:30 to 15:30</small>. </h2>
           <mat-tab-group>
             <mat-tab label="Monday">
               <div *ngIf="menu[0].active == 'true'; else closedMonday">
                 <div class="row">
                   <div class="starters-menu col-md-3 pad-top-20">
                     <div class="text-center">
-                      <p>
-                        <strong>Starters</strong>
-                      </p>
+                      <strong>Starters</strong>
                     </div>
                     <ul>
                       <li>
@@ -33,9 +30,7 @@
                   </div>
                   <div class="main-course-menu col-md-3 pad-top-20">
                     <div class="text-center">
-                      <p>
-                        <strong>Main Courses</strong>
-                      </p>
+                      <strong>Main Courses</strong>
                     </div>
                     <ul>
                       <li>
@@ -55,9 +50,7 @@
                   <div class="col-md-3 pad-top-20">
                     <div class="desserts-menu">
                       <div class="text-center">
-                        <p>
-                          <strong>Desserts</strong>
-                        </p>
+                        <strong>Desserts</strong>
                       </div>
                       <ul>
                         <li>
@@ -71,33 +64,26 @@
                   </div>
                   <div class="col-md-3 pad-top-20">
                     <div class="text-center">
-                      <p>
-                        <strong>Other details</strong>
-                      </p>
+                      <strong>Other details</strong>
                     </div>
                     <div *ngIf="menu[0].comments !== ''">
                       <div>
-                        <p>
-                          <strong>Comments</strong>
-                        </p>
+                        <strong>Comments</strong>
                       </div>
-                      <p class="d-block">
+                      <p >
                         <strong>{{menu[0].comments}}</strong>
                       </p>
                     </div>
-                    <div class="div-home-price" >
-                      <span class="home-price">{{menu[0].price}}€
-                      </span>
+                    <div class="div-home-price">
+                      <span class="home-price">{{menu[0].price}}€ </span>
                     </div>
                   </div>
                 </div>
               </div>
               <ng-template #closedMonday>
                 <div class="row text-center">
-                  <div>
-                    <p>Comments</p>
-                  </div>
-                  <p class="d-block">
+                  <div> Comments </div>
+                  <p >
                     <strong>{{menu[0].comments}}</strong>
                   </p>
                 </div>
@@ -105,386 +91,334 @@
             </mat-tab>
             <mat-tab label="Tuesday">
               <div *ngIf="menu[1].active == 'true'; else closedTuesday">
-                  <div class="row">
-                      <div class="starters-menu col-md-3 pad-top-20">
-                        <div class="text-center">
-                          <p>
-                            <strong>Starters</strong>
-                          </p>
-                        </div>
-                        <ul>
-                          <li>
-                            <label class="d-block">{{menu[1].starters[0]}}</label>
-                          </li>
-                          <li>
-                            <label class="d-block">{{menu[1].starters[1]}}</label>
-                          </li>
-                          <li>
-                            <label class="d-block">{{menu[1].starters[2]}}</label>
-                          </li>
-                          <li>
-                            <label class="d-block">{{menu[1].starters[3]}}</label>
-                          </li>
-                        </ul>
+                <div class="row">
+                  <div class="starters-menu col-md-3 pad-top-20">
+                    <div class="text-center">
+                      <strong>Starters</strong>
+                    </div>
+                    <ul>
+                      <li>
+                        <label class="d-block">{{menu[1].starters[0]}}</label>
+                      </li>
+                      <li>
+                        <label class="d-block">{{menu[1].starters[1]}}</label>
+                      </li>
+                      <li>
+                        <label class="d-block">{{menu[1].starters[2]}}</label>
+                      </li>
+                      <li>
+                        <label class="d-block">{{menu[1].starters[3]}}</label>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="main-course-menu col-md-3 pad-top-20">
+                    <div class="text-center">
+                      <strong>Main Courses</strong>
+                    </div>
+                    <ul>
+                      <li>
+                        <label class="d-block">{{menu[1].mainCourses[0]}}</label>
+                      </li>
+                      <li>
+                        <label class="d-block">{{menu[1].mainCourses[1]}}</label>
+                      </li>
+                      <li>
+                        <label class="d-block">{{menu[1].mainCourses[2]}}</label>
+                      </li>
+                      <li>
+                        <label class="d-block">{{menu[1].mainCourses[3]}}</label>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="col-md-3 pad-top-20">
+                    <div class="desserts-menu">
+                      <div class="text-center">
+                        <strong>Desserts</strong>
                       </div>
-                      <div class="main-course-menu col-md-3 pad-top-20">
-                        <div class="text-center">
-                          <p>
-                            <strong>Main Courses</strong>
-                          </p>
-                        </div>
-                        <ul>
-                          <li>
-                            <label class="d-block">{{menu[1].mainCourses[0]}}</label>
-                          </li>
-                          <li>
-                            <label class="d-block">{{menu[1].mainCourses[1]}}</label>
-                          </li>
-                          <li>
-                            <label class="d-block">{{menu[1].mainCourses[2]}}</label>
-                          </li>
-                          <li>
-                            <label class="d-block">{{menu[1].mainCourses[3]}}</label>
-                          </li>
-                        </ul>
-                      </div>
-                      <div class="col-md-3 pad-top-20">
-                        <div class="desserts-menu">
-                          <div class="text-center">
-                            <p>
-                              <strong>Desserts</strong>
-                            </p>
-                          </div>
-                          <ul>
-                            <li>
-                              <label class="d-block">{{menu[1].desserts[0]}}</label>
-                            </li>
-                            <li>
-                              <label class="d-block">{{menu[1].desserts[1]}}</label>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                      <div class="col-md-3 pad-top-20">
-                        <div class="text-center">
-                          <p>
-                            <strong>Other details</strong>
-                          </p>
-                        </div>
-                        <div *ngIf="menu[1].comments !== ''">
-                          <div>
-                            <p>
-                              <strong>Comments</strong>
-                            </p>
-                          </div>
-                          <p class="d-block">
-                            <strong>{{menu[1].comments}}</strong>
-                          </p>
-                        </div>
-                        <div class="div-home-price" >
-                          <span class="home-price">{{menu[1].price}}€
-                          </span>
-                        </div>
-                      </div>
+                      <ul>
+                        <li>
+                          <label class="d-block">{{menu[1].desserts[0]}}</label>
+                        </li>
+                        <li>
+                          <label class="d-block">{{menu[1].desserts[1]}}</label>
+                        </li>
+                      </ul>
                     </div>
                   </div>
-              <ng-template #closedTuesday>
-                  <div class="row text-center">
+                  <div class="col-md-3 pad-top-20">
+                    <div class="text-center">
+                      <strong>Other details</strong>
+                    </div>
+                    <div *ngIf="menu[1].comments !== ''">
                       <div>
-                        <p>Comments</p>
+                        <strong>Comments</strong>
                       </div>
-                      <p class="d-block">
+                      <p >
                         <strong>{{menu[1].comments}}</strong>
                       </p>
                     </div>
+                    <div class="div-home-price">
+                      <span class="home-price">{{menu[1].price}}€ </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <ng-template #closedTuesday>
+                <div class="row text-center">
+                  <div> Comments </div>
+                  <p >
+                    <strong>{{menu[1].comments}}</strong>
+                  </p>
+                </div>
               </ng-template>
             </mat-tab>
             <mat-tab label="Wednesday">
               <div *ngIf="menu[2].active == 'true'; else closedWednesday">
-                  <div class="row">
-                      <div class="starters-menu col-md-3 pad-top-20">
-                        <div class="text-center">
-                          <p>
-                            <strong>Starters</strong>
-                          </p>
-                        </div>
-                        <ul>
-                          <li>
-                            <label class="d-block">{{menu[2].starters[0]}}</label>
-                          </li>
-                          <li>
-                            <label class="d-block">{{menu[2].starters[1]}}</label>
-                          </li>
-                          <li>
-                            <label class="d-block">{{menu[2].starters[2]}}</label>
-                          </li>
-                          <li>
-                            <label class="d-block">{{menu[2].starters[3]}}</label>
-                          </li>
-                        </ul>
+                <div class="row">
+                  <div class="starters-menu col-md-3 pad-top-20">
+                    <div class="text-center">
+                      <strong>Starters</strong>
+                    </div>
+                    <ul>
+                      <li>
+                        <label class="d-block">{{menu[2].starters[0]}}</label>
+                      </li>
+                      <li>
+                        <label class="d-block">{{menu[2].starters[1]}}</label>
+                      </li>
+                      <li>
+                        <label class="d-block">{{menu[2].starters[2]}}</label>
+                      </li>
+                      <li>
+                        <label class="d-block">{{menu[2].starters[3]}}</label>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="main-course-menu col-md-3 pad-top-20">
+                    <div class="text-center">
+                      <strong>Main Courses</strong>
+                    </div>
+                    <ul>
+                      <li>
+                        <label class="d-block">{{menu[2].mainCourses[0]}}</label>
+                      </li>
+                      <li>
+                        <label class="d-block">{{menu[2].mainCourses[1]}}</label>
+                      </li>
+                      <li>
+                        <label class="d-block">{{menu[2].mainCourses[2]}}</label>
+                      </li>
+                      <li>
+                        <label class="d-block">{{menu[2].mainCourses[3]}}</label>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="col-md-3 pad-top-20">
+                    <div class="desserts-menu">
+                      <div class="text-center">
+                        <strong>Desserts</strong>
                       </div>
-                      <div class="main-course-menu col-md-3 pad-top-20">
-                        <div class="text-center">
-                          <p>
-                            <strong>Main Courses</strong>
-                          </p>
-                        </div>
-                        <ul>
-                          <li>
-                            <label class="d-block">{{menu[2].mainCourses[0]}}</label>
-                          </li>
-                          <li>
-                            <label class="d-block">{{menu[2].mainCourses[1]}}</label>
-                          </li>
-                          <li>
-                            <label class="d-block">{{menu[2].mainCourses[2]}}</label>
-                          </li>
-                          <li>
-                            <label class="d-block">{{menu[2].mainCourses[3]}}</label>
-                          </li>
-                        </ul>
-                      </div>
-                      <div class="col-md-3 pad-top-20">
-                        <div class="desserts-menu">
-                          <div class="text-center">
-                            <p>
-                              <strong>Desserts</strong>
-                            </p>
-                          </div>
-                          <ul>
-                            <li>
-                              <label class="d-block">{{menu[2].desserts[0]}}</label>
-                            </li>
-                            <li>
-                              <label class="d-block">{{menu[2].desserts[1]}}</label>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                      <div class="col-md-3 pad-top-20">
-                        <div class="text-center">
-                          <p>
-                            <strong>Other details</strong>
-                          </p>
-                        </div>
-                        <div *ngIf="menu[2].comments !== ''">
-                          <div>
-                            <p>
-                              <strong>Comments</strong>
-                            </p>
-                          </div>
-                          <p class="d-block">
-                            <strong>{{menu[2].comments}}</strong>
-                          </p>
-                        </div>
-                        <div class="div-home-price" >
-                          <span class="home-price">{{menu[2].price}}€
-                          </span>
-                        </div>
-                      </div>
+                      <ul>
+                        <li>
+                          <label class="d-block">{{menu[2].desserts[0]}}</label>
+                        </li>
+                        <li>
+                          <label class="d-block">{{menu[2].desserts[1]}}</label>
+                        </li>
+                      </ul>
                     </div>
                   </div>
-                      <ng-template #closedWednesday>
-                  <div class="row text-center">
+                  <div class="col-md-3 pad-top-20">
+                    <div class="text-center">
+                      <strong>Other details</strong>
+                    </div>
+                    <div *ngIf="menu[2].comments !== ''">
                       <div>
-                        <p>Comments</p>
+                        <strong>Comments</strong>
                       </div>
-                      <p class="d-block">
+                      <p >
                         <strong>{{menu[2].comments}}</strong>
                       </p>
                     </div>
+                    <div class="div-home-price">
+                      <span class="home-price">{{menu[2].price}}€ </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <ng-template #closedWednesday>
+                <div class="row text-center">
+                  <div> Comments </div>
+                  <p >
+                    <strong>{{menu[2].comments}}</strong>
+                  </p>
+                </div>
               </ng-template>
             </mat-tab>
             <mat-tab label="Thursday">
               <div *ngIf="menu[3].active == 'true'; else closedThursday">
-                  <div class="row">
-                      <div class="starters-menu col-md-3 pad-top-20">
-                        <div class="text-center">
-                          <p>
-                            <strong>Starters</strong>
-                          </p>
-                        </div>
-                        <ul>
-                          <li>
-                            <label class="d-block">{{menu[3].starters[0]}}</label>
-                          </li>
-                          <li>
-                            <label class="d-block">{{menu[3].starters[1]}}</label>
-                          </li>
-                          <li>
-                            <label class="d-block">{{menu[3].starters[2]}}</label>
-                          </li>
-                          <li>
-                            <label class="d-block">{{menu[3].starters[3]}}</label>
-                          </li>
-                        </ul>
+                <div class="row">
+                  <div class="starters-menu col-md-3 pad-top-20">
+                    <div class="text-center">
+                      <strong>Starters</strong>
+                    </div>
+                    <ul>
+                      <li>
+                        <label class="d-block">{{menu[3].starters[0]}}</label>
+                      </li>
+                      <li>
+                        <label class="d-block">{{menu[3].starters[1]}}</label>
+                      </li>
+                      <li>
+                        <label class="d-block">{{menu[3].starters[2]}}</label>
+                      </li>
+                      <li>
+                        <label class="d-block">{{menu[3].starters[3]}}</label>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="main-course-menu col-md-3 pad-top-20">
+                    <div class="text-center">
+                      <strong>Main Courses</strong>
+                    </div>
+                    <ul>
+                      <li>
+                        <label class="d-block">{{menu[3].mainCourses[0]}}</label>
+                      </li>
+                      <li>
+                        <label class="d-block">{{menu[3].mainCourses[1]}}</label>
+                      </li>
+                      <li>
+                        <label class="d-block">{{menu[3].mainCourses[2]}}</label>
+                      </li>
+                      <li>
+                        <label class="d-block">{{menu[3].mainCourses[3]}}</label>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="col-md-3 pad-top-20">
+                    <div class="desserts-menu">
+                      <div class="text-center">
+                        <strong>Desserts</strong>
                       </div>
-                      <div class="main-course-menu col-md-3 pad-top-20">
-                        <div class="text-center">
-                          <p>
-                            <strong>Main Courses</strong>
-                          </p>
-                        </div>
-                        <ul>
-                          <li>
-                            <label class="d-block">{{menu[3].mainCourses[0]}}</label>
-                          </li>
-                          <li>
-                            <label class="d-block">{{menu[3].mainCourses[1]}}</label>
-                          </li>
-                          <li>
-                            <label class="d-block">{{menu[3].mainCourses[2]}}</label>
-                          </li>
-                          <li>
-                            <label class="d-block">{{menu[3].mainCourses[3]}}</label>
-                          </li>
-                        </ul>
-                      </div>
-                      <div class="col-md-3 pad-top-20">
-                        <div class="desserts-menu">
-                          <div class="text-center">
-                            <p>
-                              <strong>Desserts</strong>
-                            </p>
-                          </div>
-                          <ul>
-                            <li>
-                              <label class="d-block">{{menu[3].desserts[0]}}</label>
-                            </li>
-                            <li>
-                              <label class="d-block">{{menu[3].desserts[1]}}</label>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                      <div class="col-md-3 pad-top-20">
-                        <div class="text-center">
-                          <p>
-                            <strong>Other details</strong>
-                          </p>
-                        </div>
-                        <div *ngIf="menu[3].comments !== ''">
-                          <div>
-                            <p>
-                              <strong>Comments</strong>
-                            </p>
-                          </div>
-                          <p class="d-block">
-                            <strong>{{menu[3].comments}}</strong>
-                          </p>
-                        </div>
-                        <div class="div-home-price" >
-                          <span class="home-price">{{menu[3].price}}€
-                          </span>
-                        </div>
-                      </div>
+                      <ul>
+                        <li>
+                          <label class="d-block">{{menu[3].desserts[0]}}</label>
+                        </li>
+                        <li>
+                          <label class="d-block">{{menu[3].desserts[1]}}</label>
+                        </li>
+                      </ul>
                     </div>
                   </div>
-              <ng-template #closedThursday>
-                  <div class="row text-center">
+                  <div class="col-md-3 pad-top-20">
+                    <div class="text-center">
+                      <strong>Other details</strong>
+                    </div>
+                    <div *ngIf="menu[3].comments !== ''">
                       <div>
-                        <p>Comments</p>
+                        <strong>Comments</strong>
                       </div>
-                      <p class="d-block">
+                      <p >
                         <strong>{{menu[3].comments}}</strong>
                       </p>
                     </div>
+                    <div class="div-home-price">
+                      <span class="home-price">{{menu[3].price}}€ </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <ng-template #closedThursday>
+                <div class="row text-center">
+                  <div> Comments </div>
+                  <p >
+                    <strong>{{menu[3].comments}}</strong>
+                  </p>
+                </div>
               </ng-template>
             </mat-tab>
             <mat-tab label="Friday">
               <div *ngIf="menu[4].active == 'true'; else closedFriday">
-                  <div class="row">
-                      <div class="starters-menu col-md-3 pad-top-20">
-                        <div class="text-center">
-                          <p>
-                            <strong>Starters</strong>
-                          </p>
-                        </div>
-                        <ul>
-                          <li>
-                            <label class="d-block">{{menu[4].starters[0]}}</label>
-                          </li>
-                          <li>
-                            <label class="d-block">{{menu[4].starters[1]}}</label>
-                          </li>
-                          <li>
-                            <label class="d-block">{{menu[4].starters[2]}}</label>
-                          </li>
-                          <li>
-                            <label class="d-block">{{menu[4].starters[3]}}</label>
-                          </li>
-                        </ul>
+                <div class="row">
+                  <div class="starters-menu col-md-3 pad-top-20">
+                    <div class="text-center">
+                      <strong>Starters</strong>
+                    </div>
+                    <ul>
+                      <li>
+                        <label class="d-block">{{menu[4].starters[0]}}</label>
+                      </li>
+                      <li>
+                        <label class="d-block">{{menu[4].starters[1]}}</label>
+                      </li>
+                      <li>
+                        <label class="d-block">{{menu[4].starters[2]}}</label>
+                      </li>
+                      <li>
+                        <label class="d-block">{{menu[4].starters[3]}}</label>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="main-course-menu col-md-3 pad-top-20">
+                    <div class="text-center">
+                      <strong>Main Courses</strong>
+                    </div>
+                    <ul>
+                      <li>
+                        <label class="d-block">{{menu[4].mainCourses[0]}}</label>
+                      </li>
+                      <li>
+                        <label class="d-block">{{menu[4].mainCourses[1]}}</label>
+                      </li>
+                      <li>
+                        <label class="d-block">{{menu[4].mainCourses[2]}}</label>
+                      </li>
+                      <li>
+                        <label class="d-block">{{menu[4].mainCourses[3]}}</label>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="col-md-3 pad-top-20">
+                    <div class="desserts-menu">
+                      <div class="text-center">
+                        <strong>Desserts</strong>
                       </div>
-                      <div class="main-course-menu col-md-3 pad-top-20">
-                        <div class="text-center">
-                          <p>
-                            <strong>Main Courses</strong>
-                          </p>
-                        </div>
-                        <ul>
-                          <li>
-                            <label class="d-block">{{menu[4].mainCourses[0]}}</label>
-                          </li>
-                          <li>
-                            <label class="d-block">{{menu[4].mainCourses[1]}}</label>
-                          </li>
-                          <li>
-                            <label class="d-block">{{menu[4].mainCourses[2]}}</label>
-                          </li>
-                          <li>
-                            <label class="d-block">{{menu[4].mainCourses[3]}}</label>
-                          </li>
-                        </ul>
-                      </div>
-                      <div class="col-md-3 pad-top-20">
-                        <div class="desserts-menu">
-                          <div class="text-center">
-                            <p>
-                              <strong>Desserts</strong>
-                            </p>
-                          </div>
-                          <ul>
-                            <li>
-                              <label class="d-block">{{menu[4].desserts[0]}}</label>
-                            </li>
-                            <li>
-                              <label class="d-block">{{menu[4].desserts[1]}}</label>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                      <div class="col-md-3 pad-top-20">
-                        <div class="text-center">
-                          <p>
-                            <strong>Other details</strong>
-                          </p>
-                        </div>
-                        <div *ngIf="menu[4].comments !== ''">
-                          <div>
-                            <p>
-                              <strong>Comments</strong>
-                            </p>
-                          </div>
-                          <p class="d-block">
-                            <strong>{{menu[4].comments}}</strong>
-                          </p>
-                        </div>
-                        <div class="div-home-price" >
-                          <span class="home-price">{{menu[4].price}}€
-                          </span>
-                        </div>
-                      </div>
+                      <ul>
+                        <li>
+                          <label class="d-block">{{menu[4].desserts[0]}}</label>
+                        </li>
+                        <li>
+                          <label class="d-block">{{menu[4].desserts[1]}}</label>
+                        </li>
+                      </ul>
                     </div>
                   </div>
-              <ng-template #closedFriday>
-                  <div class="row text-center">
+                  <div class="col-md-3 pad-top-20">
+                    <div class="text-center">
+                      <strong>Other details</strong>
+                    </div>
+                    <div *ngIf="menu[4].comments !== ''">
                       <div>
-                        <p>Comments</p>
+                        <strong>Comments</strong>
                       </div>
-                      <p class="d-block">
+                      <p >
                         <strong>{{menu[4].comments}}</strong>
                       </p>
                     </div>
+                    <div class="div-home-price">
+                      <span class="home-price">{{menu[4].price}}€ </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <ng-template #closedFriday>
+                <div class="row text-center">
+                  <div> Comments </div>
+                  <p >
+                    <strong>{{menu[4].comments}}</strong>
+                  </p>
+                </div>
               </ng-template>
             </mat-tab>
           </mat-tab-group>

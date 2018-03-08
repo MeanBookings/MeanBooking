@@ -13,7 +13,7 @@ this.menu = []
   }
 
   ngOnInit() {
-    this.menuServ.getMenu().subscribe(menus =>  {console.log(menus),menus.forEach((menuBBDD) => this.menu.push(menuBBDD))})
+    this.menuServ.getMenu().subscribe(menus => menus.forEach((menuBBDD) => this.menu.push(menuBBDD)))
   }
 
 }

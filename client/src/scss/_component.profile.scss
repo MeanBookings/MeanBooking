@@ -1,4 +1,7 @@
 #profile {
+  .update-profile {
+    margin-bottom: 60px;
+  }
   padding-top: $topPaddedSection;
   h2 {
     margin-bottom: 50px;
@@ -55,8 +58,8 @@
     &:nth-child(even) {
       background: $lightgrey;
     }
-    &:last-child{
-      border-bottom: 1px solid $lightgrey!important;
+    &:last-child {
+      border-bottom: 1px solid $lightgrey !important;
     }
   }
   .comments-form-separator {
@@ -65,14 +68,16 @@
     border-style: dotted;
   }
   .comment-row {
-    margin: 80px 0 25px 0;
+    margin: 0 0 25px 0;
+    padding-top: 60px;
     padding-bottom: 100px;
+    border-top: 1px dotted $grey
   }
-  label[for="valoration"]{
+  label[for="valoration"] {
     display: block;
     padding-left: 2px;
     color: #767676;
-    text-align:left;
+    text-align: left;
   }
   .mat-form-field-underline {
     bottom: 20px;

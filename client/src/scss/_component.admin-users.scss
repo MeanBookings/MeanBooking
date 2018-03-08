@@ -44,5 +44,20 @@
   .add-all-row {
     border: 1px solid #e3e3e1;
     border-top: none;
+    padding: 10px 0;
+  }
+}
+
+#newsletter-row {
+  padding: 75px 0;
+  textarea {
+    min-height:160px;
+  }
+  .cc-email {
+    font-size: .7em;
+    border: 1px solid $grey;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 30px;
   }
 }

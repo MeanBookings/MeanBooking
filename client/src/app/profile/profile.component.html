@@ -21,13 +21,37 @@
           <input matInput placeholder="Enter your new password" [(ngModel)]="password" disabled={{!switch}}> </mat-form-field>
         <button color="primary" (click)="edit()" mat-button id="edit">{{btntext}}</button>
       </div>
+      <!-- comments form -->
+      <div class="comment-row" *ngIf="userHasShowed; else userNeverShowed">
+        <h6>Send your opinion and feedback!
+          <br>
+          <small>After moderation, your comment will appear on our front page</small>
+        </h6>
+        <form class="client-opinion-form" (ngSubmit)="sendComment(currentUser._id,comment,valoration)" #opinionForm="ngForm">
+          <mat-form-field class="full-width">
+            <textarea matInput placeholder="Your comment" [(ngModel)]="comment" name="comment" required></textarea>
+          </mat-form-field>
+          <div class="label">
+            <label for="valoration">Valoration*</label>
+          </div>
+          <mat-slider class="full-width" [disabled]="disabled" [invert]="invert" [max]="max" [min]="min" [step]="step" [thumb-label]="thumbLabel"
+            [tick-interval]="tickInterval" [vertical]="vertical" [(ngModel)]="valoration" name="valoration" required> </mat-slider>
+          <button type="submit" mat-raised-button color="accent">Send!</button>
+        </form>
+      </div>
+      <ng-template #userNeverShowed>
+        <h6>Send your opinion and feedback!
+          <br>
+          <small>After your first visit to our restaurant, you can send us some feedback!</small>
+        </h6>
+      </ng-template>
     </div>
     <div class="col-md-8">
       <h6>You have {{userBookings.length}} bookings.
         <br>
-        <small>You can cancel a booking clicking the button</small>
+        <small *ngIf="userBookings.length>0">You can cancel a booking clicking the button</small>
       </h6>
-      <div class="row day-booking-header">
+      <div class="row day-booking-header" *ngIf="userBookings.length>0">
         <div class="col-md-4"> Status </div>
         <div class="col-md-4"> Day, hour and people </div>
         <div class="col-md-4"> Customer contact info </div>
@@ -56,31 +80,6 @@
             <div> {{userInfo.email}} </div>
             <div> {{userInfo.phone}} </div>
           </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- comments form -->
-  <div class="row comment-row">
-    <div class="col-sm-12">
-      <div class="row">
-        <div class="col-md-8 offset-md-4">
-            <h6>Send your opinion and feedback!
-                <br>
-                <small>The comments will be moderate before they appear on our front page</small>
-              </h6>
-          <form class="client-opinion-form" (ngSubmit)="sendComment(currentUser._id,comment,valoration)" #opinionForm="ngForm">
-            <mat-form-field class="full-width">
-              <textarea matInput placeholder="Your comment" [(ngModel)]="comment" name="comment" required></textarea>
-            </mat-form-field>
-            <div class="label">
-              <label for="valoration">Valoration*</label>
-            </div>
-            <mat-slider class="full-width" [disabled]="disabled" [invert]="invert" [max]="max" [min]="min" [step]="step"
-              [thumb-label]="thumbLabel" [tick-interval]="tickInterval" [vertical]="vertical" [(ngModel)]="valoration" name="valoration" required>
-            </mat-slider>
-            <button type="submit" mat-raised-button color="accent">Send!</button>
-          </form>
         </div>
       </div>
     </div>

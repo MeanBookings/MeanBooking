@@ -25,6 +25,7 @@ export class ProfileComponent implements OnInit {
   comment:any;
   content:any;
   valoration:any;
+  userHasShowed:boolean=false;
   @Output() outputcall = new EventEmitter<string>();
 
   constructor(
@@ -39,6 +40,8 @@ export class ProfileComponent implements OnInit {
     this.userService.getUserBookings(this.session.getUser()._id).subscribe(bookings => {
       this.userInfo = { name: bookings.name, email: bookings.email, phone: bookings.phone }
       this.userBookings = bookings.bookings;
+      this.userBookings.forEach(b=>{if(b.status==='show')this.userHasShowed=true})
+      console.log(this.userHasShowed)
     });
     if(this.session.getAdmin())this.justAdmins=false    
   }
@@ -46,6 +49,7 @@ export class ProfileComponent implements OnInit {
   ngOnInit() {
   }
 
+  
 
 
   edit() {

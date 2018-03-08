@@ -22,10 +22,9 @@ export class LoginComponent implements OnInit {
   login(){
     this.session.login(this.name,this.password)
     .catch(e => this.error = e)
-      .subscribe(user => {
-        $('#loginModal').modal('hide')
-        console.log(`Welcome ${user.name}`)
-      });
+    .subscribe(user => {
+      if(typeof(user)=='object')$('#loginModal').modal('hide')
+    });
   }
 
 

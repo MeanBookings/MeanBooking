@@ -25,7 +25,7 @@ export class SignupComponent implements OnInit {
     this.session.signup(this.name, this.password, this.email, this.phone)
       .catch(e => this.error = e)
       .subscribe((user)=>{
-        $('#signupModal').modal('hide')
+        if(typeof(user)=='object')$('#signupModal').modal('hide')
       });
   }
 

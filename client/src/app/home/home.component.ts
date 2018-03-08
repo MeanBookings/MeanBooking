@@ -22,8 +22,6 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.comment.getActiveComment().subscribe((comment) => {
       this.comments = comment;
-      //this.comments.forEach((c,i) => {if(c.status != "true") this.comments.splice(i,1)})
-      //console.log(this.comments)
       this.callJQuery();
     });
 
