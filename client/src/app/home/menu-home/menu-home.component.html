@@ -3,8 +3,7 @@
     <div *ngIf="menu[0].active == 'true' || menu[1].active == 'true' || menu[2].active == 'true' || menu[3].active == 'true' || menu[4].active == 'true'">
       <div class="row m-top-20" *ngIf="menu.length > 0">
         <div class="col-sm-12">
-          <h2 class="m-top-40"> Day Menu
-            <small>Mon. to fri., form 12:30 to 15:30</small>. </h2>
+          <h2 class="m-top-40"> Daily Menu </h2>
           <mat-tab-group>
             <mat-tab label="Monday">
               <div *ngIf="menu[0].active == 'true'; else closedMonday">
@@ -70,7 +69,7 @@
                       <div>
                         <strong>Comments</strong>
                       </div>
-                      <p >
+                      <p>
                         <strong>{{menu[0].comments}}</strong>
                       </p>
                     </div>
@@ -83,7 +82,7 @@
               <ng-template #closedMonday>
                 <div class="row text-center">
                   <div> Comments </div>
-                  <p >
+                  <p>
                     <strong>{{menu[0].comments}}</strong>
                   </p>
                 </div>
@@ -153,7 +152,7 @@
                       <div>
                         <strong>Comments</strong>
                       </div>
-                      <p >
+                      <p>
                         <strong>{{menu[1].comments}}</strong>
                       </p>
                     </div>
@@ -166,7 +165,7 @@
               <ng-template #closedTuesday>
                 <div class="row text-center">
                   <div> Comments </div>
-                  <p >
+                  <p>
                     <strong>{{menu[1].comments}}</strong>
                   </p>
                 </div>
@@ -236,7 +235,7 @@
                       <div>
                         <strong>Comments</strong>
                       </div>
-                      <p >
+                      <p>
                         <strong>{{menu[2].comments}}</strong>
                       </p>
                     </div>
@@ -249,7 +248,7 @@
               <ng-template #closedWednesday>
                 <div class="row text-center">
                   <div> Comments </div>
-                  <p >
+                  <p>
                     <strong>{{menu[2].comments}}</strong>
                   </p>
                 </div>
@@ -319,7 +318,7 @@
                       <div>
                         <strong>Comments</strong>
                       </div>
-                      <p >
+                      <p>
                         <strong>{{menu[3].comments}}</strong>
                       </p>
                     </div>
@@ -332,7 +331,7 @@
               <ng-template #closedThursday>
                 <div class="row text-center">
                   <div> Comments </div>
-                  <p >
+                  <p>
                     <strong>{{menu[3].comments}}</strong>
                   </p>
                 </div>
@@ -402,7 +401,7 @@
                       <div>
                         <strong>Comments</strong>
                       </div>
-                      <p >
+                      <p>
                         <strong>{{menu[4].comments}}</strong>
                       </p>
                     </div>
@@ -415,7 +414,7 @@
               <ng-template #closedFriday>
                 <div class="row text-center">
                   <div> Comments </div>
-                  <p >
+                  <p>
                     <strong>{{menu[4].comments}}</strong>
                   </p>
                 </div>

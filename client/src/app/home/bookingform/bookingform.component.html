@@ -30,10 +30,30 @@
   <div class="label" *ngIf="day.status!=='closed'">
     <label for="people">Nº of people</label>
   </div>
-  <mat-slider *ngIf="day.status!=='closed'" class="full-width" [disabled]="disabled" [invert]="invert" [max]="max" [min]="min" [step]="step" [thumb-label]="thumbLabel"
-    [tick-interval]="tickInterval" [vertical]="vertical" [(ngModel)]="people" name="people"> </mat-slider>
+  <mat-slider *ngIf="day.status!=='closed'" class="full-width" [disabled]="disabled" [invert]="invert" [max]="max" [min]="min"
+    [step]="step" [thumb-label]="thumbLabel" [tick-interval]="tickInterval" [vertical]="vertical" [(ngModel)]="people" name="people">
+  </mat-slider>
   <mat-form-field class="full-width" *ngIf="day.status!=='closed'">
     <textarea matInput placeholder="Comment" [(ngModel)]="comment" name="comment"></textarea>
   </mat-form-field>
   <button *ngIf="day.status!=='closed'" type="submit" mat-raised-button color="warn">Book it!</button>
 </form>
+<div class="login-wrapper modal fade" id="bookingModal" tabindex="-1" role="dialog" aria-labelledby="bookingModal" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header home-booking">
+        <h5 class="modal-title h5-modal-booking">Booking made!</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Your booking have been made, you have to received an email, but is pending to have been approved.</p>
+      </div>
+      <div class="modal-footer">
+        <small>Avello's Trattoria | ♥</small>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
