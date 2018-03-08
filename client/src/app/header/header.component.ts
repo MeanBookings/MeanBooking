@@ -40,6 +40,7 @@ export class HeaderComponent implements OnInit {
   }
 
   pendingBookings() {
+    this.pendingsB=[];
     this.i = 0
     this.books.getPendings().subscribe((a) => {
       a.forEach((b) => {
