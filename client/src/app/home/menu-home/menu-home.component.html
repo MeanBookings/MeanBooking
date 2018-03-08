@@ -85,7 +85,7 @@
                         <strong>{{menu[0].comments}}</strong>
                       </p>
                     </div>
-                    <div>
+                    <div class="div-home-price" >
                       <span class="home-price">{{menu[0].price}}€
                       </span>
                     </div>
@@ -105,210 +105,386 @@
             </mat-tab>
             <mat-tab label="Tuesday">
               <div *ngIf="menu[1].active == 'true'; else closedTuesday">
-                <div class="row">
-                  <div class="starters-menu col-md-3">
-                    <div>
-                      <label>Starters</label>
-                    </div>
-                    <input [disabled]="!switch" value="{{menu[1].starters[0]}}" [(ngModel)]="menu[1].starters[0]">
-                    <input [disabled]="!switch" value="{{menu[1].starters[1]}}" [(ngModel)]="menu[1].starters[1]">
-                    <input [disabled]="!switch" value="{{menu[1].starters[2]}}" [(ngModel)]="menu[1].starters[2]">
-                    <input [disabled]="!switch" value="{{menu[1].starters[3]}}" [(ngModel)]="menu[1].starters[3]">
-                  </div>
-                  <div class="main-course-menu col-md-3">
-                    <div>
-                      <label>Main Courses</label>
-                    </div>
-                    <input [disabled]="!switch" value="{{menu[1].mainCourses[0]}}" [(ngModel)]="menu[1].mainCourses[0]">
-                    <input [disabled]="!switch" value="{{menu[1].mainCourses[1]}}" [(ngModel)]="menu[1].mainCourses[1]">
-                    <input [disabled]="!switch" value="{{menu[1].mainCourses[2]}}" [(ngModel)]="menu[1].mainCourses[2]">
-                    <input [disabled]="!switch" value="{{menu[1].mainCourses[3]}}" [(ngModel)]="menu[1].mainCourses[3]">
-                  </div>
-                  <div class="col-md-3">
-                    <div class="desserts-menu">
-                      <div>
-                        <label>Desserts</label>
+                  <div class="row">
+                      <div class="starters-menu col-md-3 pad-top-20">
+                        <div class="text-center">
+                          <p>
+                            <strong>Starters</strong>
+                          </p>
+                        </div>
+                        <ul>
+                          <li>
+                            <label class="d-block">{{menu[1].starters[0]}}</label>
+                          </li>
+                          <li>
+                            <label class="d-block">{{menu[1].starters[1]}}</label>
+                          </li>
+                          <li>
+                            <label class="d-block">{{menu[1].starters[2]}}</label>
+                          </li>
+                          <li>
+                            <label class="d-block">{{menu[1].starters[3]}}</label>
+                          </li>
+                        </ul>
                       </div>
-                      <input [disabled]="!switch" value="{{menu[1].desserts[0]}}" [(ngModel)]="menu[1].desserts[0]">
-                      <input [disabled]="!switch" value="{{menu[1].desserts[1]}}" [(ngModel)]="menu[1].desserts[1]">
+                      <div class="main-course-menu col-md-3 pad-top-20">
+                        <div class="text-center">
+                          <p>
+                            <strong>Main Courses</strong>
+                          </p>
+                        </div>
+                        <ul>
+                          <li>
+                            <label class="d-block">{{menu[1].mainCourses[0]}}</label>
+                          </li>
+                          <li>
+                            <label class="d-block">{{menu[1].mainCourses[1]}}</label>
+                          </li>
+                          <li>
+                            <label class="d-block">{{menu[1].mainCourses[2]}}</label>
+                          </li>
+                          <li>
+                            <label class="d-block">{{menu[1].mainCourses[3]}}</label>
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="col-md-3 pad-top-20">
+                        <div class="desserts-menu">
+                          <div class="text-center">
+                            <p>
+                              <strong>Desserts</strong>
+                            </p>
+                          </div>
+                          <ul>
+                            <li>
+                              <label class="d-block">{{menu[1].desserts[0]}}</label>
+                            </li>
+                            <li>
+                              <label class="d-block">{{menu[1].desserts[1]}}</label>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                      <div class="col-md-3 pad-top-20">
+                        <div class="text-center">
+                          <p>
+                            <strong>Other details</strong>
+                          </p>
+                        </div>
+                        <div *ngIf="menu[1].comments !== ''">
+                          <div>
+                            <p>
+                              <strong>Comments</strong>
+                            </p>
+                          </div>
+                          <p class="d-block">
+                            <strong>{{menu[1].comments}}</strong>
+                          </p>
+                        </div>
+                        <div class="div-home-price" >
+                          <span class="home-price">{{menu[1].price}}€
+                          </span>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                  <div class="col-md-3">
-                    <div>
-                      <label>Comment</label>
-                    </div>
-                    <textarea [disabled]="!switch" value="menu[1].comments">
-                  </textarea>
-                    <div>
-                      <label>Price</label>
-                    </div>
-                    <input type="number" [disabled]="!switch" value="{{menu[1].price}}">€
-                  </div>
-                </div>
-              </div>
               <ng-template #closedTuesday>
-                <div class="row text-center">
-                  <div>
-                    <label>Comment</label>
-                  </div>
-                  <textarea [disabled]="!switch" value="menu[1].comments"></textarea>
-                </div>
+                  <div class="row text-center">
+                      <div>
+                        <p>Comments</p>
+                      </div>
+                      <p class="d-block">
+                        <strong>{{menu[1].comments}}</strong>
+                      </p>
+                    </div>
               </ng-template>
             </mat-tab>
             <mat-tab label="Wednesday">
               <div *ngIf="menu[2].active == 'true'; else closedWednesday">
-                <div class="row">
-                  <div class="starters-menu col-md-3">
-                    <div>
-                      <label>Starters</label>
-                    </div>
-                    <input [disabled]="!switch" value="{{menu[2].starters[0]}}" [(ngModel)]="menu[2].starters[0]">
-                    <input [disabled]="!switch" value="{{menu[2].starters[1]}}" [(ngModel)]="menu[2].starters[1]">
-                    <input [disabled]="!switch" value="{{menu[2].starters[2]}}" [(ngModel)]="menu[2].starters[2]">
-                    <input [disabled]="!switch" value="{{menu[2].starters[3]}}" [(ngModel)]="menu[2].starters[3]">
-                  </div>
-                  <div class="main-course-menu col-md-3">
-                    <div>
-                      <label>Main Courses</label>
-                    </div>
-                    <input [disabled]="!switch" value="{{menu[2].mainCourses[0]}}" [(ngModel)]="menu[2].mainCourses[0]">
-                    <input [disabled]="!switch" value="{{menu[2].mainCourses[1]}}" [(ngModel)]="menu[2].mainCourses[1]">
-                    <input [disabled]="!switch" value="{{menu[2].mainCourses[2]}}" [(ngModel)]="menu[2].mainCourses[2]">
-                    <input [disabled]="!switch" value="{{menu[2].mainCourses[3]}}" [(ngModel)]="menu[2].mainCourses[3]">
-                  </div>
-                  <div class="col-md-3">
-                    <div class="desserts-menu">
-                      <div>
-                        <label>Desserts</label>
+                  <div class="row">
+                      <div class="starters-menu col-md-3 pad-top-20">
+                        <div class="text-center">
+                          <p>
+                            <strong>Starters</strong>
+                          </p>
+                        </div>
+                        <ul>
+                          <li>
+                            <label class="d-block">{{menu[2].starters[0]}}</label>
+                          </li>
+                          <li>
+                            <label class="d-block">{{menu[2].starters[1]}}</label>
+                          </li>
+                          <li>
+                            <label class="d-block">{{menu[2].starters[2]}}</label>
+                          </li>
+                          <li>
+                            <label class="d-block">{{menu[2].starters[3]}}</label>
+                          </li>
+                        </ul>
                       </div>
-                      <input [disabled]="!switch" value="{{menu[2].desserts[0]}}" [(ngModel)]="menu[2].desserts[0]">
-                      <input [disabled]="!switch" value="{{menu[2].desserts[1]}}" [(ngModel)]="menu[2].desserts[1]">
+                      <div class="main-course-menu col-md-3 pad-top-20">
+                        <div class="text-center">
+                          <p>
+                            <strong>Main Courses</strong>
+                          </p>
+                        </div>
+                        <ul>
+                          <li>
+                            <label class="d-block">{{menu[2].mainCourses[0]}}</label>
+                          </li>
+                          <li>
+                            <label class="d-block">{{menu[2].mainCourses[1]}}</label>
+                          </li>
+                          <li>
+                            <label class="d-block">{{menu[2].mainCourses[2]}}</label>
+                          </li>
+                          <li>
+                            <label class="d-block">{{menu[2].mainCourses[3]}}</label>
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="col-md-3 pad-top-20">
+                        <div class="desserts-menu">
+                          <div class="text-center">
+                            <p>
+                              <strong>Desserts</strong>
+                            </p>
+                          </div>
+                          <ul>
+                            <li>
+                              <label class="d-block">{{menu[2].desserts[0]}}</label>
+                            </li>
+                            <li>
+                              <label class="d-block">{{menu[2].desserts[1]}}</label>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                      <div class="col-md-3 pad-top-20">
+                        <div class="text-center">
+                          <p>
+                            <strong>Other details</strong>
+                          </p>
+                        </div>
+                        <div *ngIf="menu[2].comments !== ''">
+                          <div>
+                            <p>
+                              <strong>Comments</strong>
+                            </p>
+                          </div>
+                          <p class="d-block">
+                            <strong>{{menu[2].comments}}</strong>
+                          </p>
+                        </div>
+                        <div class="div-home-price" >
+                          <span class="home-price">{{menu[2].price}}€
+                          </span>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                  <div class="col-md-3">
-                    <div>
-                      <label>Comment</label>
+                      <ng-template #closedWednesday>
+                  <div class="row text-center">
+                      <div>
+                        <p>Comments</p>
+                      </div>
+                      <p class="d-block">
+                        <strong>{{menu[2].comments}}</strong>
+                      </p>
                     </div>
-                    <textarea [disabled]="!switch" value="menu[2].comments">
-                  </textarea>
-                    <div>
-                      <label>Price</label>
-                    </div>
-                    <input type="number" [disabled]="!switch" value="{{menu[2].price}}">€
-                  </div>
-                </div>
-              </div>
-              <ng-template #closedWednesday>
-                <div class="row text-center">
-                  <div>
-                    <label>Comment</label>
-                  </div>
-                  <textarea [disabled]="!switch" value="menu[2].comments"></textarea>
-                </div>
               </ng-template>
             </mat-tab>
             <mat-tab label="Thursday">
               <div *ngIf="menu[3].active == 'true'; else closedThursday">
-                <div class="row">
-                  <div class="starters-menu col-md-3">
-                    <div>
-                      <label>Starters</label>
-                    </div>
-                    <input [disabled]="!switch" value="{{menu[3].starters[0]}}" [(ngModel)]="menu[3].starters[0]">
-                    <input [disabled]="!switch" value="{{menu[3].starters[1]}}" [(ngModel)]="menu[3].starters[1]">
-                    <input [disabled]="!switch" value="{{menu[3].starters[2]}}" [(ngModel)]="menu[3].starters[2]">
-                    <input [disabled]="!switch" value="{{menu[3].starters[3]}}" [(ngModel)]="menu[3].starters[3]">
-                  </div>
-                  <div class="main-course-menu col-md-3">
-                    <div>
-                      <label>Main Courses</label>
-                    </div>
-                    <input [disabled]="!switch" value="{{menu[3].mainCourses[0]}}" [(ngModel)]="menu[3].mainCourses[0]">
-                    <input [disabled]="!switch" value="{{menu[3].mainCourses[1]}}" [(ngModel)]="menu[3].mainCourses[1]">
-                    <input [disabled]="!switch" value="{{menu[3].mainCourses[2]}}" [(ngModel)]="menu[3].mainCourses[2]">
-                    <input [disabled]="!switch" value="{{menu[3].mainCourses[3]}}" [(ngModel)]="menu[3].mainCourses[3]">
-                  </div>
-                  <div class="col-md-3">
-                    <div class="desserts-menu">
-                      <div>
-                        <label>Desserts</label>
+                  <div class="row">
+                      <div class="starters-menu col-md-3 pad-top-20">
+                        <div class="text-center">
+                          <p>
+                            <strong>Starters</strong>
+                          </p>
+                        </div>
+                        <ul>
+                          <li>
+                            <label class="d-block">{{menu[3].starters[0]}}</label>
+                          </li>
+                          <li>
+                            <label class="d-block">{{menu[3].starters[1]}}</label>
+                          </li>
+                          <li>
+                            <label class="d-block">{{menu[3].starters[2]}}</label>
+                          </li>
+                          <li>
+                            <label class="d-block">{{menu[3].starters[3]}}</label>
+                          </li>
+                        </ul>
                       </div>
-                      <input [disabled]="!switch" value="{{menu[3].desserts[0]}}" [(ngModel)]="menu[3].desserts[0]">
-                      <input [disabled]="!switch" value="{{menu[3].desserts[1]}}" [(ngModel)]="menu[3].desserts[1]">
+                      <div class="main-course-menu col-md-3 pad-top-20">
+                        <div class="text-center">
+                          <p>
+                            <strong>Main Courses</strong>
+                          </p>
+                        </div>
+                        <ul>
+                          <li>
+                            <label class="d-block">{{menu[3].mainCourses[0]}}</label>
+                          </li>
+                          <li>
+                            <label class="d-block">{{menu[3].mainCourses[1]}}</label>
+                          </li>
+                          <li>
+                            <label class="d-block">{{menu[3].mainCourses[2]}}</label>
+                          </li>
+                          <li>
+                            <label class="d-block">{{menu[3].mainCourses[3]}}</label>
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="col-md-3 pad-top-20">
+                        <div class="desserts-menu">
+                          <div class="text-center">
+                            <p>
+                              <strong>Desserts</strong>
+                            </p>
+                          </div>
+                          <ul>
+                            <li>
+                              <label class="d-block">{{menu[3].desserts[0]}}</label>
+                            </li>
+                            <li>
+                              <label class="d-block">{{menu[3].desserts[1]}}</label>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                      <div class="col-md-3 pad-top-20">
+                        <div class="text-center">
+                          <p>
+                            <strong>Other details</strong>
+                          </p>
+                        </div>
+                        <div *ngIf="menu[3].comments !== ''">
+                          <div>
+                            <p>
+                              <strong>Comments</strong>
+                            </p>
+                          </div>
+                          <p class="d-block">
+                            <strong>{{menu[3].comments}}</strong>
+                          </p>
+                        </div>
+                        <div class="div-home-price" >
+                          <span class="home-price">{{menu[3].price}}€
+                          </span>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                  <div class="col-md-3">
-                    <div>
-                      <label>Comment</label>
-                    </div>
-                    <textarea [disabled]="!switch" value="menu[3].comments">
-                  </textarea>
-                    <div>
-                      <label>Price</label>
-                    </div>
-                    <input type="number" [disabled]="!switch" value="{{menu[3].price}}">€
-                  </div>
-                </div>
-              </div>
               <ng-template #closedThursday>
-                <div class="row text-center">
-                  <div>
-                    <label>Comment</label>
-                  </div>
-                  <textarea [disabled]="!switch" value="menu[3].comments"></textarea>
-                </div>
+                  <div class="row text-center">
+                      <div>
+                        <p>Comments</p>
+                      </div>
+                      <p class="d-block">
+                        <strong>{{menu[3].comments}}</strong>
+                      </p>
+                    </div>
               </ng-template>
             </mat-tab>
             <mat-tab label="Friday">
               <div *ngIf="menu[4].active == 'true'; else closedFriday">
-                <div class="row">
-                  <div class="starters-menu col-md-3">
-                    <div>
-                      <label>Starters</label>
-                    </div>
-                    <input [disabled]="!switch" value="{{menu[4].starters[0]}}" [(ngModel)]="menu[4].starters[0]">
-                    <input [disabled]="!switch" value="{{menu[4].starters[1]}}" [(ngModel)]="menu[4].starters[1]">
-                    <input [disabled]="!switch" value="{{menu[4].starters[2]}}" [(ngModel)]="menu[4].starters[2]">
-                    <input [disabled]="!switch" value="{{menu[4].starters[3]}}" [(ngModel)]="menu[4].starters[3]">
-                  </div>
-                  <div class="main-course-menu col-md-3">
-                    <div>
-                      <label>Main Courses</label>
-                    </div>
-                    <input [disabled]="!switch" value="{{menu[4].mainCourses[0]}}" [(ngModel)]="menu[4].mainCourses[0]">
-                    <input [disabled]="!switch" value="{{menu[4].mainCourses[1]}}" [(ngModel)]="menu[4].mainCourses[1]">
-                    <input [disabled]="!switch" value="{{menu[4].mainCourses[2]}}" [(ngModel)]="menu[4].mainCourses[2]">
-                    <input [disabled]="!switch" value="{{menu[4].mainCourses[3]}}" [(ngModel)]="menu[4].mainCourses[3]">
-                  </div>
-                  <div class="col-md-3">
-                    <div class="desserts-menu">
-                      <div>
-                        <label>Desserts</label>
+                  <div class="row">
+                      <div class="starters-menu col-md-3 pad-top-20">
+                        <div class="text-center">
+                          <p>
+                            <strong>Starters</strong>
+                          </p>
+                        </div>
+                        <ul>
+                          <li>
+                            <label class="d-block">{{menu[4].starters[0]}}</label>
+                          </li>
+                          <li>
+                            <label class="d-block">{{menu[4].starters[1]}}</label>
+                          </li>
+                          <li>
+                            <label class="d-block">{{menu[4].starters[2]}}</label>
+                          </li>
+                          <li>
+                            <label class="d-block">{{menu[4].starters[3]}}</label>
+                          </li>
+                        </ul>
                       </div>
-                      <input [disabled]="!switch" value="{{menu[4].desserts[0]}}" [(ngModel)]="menu[4].desserts[0]">
-                      <input [disabled]="!switch" value="{{menu[4].desserts[1]}}" [(ngModel)]="menu[4].desserts[1]">
+                      <div class="main-course-menu col-md-3 pad-top-20">
+                        <div class="text-center">
+                          <p>
+                            <strong>Main Courses</strong>
+                          </p>
+                        </div>
+                        <ul>
+                          <li>
+                            <label class="d-block">{{menu[4].mainCourses[0]}}</label>
+                          </li>
+                          <li>
+                            <label class="d-block">{{menu[4].mainCourses[1]}}</label>
+                          </li>
+                          <li>
+                            <label class="d-block">{{menu[4].mainCourses[2]}}</label>
+                          </li>
+                          <li>
+                            <label class="d-block">{{menu[4].mainCourses[3]}}</label>
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="col-md-3 pad-top-20">
+                        <div class="desserts-menu">
+                          <div class="text-center">
+                            <p>
+                              <strong>Desserts</strong>
+                            </p>
+                          </div>
+                          <ul>
+                            <li>
+                              <label class="d-block">{{menu[4].desserts[0]}}</label>
+                            </li>
+                            <li>
+                              <label class="d-block">{{menu[4].desserts[1]}}</label>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                      <div class="col-md-3 pad-top-20">
+                        <div class="text-center">
+                          <p>
+                            <strong>Other details</strong>
+                          </p>
+                        </div>
+                        <div *ngIf="menu[4].comments !== ''">
+                          <div>
+                            <p>
+                              <strong>Comments</strong>
+                            </p>
+                          </div>
+                          <p class="d-block">
+                            <strong>{{menu[4].comments}}</strong>
+                          </p>
+                        </div>
+                        <div class="div-home-price" >
+                          <span class="home-price">{{menu[4].price}}€
+                          </span>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                  <div class="col-md-3">
-                    <div>
-                      <label>Comment</label>
-                    </div>
-                    <textarea [disabled]="!switch" value="menu[4].comments">
-                  </textarea>
-                    <div>
-                      <label>Price</label>
-                    </div>
-                    <input type="number" [disabled]="!switch" value="{{menu[4].price}}">€
-                  </div>
-                </div>
-              </div>
               <ng-template #closedFriday>
-                <div class="row text-center">
-                  <div>
-                    <label>Comment</label>
-                  </div>
-                  <textarea [disabled]="!switch" value="menu[4].comments"></textarea>
-                </div>
+                  <div class="row text-center">
+                      <div>
+                        <p>Comments</p>
+                      </div>
+                      <p class="d-block">
+                        <strong>{{menu[4].comments}}</strong>
+                      </p>
+                    </div>
               </ng-template>
             </mat-tab>
           </mat-tab-group>
