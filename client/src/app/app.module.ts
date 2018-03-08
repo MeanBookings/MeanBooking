@@ -40,8 +40,6 @@ import { FilterPipe } from '../pipes/filter.pipe';
 import { ArraySortPipe } from '../pipes/order.pipe';
 import { EditDayComponent } from './admin/calendar/edit-day/edit-day.component';
 import { UserGuardService } from '../services/userguard.service';
-import { SnackBarComponent } from './home/bookingform/snack-bar/snack-bar.component';
-import { SnackBarProfileComponent } from './profile/snack-bar-profile/snack-bar-profile.component';
 import { ViewBookingsComponent } from './admin/calendar/view-bookings/view-bookings.component';
 import { ViewpendingsComponent } from './admin/viewpendings/viewpendings.component'
 import { CommentService } from '../services/comment.service';
@@ -66,8 +64,6 @@ import { MenuHomeComponent } from './home/menu-home/menu-home.component'
     FilterPipe,
     ArraySortPipe,
     EditDayComponent,
-    SnackBarComponent,
-    SnackBarProfileComponent,
     ViewBookingsComponent,
     ViewpendingsComponent,
     MenuHomeComponent
@@ -82,7 +78,6 @@ import { MenuHomeComponent } from './home/menu-home/menu-home.component'
     MatCheckboxModule,
     MatDividerModule,
     MatExpansionModule,
-    MatSnackBarModule,
     MatInputModule,
     MatSelectModule,
     MatTooltipModule,
@@ -97,7 +92,7 @@ import { MenuHomeComponent } from './home/menu-home/menu-home.component'
       apiKey: 'AIzaSyCqZbiAa2oZ5vm3ec6BC9UiFto6uZgb-cw'
     }),
   ],
-  entryComponents: [MenuHomeComponent, SnackBarComponent, BookingformComponent, SnackBarProfileComponent, ProfileComponent],
+  entryComponents: [MenuHomeComponent, BookingformComponent, ProfileComponent],
   providers: [MenuService, CommentService, UserService, SessionService, BookingService, AdminGuardService, CalendarService, UserGuardService, { provide: LOCALE_ID, useValue: "es-ES" }],
   bootstrap: [AppComponent]
 })
