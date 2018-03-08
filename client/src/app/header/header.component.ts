@@ -40,17 +40,20 @@ export class HeaderComponent implements OnInit {
   }
 
   pendingBookings() {
+    let temp = []
     this.i = 0
     this.books.getPendings().subscribe((a) => {
       a.forEach((b) => {
         b.books.forEach((c) => {
+          console.log(c)
           if (c.status == "pending") {
-            this.pendingsB.push(c)
-            this.i++
-          }
+            temp.push(c)
+              this.i++
+            }
+          })
         })
-      })
       this.popup = a
+      this.pendingsB = [...temp]
       this.numberPopup = this.i
       return this.pending = this.i;
     })
