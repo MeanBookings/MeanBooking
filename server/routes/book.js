@@ -162,7 +162,7 @@ router.get('/delete/:hash', (req, res, next) => {
                                 updatedDay.shift[tIndex].current += book.people;
                                 updatedDay.books.splice(updatedDay.books.indexOf(req.params.hash, 1));
                                 Day.findOneAndUpdate({ _id: day._id }, updatedDay, { new: true })
-                                    .then((a) => res.json(a))
+                                    .then(res.redirect("/profile"))
                             })
                     })
             }
