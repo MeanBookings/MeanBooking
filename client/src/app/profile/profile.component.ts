@@ -57,7 +57,6 @@ export class ProfileComponent implements OnInit {
       if (this.password != "") {
         this.currentUser.password = this.password;
       }
-      // let snackBarRef = this.snackBar.openFromComponent(SnackBarProfileComponent, { duration: 2000 });
       this.session.updateUser(this.currentUser).subscribe((res) => {
         this.message = res;
       })
