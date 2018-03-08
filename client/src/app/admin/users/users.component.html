@@ -1,10 +1,10 @@
 <div class="container" id="users">
   <div class="row">
-    <div class="col-sm-12 text-center m-bot-50">
+    <div class="col-sm-12 text-left m-bot-50">
       <h2> User management </h2>
     </div>
   </div>
-  <div class="row">
+  <div class="row users-header">
     <div class="col-sm-3 text-center">
       <h6>Name / Role</h6>
     </div>
@@ -14,13 +14,12 @@
     <div class="col-sm-2 text-center">
       <h6>Phone</h6>
     </div>
-    <div class="col-sm-3 text-center">
+    <div class="col-sm-3 text-right">
       <h6>Actions</h6>
     </div>
   </div>
-  <mat-divider></mat-divider>
-  <div class="row" *ngFor="let user of users">
-    <div class="col-sm-3 text-center">
+  <div class="row user-row align-items-center" *ngFor="let user of users">
+    <div class="col-sm-3 text-left">
       <p>{{user.name}}
         <br>
         <small>
@@ -34,10 +33,10 @@
     <div class="col-sm-2 text-center">
       <p>{{user.phone}}</p>
     </div>
-    <div class="col-sm-3 text-center">
+    <div class="col-sm-3 text-right user-actions-column">
       <button mat-icon-button [matMenuTriggerFor]="menu">
         <mat-icon>
-          <i class="material-icons">delete_forever</i>
+          <i class="material-icons">close</i>
         </mat-icon>
       </button>
       <mat-menu #menu="matMenu">
@@ -46,7 +45,7 @@
       <button mat-icon-button>
         <button mat-icon-button [matMenuTriggerFor]="menu">
           <mat-icon>
-            <i class="material-icons">whatshot</i>
+            <i class="material-icons">verified_user</i>
           </mat-icon>
         </button>
         <mat-menu #menu="matMenu">
@@ -58,10 +57,9 @@
       </button>
     </div>
   </div>
-  <div class="row">
-    <div class="col-sm-3 offset-sm-9 text-center">
-      <button mat-icon-button class="allContacts">
-        <small>Select all</small>
+  <div class="row add-all-row">
+    <div class="col-sm-3 offset-sm-9 text-right">
+      <button mat-icon-button class="allContacts"> All
         <i class="material-icons">email</i>
       </button>
     </div>

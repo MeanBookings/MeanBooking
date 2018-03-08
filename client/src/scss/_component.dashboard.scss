@@ -69,6 +69,11 @@
       padding: 30px;
     }
   }
+  .reset-input-width {
+    .mat-form-field-infix {
+      width: initial;
+    }
+  }
 }
 
 #week-menu-config {
