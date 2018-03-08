@@ -8,6 +8,7 @@ import { BookingService } from '../../../services/booking.service';
 })
 export class ViewpendingsComponent implements OnInit {
   @Input() pending;
+  @Input() pendingsB;
   @Input() totalpending;
   @Output() outputcall = new EventEmitter<string>();
   constructor(public bookingsServ: BookingService) {

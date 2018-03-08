@@ -56,8 +56,8 @@ export class SessionService {
       .catch(this.handleError);
   }
 
-  login(name: string, password: string): Observable<any> {
-    return this.http.post(`${environment.BASEURL}/api/auth/login`, { username: name, password }, this.options)
+  login(email: string, password: string): Observable<any> {
+    return this.http.post(`${environment.BASEURL}/api/auth/login`, { username: email, password }, this.options)
       .map(res => res.json())
       .map(this.configureUser(true))
       .catch(this.handleError);

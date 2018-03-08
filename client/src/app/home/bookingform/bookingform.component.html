@@ -11,13 +11,13 @@
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker disabled="false" #picker></mat-datepicker>
   </mat-form-field>
-  <div class="form-details-info">
+  <div class="form-details-info availability-message-wrapper">
     <small *ngIf="day===null || day===undefined" class="form-availability-message not-found">Day not found</small>
   </div>
-  <div class="form-details-info">
+  <div class="form-details-info availability-message-wrapper">
     <small *ngIf="day!==null&&day!=={}&&day.status==='open'" class="form-availability-message open">We are {{day.status}}!</small>
   </div>
-  <div class="form-details-info">
+  <div class="form-details-info availability-message-wrapper">
     <small *ngIf="day!==null&&day!=={}&&day.status==='closed'" class="form-availability-message closed">We are {{day.status}} :( Try again!</small>
   </div>
   <mat-form-field *ngIf="day!==null&&day!=={}&&day.status!=='closed'">
