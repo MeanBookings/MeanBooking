@@ -10,16 +10,17 @@
         <small>We have {{totalpending}} pending bookings</small>
       </h4>
       <div class="row day-booking-header">
-        <div class="col-sm-4"> Status </div>
-        <div class="col-sm-4"> Hour and people </div>
-        <div class="col-sm-4"> Customer contact info </div>
+        <div class="col-sm-3"> Status </div>
+        <div class="col-sm-3"> Hour and people </div>
+        <div class="col-sm-3"> Customer contact info </div>
+        <div class="col-sm-3"> Booking Comments</div>
       </div>
       <div *ngFor="let user of pendingsB" class="row booking">
-        <div class="col-sm-4">
+        <div class="col-sm-3">
           <div class="details">
-            <!-- <div>
-              <small class="booking-id"> {{books._id}} </small>
-            </div> -->
+            <div>
+              <small class="booking-id"> {{user._id}} </small>
+            </div>
             <mat-form-field class="status-select">
               <mat-select [value]="user.status" [class]="user.status" [(ngModel)]="user.status" (change)="changeBookingStatus(user.status,user._id)">
                 <mat-option value="pending"> Pending </mat-option>
@@ -29,8 +30,11 @@
             </mat-form-field>
           </div>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-3">
           <div class="details">
+            <div class="hour"> {{user.date | date:"d MMM y"}}
+              <small>date</small>
+            </div>
             <div class="hour"> {{user.hour}}
               <small>hours</small>
             </div>
@@ -40,18 +44,26 @@
             </div>
           </div>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-3">
           <div class="customer-details">
             <div>
-              <small>Name:</small> {{user.user.name}} </div>
+              <small>Name:</small> {{user.user.name}}
+            </div>
             <div>
-              <small>Email:</small> {{user.user.email}} </div>
+              <small>Email:</small> {{user.user.email}}
+            </div>
             <div>
-              <small>Phone:</small> {{user.user.phone}} </div>
+              <small>Phone:</small> {{user.user.phone}}
+            </div>
           </div>
         </div>
-      </div>
-      <!-- <div *ngFor="let books of pending">
+        <div class="col-sm-3">
+          <div class="customer-details">
+            <div>
+              {{user.comments}}
+            </div>
+          </div>
+          <!-- <div *ngFor="let books of pending">
         <div *ngFor="let user of books.books">
           <div *ngIf="user.status == 'pending'" class="row booking">
             <div class="col-sm-4">
@@ -92,5 +104,5 @@
           </div>
         </div>
       </div> --></div>
-  </div>
-</div>
+      </div>
+    </div>

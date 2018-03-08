@@ -8,8 +8,6 @@ const nodemailer = require('nodemailer');
 const {emailName, emailPw} = require('../config');
 const template2 = require('./email_template2');
 
-
-
 const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
