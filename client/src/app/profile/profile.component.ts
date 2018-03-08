@@ -6,6 +6,7 @@ import { SnackBarProfileComponent } from './snack-bar-profile/snack-bar-profile.
 import { UserService } from '../../services/user.service';
 import { BookingService } from '../../services/booking.service';
 import { CommentService } from '../../services/comment.service';
+declare var $
 
 @Component({
   selector: 'profile',
@@ -67,6 +68,8 @@ export class ProfileComponent implements OnInit {
       this.btntext = "Update"
       this.message = ""
       this.switch = !this.switch
+      $('#profileModal').modal('show')
+
     }
   }
 
