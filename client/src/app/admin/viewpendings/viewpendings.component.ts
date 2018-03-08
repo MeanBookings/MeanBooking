@@ -23,7 +23,10 @@ export class ViewpendingsComponent implements OnInit {
   }
 
   changeBookingStatus(status, id) {
-    if (status !== 'cancelled') { this.bookingsServ.updateBookings(status, id).catch(e => this.error = e).subscribe() }
+    if (status !== 'cancelled') { 
+      this.bookingsServ.updateBookings(status, id)
+      .catch(e => this.error = e)
+      .subscribe() }
     else { this.deleteBooking(id) }
   }
 

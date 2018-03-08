@@ -64,8 +64,6 @@ let updateDayRange = (updDay, config) => {
             return day;
         })
         .catch(e => console.log(e))
-
-
 }
 
 //CHECK AVAILABILITY
