@@ -8,4 +8,35 @@
   width: 100%;
 }
 
+.mat-option-text {
+  z-index: 2;
+}
+.hour-availability {
+  position: relative;
+  z-index: 2;
+  color: $white;
+  font-size: .75em;
+  padding-left: 3px;
+  &:after {
+    content: '';
+    height: 23px;
+    width: 23px;
+    position: absolute;
+    background: $red;
+    border-radius: 50%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+  }
+}
 
+.form-availability-message {
+  border: 1px solid $lightgrey;
+  border-radius: 10px;
+  padding: 10px 20px;
+  display: inline-block;
+  margin-bottom: 20px;
+  &.open{background: $green}
+  &.closed{background: $grey}
+  &.not-found{background: $red;}
+}

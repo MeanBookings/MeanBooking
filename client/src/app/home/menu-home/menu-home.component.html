@@ -10,60 +10,60 @@
               <div *ngIf="menu[0].active == 'true'; else closedMonday">
                 <div class="row">
                   <div class="starters-menu col-md-3 pad-top-20">
-                    <div class="text-center">
+                    <div>
                       <strong>Starters</strong>
                     </div>
                     <ul>
                       <li>
-                        <label class="d-block">{{menu[0].starters[0]}}</label>
+                        {{menu[0].starters[0]}}
                       </li>
                       <li>
-                        <label class="d-block">{{menu[0].starters[1]}}</label>
+                        {{menu[0].starters[1]}}
                       </li>
                       <li>
-                        <label class="d-block">{{menu[0].starters[2]}}</label>
+                        {{menu[0].starters[2]}}
                       </li>
                       <li>
-                        <label class="d-block">{{menu[0].starters[3]}}</label>
+                        {{menu[0].starters[3]}}
                       </li>
                     </ul>
                   </div>
                   <div class="main-course-menu col-md-3 pad-top-20">
-                    <div class="text-center">
+                    <div>
                       <strong>Main Courses</strong>
                     </div>
                     <ul>
                       <li>
-                        <label class="d-block">{{menu[0].mainCourses[0]}}</label>
+                        {{menu[0].mainCourses[0]}}
                       </li>
                       <li>
-                        <label class="d-block">{{menu[0].mainCourses[1]}}</label>
+                        {{menu[0].mainCourses[1]}}
                       </li>
                       <li>
-                        <label class="d-block">{{menu[0].mainCourses[2]}}</label>
+                        {{menu[0].mainCourses[2]}}
                       </li>
                       <li>
-                        <label class="d-block">{{menu[0].mainCourses[3]}}</label>
+                        {{menu[0].mainCourses[3]}}
                       </li>
                     </ul>
                   </div>
                   <div class="col-md-3 pad-top-20">
                     <div class="desserts-menu">
-                      <div class="text-center">
+                      <div>
                         <strong>Desserts</strong>
                       </div>
                       <ul>
                         <li>
-                          <label class="d-block">{{menu[0].desserts[0]}}</label>
+                          {{menu[0].desserts[0]}}
                         </li>
                         <li>
-                          <label class="d-block">{{menu[0].desserts[1]}}</label>
+                          {{menu[0].desserts[1]}}
                         </li>
                       </ul>
                     </div>
                   </div>
                   <div class="col-md-3 pad-top-20">
-                    <div class="text-center">
+                    <div>
                       <strong>Other details</strong>
                     </div>
                     <div *ngIf="menu[0].comments !== ''">
@@ -74,8 +74,8 @@
                         <strong>{{menu[0].comments}}</strong>
                       </p>
                     </div>
-                    <div class="div-home-price">
-                      <span class="home-price">{{menu[0].price}}€ </span>
+                    <div class="menu-details">
+                      <span class="menu-price">{{menu[0].price}}€ </span>
                     </div>
                   </div>
                 </div>
@@ -93,60 +93,60 @@
               <div *ngIf="menu[1].active == 'true'; else closedTuesday">
                 <div class="row">
                   <div class="starters-menu col-md-3 pad-top-20">
-                    <div class="text-center">
+                    <div>
                       <strong>Starters</strong>
                     </div>
                     <ul>
                       <li>
-                        <label class="d-block">{{menu[1].starters[0]}}</label>
+                        {{menu[1].starters[0]}}
                       </li>
                       <li>
-                        <label class="d-block">{{menu[1].starters[1]}}</label>
+                        {{menu[1].starters[1]}}
                       </li>
                       <li>
-                        <label class="d-block">{{menu[1].starters[2]}}</label>
+                        {{menu[1].starters[2]}}
                       </li>
                       <li>
-                        <label class="d-block">{{menu[1].starters[3]}}</label>
+                        {{menu[1].starters[3]}}
                       </li>
                     </ul>
                   </div>
                   <div class="main-course-menu col-md-3 pad-top-20">
-                    <div class="text-center">
+                    <div>
                       <strong>Main Courses</strong>
                     </div>
                     <ul>
                       <li>
-                        <label class="d-block">{{menu[1].mainCourses[0]}}</label>
+                        {{menu[1].mainCourses[0]}}
                       </li>
                       <li>
-                        <label class="d-block">{{menu[1].mainCourses[1]}}</label>
+                        {{menu[1].mainCourses[1]}}
                       </li>
                       <li>
-                        <label class="d-block">{{menu[1].mainCourses[2]}}</label>
+                        {{menu[1].mainCourses[2]}}
                       </li>
                       <li>
-                        <label class="d-block">{{menu[1].mainCourses[3]}}</label>
+                        {{menu[1].mainCourses[3]}}
                       </li>
                     </ul>
                   </div>
                   <div class="col-md-3 pad-top-20">
                     <div class="desserts-menu">
-                      <div class="text-center">
+                      <div>
                         <strong>Desserts</strong>
                       </div>
                       <ul>
                         <li>
-                          <label class="d-block">{{menu[1].desserts[0]}}</label>
+                          {{menu[1].desserts[0]}}
                         </li>
                         <li>
-                          <label class="d-block">{{menu[1].desserts[1]}}</label>
+                          {{menu[1].desserts[1]}}
                         </li>
                       </ul>
                     </div>
                   </div>
                   <div class="col-md-3 pad-top-20">
-                    <div class="text-center">
+                    <div>
                       <strong>Other details</strong>
                     </div>
                     <div *ngIf="menu[1].comments !== ''">
@@ -157,8 +157,8 @@
                         <strong>{{menu[1].comments}}</strong>
                       </p>
                     </div>
-                    <div class="div-home-price">
-                      <span class="home-price">{{menu[1].price}}€ </span>
+                    <div class="menu-details">
+                      <span class="menu-price">{{menu[1].price}}€ </span>
                     </div>
                   </div>
                 </div>
@@ -176,60 +176,60 @@
               <div *ngIf="menu[2].active == 'true'; else closedWednesday">
                 <div class="row">
                   <div class="starters-menu col-md-3 pad-top-20">
-                    <div class="text-center">
+                    <div>
                       <strong>Starters</strong>
                     </div>
                     <ul>
                       <li>
-                        <label class="d-block">{{menu[2].starters[0]}}</label>
+                        {{menu[2].starters[0]}}
                       </li>
                       <li>
-                        <label class="d-block">{{menu[2].starters[1]}}</label>
+                        {{menu[2].starters[1]}}
                       </li>
                       <li>
-                        <label class="d-block">{{menu[2].starters[2]}}</label>
+                        {{menu[2].starters[2]}}
                       </li>
                       <li>
-                        <label class="d-block">{{menu[2].starters[3]}}</label>
+                        {{menu[2].starters[3]}}
                       </li>
                     </ul>
                   </div>
                   <div class="main-course-menu col-md-3 pad-top-20">
-                    <div class="text-center">
+                    <div>
                       <strong>Main Courses</strong>
                     </div>
                     <ul>
                       <li>
-                        <label class="d-block">{{menu[2].mainCourses[0]}}</label>
+                        {{menu[2].mainCourses[0]}}
                       </li>
                       <li>
-                        <label class="d-block">{{menu[2].mainCourses[1]}}</label>
+                        {{menu[2].mainCourses[1]}}
                       </li>
                       <li>
-                        <label class="d-block">{{menu[2].mainCourses[2]}}</label>
+                        {{menu[2].mainCourses[2]}}
                       </li>
                       <li>
-                        <label class="d-block">{{menu[2].mainCourses[3]}}</label>
+                        {{menu[2].mainCourses[3]}}
                       </li>
                     </ul>
                   </div>
                   <div class="col-md-3 pad-top-20">
                     <div class="desserts-menu">
-                      <div class="text-center">
+                      <div>
                         <strong>Desserts</strong>
                       </div>
                       <ul>
                         <li>
-                          <label class="d-block">{{menu[2].desserts[0]}}</label>
+                          {{menu[2].desserts[0]}}
                         </li>
                         <li>
-                          <label class="d-block">{{menu[2].desserts[1]}}</label>
+                          {{menu[2].desserts[1]}}
                         </li>
                       </ul>
                     </div>
                   </div>
                   <div class="col-md-3 pad-top-20">
-                    <div class="text-center">
+                    <div>
                       <strong>Other details</strong>
                     </div>
                     <div *ngIf="menu[2].comments !== ''">
@@ -240,8 +240,8 @@
                         <strong>{{menu[2].comments}}</strong>
                       </p>
                     </div>
-                    <div class="div-home-price">
-                      <span class="home-price">{{menu[2].price}}€ </span>
+                    <div class="menu-details">
+                      <span class="menu-price">{{menu[2].price}}€ </span>
                     </div>
                   </div>
                 </div>
@@ -259,60 +259,60 @@
               <div *ngIf="menu[3].active == 'true'; else closedThursday">
                 <div class="row">
                   <div class="starters-menu col-md-3 pad-top-20">
-                    <div class="text-center">
+                    <div>
                       <strong>Starters</strong>
                     </div>
                     <ul>
                       <li>
-                        <label class="d-block">{{menu[3].starters[0]}}</label>
+                        {{menu[3].starters[0]}}
                       </li>
                       <li>
-                        <label class="d-block">{{menu[3].starters[1]}}</label>
+                        {{menu[3].starters[1]}}
                       </li>
                       <li>
-                        <label class="d-block">{{menu[3].starters[2]}}</label>
+                        {{menu[3].starters[2]}}
                       </li>
                       <li>
-                        <label class="d-block">{{menu[3].starters[3]}}</label>
+                        {{menu[3].starters[3]}}
                       </li>
                     </ul>
                   </div>
                   <div class="main-course-menu col-md-3 pad-top-20">
-                    <div class="text-center">
+                    <div>
                       <strong>Main Courses</strong>
                     </div>
                     <ul>
                       <li>
-                        <label class="d-block">{{menu[3].mainCourses[0]}}</label>
+                        {{menu[3].mainCourses[0]}}
                       </li>
                       <li>
-                        <label class="d-block">{{menu[3].mainCourses[1]}}</label>
+                        {{menu[3].mainCourses[1]}}
                       </li>
                       <li>
-                        <label class="d-block">{{menu[3].mainCourses[2]}}</label>
+                        {{menu[3].mainCourses[2]}}
                       </li>
                       <li>
-                        <label class="d-block">{{menu[3].mainCourses[3]}}</label>
+                        {{menu[3].mainCourses[3]}}
                       </li>
                     </ul>
                   </div>
                   <div class="col-md-3 pad-top-20">
                     <div class="desserts-menu">
-                      <div class="text-center">
+                      <div>
                         <strong>Desserts</strong>
                       </div>
                       <ul>
                         <li>
-                          <label class="d-block">{{menu[3].desserts[0]}}</label>
+                          {{menu[3].desserts[0]}}
                         </li>
                         <li>
-                          <label class="d-block">{{menu[3].desserts[1]}}</label>
+                          {{menu[3].desserts[1]}}
                         </li>
                       </ul>
                     </div>
                   </div>
                   <div class="col-md-3 pad-top-20">
-                    <div class="text-center">
+                    <div>
                       <strong>Other details</strong>
                     </div>
                     <div *ngIf="menu[3].comments !== ''">
@@ -323,8 +323,8 @@
                         <strong>{{menu[3].comments}}</strong>
                       </p>
                     </div>
-                    <div class="div-home-price">
-                      <span class="home-price">{{menu[3].price}}€ </span>
+                    <div class="menu-details">
+                      <span class="menu-price">{{menu[3].price}}€ </span>
                     </div>
                   </div>
                 </div>
@@ -342,60 +342,60 @@
               <div *ngIf="menu[4].active == 'true'; else closedFriday">
                 <div class="row">
                   <div class="starters-menu col-md-3 pad-top-20">
-                    <div class="text-center">
+                    <div>
                       <strong>Starters</strong>
                     </div>
                     <ul>
                       <li>
-                        <label class="d-block">{{menu[4].starters[0]}}</label>
+                        {{menu[4].starters[0]}}
                       </li>
                       <li>
-                        <label class="d-block">{{menu[4].starters[1]}}</label>
+                        {{menu[4].starters[1]}}
                       </li>
                       <li>
-                        <label class="d-block">{{menu[4].starters[2]}}</label>
+                        {{menu[4].starters[2]}}
                       </li>
                       <li>
-                        <label class="d-block">{{menu[4].starters[3]}}</label>
+                        {{menu[4].starters[3]}}
                       </li>
                     </ul>
                   </div>
                   <div class="main-course-menu col-md-3 pad-top-20">
-                    <div class="text-center">
+                    <div>
                       <strong>Main Courses</strong>
                     </div>
                     <ul>
                       <li>
-                        <label class="d-block">{{menu[4].mainCourses[0]}}</label>
+                        {{menu[4].mainCourses[0]}}
                       </li>
                       <li>
-                        <label class="d-block">{{menu[4].mainCourses[1]}}</label>
+                        {{menu[4].mainCourses[1]}}
                       </li>
                       <li>
-                        <label class="d-block">{{menu[4].mainCourses[2]}}</label>
+                        {{menu[4].mainCourses[2]}}
                       </li>
                       <li>
-                        <label class="d-block">{{menu[4].mainCourses[3]}}</label>
+                        {{menu[4].mainCourses[3]}}
                       </li>
                     </ul>
                   </div>
                   <div class="col-md-3 pad-top-20">
                     <div class="desserts-menu">
-                      <div class="text-center">
+                      <div>
                         <strong>Desserts</strong>
                       </div>
                       <ul>
                         <li>
-                          <label class="d-block">{{menu[4].desserts[0]}}</label>
+                          {{menu[4].desserts[0]}}
                         </li>
                         <li>
-                          <label class="d-block">{{menu[4].desserts[1]}}</label>
+                          {{menu[4].desserts[1]}}
                         </li>
                       </ul>
                     </div>
                   </div>
                   <div class="col-md-3 pad-top-20">
-                    <div class="text-center">
+                    <div>
                       <strong>Other details</strong>
                     </div>
                     <div *ngIf="menu[4].comments !== ''">
@@ -406,8 +406,8 @@
                         <strong>{{menu[4].comments}}</strong>
                       </p>
                     </div>
-                    <div class="div-home-price">
-                      <span class="home-price">{{menu[4].price}}€ </span>
+                    <div class="menu-details">
+                      <span class="menu-price">{{menu[4].price}}€ </span>
                     </div>
                   </div>
                 </div>

@@ -12,22 +12,21 @@
     <mat-datepicker disabled="false" #picker></mat-datepicker>
   </mat-form-field>
   <div class="form-details-info">
-    <small *ngIf="day===null || day===undefined">Day not found</small>
+    <small *ngIf="day===null || day===undefined" class="form-availability-message not-found">Day not found</small>
   </div>
   <div class="form-details-info">
-    <small *ngIf="day!==null&&day!=={}&&day.status==='open'">We are {{day.status}}!</small>
+    <small *ngIf="day!==null&&day!=={}&&day.status==='open'" class="form-availability-message open">We are {{day.status}}!</small>
   </div>
   <div class="form-details-info">
-    <small *ngIf="day!==null&&day!=={}&&day.status==='closed'">We are {{day.status}} :( Try again!</small>
+    <small *ngIf="day!==null&&day!=={}&&day.status==='closed'" class="form-availability-message closed">We are {{day.status}} :( Try again!</small>
   </div>
   <mat-form-field *ngIf="day!==null&&day!=={}&&day.status!=='closed'">
     <mat-select placeholder="Select hour" [(ngModel)]="hour" name="hour" [disabled]="disableSelect" required>
-      <mat-option *ngFor="let hour of hours; let i=index" [value]="hour"> {{ hour }} |
-        <span>{{available[i]}}</span>
+      <mat-option *ngFor="let hour of hours; let i=index" [value]="hour"> {{ hour }} <span class="hour-availability">{{available[i]}}</span>
       </mat-option>
     </mat-select>
   </mat-form-field>
-  <div class="label" *ngIf="day.status!=='closed'">
+  <div class="label" *ngIf="day===undefined&&day.status!=='closed'">
     <label for="people">Nº of people</label>
   </div>
   <mat-slider *ngIf="day.status!=='closed'" class="full-width" [disabled]="disabled" [invert]="invert" [max]="max" [min]="min" [step]="step" [thumb-label]="thumbLabel"
