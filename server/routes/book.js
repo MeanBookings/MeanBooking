@@ -115,7 +115,6 @@ router.post('/create', (req, res, next) => {
 
 // /api/book/edit/:id - update the book, if status = "approved" sends an emails
 router.post('/edit/:id', (req, res, next) => {
-    console.log('aqui en el back')
     let { status } = req.body;
     Book.findById(req.params.id)
         .then((book) => {
@@ -156,7 +155,6 @@ router.get('/delete/:hash', (req, res, next) => {
                                 day.shift.forEach((s, i) => {
                                     if (s.hour == book.hour) {
                                         tIndex = i;
-                                        console.log(tIndex)
                                     }
                                 })
                                 const updatedDay = day;
