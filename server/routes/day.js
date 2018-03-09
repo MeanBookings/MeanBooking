@@ -105,9 +105,6 @@ router.get('/month', (req, res, next) => {
         }
     }).populate('books')
         .then(days => {
-            //CON PAPU
-            /* days.forEach(d=>console.log(d.date))
-            days = days.map(d=>Object.assign({}, d._doc, {date:moment(d._doc.date).format()})) */
             res.status(200).json({
                 days
             })

@@ -42,7 +42,6 @@ router.get('/delete/:id', onlyMe, (req, res, next) => {
 // api/user/makeadmin/:id
 router.post('/editRole/:id', onlyMe, (req, res, next) => {
     role = req.body.role
-    console.log(role)
     User.findByIdAndUpdate(req.params.id, { "role": role })
         .then((user) => res.status(200).json(user))
         .catch(e => res.status(500).json(e))
@@ -51,7 +50,6 @@ router.post('/editRole/:id', onlyMe, (req, res, next) => {
 router.post('/massiveemail', onlyMe, (req, res, next) => {
     let text = req.body.text
     let emails = req.body.emails
-    // console.log(emails.toString())
     emails.forEach((e) => {
         mailOptions.subject = 'Mean Restaurant want to tell you something';
         mailOptions.html = template2(text)

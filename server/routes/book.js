@@ -77,7 +77,7 @@ router.post('/create', (req, res, next) => {
                         const updatedUser = u;
                         updatedUser.bookings.push(book._id);
                         User.findOneAndUpdate({ _id: u._id }, updatedUser, { new: true })
-                            .then((user) => console.log(`actualizado historial de reservas del usuario ${user.name}`))
+                            .then()
                     })
                 Day.findOne({ date: date_of_book })
                     .then(day => {
@@ -94,7 +94,6 @@ router.post('/create', (req, res, next) => {
                         mailOptions.subject = "Your book in Avello's Trattoria is pending approvation";
                         let date = moment(book.date).format("DD MMMM");
                         let www = `${prodURL}api/book/delete/${book._id}`;
-                        console.log(www)
                         mailOptions.html = template1(`Your booking for the ${date}, at ${book.hour}, for ${book.people} in Avello's Trattoria is <strong style="color:GoldenRod">PENDING</strong> approvation`,www)
                         mailOptions.to = email;
                         transporter.sendMail(mailOptions, (error, info) => {
@@ -115,7 +114,6 @@ router.post('/create', (req, res, next) => {
 
 // /api/book/edit/:id - update the book, if status = "approved" sends an emails
 router.post('/edit/:id', (req, res, next) => {
-    console.log('aqui en el back')
     let { status } = req.body;
     Book.findById(req.params.id)
         .then((book) => {
@@ -156,7 +154,6 @@ router.get('/delete/:hash', (req, res, next) => {
                                 day.shift.forEach((s, i) => {
                                     if (s.hour == book.hour) {
                                         tIndex = i;
-                                        console.log(tIndex)
                                     }
                                 })
                                 const updatedDay = day;

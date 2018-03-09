@@ -14,7 +14,6 @@ let loginPromise = (req, user) => {
 /* SIGNUP */
 router.post('/signup', (req, res, next) => {
   const { username, email, password, phone} = req.body;
-  console.log(req.body);
   if (!username || !email || !password || !phone) return res.status(400).json({ message: 'Provide all fields' })
   User.findOne({ email }, '_id')
     .then(foundUser =>{
@@ -27,7 +26,6 @@ router.post('/signup', (req, res, next) => {
         password: hashPass,
         phone
       });
-      // console.log(theUser)
       return theUser.save()
           .then(user => loginPromise(req,user))
           .then(user => {

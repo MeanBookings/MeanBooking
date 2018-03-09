@@ -33,9 +33,7 @@ export class SessionService {
       if (set) {
         this.user = user;
         this.userReady.emit(this.user);
-        //console.log(`Setting user, welcome ${this.user.name}`)
       } else {
-        //console.log(`bye bye ${this.user.name}`)
         this.user = null
       }
       return user;

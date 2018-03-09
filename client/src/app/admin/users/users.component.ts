@@ -28,7 +28,6 @@ export class UsersComponent implements OnInit {
   }
 
   changeMyRole(id,role) {
-    console.log(role)
     if(role=='client')role='admin'
     else role='client'
     this.profile.changeRole(id,role).subscribe((user)=>{

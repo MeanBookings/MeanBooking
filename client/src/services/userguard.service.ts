@@ -8,10 +8,8 @@ import { Router } from '@angular/router';
 export class UserGuardService implements CanActivate {
     constructor(public session: SessionService, public router: Router) { }
     canActivate(): Observable<boolean> | Promise<boolean> | boolean {
-        console.log('User guard has been called');
         if (this.session.getUser()) return true
         else { 
-            console.log('You cant go there'); 
             this.router.navigate(['/']);
         }
     }
