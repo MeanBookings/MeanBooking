@@ -9,4 +9,6 @@ $(document).ready(function () {
   $('body').on('click', '.allContacts', function (e) {
     $('.addtoEnvelope').toggleClass('activeEnvelope').trigger('click').toggleClass('activeEnvelope');
   });
+  $('#menu-login').click(()=>$('#signupModal').modal('hide'))
+  $('#menu-signup').click(()=>$('#loginModal').modal('hide'))
 });
