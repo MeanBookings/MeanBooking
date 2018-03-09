@@ -7,11 +7,8 @@ const Day = require('../models/Day');
 
 // /api/day/create - Create the basic Day
 router.post('/create', (req, res, next) => {
-    // let dates = req.body.map((d) => d.split("T")[0])
     let fechas = req.body
-    // console.log(fechas)
     Promise.all(fechas.map(d => creaDia(d)))
-        // .then(dt => res.json(dt))
         .then(res.status(200))
         .catch(e => {
             console.log(e);
@@ -48,8 +45,6 @@ updateaDia = (newDay) => {
 //CHECK AVAILABILITY
 // /api/day/get
 router.post('/', (req, res, next) => {
-    // console.log(moment(req.body.date)) 
-    //let dateClean = `${req.body.date.split('T')[0]} 00:00:00.000`;
     Day.findOne({ date: moment(req.body.date) })
         .then(day => {
             console.log(day)
@@ -63,11 +58,15 @@ router.post('/', (req, res, next) => {
 
 // GET THE MONTH BUILD COMPONENT
 // /api/day/get/month
-router.post('/month', (req, res, next) => {
-    let { currentDay, daysInCurrentMonth, month } = req.body;
-    let from = moment().subtract(currentDay, 'days');
-    let until = moment().add((daysInCurrentMonth - currentDay), 'days');
-    //let dateClean = `${req.body.date.split('T')[0]} 00:00:00.000`;
+router.get('/month', (req, res, next) => {
+    let month = moment().month()
+    let year = moment().year()
+    let from = moment().startOf("Month").startOf("isoWeek").format('YYYY-MM-DD');    
+    // let from = moment().year(year).month(month).date(0).format('YYYY-MM-DD');
+    let days = moment(month + 1, 'M').daysInMonth()
+    if ((moment([year]).isLeapYear()) && (month == 1))
+        days++
+    let until = moment().year(year).month(month).date(days).format('YYYY-MM-DD');
     Day.find({ date: { $gte: from, $lte: until } })
         .then(days => {
             res.json(days)
@@ -86,17 +85,16 @@ router.post('/month', (req, res, next) => {
 // /api/day/month/view
 router.post('/month/view', (req, res, next) => {
     let { monthToView, year } = req.body;
-    moment().daysInMonth();
-    let from = moment().year(year).month(monthToView).date(1).format('YYYY-MM-DD');
+    let from = moment().year(year).month(monthToView).date(0).format('YYYY-MM-DD');
     let days = moment(monthToView + 1, 'M').daysInMonth()
     if ((moment([year]).isLeapYear()) && (monthToView == 1))
         days++
     let until = moment().year(year).month(monthToView).date(days).format('YYYY-MM-DD');
-    res.json({ monthToView, from, days, until })
-    //let dateClean = `${req.body.date.split('T')[0]} 00:00:00.000`;
     Day.find({ date: { $gte: from, $lte: until } })
         .then(days => {
             // res.json(days)
+            console.log(days.length)
+
         })
         .catch(err => {
             if (err) {
@@ -110,8 +108,6 @@ router.post('/month/view', (req, res, next) => {
 
 // /api/day/get - getting the selecting dates
 router.post('/get', (req, res, next) => {
-    // res.json(req.body)
-    // let dates = req.body.map((d) => d.split("T")[0])
     let dates = req.body
     Promise.all(dates.map((d) => busquedaDia(d))).then(dates => res.json(dates))
 });
