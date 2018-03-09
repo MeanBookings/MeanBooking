@@ -12,7 +12,7 @@
     <mat-datepicker disabled="false" #picker></mat-datepicker>
   </mat-form-field>
   <div class="form-details-info availability-message-wrapper">
-    <small *ngIf="day===null || day===undefined" class="form-availability-message not-found">Day not found</small>
+    <small *ngIf="day===null || day===undefined" class="form-availability-message not-found">Day not available yet :/</small>
   </div>
   <div class="form-details-info availability-message-wrapper">
     <small *ngIf="day!==null&&day!=={}&&day.status==='open'" class="form-availability-message open">We are {{day.status}}!</small>
