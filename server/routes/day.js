@@ -92,9 +92,7 @@ router.post('/month/view', (req, res, next) => {
     let until = moment().year(year).month(monthToView).date(days).format('YYYY-MM-DD');
     Day.find({ date: { $gte: from, $lte: until } })
         .then(days => {
-            // res.json(days)
-            console.log(days.length)
-
+            res.json(days)
         })
         .catch(err => {
             if (err) {

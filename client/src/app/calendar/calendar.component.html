@@ -20,8 +20,10 @@
 </div>
 <div class="container-fluid" id="bookings-calendar">
   <div class="row">
+      
     <div class="col day {{day.date | date:'EEEE' | lowercase}} {{day.status}}" *ngFor="let day of days; let i=index">
-        <div *ngIf="currentMonthDay == (day.date | date:'d'); else notToday" class="today">
+        <div *ngIf="today == (day.date | date:'MM/dd/yyyy'); else notToday" class="today">
+            ENTRA
             <span>Today</span>
             <small>{{day.date | date:'dd MMM'}}</small>
             <small>{{day.date | date:'EEEE'}}</small>

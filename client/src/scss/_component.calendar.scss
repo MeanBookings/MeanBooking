@@ -5,5 +5,8 @@
         max-width: calc(100% / 7);
         border: 1px solid black;
         padding: 20px;
+        .today {
+            background: red;
+        }
     }
 }

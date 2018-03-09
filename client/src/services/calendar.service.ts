@@ -17,21 +17,20 @@ export class CalendarService {
         return Observable.throw(e.json().message);
     }
 
+    getDays(dates): Observable<any> {
+        return this.http.post(`${this.BASEURL}/api/day/get`, dates, this.options)
+            .map(res => res.json())
+            .catch(this.handleError);
+    }
 
-    getCurrentMonth(currentMonthDay,daysInCurrentMonth): Observable<any> {
-        return this.http.post(`${this.BASEURL}/api/day/month`, {currentDay:currentMonthDay,daysInCurrentMonth:daysInCurrentMonth}, this.options)
+    getCurrentMonth(): Observable<any> {
+        return this.http.get(`${this.BASEURL}/api/day/month`, this.options)
             .map(res => res.json())
             .catch(this.handleError);
     }
 
     changeCurrentMonth(month,year): Observable<any> {
-        return this.http.post(`${this.BASEURL}/api/day/month/view`, {month:month}, this.options)
-            .map(res => res.json())
-            .catch(this.handleError);
-    }
-
-    getDays(dates): Observable<any> {
-        return this.http.post(`${this.BASEURL}/api/day/get`, dates, this.options)
+        return this.http.post(`${this.BASEURL}/api/day/month/view`, {monthToView:month,year:year}, this.options)
             .map(res => res.json())
             .catch(this.handleError);
     }
