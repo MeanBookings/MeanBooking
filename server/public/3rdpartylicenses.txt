@@ -75,7 +75,7 @@ MIT
 MIT
 MIT
 
-moment@2.21.0
+moment@2.20.1
 MIT
 Copyright (c) JS Foundation and other contributors
 
